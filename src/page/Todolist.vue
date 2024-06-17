@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <h4>Todolist</h4>
   <div class="box">
     <div class="todolist">
@@ -7,8 +7,9 @@
         type="text"
         v-model="input"
         v-on:keyup.enter="sendText"
-      /><!-- <input @keyup.enter="sendText"縮寫>    -->
-      <button @click="sendText">送出</button>
+      />
+      <input @keyup.enter="sendText"縮寫>    -->
+      <!-- <button @click="sendText">送出</button>
     </div>
     <div class="output">
       <div v-for="(item, idx) in outputText" :key="idx">
@@ -18,7 +19,7 @@
       </div>
     </div>
   </div>
-</template>
+</template> -->
 
 <script setup>
 import { ref } from "vue";
