@@ -4,18 +4,29 @@ const routes = [
   {
     path: "/",
     name: "Todolist",
-    component: () => import("../page/Todolist.vue"),
+    component: () => import("@/page/Todolist.vue"),
   },
-  {
-    path: "/prTodolist",
-    name: "PrTodolist",
-    component: () => import("../page/practise.vue"),
-  },
-  {
-    path: "/note",
-    name: "Todolist Note",
-    component: () => import("../page/Note.vue"),
-  },
+  // {
+  //   path: "/login",
+  //   name: "Login",
+  //   component: () => import("@/page/Login.vue"),
+  // },
+  // {
+  //   path: "/registermember",
+  //   name: "RegisterMember",
+  //   component: () => import("@/page/RegisterMember.vue"),
+  // },
+  // {
+  //   path: "/membercenter",
+  //   name: "MemberCenter",
+  //   component: () => import("@/page/MemberCenter.vue"),
+  // },
+  // {
+  //   path: "/shopping",
+  //   name: "Shopping",
+  //   component: () => import("@/page/Shopping.vue"),
+  // },
+  
   
   
 ];

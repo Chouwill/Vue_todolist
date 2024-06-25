@@ -1,39 +1,37 @@
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
+/**
+ * Import the Header component from the specified file path.
+ */
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
-  <ul class="nav">
-    <li>
-      <router-link to="/">Todolist</router-link>
-    </li>
-    <li>
-      <router-link to="/prTodolist">自我練習Todolist</router-link>
-    </li>
-    <li>
-      <router-link to="/note">筆記Todolist</router-link>
-    </li>
-  </ul>
-  <div class="page"><router-view></router-view></div>
+  <div class="container">
+    <Header />
+
+    <router-view></router-view>
+    <Footer />
+  </div>
 </template>
 
-<style scoped>
-/* page所有頁面的外框 */
-.page{
-  width: 100%;
-  border: 5px solid green;
-  /* background-color: ; */
-  padding: 50px;
-}
-ul li {
+<style lang="scss" scoped>
+* {
   list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  margin: 10px 0 10px;
 }
-
-.nav{
+.container {
   margin: 0 auto;
-  width: 1000px;
-  padding: 50px;
-  font-size: 50px;
-  border: 5px solid greenyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  header {
+    nav {
+      border: 10px solid red;
+    }
+  }
 }
 </style>
