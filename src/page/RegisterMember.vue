@@ -1,151 +1,201 @@
 <template>
-    <div class="login_box">
-      <div class="login_header">
-        <a>會員登入</a>
-        <a>會員註冊</a>
-      </div>
-      <ul class="main_login">
-        <li>
-          <label for="">使用者帳號</label>
-          <br />
-          <el-input
-            v-model="UserInput"
-            style="width: 240px"
-            type="e-mail"
-            placeholder="請輸入帳號"
-          />
-        </li>
-        <li>
-          <label for="">密碼 </label>
-          <el-input
-            v-model="Password"
-            style="width: 240px"
-            type="password"
-            placeholder="請輸入密碼"
-            show-password
-          />
-        </li>
-        <li>
-          <label for="">確認密碼 </label>
-          <el-input
-            v-model="DoublePassword"
-            style="width: 240px"
-            type="password"
-            placeholder="確認輸入密碼"
-            show-password
-          />
-        </li>
-        <!-- <li class="check_link">
+  <div class="login_box">
+    <div class="login_header">
+      <a>會員登入</a>
+      <a>會員註冊</a>
+    </div>
+    <ul class="main_login">
+      <li>
+        <label for="">使用者名稱</label>
+        <br />
+        <el-input
+          v-model="UserName"
+          style="width: 240px"
+          type="text"
+          placeholder="請輸入帳號"
+        />
+      </li>
+      <li>
+        <label for="">使用者帳號</label>
+        <br />
+        <el-input
+          v-model="UserInput"
+          style="width: 240px"
+          type="e-mail"
+          placeholder="請輸入帳號"
+        />
+      </li>
+      <li>
+        <label for="">密碼 </label>
+        <el-input
+          v-model="Password"
+          style="width: 240px"
+          type="password"
+          placeholder="請輸入密碼"
+          show-password
+        />
+      </li>
+      <li>
+        <label for="">確認密碼 </label>
+        <el-input
+          v-model="DoublePassword"
+          style="width: 240px"
+          type="password"
+          placeholder="確認輸入密碼"
+          show-password
+        />
+      </li>
+      <!-- <li class="check_link">
           <input type="checkbox" name="" id="">
           <p>
             註冊即表示您同意提供真實資料並保護您的賬戶安全。
           </p>
         </li> -->
-        <li>
-          <!-- <input  type="button" value="登入" /> -->
-          <el-button
-            @click="LoginSend"
-            style="width: 240px; background-color: #4285f4"
-            type="success"
-            >註冊</el-button
-          >
-        </li>
-        <!-- <li class="forget_link">
+      <li>
+        <!-- <input  type="button" value="登入" /> -->
+        <el-button
+          @click="RegisterSend"
+          style="width: 240px; background-color: #4285f4"
+          type="success"
+          >註冊</el-button
+        >
+      </li>
+      <!-- <li class="forget_link">
             <a href="">忘記密碼</a>
           </li> -->
-      </ul>
-    </div>
-  </template>
-  
-  <script setup>
-  import { ref } from "vue";
-  const UserInput = ref("");
-  const Password = ref("");
-  const DoublePassword = ref("");
-  
-  const LoginSend = () => {
-    console.log(UserInput.value);
-    console.log(Password.value);
-  };
-  // console.log(Password.value);
-  </script>
-  
-  <style scoped lang="scss">
-  * {
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import axios from "axios";
+import { reactive, ref } from "vue";
+const UserName = ref("");
+const UserInput = ref("");
+const Password = ref("");
+const DoublePassword = ref("");
+
+// const LoginInfo = reactive([]); //原本是這樣寫
+// const LoginInfo = ref({}); //原本是這樣寫
+// // reactive([])這樣不是陣列嗎，{}這是物件吧???  為何要這樣可以push進去
+
+const RegisterSend = async (email) => {
+  let regex =
+    /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; //email格式檢核
+  console.log(UserInput.value);
+  console.log(Password.value);
+  console.log(DoublePassword.value);
+  if (regex.test(UserInput.value) && Password.value === DoublePassword.value) {
+    console.log("註冊成功");
+    // LoginInfo.push({
+    //   UserName: UserName.value,
+    //   UserInput: UserInput.value,
+    //   Password: Password.value,
+    // });
+    // LoginInfo.push(
+    //   UserName.value,
+    //   UserInput.value      原本是這樣寫
+    //   Password.value,
+    //   DoublePassword.value
+    // );
+    // console.log(LoginInfo);
+    try {
+      const res = await axios.post(`/api/v1/auth/register`, {
+        name: UserName.value,
+        email: UserInput.value,
+        password: Password.value,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log("註冊失敗", error);
+    }
+    // {
+    //   LoginInfo
+    // })
+    return true;
+  } else {
+    console.log("檢核失敗");
+    return false;
   }
-  .login_box {
-    // border: 5px solid red;
+};
+// console.log(Password.value);
+</script>
+
+<style scoped lang="scss">
+* {
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.login_box {
+  // border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px; //為何改成這個就變小了，我需要自適應變化
+  margin: 0 auto;
+  height: 350px;
+  background-color: #f2f2f2;
+  padding: 15px 30px;
+  .login_header {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 500px; //為何改成這個就變小了，我需要自適應變化
-    margin: 0 auto;
-    height: 350px;
-    background-color: #f2f2f2;
-    padding: 15px 30px;
-    .login_header {
+    width: 100%;
+    background-color: skyblue;
+    height: 50px;
+
+    a:first-child {
+      color: #000;
+      background-color: #f2f2f2;
       display: flex;
+      flex: 1;
       justify-content: center;
-      width: 100%;
-      background-color: skyblue;
-      height: 50px;
-  
-      a:first-child {
-        color: #000;
-        background-color: #f2f2f2;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-      }
-      a:nth-child(2) {
-        color: green;
-        background-color: palevioletred;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    .main_login {
-      // width: 100%;
-      // border: 5px solid green;
-      // height: 150px;
-      display: flex;
-      justify-content: space-evenly;
       align-items: center;
-      flex-direction: column;
-      li {
-        margin: 10px 0 0;
-        width: 240px;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      // .check_link{
-      //     width: 500px;
-      //     display: flex;
-      //     border: 50px solid red;
-      //     font-size: 15px;
-      //     justify-content: center;
-      //     align-items: center;
-      // }
-      li:nth-child(4) {
-        // margin: 10px 0 10px;
-        width: 240px;
-        // background-color: red;
-        display: flex;
-        justify-content: right;
-        align-items: end;
-        //   margin-right: 20px;
-        // ::v-deep .el-style{
-        //   background-color: #4285F4 !important;
-        // }
-      }
+    }
+    a:nth-child(2) {
+      color: green;
+      background-color: palevioletred;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
     }
   }
-  </style>
-  
+  .main_login {
+    // width: 100%;
+    // border: 5px solid green;
+    // height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    li {
+      margin: 10px 0 0;
+      width: 240px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    // .check_link{
+    //     width: 500px;
+    //     display: flex;
+    //     border: 50px solid red;
+    //     font-size: 15px;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
+    li:nth-child(4) {
+      // margin: 10px 0 10px;
+      width: 240px;
+      // background-color: red;
+      display: flex;
+      justify-content: right;
+      align-items: end;
+      //   margin-right: 20px;
+      // ::v-deep .el-style{
+      //   background-color: #4285F4 !important;
+      // }
+    }
+  }
+}
+</style>

@@ -2,7 +2,8 @@
   <div class="wrap">
     <div class="Todolist">
       <label for="">請輸入內容</label>
-      <input type="text" v-model="input" />
+      <!-- <input type="text" v-model="input" /> -->
+      <el-input v-model="input" style="width: 240px" placeholder="" />
       <button @click="sendBtn">送出</button>
     </div>
     <div class="output">
@@ -10,7 +11,8 @@
       <div class="output_box" v-for="obj in outText" :key="obj.id">
         <!-- <h2></h2> -->
         <!-- <input type="checkbox" /> -->
-        <input type="text" :value="obj.text" :disabled="obj.disabled" />
+        <!-- <input type="text" :value="obj.text" :disabled="obj.disabled" /> -->
+        <el-input type="text" :value="obj.text" :disabled="obj.disabled" style="width: 240px" placeholder="" />
         <!-- :value="obj.text" ===> 指向第40行.text
              :disabled="obj.disabled"  ===> 指向第42行:disabled -->
 
@@ -54,7 +56,7 @@ const saveBtn = () => {};
 
 const deleteBtn = (id) => {
   //參數不能.
-  const idx = outText.value.findIndex((item) => item.id === id);  //  item.id 陣列所有的id , id 目前被選中
+  const idx = outText.value.findIndex((item) => item.id === id); //  item.id 陣列所有的id , id 目前被選中
   outText.value.splice(idx, 1);
 };
 </script>

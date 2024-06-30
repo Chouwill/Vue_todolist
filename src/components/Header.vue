@@ -1,10 +1,13 @@
 <template>
   <header>
-    <div class="center_logo">
-      <img src="/src/image/BookPlanO.png" alt="" />
-      <h2>夢想時間計畫</h2>
-    </div>
-    <ul class="nav">
+    <router-link to="/">
+      <div class="center_logo">
+        <!-- <img src="/src/image/BookPlanO.png" alt="" /> -->
+        <img src="/src/image/BookPlan.png" alt="" />
+        <h2>夢想時間計畫</h2>
+      </div>
+    </router-link>
+    <ul class="nav" v-show="openbtn">
       <!-- <li class="center_logo">
         <img src="/src/image/BookPlanO.png" alt="" />
         <h2>夢想時間計畫</h2>
@@ -13,17 +16,17 @@
         <router-link to="/shopping">加值服務</router-link>
       </li>
       <li>
-        <router-link to="/">使用說明</router-link>
+        <!-- <router-link to="/">使用說明</router-link> -->
       </li>
       <li>
-        <router-link to="/">關於我們</router-link>
+        <router-link to="/aboutus">產品介紹</router-link>
       </li>
       <li>
-        <router-link to="/">Todolist</router-link>
+        <!-- <router-link to="/">Todolist</router-link> -->
       </li>
 
       <li>
-        <router-link to="/">開始計畫</router-link>
+        <router-link to="/todolist">開始計畫</router-link>
       </li>
       <li>
         <router-link to="/login">登入</router-link>
@@ -37,7 +40,9 @@
         >
       </li>
     </ul>
-    <a class="phonemenu" @click="openNenu" href="#">MENU</a>
+    <a class="phonemenu" @click="openbtn = !openbtn" href="#">
+      <font-awesome-icon icon="fa-solid fa-bars" />
+    </a>
   </header>
 </template>
 <script setup>
@@ -46,27 +51,32 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const menu = ref(false);
+const openbtn = ref(false);
 
 const memberlink = () => {
-  // router.push("Login");
+  router.push("Login");
 };
 
-const openNenu = () => {
-  menu.value = true;
-  console.log(menu.value);
-};
+// const openNenu = () => {
+//   menu.value = true;
+//   console.log(menu.value);
+// };
 </script>
 
 <style lang="scss" scoped>
 * {
   list-style: none;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 header {
   background-color: #ff7f27;
-  width: 50%;
-  padding: 10px 40px;
-  border-radius: 26px;
+  background-color: #e3d5c9;
+  // background-color: #f3efdd;
+
+  width: 100%;
+  padding: 5px 0;
+  border-radius: 35px;
   .center_logo {
     max-width: 30%;
     min-width: 20%;
@@ -76,23 +86,33 @@ header {
     flex-direction: column;
     // border: 5px solid red;
     img {
-      width: 30%;
+      width: 15%;
     }
-    
   }
   .nav {
-      display: flex;
-      flex-direction: row;
-      // border: 5px solid blue;
-      justify-content: space-evenly;
-      align-items: center;
-      gap: 15px;
-      margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    // border: 5px solid blue;
+    // justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+    li:last-child {
+      padding-right: 15px;
     }
+  }
   .phonemenu {
-    display: none;
+    display: block;
   }
 }
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
   header {
@@ -103,22 +123,30 @@ header {
     justify-content: space-around;
     align-items: center;
     gap: 210px;
-    .center_logo{
-      border: 2px solid white;
+    padding: 10px 0;
+    .center_logo {
+      // border: 2px solid white;
       width: 100px;
-      img{
-        width: 80px;
-        height: 80px;
+      img {
+        width: 40px;
+        height: 40px;
       }
-      h2{
+      h2 {
         font-size: 16px;
       }
     }
     .nav {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      height: 200px;
+      background-color: red;
     }
     .phonemenu {
       display: block;
+      font-size: 20px;
+      color: orange;
+
       // text-align: right;
     }
   }
