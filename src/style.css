@@ -6,3 +6,8 @@
   
   
 }
+body {
+  /* background: linear-gradient(to right, #1E90FF, #87CEFA); */
+   /* 從道奇藍到淺藍的漸變 */
+  color: #333; /* 深灰色文字 */
+}

@@ -135,7 +135,7 @@ const RegisterSend = async (email) => {
   flex-direction: column;
   max-width: 500px; //為何改成這個就變小了，我需要自適應變化
   margin: 0 auto;
-  height: 350px;
+  height: 400px;
   background-color: #f2f2f2;
   padding: 15px 30px;
   .login_header {

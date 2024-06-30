@@ -46,14 +46,27 @@
           <li>
             <span>簡單好使用</span>
             <img src="/src/image/list.png" alt="" />
-            <p>設計優雅簡約，使用者體驗極佳。無論您是初學者還是經驗豐富的時間管理專家，都能輕鬆上手，快速掌握系統，立即提升工作效率和生活品質。</p>
+            <p>
+              設計優雅簡約，使用者體驗極佳。無論您是初學者還是經驗豐富的時間管理專家，都能輕鬆上手，快速掌握系統，立即提升工作效率和生活品質。
+            </p>
           </li>
           <li>
             <span>AI智能提醒</span>
             <img src="/src/image/remind-2.png" alt="" />
-            <p>憑藉先進的人工智慧技術，夢想時間計劃能夠根據您的個人習慣和偏好，自動化產生提醒和建議。</p>
+            <p>
+              憑藉先進的人工智慧技術，夢想時間計劃能夠根據您的個人習慣和偏好，自動化產生提醒和建議。
+            </p>
           </li>
         </ul>
+        <div class="main_footer">
+          <img src="/src/image/start_paln-2.png" alt="" />
+          <div class="main_text">
+            <h2>開始規劃</h2>
+            <p>實現夢想，從這裡開始！</p>
+            <p>VIP服務，讓你的計畫更上一層樓。</p>
+            <button>快速規劃</button>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -76,6 +89,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
   .left_banner {
     // border: 10px solid red;
     width: 60%;
@@ -99,12 +118,23 @@
         background-color: orange;
         border-radius: 5px;
         margin: 0 10px;
+        @media (max-width: 430px) {
+          padding: 10px 15px;
+          background-color: palevioletred;
+        }
       }
     }
   }
   .right_banner {
     // border: 1px solid red;
     width: 40%;
+    @media (max-width: 768px) {
+      border: 5px solid thistle;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     img {
       width: 60%;
       // border: 1px solid red;
@@ -121,8 +151,10 @@ main {
   flex-wrap: wrap;
   .wrap_box {
     width: 50%;
-    // border: 50px solid fuchsia;
-    // background-color: greenyellow;
+    @media (max-width: 768px) {
+      width: 100%;
+      border: 3px solid red;
+    }
     .title_box {
       flex-direction: row;
       width: 100%;
@@ -148,28 +180,49 @@ main {
           font-weight: bolder;
           font-size: 40px;
           padding: 0 15px;
+          @media (max-width: 768px) {
+            font-size: 23px;
+          }
         }
         h4 {
-          font-size: 20px;
+          font-size: 15px;
+          @media (max-width: 768px) {
+            font-size: 10px;
+          }
         }
       }
     }
   }
   .product_feature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 5px solid greenyellow;
     width: 100%;
+    flex-wrap: wrap;
     .feature_tiltle {
-      h2,
+      h2 {
+        font-size: 35px;
+        text-align: center;
+      }
       p {
         text-align: center;
         font-size: 35px;
+        @media (max-width: 768px) {
+          font-size: 25px;
+        }
       }
     }
   }
   .main_box {
     display: flex;
-    // justify-content: center;
-    // align-items: center;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     li {
       // border: 2px solid orange;
       display: flex;
@@ -177,16 +230,27 @@ main {
       align-items: center;
       flex-direction: column;
       width: 50%;
+      @media (max-width: 768px) {
+        width: 70%;
+      }
       span {
         font-size: 35px;
         font-weight: bolder;
+        @media (max-width: 768px) {
+          font-size: 30px;
+          font-weight: bolder;
+        }
       }
       img {
         // border: 1px solid indianred;
         width: 100%;
         height: 500px;
+        @media (max-width: 768px) {
+          width: 70%;
+          height: 250px;
+        }
       }
-      p{
+      p {
         max-width: 500px;
       }
     }
@@ -194,5 +258,114 @@ main {
       // border: 2px solid red;
     }
   }
+  .main_footer {
+    background-color: rebeccapurple;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid orange;
+    @media (max-width: 768px) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    img {
+      width: 45%;
+      height: 500px;
+      @media (max-width: 768px) {
+        width: 90%;
+      }
+    }
+    .main_text {
+      border: 2px solid orange;
+      width: 30%;
+      padding: 40px 0;
+      text-align: center;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+      button {
+        margin: 0 auto;
+        padding: 10px 10px;
+      }
+    }
+  }
 }
+
+// @media (max-width: 768px) {
+//   .page_header {
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 0 auto;
+//     .left_banner {
+//       width: 60%;
+//       border: 5px solid gold;
+//     }
+//     .right_banner {
+//       border: 5px solid thistle;
+//       width: 60%;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//     }
+//   }
+//   main {
+//     .wrap_box {
+//       border: 3px solid red;
+//       width: 100%;
+//       .title_box {
+//         .title {
+//           span {
+//             font-size: 35px;
+//           }
+//           h4 {
+//             font-size: 15px;
+//           }
+//         }
+//       }
+//     }
+//     .product_feature {
+//       .feature_tiltle {
+//         h2 {
+//           font-size: 35px;
+//           color: red;
+//         }
+//         p {
+//           font-size: 30px;
+//         }
+//       }
+//       .main_box {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 10px;
+//         li {
+//           width: 70%;
+//           // border: 2px solid orangered;
+//           span {
+//             font-size: 30px;
+//             font-weight: bolder;
+//           }
+//           img {
+//             width: 70%;
+//             height: 250px;
+//           }
+//         }
+//       }
+//     }
+//     .main_footer {
+//       width: 100%;
+//       display: flex;
+//       flex-direction: column;
+//       img {
+//         width: 90%;
+//       }
+//       .main_text {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 </style>

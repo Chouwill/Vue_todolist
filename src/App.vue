@@ -4,12 +4,20 @@
  */
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+// import Login from "./components/Login.vue";
+// import RegisterMember from "./components/RegisterMember.vue";
+
+import { ref } from "vue";
+
+const isLogin = ref(false);
+const isRegisterMember = ref(false);
 </script>
 
 <template>
   <div class="container">
     <Header />
-
+    <!-- <Login /> -->
+    <!-- <RegisterMember /> -->
     <router-view></router-view>
     <Footer />
   </div>
