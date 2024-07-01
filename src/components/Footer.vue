@@ -7,13 +7,13 @@
 
 <style lang="scss">
 footer {
-  background-color: #ff7f27;
-  background-color: #e3d5c9;
-  // background-color: #f3efdd;
-
+  background-color: #f5e4d0;
   width: 100%;
-  padding: 10px 40px;
-  border-radius: 26px;
+  display: flex;
+  padding: 10px 20px;
+  height: 68px;
+  justify-content: space-between;
+  align-items: center;
 }
 @media (max-width: 768px) {
   footer {

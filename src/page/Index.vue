@@ -79,7 +79,7 @@
   text-decoration: none;
 }
 .container {
-  width: 100%;
+  // width: 100%;
 }
 .page_header {
   width: 100%;
@@ -259,12 +259,12 @@ main {
     }
   }
   .main_footer {
-    background-color: rebeccapurple;
+    // background-color: rebeccapurple;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 5px solid orange;
+    // border: 5px solid orange;
     @media (max-width: 768px) {
       width: 100%;
       display: flex;
@@ -279,7 +279,7 @@ main {
       }
     }
     .main_text {
-      border: 2px solid orange;
+      // border: 2px solid orange;
       width: 30%;
       padding: 40px 0;
       text-align: center;
