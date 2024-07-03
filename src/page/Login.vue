@@ -1,8 +1,8 @@
 <template>
   <div class="login_box">
     <div class="login_header">
-      <a>會員登入</a>
-      <a>會員註冊</a>
+      <router-link to="/login">會員登入</router-link>
+      <router-link to="/registermember">會員註冊</router-link>
     </div>
     <ul class="main_login">
       <li>

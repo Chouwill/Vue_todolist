@@ -12,12 +12,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faBars, } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faMinus,faPlus,faXmark,faCartShopping } from "@fortawesome/free-solid-svg-icons";
 // import {} from "@fortawesome/free-brands-svg-icons";
 
 /* add icons to the library */
 library.add(
   faBars,
+  faMinus,
+  faPlus,
+  faXmark,
+  faCartShopping,
 );
 
 // --------------------------------------

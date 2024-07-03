@@ -30,6 +30,11 @@
       </div>
     </li>
   </ul>
+  <aside>
+    <div class="shopping_cart">
+      
+    </div>
+  </aside>
 </template>
 
 <!-- <template>
@@ -254,4 +259,17 @@ onMounted(async () => {
     }
   }
 }
+// aside{
+//   position: static;
+//   top: 0;
+//   right: 20px;
+//   .shopping_cart{
+//     // border: 5px solid darkcyan;
+//     a{
+//       padding: 15px 20px;
+//       background-color: red;
+//       border-radius: 20px;
+//     }
+//   }
+// }
 </style>

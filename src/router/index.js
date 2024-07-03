@@ -36,6 +36,11 @@ const routes = [
     name: "AboutUs",
     component: () => import("@/page/AboutUs.vue"),
   },
+  {
+    path: "/cart",
+    name: "Cart",
+    component: () => import("@/page/Cart.vue"),
+  },
 ];
 
 const router = createRouter({

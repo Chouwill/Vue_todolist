@@ -4,6 +4,7 @@
  */
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+
 // import Login from "./components/Login.vue";
 // import RegisterMember from "./components/RegisterMember.vue";
 
@@ -36,6 +37,7 @@ const isRegisterMember = ref(false);
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
   header {
     nav {
       border: 10px solid red;
