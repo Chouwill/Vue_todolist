@@ -68,6 +68,11 @@ const openMenu = () => {
 const loginlink = () => {
   router.push("Login");
 };
+
+
+// axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
+//   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
+//   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
 </script>
 
 <style lang="scss" scoped>

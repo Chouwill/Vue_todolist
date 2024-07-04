@@ -288,7 +288,11 @@ main {
       }
       button {
         margin: 0 auto;
-        padding: 10px 10px;
+        padding: 15px 25px;
+        border-radius: 20px;
+        border: none;
+        background-color: orange;
+        font-size: 25px;
       }
     }
   }

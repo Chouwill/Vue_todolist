@@ -109,6 +109,10 @@ const checkSend = () => {
   align-items: center;
   flex-direction: column;
   width: 70%;
+  @media (max-width: 768px) {
+  border: 5px solid red;
+  width: 100%;
+}
 //   border: 10px solid red;
   position: relative;
   .cancel_box {
@@ -197,13 +201,16 @@ const checkSend = () => {
 
         td {
           width: 100%;
-
           text-align: center;
         }
       }
     }
 
     .send_box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 5px solid rebeccapurple;
       button {
         padding: 15px 25px;
         border-radius: 20px;

@@ -1,6 +1,16 @@
 # Vue 3 + Vite
+專案名稱:夢想時間計畫
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 套件
+Vue router、element plus、fontawesome
+## API 串接
+axios 串接 會員、登入、註冊、
+
+商品3支API:
+
+1. https://vue3-course-api.hexschool.io/api/apitest2024/products
+2. https://vue3-course-api.hexschool.io/api/2024vipplan/products
+3. https://vue3-course-api.hexschool.io/api/2024vipservice/products
 
 ## Recommended IDE Setup
 
@@ -8,7 +18,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 # Vue_todolist
 
 
-##
-.Network
+## 外部訪問的開發模式
+
 yarn dev --host
 
