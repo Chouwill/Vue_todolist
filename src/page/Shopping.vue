@@ -111,12 +111,13 @@ const VipData = ref([]);
 const VipServe = ref([]);
 
 const arr = [
-  axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
-  axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
-  axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
-  // axios.get(
-  //   "https://vue3-course-api.heapi/2024vipshopping/products"
-  // ),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanproduct1/products"
+  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
 ];
 
 onMounted(async () => {
@@ -155,7 +156,7 @@ onMounted(async () => {
 }
 .page_title {
   width: 100%;
-  border: 10px solid rgb(102, 0, 255);
+  // border: 10px solid rgb(102, 0, 255);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,7 +168,7 @@ onMounted(async () => {
   h3 {
     width: 60%;
     text-align: left;
-    border: 5px solid salmon;
+    // border: 5px solid salmon;
   }
 }
 
@@ -179,7 +180,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   padding: 0 24px;
   margin-bottom: 3rem;
-  border: 5px solid red;
+  // border: 5px solid red;
   li {
     width: calc(100% - 30px) / 3;
     // width: 90%;
@@ -187,7 +188,7 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 5px solid yellow;
+    // border: 5px solid yellow;
     .product_information {
       padding: 10px 0;
       display: flex;
@@ -195,7 +196,7 @@ onMounted(async () => {
       align-items: center;
       gap: 20px;
       width: 300px;
-      border: 5px solid green;
+      // border: 5px solid green;
       h4,
       span {
         font-weight: 900;
@@ -212,11 +213,15 @@ onMounted(async () => {
         font-weight: 700;
         font-size: 16px;
         color: #ffffff;
+        background-color: #d48c3e;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+
         &:hover {
-          background-color: #9c9a9a;
+          background-color: #b6702e;
         }
         &:active {
-          background-color: #9c9a9a;
+          background-color: #b6702e;
           box-shadow: inset 4px 10px 8px rgba(0, 0, 0, 0.2);
         }
       }
@@ -244,7 +249,7 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 5px solid green;
+    // border: 5px solid green;
   }
   li {
     // width: calc(100% - 30px) / 3;
@@ -260,7 +265,7 @@ onMounted(async () => {
       justify-content: center;
       align-items: center;
       width: 100%;
-      border: 5px solid gray;
+      // border: 5px solid gray;
     }
     .product_information {
       padding: 10px 0;
@@ -286,11 +291,14 @@ onMounted(async () => {
         font-weight: 700;
         font-size: 16px;
         color: #ffffff;
+        background-color: #d48c3e;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
         &:hover {
-          background-color: #9c9a9a;
+          background-color: #b6702e;
         }
         &:active {
-          background-color: #9c9a9a;
+          background-color: #b6702e;
           box-shadow: inset 4px 10px 8px rgba(0, 0, 0, 0.2);
         }
       }
@@ -303,7 +311,7 @@ onMounted(async () => {
       // border: 10px solid red;
       @media (max-width: 768px) {
         width: 100%;
-        border: 10px solid red;
+        // border: 10px solid red;
       }
     }
   }
@@ -323,7 +331,7 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border: 5px solid green;
+    // border: 5px solid green;
   }
   li {
     // width: calc(100% - 30px) / 3;
@@ -339,7 +347,7 @@ onMounted(async () => {
       justify-content: center;
       align-items: center;
       width: 100%;
-      border: 5px solid gray;
+      // border: 5px solid gray;
     }
     .product_information {
       padding: 10px 0;
@@ -356,23 +364,7 @@ onMounted(async () => {
         color: #000;
         text-align: left;
       }
-      button {
-        width: 100px;
-        // height: 41px;
-        padding: 10px 10px;
-        border-radius: 5px;
-        border: none;
-        font-weight: 700;
-        font-size: 16px;
-        color: #ffffff;
-        &:hover {
-          background-color: #9c9a9a;
-        }
-        &:active {
-          background-color: #9c9a9a;
-          box-shadow: inset 4px 10px 8px rgba(0, 0, 0, 0.2);
-        }
-      }
+      
     }
     img {
       width: 80%;
@@ -382,7 +374,7 @@ onMounted(async () => {
       // border: 10px solid red;
       @media (max-width: 768px) {
         width: 100%;
-        border: 10px solid red;
+        // border: 10px solid red;
       }
     }
   }
@@ -398,16 +390,16 @@ onMounted(async () => {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   @media (max-width: 768px) {
-  border: 5px solid red;
-  max-width: 900px;
-  width: auto;
-}
+    // border: 5px solid red;
+    max-width: 900px;
+    width: auto;
+  }
 }
 
 .membership-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   text-align: left;
   font-size: 16px;
   line-height: 1.6;

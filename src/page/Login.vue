@@ -30,9 +30,10 @@
         <!-- <input  type="button" value="登入" /> -->
         <el-button
           @click="LoginSend"
-          style="width: 240px; background-color: #4285f4"
+          style="width: 240px; background-color: #eebe77"
           type="success"
-          >登入</el-button
+          ><p style="color: #000;  
+           font-size: 16px;">登入</p></el-button
         >
       </li>
       <li class="forget_link">
@@ -83,7 +84,7 @@ const LoginSend = async () => {
 .login_box {
   // border: 5px solid red;
   max-width: 500px; //為何改成這個就變小了，我需要自適應變化
-  margin: 0 auto;
+  margin: 50px auto;
   height: 350px;
   background-color: #f2f2f2;
   padding: 15px 30px;
@@ -96,7 +97,7 @@ const LoginSend = async () => {
 
     a:first-child {
       color: #000;
-      background-color: #f2f2f2;
+      background-color: #eebe77;
       display: flex;
       flex: 1;
       justify-content: center;
@@ -104,7 +105,7 @@ const LoginSend = async () => {
     }
     a:nth-child(2) {
       color: green;
-      background-color: palevioletred;
+      background-color: #f2f2f2;
       display: flex;
       flex: 1;
       justify-content: center;

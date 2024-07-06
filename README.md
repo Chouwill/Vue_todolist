@@ -8,9 +8,9 @@ axios 串接 會員、登入、註冊、
 
 商品3支API:
 
-1. https://vue3-course-api.hexschool.io/api/apitest2024/products
-2. https://vue3-course-api.hexschool.io/api/2024vipplan/products
-3. https://vue3-course-api.hexschool.io/api/2024vipservice/products
+1. https://vue3-course-api.hexschool.io/api/bookplanproduct1/products
+2. https://vue3-course-api.hexschool.io/api/vipbookplan/products
+3. https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products
 
 ## Recommended IDE Setup
 

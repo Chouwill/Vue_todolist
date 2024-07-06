@@ -69,38 +69,43 @@ const loginlink = () => {
   router.push("Login");
 };
 
-
 // axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
 </script>
 
 <style lang="scss" scoped>
-* {
-  list-style: none;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
+// * {
+//   list-style: none;
+//   box-sizing: border-box;
+//   margin: 0 auto;
+// }
 header {
-  background-color: #f5e4d0;
+  background-color: #e8c6a5;
+  background-color: #eebe77;
+  // background-color: #3c91e0;
   width: 100%;
   display: flex;
-  padding: 10px 20px;
+  // padding: 10px;
   justify-content: space-between;
   align-items: center;
   .header_logo {
     flex: 1;
     font-size: 24px;
-    // border: 5px solid red;
+    margin: 0 50px;
   }
   nav {
     flex: 1;
-    // border: 5px solid green;
+
     ul {
       display: flex;
       // width: 80%;
-      // justify-content: space-evenly;
+      justify-content: space-evenly;
+      align-items: center;
       li {
+        margin: 0 auto;
+        list-style: none;
+        
         a {
           font-size: 18px;
           // color: #333333;
@@ -132,7 +137,8 @@ header {
         flex-direction: column;
         width: 100%;
         // height: 500px;
-        background-color: red;
+        background-color: #f5e4d0;
+        
       }
     }
     .phone_menu {

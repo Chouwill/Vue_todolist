@@ -55,9 +55,9 @@
         <!-- <input  type="button" value="登入" /> -->
         <el-button
           @click="RegisterSend"
-          style="width: 240px; background-color: #4285f4"
+          style="width: 240px; background-color: #eebe77"
           type="success"
-          >註冊</el-button
+          ><p style="color: #000; font-size: 16px;">註冊</p></el-button
         >
       </li>
       <!-- <li class="forget_link">
@@ -134,7 +134,7 @@ const RegisterSend = async (email) => {
   align-items: center;
   flex-direction: column;
   max-width: 500px; //為何改成這個就變小了，我需要自適應變化
-  margin: 0 auto;
+  margin: 50px auto;
   height: 400px;
   background-color: #f2f2f2;
   padding: 15px 30px;
@@ -155,7 +155,7 @@ const RegisterSend = async (email) => {
     }
     a:nth-child(2) {
       color: green;
-      background-color: palevioletred;
+      background-color: #eebe77;
       display: flex;
       flex: 1;
       justify-content: center;

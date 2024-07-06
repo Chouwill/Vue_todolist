@@ -17,12 +17,12 @@
       <div class="wrap_box">
         <ul class="title_box">
           <li class="title">
-            <span>10萬</span>
-            <h4>各大平台載次數</h4>
-          </li>
-          <li class="title">
             <span>優質服務</span>
             <h4>備受好評</h4>
+          </li>
+          <li class="title">
+            <span>10萬</span>
+            <h4>各大平台載次數</h4>
           </li>
           <li class="title">
             <span>#1</span>
@@ -78,13 +78,19 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+html {
+  background-color: #f3d19e;
+}
 .container {
   // width: 100%;
 }
 .page_header {
   width: 100%;
   padding: 50px 0;
-  background-color: #215d95;
+  // background-color: #215d95;
+  background-color: #73a9da;
+  background-color: #f5e4d0;
+  background-color: #f3d19e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,6 +124,14 @@
         background-color: orange;
         border-radius: 5px;
         margin: 0 10px;
+        &:nth-child(2) {
+          background-color: #73a9da;
+          text-decoration: none;
+          border: 3px solid white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          color: white;
+        }
         @media (max-width: 430px) {
           padding: 10px 15px;
           background-color: palevioletred;
@@ -143,37 +157,59 @@
 }
 main {
   width: 100%;
-  background-color: white;
-  padding: 15px 0;
+  background-color: #f3d19e;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   .wrap_box {
-    width: 50%;
+    width: 100%;
+    background-color: #f8e3c5;
+
     @media (max-width: 768px) {
       width: 100%;
-      border: 3px solid red;
+      // background-color: blue;
     }
+
     .title_box {
       flex-direction: row;
-      width: 100%;
-      // background-color: red;
-      // border: 5px solid orange;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 70%;
+      background-color: #f8e3c5;
 
+
+      display: flex;
+      margin: 0 auto;
+      // justify-content: center;
+      // align-items: center;
+      background-color: #f8e3c5;
+
+      @media (max-width: 607px) {
+        // width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 50px;
+        // background-color: orange;
+        // border: 10px solid blue;
+      }
       .title {
         width: 100%;
         padding: 20px 0;
         flex-direction: column;
-        // background-color: rgb(75, 47, 255);
-        // border: 20px solid palegreen;
+        background-color: #f8e3c5;
+        // border: 2px solid palegreen;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (max-width: 607px) {
+          width: 100%;
+          // height: 300px;
+          // background-color: orange;
+        }
 
         span {
           color: #215d95;
@@ -183,11 +219,20 @@ main {
           @media (max-width: 768px) {
             font-size: 23px;
           }
+          @media (max-width: 520px) {
+            font-size: 23px;
+            text-align-last: left;
+          }
         }
         h4 {
           font-size: 15px;
           @media (max-width: 768px) {
-            font-size: 10px;
+            font-size: 20px;
+            
+          }
+          @media (max-width: 520px) {
+            font-size: 19px;
+            text-align-last: left;
           }
         }
       }
@@ -197,17 +242,19 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 5px solid greenyellow;
+    // border: 5px solid greenyellow;
     width: 100%;
     flex-wrap: wrap;
     .feature_tiltle {
       h2 {
         font-size: 35px;
         text-align: center;
+        color: #3c91e0;
       }
       p {
         text-align: center;
         font-size: 35px;
+        color: grey;
         @media (max-width: 768px) {
           font-size: 25px;
         }
@@ -245,6 +292,7 @@ main {
         // border: 1px solid indianred;
         width: 100%;
         height: 500px;
+        object-fit: contain;
         @media (max-width: 768px) {
           width: 70%;
           height: 250px;
@@ -272,10 +320,13 @@ main {
     }
 
     img {
-      width: 45%;
-      height: 500px;
+      display: block;
+      max-width: 40%;
+
+      // height: 500px;
+      object-fit: contain;
       @media (max-width: 768px) {
-        width: 90%;
+        max-width: 90%;
       }
     }
     .main_text {
@@ -283,16 +334,24 @@ main {
       width: 30%;
       padding: 40px 0;
       text-align: center;
+      p {
+        margin: 20px auto;
+        width: 300px;
+        // color: red;
+        text-align: center;
+        // border: 5px solid red;
+      }
       @media (max-width: 768px) {
         width: 100%;
       }
       button {
         margin: 0 auto;
-        padding: 15px 25px;
+        padding: 20px 30px;
         border-radius: 20px;
         border: none;
         background-color: orange;
-        font-size: 25px;
+        font-size: 15px;
+        // color: white;
       }
     }
   }

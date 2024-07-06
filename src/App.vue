@@ -29,7 +29,7 @@ const isRegisterMember = ref(false);
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  margin: 10px 0 10px;
+  // margin: 10px 0 10px;
 }
 .container {
   margin: 0 auto;
@@ -45,3 +45,5 @@ const isRegisterMember = ref(false);
   }
 }
 </style>
+
+

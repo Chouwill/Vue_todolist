@@ -7,7 +7,11 @@
 
 <style lang="scss">
 footer {
+  // background-color: #f5e4d0;
+  background-color: #3c91e0;
   background-color: #f5e4d0;
+  background-color: #e8c6a5;
+  background-color: #eebe77;
   width: 100%;
   display: flex;
   padding: 10px 20px;

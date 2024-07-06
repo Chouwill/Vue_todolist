@@ -1,12 +1,19 @@
 * {
   text-decoration: none;
-
+  
   box-sizing: border-box;
 }
 body {
   /* background: linear-gradient(to right, #1E90FF, #87CEFA); */
   /* 從道奇藍到淺藍的漸變 */
   color: #333; /* 深灰色文字 */
+  margin: 0;
+  padding: 0;
+}
+html{
+  background-color: #f5e4d0;
+  background-color: #f3d19e;
+
 }
 .container {
   width: 100%;
@@ -15,5 +22,15 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid firebrick;
+  /* border: 2px solid firebrick; */
+}
+a,button{
+  cursor: pointer;
+}
+a{
+  color: black;
+}
+
+img{
+  display: block;
 }
