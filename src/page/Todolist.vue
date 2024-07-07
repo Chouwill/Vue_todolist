@@ -4,9 +4,7 @@
       <h1 class="slogan">
         提升您的時間管理，體驗專屬VIP服務！立即進入商城，解鎖1對1專業秘書、智能聊天機器人和智能提醒，助您高效實現每一個目標！
       </h1>
-      <router-link to="/shopping" class="cta-button">
-        進入商城
-      </router-link>
+      <router-link to="/shopping" class="cta-button"> 進入商城 </router-link>
     </div>
     <div class="services-container">
       <div class="service-item">
@@ -50,6 +48,102 @@
         </div>
       </div>
     </div>
+    <ul>
+      <li>
+        <input type="checkbox" id="check1" />
+        <label for="check1" class="service-circle">
+          <h2>1對1專業個人秘書</h2>
+        </label>
+        <label for="check1">
+          <svg width="200" height="200" v-show="isShow">
+            <circle
+              fill="none"
+              stroke="#68E534"
+              stroke-width="5"
+              cx="100"
+              cy="100"
+              r="47.5"
+              class="circle"
+              stroke-linecap="round"
+              transform="rotate(-90 100 100)"
+            />
+            <polyline
+              fill="none"
+              stroke="#68E534"
+              stroke-width="6"
+              points="70,100 90,120 130,80"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="tick"
+            />
+          </svg>
+        </label>
+        <h2>您已購買此服務，並已使用</h2>
+      </li>
+      <li>
+        <input type="checkbox" id="check1" />
+        <label for="check1" class="service-circle">
+          <h2>智能聊天機器人</h2>
+        </label>
+        <label for="check1">
+          <svg width="200" height="200" v-show="isShow">
+            <circle
+              fill="none"
+              stroke="#68E534"
+              stroke-width="5"
+              cx="100"
+              cy="100"
+              r="47.5"
+              class="circle"
+              stroke-linecap="round"
+              transform="rotate(-90 100 100)"
+            />
+            <polyline
+              fill="none"
+              stroke="#68E534"
+              stroke-width="6"
+              points="70,100 90,120 130,80"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="tick"
+            />
+          </svg>
+        </label>
+        <h2>您已購買此服務，並已使用</h2>
+      </li>
+      <li>
+        <input type="checkbox" id="check1" />
+        <label for="check1" class="service-circle">
+          <h2>智能提醒</h2>
+        </label>
+        <label for="check1">
+          <svg width="200" height="200" v-show="isShow">
+            <circle
+              fill="none"
+              stroke="#68E534"
+              stroke-width="5"
+              cx="100"
+              cy="100"
+              r="47.5"
+              class="circle"
+              stroke-linecap="round"
+              transform="rotate(-90 100 100)"
+            />
+            <polyline
+              fill="none"
+              stroke="#68E534"
+              stroke-width="6"
+              points="70,100 90,120 130,80"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="tick"
+            />
+          </svg>
+        </label>
+        <h2>您已購買此服務，並已使用</h2>
+      </li>
+    </ul>
+    <button @click="openService">服務開關</button>
   </div>
 </template>
 
@@ -57,6 +151,7 @@
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
+const isShow = ref(false);
 const input = ref("");
 const startDatevalue = ref("");
 const endDatevalue = ref("");
@@ -121,9 +216,13 @@ const deleteBtn = (id) => {
   const idx = outText.value.findIndex((item) => item.id === id); //  item.id 陣列所有的id , id 目前被選中
   outText.value.splice(idx, 1);
 };
+
+const openService = () => {
+  isShow.value = !isShow.value;
+};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 body {
   font-family: Arial, sans-serif;
   background-color: #f3d19e;
@@ -138,10 +237,14 @@ body {
   align-items: center;
   flex-direction: column;
   .banner {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
     background-color: #eebe77;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 30px 0;
+    flex-direction: column;
   }
   .slogan {
     font-size: 24px;
@@ -150,6 +253,7 @@ body {
     margin: 0 0 20px 0;
   }
   .cta-button {
+    margin: 0 auto;
     background-color: #d48c3e;
     color: #ffffff;
     padding: 15px 30px;
@@ -225,6 +329,82 @@ body {
     // border: 5px solid red;
     justify-content: center;
     align-items: center;
+  }
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid red;
+    margin: 10px;
+
+    .service-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #eebe77, #d48c3e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      h2 {
+        color: white;
+        text-align: center;
+        font-size: 18px;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 36px;
+  margin-top: 40px;
+  color: #333;
+}
+
+input[type="checkbox"] {
+  display: none;
+
+  &:checked + label svg .circle {
+    animation: circle 1s ease-in-out forwards;
+  }
+
+  &:checked + label svg .tick {
+    animation: tick 0.8s ease-out forwards 0.95s;
+  }
+}
+
+@keyframes circle {
+  from {
+    stroke-dashoffset: 1194;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tick {
+  from {
+    stroke-dashoffset: 350;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 </style>

@@ -33,4 +33,5 @@ a{
 
 img{
   display: block;
+  object-fit: contain;
 }
