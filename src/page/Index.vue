@@ -127,8 +127,8 @@ html {
         &:nth-child(2) {
           background-color: #73a9da;
           text-decoration: none;
-          border: 3px solid white;
-          padding: 10px 20px;
+          // border: 3px solid white;
+          padding: 15px 20px;
           border-radius: 5px;
           color: white;
         }

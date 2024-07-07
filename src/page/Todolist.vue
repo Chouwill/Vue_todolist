@@ -1,15 +1,28 @@
 <template>
   <div class="wrap">
-    <div class="service-container">
-        <div class="service-item" id="personal-secretary">
-            1對1專業個人秘書
-        </div>
-        <div class="service-item" id="chatbot">
-            智能聊天機器人
-        </div>
-        <div class="service-item" id="smart-reminder">
-            智能提醒
-        </div>
+    <div class="banner">
+      <h1 class="slogan">
+        提升您的時間管理，體驗專屬VIP服務！立即進入商城，解鎖1對1專業秘書、智能聊天機器人和智能提醒，助您高效實現每一個目標！
+      </h1>
+      <router-link to="/shopping" class="cta-button">
+        進入商城
+      </router-link>
+    </div>
+    <div class="services-container">
+      <div class="service-item">
+        <h2>1對1專業個人秘書</h2>
+        <p>獨享私人秘書服務，量身定制時間管理方案，隨時隨地提供專業諮詢。</p>
+      </div>
+      <div class="service-item">
+        <h2>智能聊天機器人</h2>
+        <p>
+          智能助手隨時待命，提供高效建議和問題解答，優化您的待辦事項和行事曆。
+        </p>
+      </div>
+      <div class="service-item">
+        <h2>智能提醒</h2>
+        <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
+      </div>
     </div>
     <div class="Todolist">
       <label for="">請輸入內容</label>
@@ -22,10 +35,8 @@
     </div>
     <div class="output">
       <div class="output_box" v-for="obj in outText" :key="obj.id">
-        
         <input type="checkbox" />
         <h2>{{ obj.text }}</h2>
-        
 
         <h2>開始時間{{ obj.startDate }}</h2>
         <h2>結束時間{{ obj.endDate }}</h2>
@@ -51,8 +62,6 @@ const startDatevalue = ref("");
 const endDatevalue = ref("");
 
 const outText = ref([]);
-
-
 
 const sendBtn = () => {
   //送出功能
@@ -91,7 +100,7 @@ const editBtn = (obj) => {
 
 const saveBtn = (obj) => {
   const saveIndex = outText.value.findIndex((item) => item.id === obj.id);
-  if (saveIndex !== -1) {  
+  if (saveIndex !== -1) {
     outText.value[saveIndex] = {
       ...outText.value[saveIndex],
       text: input.value,
@@ -115,49 +124,65 @@ const deleteBtn = (id) => {
 </script>
 
 <style lang="scss">
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3d19e;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 .wrap {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .service-container {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  .banner {
+    background-color: #eebe77;
     padding: 20px;
-    background-color: #f3d19e; // 內文背景色
-    // border: 5px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 30px 0;
+  }
+  .slogan {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+  }
+  .cta-button {
+    background-color: #d48c3e;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #b6702e;
+    }
+  }
+}
 
-    .service-item {
-      width: 150px;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
+.services-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #f3d19e;
+  .service-item {
+    width: 30%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    h2 {
+      font-size: 20px;
+      color: #eebe77;
+    }
+    p {
       font-size: 16px;
-      color: #ffffff;
-      text-align: center;
-      line-height: 1.4;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        filter: brightness(85%);
-      }
-
-      &#personal-secretary {
-        background-color: #eebe77; // 與Header和Footer一致
-      }
-
-      &#chatbot {
-        background-color: #d48c3e; // 深橙色
-      }
-
-      &#smart-reminder {
-        background-color: #b6702e; // 深棕橙色
-      }
+      color: #333333;
     }
   }
 }
@@ -167,7 +192,15 @@ const deleteBtn = (id) => {
   flex-direction: column;
   gap: 15px;
   button {
-    padding: 10px 15px;
+    display: block;
+    padding: 10px 20px;
+    margin: 20px auto;
+    width: 50%;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #d48c3e;
+    font-size: 16px;
   }
 }
 .output_box {
