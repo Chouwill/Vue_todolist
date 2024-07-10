@@ -1,4 +1,5 @@
 <template>
+
   <div class="cartopen_box">
     <div class="cancel_box">
       <button @click="openwindows">
@@ -67,9 +68,8 @@
   </div>
 </template>
 
-
-
 <script setup>
+
 import { ref } from "vue";
 const productNum = ref(0);
 
@@ -92,12 +92,8 @@ const deletefun = () => {
 const checkSend = () => {
   alert("謝謝您完成訂購");
 };
+
 </script>
-
-
-
-
-
 
 <style lang="scss">
 * {
@@ -110,10 +106,10 @@ const checkSend = () => {
   flex-direction: column;
   width: 70%;
   @media (max-width: 768px) {
-  border: 5px solid red;
-  width: 100%;
-}
-//   border: 10px solid red;
+    border: 5px solid red;
+    width: 100%;
+  }
+  //   border: 10px solid red;
   position: relative;
   .cancel_box {
     border: 1px solid forestgreen;
@@ -220,4 +216,3 @@ const checkSend = () => {
   }
 }
 </style>
-

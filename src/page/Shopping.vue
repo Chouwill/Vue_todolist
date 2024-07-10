@@ -390,7 +390,7 @@ onMounted(async () => {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   @media (max-width: 768px) {
-    // border: 5px solid red;
+    border: 5px solid red;
     max-width: 900px;
     width: auto;
   }
@@ -442,4 +442,4 @@ onMounted(async () => {
   }
 }
 </style>
--O0ieAZisFNv2W7e2Hkx
+

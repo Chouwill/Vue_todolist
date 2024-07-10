@@ -22,15 +22,23 @@
         <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
       </div>
     </div>
-    <div class="Todolist">
-      <label for="">請輸入內容</label>
-      <el-input v-model="input" style="width: 240px" placeholder="請輸入內容" />
-      <label for="">起始時間</label>
-      <input type="date" v-model="startDatevalue" />
-      <label for="">結束時間</label>
-      <input type="date" v-model="endDatevalue" />
-      <button @click="sendBtn">送出</button>
-    </div>
+    <main>
+      <div class="Todolist">
+        <label for="">請輸入內容</label>
+        <el-input
+          v-model="input"
+          style="width: 240px"
+          placeholder="請輸入內容"
+        />
+        <label for="">起始時間</label>
+        <input type="date" v-model="startDatevalue" />
+        <label for="">結束時間</label>
+        <input type="date" v-model="endDatevalue" />
+        <button @click="sendBtn">送出</button>
+      </div>
+      <div class="calendar">行事曆位置50%</div>
+    </main>
+
     <div class="output">
       <div class="output_box" v-for="obj in outText" :key="obj.id">
         <input type="checkbox" />
@@ -236,6 +244,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
   .banner {
     display: flex;
     // justify-content: center;
@@ -245,12 +254,18 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 30px 0;
     flex-direction: column;
+    @media (max-width: 768px) {
+      width: 90%;
+    }
   }
   .slogan {
     font-size: 24px;
     font-weight: bold;
     color: #ffffff;
     margin: 0 0 20px 0;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
   .cta-button {
     margin: 0 auto;
@@ -274,12 +289,21 @@ body {
   align-items: center;
   padding: 20px;
   background-color: #f3d19e;
+  @media (max-width: 768px) {
+    // display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
   .service-item {
     width: 30%;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 181px;
+    @media (max-width: 768px) {
+      width: 80%;
+    }
     h2 {
       font-size: 20px;
       color: #eebe77;
@@ -290,23 +314,34 @@ body {
     }
   }
 }
-.Todolist {
-  margin: 150px 0;
+main {
+  // width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  button {
-    display: block;
-    padding: 10px 20px;
-    margin: 20px auto;
-    width: 50%;
-    flex: 0 0 auto;
-    border: none;
-    border-radius: 5px;
-    background-color: #d48c3e;
-    font-size: 16px;
+  .Todolist {
+    // width: 50%;
+    margin: 150px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 2px solid orange;
+    button {
+      display: block;
+      padding: 10px 20px;
+      margin: 20px auto;
+      width: 50%;
+      flex: 0 0 auto;
+      border: none;
+      border-radius: 5px;
+      background-color: #d48c3e;
+      font-size: 16px;
+    }
+  }
+  .calendar {
+    // width: 50%;
+    // border: 1px solid red;
   }
 }
+
 .output_box {
   display: flex;
   // justify-content: space-evenly;
@@ -336,6 +371,9 @@ ul {
   display: flex;
   list-style: none;
   padding: 0;
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   li {
     display: flex;

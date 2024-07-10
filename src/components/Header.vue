@@ -5,8 +5,8 @@
         <router-link to="/">夢想時間計畫</router-link>
       </h2>
     </div>
-    <nav v-show="openbtn">
-      <ul class="desktop_menu">
+    <nav>
+      <ul :class="['desktop_menu', { active: menuActive }]">
         <li>
           <router-link to="/todolist">開始體驗</router-link>
         </li>
@@ -43,6 +43,7 @@
         <font-awesome-icon icon="fa-solid fa-bars" />
       </button>
     </div>
+    <!-- <router-link to="/membercenter">會員中心</router-link> -->
   </header>
 </template>
 <script setup>
@@ -50,7 +51,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const menu = ref(false);
+const menuActive = ref(false);
 const openbtn = ref(true);
 //視窗開關
 
@@ -60,13 +61,18 @@ const openCartlink = () => {
   cartlink.value = !cartlink.value;
 };
 
-const openMenu = () => {
-  openbtn.value = !openbtn.value;
-  // console.log(openMenu.value);
+const openMenu = (e) => {
+  // openbtn.value = !openbtn.value;
+  menuActive.value = !menuActive.value;
+  // console.log(e.target.nodeName);
+  // if (e.target.nodeName === "P") {
+  //   menu.value = false;
+  // }
+  console.log(menuActive.value);
 };
 
 const loginlink = () => {
-  router.push("Login");
+  // router.push("Login");
 };
 
 // axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
@@ -75,11 +81,11 @@ const loginlink = () => {
 </script>
 
 <style lang="scss" scoped>
-// * {
-//   list-style: none;
-//   box-sizing: border-box;
-//   margin: 0 auto;
-// }
+* {
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
 header {
   background-color: #e8c6a5;
   background-color: #eebe77;
@@ -89,6 +95,7 @@ header {
   // padding: 10px;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   .header_logo {
     flex: 1;
     font-size: 24px;
@@ -105,7 +112,7 @@ header {
       li {
         margin: 0 auto;
         list-style: none;
-        
+
         a {
           font-size: 18px;
           // color: #333333;
@@ -121,6 +128,7 @@ header {
 @media (max-width: 768px) {
   header {
     width: 100%;
+    position: relative;
     .header_logo {
       h2 {
         font-size: 30px;
@@ -129,16 +137,29 @@ header {
     nav {
       display: flex;
       flex-direction: column;
-      width: 50%;
-      // height: 500px;
+      width: 100%;
+      position: relative;
+      height: 100px;
       // background-color: red;
-      ul {
-        display: flex;
-        flex-direction: column;
+      // border: 5px solid green;
+      box-sizing: border-box;
+      .desktop_menu {
+        // display: flex;
+        // flex-direction: column;
+        // // width: 100%;
+        // // height: 500px;
+        // background-color: #f5e4d0;
+        display: none;
         width: 100%;
-        // height: 500px;
-        background-color: #f5e4d0;
-        
+        margin: 0 auto;
+        &.active {
+          
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: orange;
+          
+        }
       }
     }
     .phone_menu {
