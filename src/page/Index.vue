@@ -113,6 +113,9 @@ html {
     // border: 5px solid #000;
     img {
       width: 10%;
+      @media (max-width: 768px) {
+        min-width: 35%;;
+      }
     }
     h2 {
       font-size: 25px;
@@ -128,12 +131,12 @@ html {
           background-color: #73a9da;
           text-decoration: none;
           // border: 3px solid white;
-          padding: 15px 20px;
+          padding: 10px 10px;
           border-radius: 5px;
           color: white;
         }
         @media (max-width: 430px) {
-          padding: 10px 15px;
+          padding: 10px 10px;
           background-color: palevioletred;
         }
       }
@@ -150,7 +153,8 @@ html {
       align-items: center;
     }
     img {
-      width: 60%;
+      max-width: 70%;
+      object-fit: contain;
       // border: 1px solid red;
     }
   }
@@ -158,7 +162,7 @@ html {
 main {
   width: 100%;
   background-color: #f3d19e;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,7 +173,7 @@ main {
 
     @media (max-width: 768px) {
       width: 100%;
-      // background-color: blue;
+      background-color: blue;
     }
 
     .title_box {
@@ -177,12 +181,19 @@ main {
       width: 70%;
       background-color: #f8e3c5;
 
-
       display: flex;
       margin: 0 auto;
       // justify-content: center;
       // align-items: center;
       background-color: #f8e3c5;
+      @media (max-width: 768px) {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
 
       @media (max-width: 607px) {
         // width: 100%;
@@ -192,7 +203,7 @@ main {
         align-items: center;
         margin: 0 auto;
         padding: 0 50px;
-        // background-color: orange;
+
         // border: 10px solid blue;
       }
       .title {
@@ -228,7 +239,6 @@ main {
           font-size: 15px;
           @media (max-width: 768px) {
             font-size: 20px;
-            
           }
           @media (max-width: 520px) {
             font-size: 19px;
@@ -257,6 +267,11 @@ main {
         color: grey;
         @media (max-width: 768px) {
           font-size: 25px;
+        }
+        @media (max-width: 430px) {
+          max-width: 245px;
+          // border: 5px solid red;
+          font-size: 19px;
         }
       }
     }

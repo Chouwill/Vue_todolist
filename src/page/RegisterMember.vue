@@ -121,14 +121,14 @@ const RegisterSend = async (email) => {
 // console.log(Password.value);
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 * {
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
 }
 .login_box {
-  // border: 5px solid red;
+  border: 5px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,18 +163,23 @@ const RegisterSend = async (email) => {
     }
   }
   .main_login {
-    // width: 100%;
-    // border: 5px solid green;
+    width: 100%;
+    border: 1px solid green;
     // height: 150px;
     display: flex;
-    justify-content: space-evenly;
+    // margin-right: 50px;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     li {
-      margin: 10px 0 0;
+      margin: 10px auto 0;
+      // margin: 0 auto;
+
       width: 240px;
       display: flex;
+      
       flex-wrap: wrap;
+      // border: 2px solid darkblue;
     }
     // .check_link{
     //     width: 500px;
@@ -189,8 +194,9 @@ const RegisterSend = async (email) => {
       width: 240px;
       // background-color: red;
       display: flex;
-      justify-content: right;
+      justify-content: left;
       align-items: end;
+      // background-color: #000;
       //   margin-right: 20px;
       // ::v-deep .el-style{
       //   background-color: #4285F4 !important;

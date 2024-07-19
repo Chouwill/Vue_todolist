@@ -32,8 +32,7 @@
           @click="LoginSend"
           style="width: 240px; background-color: #eebe77"
           type="success"
-          ><p style="color: #000;  
-           font-size: 16px;">登入</p></el-button
+          ><p style="color: #000; font-size: 16px">登入</p></el-button
         >
       </li>
       <li class="forget_link">
@@ -41,7 +40,6 @@
       </li>
     </ul>
   </div>
-  
 </template>
 
 <script setup>
@@ -80,7 +78,7 @@ const LoginSend = async () => {
 // console.log(Password.value);
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .login_box {
   // border: 5px solid red;
   max-width: 500px; //為何改成這個就變小了，我需要自適應變化
@@ -88,6 +86,10 @@ const LoginSend = async () => {
   height: 350px;
   background-color: #f2f2f2;
   padding: 15px 30px;
+  @media (max-width: 430px) {
+    max-width: 500px;
+    // background-color: red;
+  }
   .login_header {
     display: flex;
     justify-content: center;

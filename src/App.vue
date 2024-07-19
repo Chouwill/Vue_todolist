@@ -3,12 +3,14 @@
  * Import the Header component from the specified file path.
  */
 import Header from "@/components/Header.vue";
+// import Windows from "./components/Windows.vue"
 import Footer from "@/components/Footer.vue";
 
 // import Login from "./components/Login.vue";
 // import RegisterMember from "./components/RegisterMember.vue";
 
 import { ref } from "vue";
+// import WindowsVue from "./components/Windows.vue";
 
 const isLogin = ref(false);
 const isRegisterMember = ref(false);
@@ -17,8 +19,10 @@ const isRegisterMember = ref(false);
 <template>
   <div class="container">
     <Header />
+    <!-- <Windows /> -->
     <!-- <Login /> -->
     <!-- <RegisterMember /> -->
+     
     <router-view></router-view>
     <Footer />
   </div>

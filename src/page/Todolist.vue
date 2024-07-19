@@ -6,6 +6,43 @@
       </h1>
       <router-link to="/shopping" class="cta-button"> 進入商城 </router-link>
     </div>
+    <div class="swiper_box">
+      <div class="swiper_wrap">
+        <h2>輪播圖</h2>
+        <div class="swiper_demo_one">
+          <swiper :navigation="true" :modules="modules" class="mySwiper">
+            <!-- <swiper-slide v-for="(item, idx) in photo" :key="idx"> -->
+            <!-- <img :src="item" alt="" /> -->
+            <!-- <h2>1</h2> -->
+            <!-- </swiper-slide> -->
+            <swiper-slide>
+              <div class="service-item">
+                <h2>1對1專業個人秘書</h2>
+                <p>
+                  獨享私人秘書服務，量身定制時間管理方案，隨時隨地提供專業諮詢。
+                </p>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="service-item">
+                <h2>智能聊天機器人</h2>
+                <p>
+                  智能助手隨時待命，提供高效建議和問題解答，優化您的待辦事項和行事曆。
+                </p>
+              </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="service-item">
+                <h2>智能提醒</h2>
+                <p>
+                  即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。
+                </p>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
+    </div>
     <div class="services-container">
       <div class="service-item">
         <h2>1對1專業個人秘書</h2>
@@ -159,6 +196,14 @@
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-flip";
+import "swiper/css/pagination";
+
+const modules = ref(null); // 使用 ref 創建一個響應式變量
+
 const isShow = ref(false);
 const input = ref("");
 const startDatevalue = ref("");
@@ -228,6 +273,65 @@ const deleteBtn = (id) => {
 const openService = () => {
   isShow.value = !isShow.value;
 };
+
+// ------------------
+// import { ref } from 'vue';
+
+// 定義響應式數據
+const photo = ref([
+  "https://picsum.photos/300/200/?random=1",
+  "https://picsum.photos/300/200/?random=2",
+  "https://picsum.photos/300/200/?random=3",
+  "https://picsum.photos/300/200/?random=4",
+  "https://picsum.photos/300/200/?random=5",
+  "https://picsum.photos/300/200/?random=6",
+  "https://picsum.photos/300/200/?random=7",
+]);
+
+// 可以直接在模板中使用Swiper, SwiperSlide組件和photo數據
+
+// ---------------------------------------------------------
+
+// // Import Swiper Vue.js components
+// import { Swiper, SwiperSlide } from "swiper/vue"; //共用
+
+// // Import Swiper styles
+// import "swiper/css";
+
+// import "swiper/css/navigation";
+
+// // 第2輪播圖
+// import "swiper/css/effect-flip";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+
+// // import "./style.css";
+
+// // import required modules
+// import { Autoplay, EffectFlip, Pagination, Navigation } from "swiper/modules";
+// import { ref } from "vue";
+
+// export default {
+//   components: {
+//     Swiper,
+//     SwiperSlide,
+//   },
+//   setup() {
+//     const photo = ref([
+//       "https://picsum.photos/300/200/?random=1",
+//       "https://picsum.photos/300/200/?random=2",
+//       "https://picsum.photos/300/200/?random=3",
+//       "https://picsum.photos/300/200/?random=4",
+//       "https://picsum.photos/300/200/?random=5",
+//       "https://picsum.photos/300/200/?random=6",
+//       "https://picsum.photos/300/200/?random=7",
+//     ]);
+//     return {
+//       modules: [Autoplay, EffectFlip, Pagination, Navigation],
+//       photo,
+//     };
+//   },
+// };
 </script>
 
 <style lang="scss" scoped>
@@ -244,7 +348,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   .banner {
     display: flex;
     // justify-content: center;
@@ -279,6 +383,47 @@ body {
     transition: background-color 0.3s ease;
     &:hover {
       background-color: #b6702e;
+    }
+  }
+}
+
+.swiper_box {
+  border: 5px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    text-align: center;
+  }
+  .swiper_demo_one {
+    width: 100%;
+    // border: 2px solid rebeccapurple;
+    height: 300px;
+  }
+  .service-item {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 50px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    //好像無法設高
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      color: #eebe77;
+    }
+    p {
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+      color: #333333;
+      // border: 1px solid red;
     }
   }
 }
@@ -444,5 +589,25 @@ input[type="checkbox"] {
   to {
     stroke-dashoffset: 0;
   }
+}
+
+.swiper_wrap {
+  /* 確保包裹容器有足夠的大小 */
+  width: 100%;
+  max-width: 600px; /* 或您希望的最大寬度 */
+  margin: auto;
+}
+
+.mySwiper {
+  height: 200px; /* 根據您的需求調整高度 */
+}
+
+.swiper_demo_one {
+  border: 2px solid red;
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

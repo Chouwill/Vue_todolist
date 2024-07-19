@@ -89,9 +89,21 @@ getRandomInt(100000);
 console.log(orderNum.value);
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+// .member_status {
+//   @media (max-width: 768px) {
+//     background-color: greenyellow;
+//     width: 20vw;
+//   }
+// }
 table {
   border-collapse: collapse; // 確保邊框不會重疊
+  min-width: 100%;
+  border: 5px solid green;
+  @media (max-width: 768px) {
+    background-color: greenyellow;
+    width: 700px;
+  }
 
   thead {
     tr {
@@ -104,6 +116,9 @@ table {
       border: 1px solid black;
       text-align: center;
       font-size: 30px;
+      @media (max-width: 768px) {
+        font-size: 15px;
+      }
     }
     .product-name {
       width: 270px;
@@ -119,6 +134,9 @@ table {
       text-align: center;
       font-size: 25px;
       padding: 10px 0;
+      @media (max-width: 768px) {
+        font-size: 10px;
+      }
     }
   }
 }

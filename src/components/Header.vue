@@ -1,9 +1,7 @@
 <template>
   <header>
     <div class="header_logo">
-      <h2>
-        <router-link to="/">夢想時間計畫</router-link>
-      </h2>
+      <router-link to="/">夢想時間計畫</router-link>
     </div>
     <nav>
       <ul :class="['desktop_menu', { active: menuActive }]">
@@ -11,7 +9,7 @@
           <router-link to="/todolist">開始體驗</router-link>
         </li>
         <li>
-          <router-link to="/login">登入</router-link>
+          <router-link to="/login">會員中心</router-link>
         </li>
         <!-- <li>
           <router-link to="/registermember">註冊</router-link>
@@ -47,8 +45,9 @@
   </header>
 </template>
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import axios from "axios";
 
 const router = useRouter();
 const menuActive = ref(false);
@@ -70,9 +69,40 @@ const openMenu = (e) => {
   // }
   console.log(menuActive.value);
 };
+// ------------------------------------------------------------------
+// step 1 點擊會員中心判斷是否登入，否，則會帶到登入或註冊
+
+// 目前無法進入會員中心，並且無法判斷狀態
 
 const loginlink = () => {
-  // router.push("Login");
+  router.push("Login");
+};
+
+const isLoginMemberStatus = async () => {
+  //檢查 是否維持在登入狀態，否，則會被導入登入或註冊
+  console.log(UserInput.value);
+  console.log(Password.value);
+  // axios.post(`http://localhost:2500/api/v1/auth/login`, {
+  //   email: UserInput.value,
+  //   Password: Password.value,
+  // });
+  try {
+    const response = await axios.post(`/api/v1/auth/login`, {
+      email: UserInput.value,
+      password: Password.value,
+    });
+    console.log(response.request.status);
+    if (response.request.status === 200) {
+      alert("Ok");
+      router.push("MemberCenter"); // 跳轉畫面
+    } else {
+      alert("你未登入");
+      router.push("Login");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("使用者帳號密碼錯誤");
+  }
 };
 
 // axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
@@ -92,14 +122,19 @@ header {
   // background-color: #3c91e0;
   width: 100%;
   display: flex;
-  // padding: 10px;
+  padding: 30px 0;
   justify-content: space-between;
   align-items: center;
   position: relative;
   .header_logo {
     flex: 1;
-    font-size: 24px;
     margin: 0 50px;
+    a {
+      font-size: 35px;
+      @media (max-width: 430px) {
+        font-size: 19px;
+      }
+    }
   }
   nav {
     flex: 1;
@@ -128,6 +163,8 @@ header {
 @media (max-width: 768px) {
   header {
     width: 100%;
+    padding: 0 0;
+    // max-height: 80px;
     position: relative;
     .header_logo {
       h2 {
@@ -153,17 +190,17 @@ header {
         width: 100%;
         margin: 0 auto;
         &.active {
-          
           display: flex;
           flex-direction: column;
           align-items: center;
           background-color: orange;
-          
         }
       }
     }
     .phone_menu {
       display: block;
+      margin-right: 20px;
+
       button {
         border: none;
         padding: 10px 15px;

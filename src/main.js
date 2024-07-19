@@ -7,23 +7,28 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import router from "./router";
 import App from "./App.vue";
 
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
+
 // -------------------------------------------
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faBars,faMinus,faPlus,faXmark,faCartShopping,faArrowUp } from "@fortawesome/free-solid-svg-icons";
-// import {} from "@fortawesome/free-brands-svg-icons";
-
-/* add icons to the library */
-library.add(
+import {
   faBars,
   faMinus,
   faPlus,
   faXmark,
   faCartShopping,
   faArrowUp,
-);
+} from "@fortawesome/free-solid-svg-icons";
+// import {} from "@fortawesome/free-brands-svg-icons";
+
+/* add icons to the library */
+library.add(faBars, faMinus, faPlus, faXmark, faCartShopping, faArrowUp);
 
 // --------------------------------------
 const app = createApp(App);
