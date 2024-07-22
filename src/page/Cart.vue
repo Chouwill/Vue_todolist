@@ -1,5 +1,4 @@
 <template>
-
   <div class="cartopen_box">
     <div class="cancel_box">
       <button @click="openwindows">
@@ -15,16 +14,17 @@
             <td class="product-price">價格</td>
             <td class="quantity">數量</td>
             <td class="oth">備註:</td>
+            <td class="othMethod"></td>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="(item, id) in prodlist" :key="id">
             <td>
               <input type="checkbox" />
               <img src="https://picsum.photos/100/50/?random=10" />
-              <h4>XXXX商品</h4>
+              <h4>{{ item.name }}</h4>
             </td>
-            <td>$1000</td>
+            <td>{{ item.price }}</td>
             <td>
               <div class="delebox">
                 <font-awesome-icon
@@ -33,16 +33,16 @@
                 />
               </div>
               <h3>{{ productNum }}</h3>
+
               <div class="addbox">
-                <font-awesome-icon icon="fa-solid fa-plus" @click="addfun" />
+                <font-awesome-icon
+                  icon="fa-solid fa-plus"
+                  @click="addfun"
+                />
               </div>
             </td>
-          </tr>
-          <tr>
             <td>
-              <input type="checkbox" />
-              <img src="https://picsum.photos/100/50/?random=10" />
-              <h4>XXXX商品</h4>
+              <button @click="cancel_Buy(item.id)">刪除</button>
             </td>
           </tr>
         </tbody>
@@ -69,7 +69,6 @@
 </template>
 
 <script setup>
-
 import { ref } from "vue";
 const productNum = ref(0);
 
@@ -93,6 +92,41 @@ const checkSend = () => {
   alert("謝謝您完成訂購");
 };
 
+const prodlist = ref([
+  {
+    id: 1,
+    name: "產品A",
+    description: "這是產品A的描述",
+    price: 100,
+    quantity: 0, // 假設新增的屬性
+
+    // inStock: true,
+  },
+  {
+    id: 2,
+    name: "產品B",
+    description: "這是產品B的描述",
+    price: 10,
+    quantity: 0, // 假設新增的屬性
+
+    // inStock: true,
+  },
+  {
+    id: 3,
+    name: "產品P",
+    description: "這是產品P的描述",
+    price: 1000,
+    quantity: 0, // 假設新增的屬性
+
+    // inStock: true,
+  },
+]);
+
+const cancel_Buy = (id) => {
+  // 假設產品列表中的ID是數字類型，確保傳入的ID也是數字類型
+  const numericId = Number(id);
+  prodlist.value = prodlist.value.filter((product) => product.id !== numericId);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -106,13 +140,13 @@ const checkSend = () => {
   flex-direction: column;
   width: 70%;
   @media (max-width: 768px) {
-    border: 5px solid red;
+    // border: 5px solid red;
     width: 100%;
   }
   //   border: 10px solid red;
   position: relative;
   .cancel_box {
-    border: 1px solid forestgreen;
+    // border: 1px solid forestgreen;
     button {
       padding: 15px 10px;
       position: absolute;
@@ -127,7 +161,7 @@ const checkSend = () => {
     table {
       thead {
         tr {
-          border: 3px solid palegreen;
+          // border: 3px solid palegreen;
           background-color: red;
         }
         td {
@@ -152,6 +186,10 @@ const checkSend = () => {
         }
         .oth {
           width: 100px;
+        }
+        .othMethod {
+          width: 200px;
+          background-color: gray;
         }
       }
       tbody {
@@ -193,7 +231,7 @@ const checkSend = () => {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        border-bottom: 5px solid red;
+        // border-bottom: 5px solid red;
 
         td {
           width: 100%;
@@ -206,7 +244,7 @@ const checkSend = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 5px solid rebeccapurple;
+      // border: 5px solid rebeccapurple;
       button {
         padding: 15px 25px;
         border-radius: 20px;

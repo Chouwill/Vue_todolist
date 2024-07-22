@@ -114,7 +114,7 @@ html {
     img {
       width: 10%;
       @media (max-width: 768px) {
-        min-width: 35%;;
+        min-width: 35%;
       }
     }
     h2 {
@@ -127,16 +127,20 @@ html {
         background-color: orange;
         border-radius: 5px;
         margin: 0 10px;
+        @media (max-width: 414px) {
+          padding: 15px 10px;
+          background-color: palevioletred;
+        }
         &:nth-child(2) {
           background-color: #73a9da;
           text-decoration: none;
           // border: 3px solid white;
-          padding: 10px 10px;
+          padding: 15px 10px;
           border-radius: 5px;
           color: white;
         }
-        @media (max-width: 430px) {
-          padding: 10px 10px;
+        @media (max-width: 414px) {
+          padding: 15px 10px;
           background-color: palevioletred;
         }
       }

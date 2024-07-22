@@ -10,7 +10,19 @@
       <div class="swiper_wrap">
         <h2>輪播圖</h2>
         <div class="swiper_demo_one">
-          <swiper :navigation="true" :modules="modules" class="mySwiper">
+          <swiper
+            :slidesPerView="1"
+            :spaceBetween="30"
+            :keyboard="{
+              enabled: true,
+            }"
+            :pagination="{
+              clickable: true,
+            }"
+            :navigation="true"
+            :modules="modules"
+            class="mySwiper"
+          >
             <!-- <swiper-slide v-for="(item, idx) in photo" :key="idx"> -->
             <!-- <img :src="item" alt="" /> -->
             <!-- <h2>1</h2> -->
@@ -34,9 +46,7 @@
             <swiper-slide>
               <div class="service-item">
                 <h2>智能提醒</h2>
-                <p>
-                  即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。
-                </p>
+                <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
               </div>
             </swiper-slide>
           </swiper>
@@ -201,6 +211,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-flip";
 import "swiper/css/pagination";
+import { Keyboard, Pagination, Navigation } from "swiper/modules";
 
 const modules = ref(null); // 使用 ref 創建一個響應式變量
 
@@ -287,51 +298,6 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
-
-// 可以直接在模板中使用Swiper, SwiperSlide組件和photo數據
-
-// ---------------------------------------------------------
-
-// // Import Swiper Vue.js components
-// import { Swiper, SwiperSlide } from "swiper/vue"; //共用
-
-// // Import Swiper styles
-// import "swiper/css";
-
-// import "swiper/css/navigation";
-
-// // 第2輪播圖
-// import "swiper/css/effect-flip";
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
-
-// // import "./style.css";
-
-// // import required modules
-// import { Autoplay, EffectFlip, Pagination, Navigation } from "swiper/modules";
-// import { ref } from "vue";
-
-// export default {
-//   components: {
-//     Swiper,
-//     SwiperSlide,
-//   },
-//   setup() {
-//     const photo = ref([
-//       "https://picsum.photos/300/200/?random=1",
-//       "https://picsum.photos/300/200/?random=2",
-//       "https://picsum.photos/300/200/?random=3",
-//       "https://picsum.photos/300/200/?random=4",
-//       "https://picsum.photos/300/200/?random=5",
-//       "https://picsum.photos/300/200/?random=6",
-//       "https://picsum.photos/300/200/?random=7",
-//     ]);
-//     return {
-//       modules: [Autoplay, EffectFlip, Pagination, Navigation],
-//       photo,
-//     };
-//   },
-// };
 </script>
 
 <style lang="scss" scoped>
@@ -388,7 +354,7 @@ body {
 }
 
 .swiper_box {
-  border: 5px solid gold;
+  // border: 5px solid gold;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -399,6 +365,7 @@ body {
     width: 100%;
     // border: 2px solid rebeccapurple;
     height: 300px;
+    /* 調整小圓點的位置到輪播器底部 */
   }
   .service-item {
     width: 100%;
@@ -468,7 +435,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border: 2px solid orange;
+    // border: 2px solid orange;
     button {
       display: block;
       padding: 10px 20px;
@@ -493,7 +460,7 @@ main {
   gap: 15px;
   // align-items: center;
   flex-direction: row;
-  border: 5px solid gray;
+  // border: 5px solid gray;
   padding: 15px;
   input {
     // background-color: orange;
@@ -525,7 +492,7 @@ ul {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid red;
+    // border: 2px solid red;
     margin: 10px;
 
     .service-circle {
@@ -603,11 +570,31 @@ input[type="checkbox"] {
 }
 
 .swiper_demo_one {
-  border: 2px solid red;
+  // border: 2px solid red;
   width: 100%;
   height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* 使用 :deep() 选择器调整 Swiper 分页器小圆点的样式 */
+:deep(.swiper-pagination-bullet) {
+  background-color: #fff; /* 更改小圆点的背景颜色 */
+  width: 12px; /* 调整小圆点的宽度 */
+  height: 12px; /* 调整小圆点的高度 */
+  opacity: 0.7; /* 设置小圆点的透明度 */
+}
+:deep(.swiper-pagination) {
+  text-align: center; /* 确保小圆点居中 */
+  bottom: 0; /* 控制小圆点距离底部的距离 */
+  left: 0; /* 控制小圆点距离左侧的距离 */
+  width: 100%; /* 确保分页器宽度与 Swiper 容器相同 */
+  // border: 2px solid red;
+}
+/* 调整当前激活的小圆点样式 */
+:deep(.swiper-pagination-bullet-active) {
+  background-color: #17bf28; /* 更改活动小圆点的背景颜色 */
+  opacity: 1; /* 设置活动小圆点的透明度为完全不透明 */
 }
 </style>

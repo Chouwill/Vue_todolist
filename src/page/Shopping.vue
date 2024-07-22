@@ -110,6 +110,8 @@ const VipData = ref([]);
 
 const VipServe = ref([]);
 
+// console.log(booksdata.value, VipData.value,VipServe.value);
+
 const arr = [
   axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanproduct1/products"

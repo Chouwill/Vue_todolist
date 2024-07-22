@@ -2,6 +2,7 @@
   text-decoration: none;
   
   box-sizing: border-box;
+  /* border: none !important; */
 }
 body {
   /* background: linear-gradient(to right, #1E90FF, #87CEFA); */

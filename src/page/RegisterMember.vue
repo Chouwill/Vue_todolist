@@ -128,7 +128,7 @@ const RegisterSend = async (email) => {
   box-sizing: border-box;
 }
 .login_box {
-  border: 5px solid red;
+  // border: 5px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +164,7 @@ const RegisterSend = async (email) => {
   }
   .main_login {
     width: 100%;
-    border: 1px solid green;
+    // border: 1px solid green;
     // height: 150px;
     display: flex;
     // margin-right: 50px;

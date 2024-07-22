@@ -7,8 +7,24 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import router from "./router";
 import App from "./App.vue";
 
+// core version + navigation, pagination modules:
+import Swiper from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+// import Swiper and modules styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// init Swiper:
+const swiper = new Swiper(".swiper", {
+  // configure Swiper to use modules
+  modules: [Navigation, Pagination],
+});
+
+console.log(swiper);
+
 // import function to register Swiper custom elements
-import { register } from 'swiper/element/bundle';
+import { register } from "swiper/element/bundle";
 // register Swiper custom elements
 register();
 
