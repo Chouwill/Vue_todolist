@@ -81,7 +81,7 @@
         <input type="date" v-model="startDatevalue" />
         <label for="">結束時間</label>
         <input type="date" v-model="endDatevalue" />
-        <button @click="sendBtn">送出</button>
+        <button @click="sendBtn" @keydown.enter="sendBtn">送出</button>  <!--@keydown.enter="sendBtn"  沒用-->
       </div>
       <div class="calendar">行事曆位置50%</div>
     </main>
