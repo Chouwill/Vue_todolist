@@ -81,9 +81,20 @@
         <input type="date" v-model="startDatevalue" />
         <label for="">結束時間</label>
         <input type="date" v-model="endDatevalue" />
-        <button @click="sendBtn" @keydown.enter="sendBtn">送出</button>  <!--@keydown.enter="sendBtn"  沒用-->
+        <button @click="sendBtn" @keydown.enter="sendBtn">送出</button>
+        <!--@keydown.enter="sendBtn"  沒用-->
       </div>
-      <div class="calendar">行事曆位置50%</div>
+      <form @submit.prevent="addEvent">
+        <input v-model="newEvent.title" placeholder="Event Title" />
+        <input type="date" v-model="newEvent.start" placeholder="Start Time" />
+        <input type="date" v-model="newEvent.end" placeholder="End Time" />
+        <button type="submit">Add Event</button>
+      </form>
+      <Qalendar
+        :selected-date="new Date(2022, 0, 8)"
+        :events="events"
+        :config="config"
+      />
     </main>
 
     <div class="output">
@@ -213,6 +224,8 @@ import "swiper/css/effect-flip";
 import "swiper/css/pagination";
 import { Keyboard, Pagination, Navigation } from "swiper/modules";
 
+import { Qalendar } from "qalendar";
+
 const modules = ref(null); // 使用 ref 創建一個響應式變量
 
 const isShow = ref(false);
@@ -298,9 +311,37 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
+
+const newEvent = ref({
+  title: "",
+  start: "",
+  end: "",
+});
+
+const events = ref([
+  // ...existing events
+]);
+
+const config = ref({
+  // ...existing config
+});
+
+const addEvent = () => {
+  const { title, start, end } = newEvent.value;
+  const newEventObj = {
+    title: title,
+    time: { start: start, end: end },
+    color: "blue", // Example color
+    isEditable: true,
+    id: Date.now().toString(), // Simple ID generation
+  };
+  events.value.push(newEventObj);
+  newEvent.value = { title: "", start: "", end: "" }; // Reset form
+};
 </script>
 
 <style lang="scss" scoped>
+@import "qalendar/dist/style.css";   //這裡吃不到，所以改放全域CSS
 body {
   font-family: Arial, sans-serif;
   background-color: #f3d19e;

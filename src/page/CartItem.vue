@@ -10,7 +10,7 @@
       <div class="delebox">
         <font-awesome-icon icon="fa-solid fa-minus" @click="clickDelete" />
       </div>
-      <h3>{{ productquantity }}</h3>
+      <h3>{{ Minquantity }}</h3>
       <div class="addbox">
         <font-awesome-icon icon="fa-solid fa-plus" @click="clickAdd" />
       </div>
@@ -26,9 +26,11 @@
 
 <script setup>
 import { useCartStore } from "../stores/cart.js";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const productquantity = ref(1);
+
+// const
 
 // const store = useCartStore();
 // defineProps({
@@ -57,8 +59,14 @@ const props = defineProps({
 });
 
 const TotalCalculator = () => {
-  Total.value = productquantity.value * props.product.price;
+  if (productquantity.value === 0) {
+    Total.value = 0;
+  } else {
+    Total.value = productquantity.value * props.product.price;
+  }
 };
+
+// return Math.max(counter.value, 0); // (取增加與減少的值 與 0比較，顯示最大值)
 
 const clickAdd = () => {
   productquantity.value++;
@@ -66,13 +74,29 @@ const clickAdd = () => {
 };
 
 const clickDelete = () => {
+  // if (productquantity.value > 0) {
+  //   productquantity.value--;
+  // }
+  if (productquantity.value === 0) {
+    return; //如果數量為 0，提前結束函數，不做任何操作
+  }
   productquantity.value--;
   TotalCalculator();
 };
 
+const Minquantity = computed(() => {
+  // 詢問computed的作用
+  return Math.max(productquantity.value, 0); // (取增加與減少的值 與 0比較，顯示最大值)
+});
+
 const Total = ref();
 
 TotalCalculator();
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
