@@ -11,7 +11,7 @@
           <h4>{{ item.title }}</h4>
           <span>${{ item.price }}元</span>
         </div>
-        <button>加入購物車</button>
+        <button @click="store.addToCart(item)">加入購物車</button>
       </div>
     </li>
   </ul>
@@ -26,7 +26,7 @@
           <h4>{{ item.title }}</h4>
           <span>${{ item.price }}元</span>
         </div>
-        <button>加入購物車</button>
+        <button @click="store.addToCart(item)">加入購物車</button>
       </div>
     </li>
   </ul>
@@ -103,6 +103,8 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { useCartStore } from "../stores/cart.js";
+const store = useCartStore();
 
 const booksdata = ref([]);
 
@@ -366,7 +368,7 @@ onMounted(async () => {
         color: #000;
         text-align: left;
       }
-      
+
     }
     img {
       width: 80%;
@@ -444,4 +446,3 @@ onMounted(async () => {
   }
 }
 </style>
-

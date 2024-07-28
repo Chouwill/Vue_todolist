@@ -13,38 +13,13 @@
             <td class="product-name">商品名稱</td>
             <td class="product-price">價格</td>
             <td class="quantity">數量</td>
+            <td class="quantity">小計</td>
             <td class="oth">備註:</td>
             <td class="othMethod"></td>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, id) in prodlist" :key="id">
-            <td>
-              <input type="checkbox" />
-              <img src="https://picsum.photos/100/50/?random=10" />
-              <h4>{{ item.name }}</h4>
-            </td>
-            <td>{{ item.price }}</td>
-            <td>
-              <div class="delebox">
-                <font-awesome-icon
-                  icon="fa-solid fa-minus"
-                  @click="deletefun"
-                />
-              </div>
-              <h3>{{ productNum }}</h3>
-
-              <div class="addbox">
-                <font-awesome-icon
-                  icon="fa-solid fa-plus"
-                  @click="addfun"
-                />
-              </div>
-            </td>
-            <td>
-              <button @click="cancel_Buy(item.id)">刪除</button>
-            </td>
-          </tr>
+          <CartItem v-for="product in store.shoppingCart" :key="product.id" :product="product" />
         </tbody>
       </table>
       <table class="checkout">
@@ -55,7 +30,7 @@
             <!-- <td>99999999999999</td> -->
           </tr>
           <tr>
-            <td>$小計</td>
+            <td>總計</td>
             <td>$6000</td>
             <!-- <td>99999999999999</td> -->
           </tr>
@@ -70,6 +45,10 @@
 
 <script setup>
 import { ref } from "vue";
+import { useCartStore } from "../stores/cart.js";
+import CartItem from "./CartItem.vue";
+
+const store = useCartStore();
 const productNum = ref(0);
 
 const isShow = ref(false);
@@ -92,33 +71,29 @@ const checkSend = () => {
   alert("謝謝您完成訂購");
 };
 
+// {
+//   "category": "書本",
+//   "content": "測試的說明",
+//   "description": "測試的描述",
+//   "id": "-O182suwbu2sCGcyoK7-",
+//   "imageUrl": "https://thumbsnap.com/i/qh5QKKgx.png",
+//   "is_enabled": 1,
+//   "origin_price": 350,
+//   "price": 350,
+//   "title": "不再數錢度日",
+//   "unit": "本",
+//   "num": 1
+// },
+
 const prodlist = ref([
   {
-    id: 1,
-    name: "產品A",
-    description: "這是產品A的描述",
-    price: 100,
-    quantity: 0, // 假設新增的屬性
-
-    // inStock: true,
-  },
-  {
-    id: 2,
-    name: "產品B",
-    description: "這是產品B的描述",
-    price: 10,
-    quantity: 0, // 假設新增的屬性
-
-    // inStock: true,
-  },
-  {
-    id: 3,
-    name: "產品P",
-    description: "這是產品P的描述",
-    price: 1000,
-    quantity: 0, // 假設新增的屬性
-
-    // inStock: true,
+    id: "-O182suwbu2sCGcyoK7-",
+    imageUrl: "https://thumbsnap.com/i/qh5QKKgx.png",
+    title: "不再數錢度日",
+    description: "測試的描述",
+    origin_price: 350,
+    price: 350,
+    quantity: 1, // 假設新增的屬性
   },
 ]);
 
@@ -190,29 +165,6 @@ const cancel_Buy = (id) => {
         .othMethod {
           width: 200px;
           background-color: gray;
-        }
-      }
-      tbody {
-        tr {
-          td:first-child {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-          }
-          td:nth-child(2) {
-            background-color: yellow;
-            text-align: center;
-          }
-          td:nth-child(3) {
-            background-color: teal;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-          }
         }
       }
     }

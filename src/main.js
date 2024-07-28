@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import { createPinia } from 'pinia'
 import "./style.css";
 // import axios from "axios";
 import ElementPlus from "element-plus";
@@ -46,6 +47,8 @@ import {
 /* add icons to the library */
 library.add(faBars, faMinus, faPlus, faXmark, faCartShopping, faArrowUp);
 
+const pinia = createPinia()
+
 // --------------------------------------
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -58,5 +61,5 @@ app.use(ElementPlus);
 // app.use(axios);
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
-
+app.use(pinia);
 app.mount("#app");
