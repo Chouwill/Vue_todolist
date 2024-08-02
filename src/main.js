@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { createPinia } from 'pinia'
+import { createPinia } from "pinia";
 import "./style.css";
 // import axios from "axios";
 import ElementPlus from "element-plus";
@@ -34,6 +34,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+
 import {
   faBars,
   faMinus,
@@ -42,12 +45,28 @@ import {
   faCartShopping,
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
-// import {} from "@fortawesome/free-brands-svg-icons";
+
+// import {
+//   faInstagram,
+//   faFacebook,
+//   // faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
 
 /* add icons to the library */
-library.add(faBars, faMinus, faPlus, faXmark, faCartShopping, faArrowUp);
+library.add(
+  faBars,
+  faMinus,
+  faPlus,
+  faXmark,
+  faCartShopping,
+  faArrowUp,
+  faEnvelope,
+  // faFacebook,
+  // faInstagram,
+  // faTwitter
+);
 
-const pinia = createPinia()
+const pinia = createPinia();
 
 // --------------------------------------
 const app = createApp(App);
