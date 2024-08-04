@@ -5,6 +5,7 @@
       <div class="subscription_box">
         <input type="email" />
         <font-awesome-icon icon="fa-regular fa-envelope" class="email-icon" />
+        <button>訂閱</button>
       </div>
       <ul class="community_box">
         <li>
@@ -46,6 +47,7 @@ footer {
     flex-direction: column;
     .subscription_box {
       position: relative;
+      display: flex;
       input {
         width: 100%;
         height: 35px;
@@ -58,6 +60,12 @@ footer {
         position: absolute;
         top: 5px;
         left: 10px;
+      }
+      button{
+        width: 150px;
+        padding: 5px 30px;
+        background-color: #3c91e0;
+        border-radius: 20px;
       }
     }
     .community_box {
