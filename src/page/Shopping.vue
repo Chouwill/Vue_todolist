@@ -23,10 +23,10 @@
       <img :src="item.imageUrl" :alt="item.title" />
       <div class="product_information">
         <div class="product_text">
-          <h4>{{ item.title }}</h4>
-          <span>${{ item.price }}元</span>
+          <h4 class="product_title">{{ item.title }}</h4>
+          <span class="product_price">${{ item.price }}元</span>
         </div>
-        <button @click="store.addToCart(item)">加入購物車</button>
+        <button class="product_add_to_cart" @click="store.addToCart(item)">加入購物車</button>
       </div>
     </li>
   </ul>
@@ -239,149 +239,200 @@ onMounted(async () => {
   }
 }
 .Vip_product_list {
-  max-width: 60%;
   display: flex;
   justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  padding: 0 24px;
-  margin-bottom: 3rem;
-  // border: 5px solid red;
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    // border: 5px solid green;
-  }
+  align-items: baseline;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
   li {
-    // width: calc(100% - 30px) / 3;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // border: 5px solid yellow;
-    @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      // border: 5px solid gray;
-    }
-    .product_information {
-      padding: 10px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      width: 300px;
-      // border: 5px solid green;
-      h4,
-      span {
-        font-weight: 900;
-        font-size: 15px;
-        color: #000;
-        text-align: left;
-      }
-      button {
-        width: 100px;
-        // height: 41px;
-        padding: 10px 10px;
-        border-radius: 5px;
-        border: none;
-        font-weight: 700;
-        font-size: 16px;
-        color: #ffffff;
-        background-color: #d48c3e;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
-        &:hover {
-          background-color: #b6702e;
-        }
-        &:active {
-          background-color: #b6702e;
-          box-shadow: inset 4px 10px 8px rgba(0, 0, 0, 0.2);
-        }
-      }
-    }
-    img {
-      width: 80%;
-      height: 300px;
-      margin: 10px 0;
-      object-fit: cover;
-      // border: 10px solid red;
-      @media (max-width: 768px) {
-        width: 100%;
-        // border: 10px solid red;
-      }
-    }
+    max-width: 300px;
+    text-align: center;
   }
+  img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+  }
+  .product_title {
+    margin: 0;
+    margin-bottom: .5rem;
+  }
+  .product_price {
+    display: inline-block;
+    margin-bottom: .5rem;
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  // .product_add_to_cart {}
+  // max-width: 60%;
+  // display: flex;
+  // justify-content: center;
+  // gap: 15px;
+  // flex-wrap: wrap;
+  // padding: 0 24px;
+  // margin-bottom: 3rem;
+  // // border: 5px solid red;
+  // @media (max-width: 768px) {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 100%;
+  //   // border: 5px solid green;
+  // }
+  // li {
+  //   // width: calc(100% - 30px) / 3;
+  //   width: 30%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-direction: column;
+  //   // border: 5px solid yellow;
+  //   @media (max-width: 768px) {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+  //     width: 100%;
+  //     // border: 5px solid gray;
+  //   }
+  //   .product_information {
+  //     padding: 10px 0;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     gap: 20px;
+  //     width: 300px;
+  //     // border: 5px solid green;
+  //     h4,
+  //     span {
+  //       font-weight: 900;
+  //       font-size: 15px;
+  //       color: #000;
+  //       text-align: left;
+  //     }
+  //     button {
+  //       width: 100px;
+  //       // height: 41px;
+  //       padding: 10px 10px;
+  //       border-radius: 5px;
+  //       border: none;
+  //       font-weight: 700;
+  //       font-size: 16px;
+  //       color: #ffffff;
+  //       background-color: #d48c3e;
+  //       transition: background-color 0.3s ease;
+  //       cursor: pointer;
+  //       &:hover {
+  //         background-color: #b6702e;
+  //       }
+  //       &:active {
+  //         background-color: #b6702e;
+  //         box-shadow: inset 4px 10px 8px rgba(0, 0, 0, 0.2);
+  //       }
+  //     }
+  //   }
+  //   img {
+  //     width: 80%;
+  //     height: 300px;
+  //     margin: 10px 0;
+  //     object-fit: cover;
+  //     // border: 10px solid red;
+  //     @media (max-width: 768px) {
+  //       width: 100%;
+  //       // border: 10px solid red;
+  //     }
+  //   }
+  // }
 }
 .Vip_Serve_list {
-  max-width: 60%;
   display: flex;
   justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  padding: 0 24px;
-  margin-bottom: 3rem;
-  // border: 5px solid red;
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    // border: 5px solid green;
-  }
+  align-items: baseline;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
   li {
-    // width: calc(100% - 30px) / 3;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // border: 5px solid yellow;
-    @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      // border: 5px solid gray;
-    }
-    .product_information {
-      padding: 10px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      width: 300px;
-      // border: 5px solid green;
-      h4,
-      span {
-        font-weight: 900;
-        font-size: 15px;
-        color: #000;
-        text-align: left;
-      }
-
-    }
-    img {
-      width: 80%;
-      height: 300px;
-      margin: 10px 0;
-      object-fit: cover;
-      // border: 10px solid red;
-      @media (max-width: 768px) {
-        width: 100%;
-        // border: 10px solid red;
-      }
-    }
+    max-width: 300px;
+    text-align: center;
   }
+  img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  // max-width: 60%;
+  // display: flex;
+  // justify-content: center;
+  // gap: 15px;
+  // flex-wrap: wrap;
+  // padding: 0 24px;
+  // margin-bottom: 3rem;
+  // // border: 5px solid red;
+  // @media (max-width: 768px) {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 100%;
+  //   // border: 5px solid green;
+  // }
+  // li {
+  //   // width: calc(100% - 30px) / 3;
+  //   width: 30%;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-direction: column;
+  //   // border: 5px solid yellow;
+  //   @media (max-width: 768px) {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+  //     width: 100%;
+  //     // border: 5px solid gray;
+  //   }
+  //   .product_information {
+  //     padding: 10px 0;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     gap: 20px;
+  //     width: 300px;
+  //     // border: 5px solid green;
+  //     h4,
+  //     span {
+  //       font-weight: 900;
+  //       font-size: 15px;
+  //       color: #000;
+  //       text-align: left;
+  //     }
+
+  //   }
+  //   img {
+  //     width: 80%;
+  //     height: 300px;
+  //     margin: 10px 0;
+  //     object-fit: cover;
+  //     // border: 10px solid red;
+  //     @media (max-width: 768px) {
+  //       width: 100%;
+  //       // border: 10px solid red;
+  //     }
+  //   }
+  // }
 }
 
 .table-container {

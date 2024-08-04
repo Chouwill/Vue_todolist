@@ -12,29 +12,51 @@ import { ref, computed } from "vue";
 // }
 
 export const useCartStore = defineStore("cart", () => {
-  const shoppingCart = ref([]);
+  const shoppingCart = ref(JSON.parse(localStorage.getItem("shoppingCart")) || []);
   const counter = ref(0);
 
-  // const save = () => {
-  //   localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart.value));
-  // };
-  // const addCart = () => {
-  //   counter.value++;  //我有定義這個
-  // };
-  // const deleteCart = () => {
-  //   counter.value--;
-  // };
+  const save = () => {
+    localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart.value));
+  };
 
   const Minquantity = computed(() => {
     // 詢問computed的作用
     return Math.max(counter.value, 0); // (取增加與減少的值 與 0比較，顯示最大值)
+    // counter.value < 0 ? 0 : counter.value
+    // if (counter.value < 0) return 0
   });
+
+  const removeAll = () => {
+    shoppingCart.value = []
+    save()
+  }
+
+  const total = computed(() => {
+    return shoppingCart.value.map(p => p.price * p.quantity).reduce((acc, current) => acc +  current, 60)
+  })
+
+  const remove = (id) => {
+    // product是shoppingCart.value的element, product是自定義參數
+    shoppingCart.value = shoppingCart.value.filter(product => product.id !== id)
+    save()
+  }
+
+  const add = (id) => {
+    const target = shoppingCart.value.find((p) => p.id === id);
+    target.quantity++
+    save()
+  }
+  const minus = (id) => {
+    const target = shoppingCart.value.find((p) => p.id === id);
+    if (target.quantity > 0) target.quantity--
+    save()
+  }
 
   const addToCart = (product) => {
     const existingProduct = shoppingCart.value.find((p) => p.id === product.id);
     if (existingProduct) {
       existingProduct.quantity++;
-      // save();
+      save();
       return;
     }
     shoppingCart.value.push({
@@ -46,16 +68,18 @@ export const useCartStore = defineStore("cart", () => {
       price: product.price,
       quantity: 1,
     });
-    // save();
+    save();
   };
 
   return {
     shoppingCart,
-    // addCart,
-    // addCount,
-    // deleteCart,
     Minquantity,
     addToCart,
     counter,
+    add,
+    minus,
+    remove,
+    total,
+    removeAll
   };
 });
