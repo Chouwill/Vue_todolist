@@ -46,11 +46,11 @@ import {
   faArrowUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-// import {
-//   faInstagram,
-//   faFacebook,
-//   // faTwitter,
-// } from "@fortawesome/free-brands-svg-icons";
+import {
+  faInstagram,
+  faFacebook,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 /* add icons to the library */
 library.add(
@@ -61,9 +61,9 @@ library.add(
   faCartShopping,
   faArrowUp,
   faEnvelope,
-  // faFacebook,
-  // faInstagram,
-  // faTwitter
+  faFacebook,
+  faInstagram,
+  faXTwitter,
 );
 
 const pinia = createPinia();

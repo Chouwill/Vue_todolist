@@ -91,7 +91,7 @@
         <button type="submit">Add Event</button>
       </form>
       <Qalendar
-        :selected-date="new Date(2022, 0, 8)"
+        :selected-date="new Date()"
         :events="events"
         :config="config"
       />
