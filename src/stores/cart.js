@@ -12,9 +12,7 @@ import { ref, computed } from "vue";
 // }
 
 export const useCartStore = defineStore("cart", () => {
-  const shoppingCart = ref(
-    JSON.parse(localStorage.getItem("shoppingCart")) || []
-  );
+  const shoppingCart = ref(JSON.parse(localStorage.getItem("shoppingCart")) || []);
   const counter = ref(0);
 
   const save = () => {
@@ -22,40 +20,37 @@ export const useCartStore = defineStore("cart", () => {
   };
 
   const Minquantity = computed(() => {
+    // 詢問computed的作用
     return Math.max(counter.value, 0); // (取增加與減少的值 與 0比較，顯示最大值)
     // counter.value < 0 ? 0 : counter.value
     // if (counter.value < 0) return 0
   });
 
-  const add = (id) => {
-    // 增加數量
-    const target = shoppingCart.value.find((product) => product.id === id);
-    console.log(target);
-    target.quantity++;
-    save();
-  };
-  const minus = (id) => {
-    // 減少數量
-    const target = shoppingCart.value.find((product) => product.id !== id);
-    if (target.quantity > 0) target.quantity--;
-    console.log(target);
-    save();
-  };
+  const removeAll = () => {
+    shoppingCart.value = []
+    save()
+  }
+
+  const total = computed(() => {
+    return shoppingCart.value.map(p => p.price * p.quantity).reduce((acc, current) => acc +  current, 60)
+  })
 
   const remove = (id) => {
-    // 個別刪除功能
     // product是shoppingCart.value的element, product是自定義參數
-    shoppingCart.value = shoppingCart.value.filter(
-      (product) => product.id !== id
-    );
-    //不等於 id，則返回 true
-  };
+    shoppingCart.value = shoppingCart.value.filter(product => product.id !== id)
+    save()
+  }
 
-  const removeAll = () => {
-    //  一鍵刪除功能
-    shoppingCart.value = []; //清除陣列資料
-    save();
-  };
+  const add = (id) => {
+    const target = shoppingCart.value.find((p) => p.id === id);
+    target.quantity++
+    save()
+  }
+  const minus = (id) => {
+    const target = shoppingCart.value.find((p) => p.id === id);
+    if (target.quantity > 0) target.quantity--
+    save()
+  }
 
   const addToCart = (product) => {
     const existingProduct = shoppingCart.value.find((p) => p.id === product.id);
@@ -76,21 +71,15 @@ export const useCartStore = defineStore("cart", () => {
     save();
   };
 
-  const Total = computed(() => {
-    return shoppingCart.value
-      .map((p) => p.price * p.quantity)
-      .reduce((acc, current) => acc + current, 60);
-  });
-
   return {
-    add,
-    minus,
-    remove,
-    removeAll,
     shoppingCart,
-    Total,
     Minquantity,
     addToCart,
     counter,
+    add,
+    minus,
+    remove,
+    total,
+    removeAll
   };
 });
