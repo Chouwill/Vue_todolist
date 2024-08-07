@@ -116,7 +116,7 @@ const VipServe = ref([]);
 
 const arr = [
   axios.get(
-    "https://vue3-course-api.hexschool.io/api/bookplanproduct1/products"
+    "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
   ),
   axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
   axios.get(

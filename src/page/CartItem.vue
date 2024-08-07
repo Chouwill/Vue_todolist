@@ -5,7 +5,7 @@
       <h4>{{ product.title }}</h4>
     </td>
     <td>{{ product.price }}</td>
-    <td>
+    <td style="display: flex; justify-content: center; align-items: center">
       <div class="delebox">
         <font-awesome-icon icon="fa-solid fa-minus" @click="store.minus(product.id)" />
       </div>

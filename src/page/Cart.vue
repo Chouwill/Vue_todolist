@@ -1,11 +1,6 @@
 <template>
   <div class="cartopen_box">
-    <div class="cancel_box">
-      <button @click="openwindows">
-        <font-awesome-icon icon="fa-solid fa-xmark" />
-      </button>
-    </div>
-    <main v-show="isShow">
+    <main>
       <h2>我是購物車</h2>
       <table>
         <thead>
@@ -57,24 +52,6 @@ import { useCartStore } from "../stores/cart.js";
 import CartItem from "./CartItem.vue";
 
 const store = useCartStore();
-const productList = ref(store.shoppingCart)
-const productNum = ref(0);
-
-const isShow = ref(false);
-
-const openwindows = () => {
-  isShow.value = !isShow.value;
-};
-
-const addfun = () => {
-  productNum.value++;
-};
-const deletefun = () => {
-  if (productNum.value === 0) {
-    return;
-  }
-  productNum.value--;
-};
 
 const checkSend = () => {
   alert("謝謝您完成訂購");
