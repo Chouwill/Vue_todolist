@@ -9,31 +9,22 @@
             <td class="product-price">價格</td>
             <td class="quantity">數量</td>
             <td class="quantity">小計</td>
-            <td class="oth">備註:</td>
+            <!-- <td class="oth">備註:</td> -->
             <td class="othMethod"></td>
           </tr>
         </thead>
         <tbody>
-          <CartItem
-            v-for="product in store.shoppingCart"
-            :key="product.id"
-            :product="product"
-          />
+          <CartItem v-for="product in store.shoppingCart" :key="product.id" :product="product" />
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4"></td>
+            <td>
+              <button v-if="store.shoppingCart.length > 0" @click="store.removeAll">一鍵刪除</button>
+            </td>
+          </tr>
+        </tfoot>
       </table>
-      <tfoot>
-        <tr>
-          <td colspan="4"></td>  <!--位置沒右移-->
-          <td>
-            <button
-              v-if="store.shoppingCart.length > 0"
-              @click="store.removeAll"
-            >
-              一鍵刪除
-            </button>
-          </td>
-        </tr>
-      </tfoot>
       <table class="checkout">
         <tbody>
           <tr>
@@ -43,7 +34,7 @@
           </tr>
           <tr>
             <td>總計</td>
-            <td>{{ store.Total }}</td>
+            <td>${{ store.total }}</td>
             <!-- <td>99999999999999</td> -->
           </tr>
         </tbody>
@@ -61,7 +52,6 @@ import { useCartStore } from "../stores/cart.js";
 import CartItem from "./CartItem.vue";
 
 const store = useCartStore();
-
 
 const checkSend = () => {
   alert("謝謝您完成訂購");

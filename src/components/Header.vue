@@ -120,6 +120,7 @@ header {
   background-color: #e8c6a5;
   background-color: #eebe77;
   // background-color: #3c91e0;
+  background-color: #003366;
   width: 100%;
   display: flex;
   padding: 30px 0;
@@ -131,6 +132,7 @@ header {
     margin: 0 50px;
     a {
       font-size: 35px;
+      color: #D9D9D9;
       @media (max-width: 430px) {
         font-size: 19px;
       }
@@ -150,7 +152,8 @@ header {
 
         a {
           font-size: 18px;
-          // color: #333333;
+          color: #D9D9D9;
+          font-weight: 700;
         }
       }
     }
@@ -169,6 +172,7 @@ header {
     .header_logo {
       h2 {
         font-size: 30px;
+        font-weight: 700;
       }
     }
     nav {
