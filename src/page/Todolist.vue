@@ -81,20 +81,22 @@
         <input type="date" v-model="startDatevalue" />
         <label for="">結束時間</label>
         <input type="date" v-model="endDatevalue" />
-        <button @click="sendBtn" @keydown.enter="sendBtn">送出</button>
+        <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
         <!--@keydown.enter="sendBtn"  沒用-->
       </div>
-      <form @submit.prevent="addEvent">
+      <!-- <form @submit.prevent="addEvent">
         <input v-model="newEvent.title" placeholder="Event Title" />
         <input type="date" v-model="newEvent.start" placeholder="Start Time" />
         <input type="date" v-model="newEvent.end" placeholder="End Time" />
         <button type="submit">Add Event</button>
-      </form>
-      <Qalendar
-        :selected-date="new Date()"
-        :events="events"
-        :config="config"
-      />
+      </form> -->
+      <div class="calendar">
+        <Qalendar
+          :selected-date="new Date()"
+          :events="events"
+          :config="config"
+        />
+      </div>
     </main>
 
     <div class="output">
@@ -341,7 +343,7 @@ const addEvent = () => {
 </script>
 
 <style lang="scss" scoped>
-@import "qalendar/dist/style.css";   //這裡吃不到，所以改放全域CSS
+@import "qalendar/dist/style.css"; //這裡吃不到，所以改放全域CSS
 body {
   font-family: Arial, sans-serif;
   background-color: #f3d19e;
@@ -468,15 +470,21 @@ body {
   }
 }
 main {
-  // width: 100%;
+  width: 100%;
   display: flex;
+  justify-content: center;
   .Todolist {
-    // width: 50%;
+    width: 50%;
     margin: 150px 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    // border: 2px solid orange;
+    padding: 20px; /* 內邊距 */
+    background-color: white; /* 背景顏色 */
+    border-radius: 8px; /* 圓角 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    max-width: 300px; /* 最大寬度 */
+    margin: 20px auto; /* 外邊距，居中 */
     button {
       display: block;
       padding: 10px 20px;
@@ -490,8 +498,13 @@ main {
     }
   }
   .calendar {
-    // width: 50%;
-    // border: 1px solid red;
+    width: 50%;
+    padding: 20px; /* 內邊距 */
+    background-color: white; /* 背景顏色 */
+    border-radius: 8px; /* 圓角 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    max-width: 400px; /* 最大寬度 */
+    margin: 20px auto; /* 外邊距，居中 */
   }
 }
 

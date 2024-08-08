@@ -79,7 +79,7 @@
   text-decoration: none;
 }
 html {
-  background-color: #f3d19e;
+  background-color: #f9f9f9;
 }
 .container {
   // width: 100%;
@@ -88,9 +88,7 @@ html {
   width: 100%;
   padding: 50px 0;
   // background-color: #215d95;
-  background-color: #73a9da;
-  background-color: #f5e4d0;
-  background-color: #f3d19e;
+  background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +122,7 @@ html {
       a {
         // border: 5px solid #000;
         padding: 15px 20px;
-        background-color: orange;
+        background-color: #007bff;
         border-radius: 5px;
         margin: 0 10px;
         @media (max-width: 414px) {
@@ -132,7 +130,7 @@ html {
           background-color: palevioletred;
         }
         &:nth-child(2) {
-          background-color: #73a9da;
+          background-color: #66b3ff;
           text-decoration: none;
           // border: 3px solid white;
           padding: 15px 10px;
@@ -165,7 +163,8 @@ html {
 }
 main {
   width: 100%;
-  background-color: #f3d19e;
+  // background-color: #f3d19e;
+  background-color: #f0e6d6;
 
   display: flex;
   justify-content: center;
@@ -173,23 +172,20 @@ main {
   flex-wrap: wrap;
   .wrap_box {
     width: 100%;
-    background-color: #f8e3c5;
+    // background-color: #f8e3c5;
+    background-color: #f0e6d6;
 
     @media (max-width: 768px) {
       width: 100%;
-      background-color: blue;
+      background-color: #f0e6d6;
     }
 
     .title_box {
       flex-direction: row;
       width: 70%;
-      background-color: #f8e3c5;
-
       display: flex;
       margin: 0 auto;
-      // justify-content: center;
-      // align-items: center;
-      background-color: #f8e3c5;
+      background-color: #f0e6d6;
       @media (max-width: 768px) {
         width: 100%;
         display: flex;
@@ -214,7 +210,7 @@ main {
         width: 100%;
         padding: 20px 0;
         flex-direction: column;
-        background-color: #f8e3c5;
+        background-color: #f0e6d6;
         // border: 2px solid palegreen;
         display: flex;
         flex-direction: column;
@@ -228,6 +224,7 @@ main {
 
         span {
           color: #215d95;
+          color: #ff9900;
           font-weight: bolder;
           font-size: 40px;
           padding: 0 15px;
@@ -259,11 +256,12 @@ main {
     // border: 5px solid greenyellow;
     width: 100%;
     flex-wrap: wrap;
+    background-color: #f9f9f9;
     .feature_tiltle {
       h2 {
         font-size: 35px;
         text-align: center;
-        color: #3c91e0;
+        color: #333333
       }
       p {
         text-align: center;

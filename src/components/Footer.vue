@@ -44,9 +44,13 @@
 * {
   list-style: none;
 }
+h2,a{
+  color: #D9D9D9;
+}
 footer {
   // background-color: #f5e4d0;
   background-color: #eebe77;
+  background-color: #004080;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -72,6 +76,7 @@ footer {
       }
     a {
       font-size: 35px;
+      color: #D9D9D9;
       @media (max-width: 414px) {
         font-size: 20px;
       }
@@ -98,7 +103,7 @@ footer {
   }
   .footer_header {
     width: 50%;
-    background-color: #3c91e0;
+    // background-color: #3c91e0;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
