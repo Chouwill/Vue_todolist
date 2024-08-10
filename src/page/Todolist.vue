@@ -181,12 +181,12 @@
           <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
           <!--@keydown.enter="sendBtn"  沒用-->
         </div>
-        <!-- <form @submit.prevent="addEvent">
+        <form @submit.prevent="addEvent">
         <input v-model="newEvent.title" placeholder="Event Title" />
         <input type="date" v-model="newEvent.start" placeholder="Start Time" />
         <input type="date" v-model="newEvent.end" placeholder="End Time" />
         <button type="submit">Add Event</button>
-      </form> -->
+      </form>
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
