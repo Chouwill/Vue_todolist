@@ -1,12 +1,111 @@
 <template>
   <div class="wrap">
-    <div class="banner">
+    <div class="member_status">
+      <h2>Hi，XXX名金卡會員您好</h2>
+      <h2>您目前已享有以下哪些服務</h2>
+      <ul>
+        <li>
+          <input type="checkbox" id="check1" />
+          <label for="check1" class="service-circle">
+            <h2>1對1專業個人秘書</h2>
+          </label>
+          <label for="check1">
+            <svg width="200" height="200" v-show="isShow">
+              <circle
+                fill="none"
+                stroke="#68E534"
+                stroke-width="5"
+                cx="100"
+                cy="100"
+                r="47.5"
+                class="circle"
+                stroke-linecap="round"
+                transform="rotate(-90 100 100)"
+              />
+              <polyline
+                fill="none"
+                stroke="#68E534"
+                stroke-width="6"
+                points="70,100 90,120 130,80"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="tick"
+              />
+            </svg>
+          </label>
+          <h2>您已購買此服務，並已使用</h2>
+        </li>
+        <li>
+          <input type="checkbox" id="check1" />
+          <label for="check1" class="service-circle">
+            <h2>智能聊天機器人</h2>
+          </label>
+          <label for="check1">
+            <svg width="200" height="200" v-show="isShow">
+              <circle
+                fill="none"
+                stroke="#68E534"
+                stroke-width="5"
+                cx="100"
+                cy="100"
+                r="47.5"
+                class="circle"
+                stroke-linecap="round"
+                transform="rotate(-90 100 100)"
+              />
+              <polyline
+                fill="none"
+                stroke="#68E534"
+                stroke-width="6"
+                points="70,100 90,120 130,80"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="tick"
+              />
+            </svg>
+          </label>
+          <h2>您已購買此服務，並已使用</h2>
+        </li>
+        <li>
+          <input type="checkbox" id="check1" />
+          <label for="check1" class="service-circle">
+            <h2>智能提醒</h2>
+          </label>
+          <label for="check1">
+            <svg width="200" height="200" v-show="isShow">
+              <circle
+                fill="none"
+                stroke="#68E534"
+                stroke-width="5"
+                cx="100"
+                cy="100"
+                r="47.5"
+                class="circle"
+                stroke-linecap="round"
+                transform="rotate(-90 100 100)"
+              />
+              <polyline
+                fill="none"
+                stroke="#68E534"
+                stroke-width="6"
+                points="70,100 90,120 130,80"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="tick"
+              />
+            </svg>
+          </label>
+          <h2>您已購買此服務，並已使用</h2>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="banner">
       <h1 class="slogan">
         提升您的時間管理，體驗專屬VIP服務！立即進入商城，解鎖1對1專業秘書、智能聊天機器人和智能提醒，助您高效實現每一個目標！
       </h1>
       <router-link to="/shopping" class="cta-button"> 進入商城 </router-link>
-    </div>
-    <div class="swiper_box">
+    </div> -->
+    <!-- <div class="swiper_box">
       <div class="swiper_wrap">
         <h2>輪播圖</h2>
         <div class="swiper_demo_one">
@@ -23,10 +122,6 @@
             :modules="modules"
             class="mySwiper"
           >
-            <!-- <swiper-slide v-for="(item, idx) in photo" :key="idx"> -->
-            <!-- <img :src="item" alt="" /> -->
-            <!-- <h2>1</h2> -->
-            <!-- </swiper-slide> -->
             <swiper-slide>
               <div class="service-item">
                 <h2>1對1專業個人秘書</h2>
@@ -68,34 +163,37 @@
         <h2>智能提醒</h2>
         <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
       </div>
-    </div>
+    </div> -->
     <main>
-      <div class="Todolist">
-        <label for="">請輸入內容</label>
-        <el-input
-          v-model="input"
-          style="width: 240px"
-          placeholder="請輸入內容"
-        />
-        <label for="">起始時間</label>
-        <input type="date" v-model="startDatevalue" />
-        <label for="">結束時間</label>
-        <input type="date" v-model="endDatevalue" />
-        <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
-        <!--@keydown.enter="sendBtn"  沒用-->
-      </div>
-      <!-- <form @submit.prevent="addEvent">
+      <h2>開始制定計畫</h2>
+      <div class="todolist_event">
+        <div class="Todolist">
+          <label for="">請輸入內容</label>
+          <el-input
+            v-model="input"
+            style="width: 240px"
+            placeholder="請輸入內容"
+          />
+          <label for="">起始時間</label>
+          <input type="date" v-model="startDatevalue" />
+          <label for="">結束時間</label>
+          <input type="date" v-model="endDatevalue" />
+          <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
+          <!--@keydown.enter="sendBtn"  沒用-->
+        </div>
+        <!-- <form @submit.prevent="addEvent">
         <input v-model="newEvent.title" placeholder="Event Title" />
         <input type="date" v-model="newEvent.start" placeholder="Start Time" />
         <input type="date" v-model="newEvent.end" placeholder="End Time" />
         <button type="submit">Add Event</button>
       </form> -->
-      <div class="calendar">
-        <Qalendar
-          :selected-date="new Date()"
-          :events="events"
-          :config="config"
-        />
+        <div class="calendar">
+          <Qalendar
+            :selected-date="new Date()"
+            :events="events"
+            :config="config"
+          />
+        </div>
       </div>
     </main>
 
@@ -116,101 +214,7 @@
         </div>
       </div>
     </div>
-    <ul>
-      <li>
-        <input type="checkbox" id="check1" />
-        <label for="check1" class="service-circle">
-          <h2>1對1專業個人秘書</h2>
-        </label>
-        <label for="check1">
-          <svg width="200" height="200" v-show="isShow">
-            <circle
-              fill="none"
-              stroke="#68E534"
-              stroke-width="5"
-              cx="100"
-              cy="100"
-              r="47.5"
-              class="circle"
-              stroke-linecap="round"
-              transform="rotate(-90 100 100)"
-            />
-            <polyline
-              fill="none"
-              stroke="#68E534"
-              stroke-width="6"
-              points="70,100 90,120 130,80"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="tick"
-            />
-          </svg>
-        </label>
-        <h2>您已購買此服務，並已使用</h2>
-      </li>
-      <li>
-        <input type="checkbox" id="check1" />
-        <label for="check1" class="service-circle">
-          <h2>智能聊天機器人</h2>
-        </label>
-        <label for="check1">
-          <svg width="200" height="200" v-show="isShow">
-            <circle
-              fill="none"
-              stroke="#68E534"
-              stroke-width="5"
-              cx="100"
-              cy="100"
-              r="47.5"
-              class="circle"
-              stroke-linecap="round"
-              transform="rotate(-90 100 100)"
-            />
-            <polyline
-              fill="none"
-              stroke="#68E534"
-              stroke-width="6"
-              points="70,100 90,120 130,80"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="tick"
-            />
-          </svg>
-        </label>
-        <h2>您已購買此服務，並已使用</h2>
-      </li>
-      <li>
-        <input type="checkbox" id="check1" />
-        <label for="check1" class="service-circle">
-          <h2>智能提醒</h2>
-        </label>
-        <label for="check1">
-          <svg width="200" height="200" v-show="isShow">
-            <circle
-              fill="none"
-              stroke="#68E534"
-              stroke-width="5"
-              cx="100"
-              cy="100"
-              r="47.5"
-              class="circle"
-              stroke-linecap="round"
-              transform="rotate(-90 100 100)"
-            />
-            <polyline
-              fill="none"
-              stroke="#68E534"
-              stroke-width="6"
-              points="70,100 90,120 130,80"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="tick"
-            />
-          </svg>
-        </label>
-        <h2>您已購買此服務，並已使用</h2>
-      </li>
-    </ul>
+
     <button @click="openService">服務開關</button>
   </div>
 </template>
@@ -357,6 +361,47 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      // border: 2px solid red;
+      margin: 10px;
+
+      .service-circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #eebe77, #d48c3e);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        h2 {
+          color: white;
+          text-align: center;
+          font-size: 18px;
+          padding: 20px;
+        }
+      }
+    }
+  }
 
   .banner {
     display: flex;
@@ -473,38 +518,48 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
-  .Todolist {
-    width: 50%;
-    margin: 150px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px; /* 內邊距 */
-    background-color: white; /* 背景顏色 */
-    border-radius: 8px; /* 圓角 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
-    max-width: 300px; /* 最大寬度 */
-    margin: 20px auto; /* 外邊距，居中 */
-    button {
-      display: block;
-      padding: 10px 20px;
-      margin: 20px auto;
-      width: 50%;
-      flex: 0 0 auto;
-      border: none;
-      border-radius: 5px;
-      background-color: #d48c3e;
-      font-size: 16px;
-    }
+  flex-direction: column;
+  h2 {
+    text-align: center;
+    color: red;
+    border: 2px solid tomato;
   }
-  .calendar {
-    width: 50%;
-    padding: 20px; /* 內邊距 */
-    background-color: white; /* 背景顏色 */
-    border-radius: 8px; /* 圓角 */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
-    max-width: 400px; /* 最大寬度 */
-    margin: 20px auto; /* 外邊距，居中 */
+  .todolist_event {
+    display: flex;
+    .Todolist {
+      width: 50%;
+      margin: 150px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px; /* 內邊距 */
+      background-color: white; /* 背景顏色 */
+      border-radius: 8px; /* 圓角 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+      max-width: 300px; /* 最大寬度 */
+      margin: 20px auto; /* 外邊距，居中 */
+      button {
+        display: block;
+        padding: 10px 20px;
+        margin: 20px auto;
+        width: 50%;
+        flex: 0 0 auto;
+        border: none;
+        border-radius: 5px;
+        background-color: #d48c3e;
+        font-size: 16px;
+      }
+    }
+    .calendar {
+      width: 50%;
+      padding: 20px; /* 內邊距 */
+      background-color: white; /* 背景顏色 */
+      border-radius: 8px; /* 圓角 */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+      max-width: 400px; /* 最大寬度 */
+      margin: 20px auto; /* 外邊距，居中 */
+      height: 50vh;
+    }
   }
 }
 
@@ -530,48 +585,6 @@ main {
     // border: 5px solid red;
     justify-content: center;
     align-items: center;
-  }
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    // border: 2px solid red;
-    margin: 10px;
-
-    .service-circle {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #eebe77, #d48c3e);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-
-      h2 {
-        color: white;
-        text-align: center;
-        font-size: 18px;
-        padding: 20px;
-      }
-    }
   }
 }
 
