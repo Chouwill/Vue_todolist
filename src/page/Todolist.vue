@@ -167,7 +167,7 @@
     <main>
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
-        <div class="Todolist">
+        <!-- <div class="Todolist">
           <label for="">請輸入內容</label>
           <el-input
             v-model="input"
@@ -179,19 +179,53 @@
           <label for="">結束時間</label>
           <input type="date" v-model="endDatevalue" />
           <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
-          <!--@keydown.enter="sendBtn"  沒用-->
-        </div>
-        <!-- <form @submit.prevent="addEvent">
-        <input v-model="newEvent.title" placeholder="Event Title" />
-        <input type="date" v-model="newEvent.start" placeholder="Start Time" />
-        <input type="date" v-model="newEvent.end" placeholder="End Time" />
-        <button type="submit">Add Event</button>
-      </form> -->
+          @keydown.enter="sendBtn"  沒用
+        </div> -->
+        <el-form :model="newEvent">
+          <el-form-item label="Event Title">
+            <el-input v-model="newEvent.title" />
+          </el-form-item>
+          <el-form-item label="Date">
+            <el-date-picker
+              v-model="newEvent.date"
+              type="datetimerange"
+              start-placeholder="Start date"
+              end-placeholder="End date"
+              format="YYYY-MM-DD HH:mm"
+              date-format="YYYY/MM/DD ddd"
+              time-format="HH:mm"
+              value-format="YYYY-MM-DD HH:mm"
+            />
+          </el-form-item>
+          <!-- <el-form-item label="Start Time">
+            <el-date-picker
+              v-model="newEvent.start"
+              type="datetime"
+            />
+          </el-form-item>
+          <el-form-item label="End Time">
+            <el-date-picker
+              v-model="newEvent.end"
+              type="datetime"
+            />
+          </el-form-item> -->
+          <el-form-item>
+            <el-button type="primary" @click="addEvent">Add Event</el-button>
+          </el-form-item>
+        </el-form>
+        <!-- <form class="" @submit.prevent="addEvent">
+          <input v-model="newEvent.title" placeholder="Event Title" />
+          <input type="date" v-model="newEvent.start" placeholder="Start Time" />
+          <input type="date" v-model="newEvent.end" placeholder="End Time" />
+          <button type="submit">Add Event</button>
+        </form> -->
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
             :events="events"
             :config="config"
+            @edit-event="(v) => {console.log(v)}"
+            @delete-event="(v) => {console.log(v)}"
           />
         </div>
       </div>
@@ -320,27 +354,28 @@ const photo = ref([
 
 const newEvent = ref({
   title: "",
-  start: "",
-  end: "",
+  date: []
 });
 
-const events = ref([
-  // ...existing events
-]);
+const events = ref([]);
 
 const config = ref({
   // ...existing config
 });
 
 const addEvent = () => {
-  const { title, start, end } = newEvent.value;
+  const { title, date } = newEvent.value; // 只能用原本的參數
+  const [start = '', end = ''] = date;
   const newEventObj = {
-    title: title,
-    time: { start: start, end: end },
+    title, // 當key與value相同時, 可以省略:value 原始為{title: title}
+    time: { start, end },
     color: "blue", // Example color
     isEditable: true,
     id: Date.now().toString(), // Simple ID generation
+    description: 'sjkfshfsfkugeyhtriueygeruiygerugyeruiyg'
   };
+
+  console.log(newEventObj)
   events.value.push(newEventObj);
   newEvent.value = { title: "", start: "", end: "" }; // Reset form
 };
