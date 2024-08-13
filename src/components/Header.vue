@@ -6,7 +6,7 @@
         <router-link to="/">豐富資源</router-link>
       </div>
       <div class="menu_width">
-        <router-link to="/">開始Plan</router-link>
+        <router-link to="/todolist">開始Plan</router-link>
 
         <router-link to="/">享受放鬆生活</router-link>
       </div>

@@ -1,208 +1,55 @@
 <template>
   <div class="wrap">
-    <div class="member_status">
-      <h2>Hi，XXX名金卡會員您好</h2>
-      <h2>您目前已享有以下哪些服務</h2>
-      <ul>
-        <li v-for="item in VipServe" :key="item.id">
-          <input type="checkbox" id="check1" />
-          <label for="check1" class="service-circle">
-            <h2>{{ item.title }}</h2>
-          </label>
-          <label for="check1">
-            <svg width="200" height="200" v-show="isShow">
-              <circle
-                fill="none"
-                stroke="#68E534"
-                stroke-width="5"
-                cx="100"
-                cy="100"
-                r="47.5"
-                class="circle"
-                stroke-linecap="round"
-                transform="rotate(-90 100 100)"
-              />
-              <polyline
-                fill="none"
-                stroke="#68E534"
-                stroke-width="6"
-                points="70,100 90,120 130,80"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="tick"
-              />
-            </svg>
-          </label>
-          <img :src="item.imageUrl" :alt="item.title" />
-          <h2>您已購買此服務，並已使用</h2>
-        </li>
-      </ul>
-    </div>
-    <!-- <div class="banner">
-      <h1 class="slogan">
-        提升您的時間管理，體驗專屬VIP服務！立即進入商城，解鎖1對1專業秘書、智能聊天機器人和智能提醒，助您高效實現每一個目標！
-      </h1>
-      <router-link to="/shopping" class="cta-button"> 進入商城 </router-link>
-    </div> -->
-    <!-- <div class="swiper_box">
-      <div class="swiper_wrap">
-        <h2>輪播圖</h2>
-        <div class="swiper_demo_one">
-          <swiper
-            :slidesPerView="1"
-            :spaceBetween="30"
-            :keyboard="{
-              enabled: true,
-            }"
-            :pagination="{
-              clickable: true,
-            }"
-            :navigation="true"
-            :modules="modules"
-            class="mySwiper"
-          >
-            <swiper-slide>
-              <div class="service-item">
-                <h2>1對1專業個人秘書</h2>
-                <p>
-                  獨享私人秘書服務，量身定制時間管理方案，隨時隨地提供專業諮詢。
-                </p>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="service-item">
-                <h2>智能聊天機器人</h2>
-                <p>
-                  智能助手隨時待命，提供高效建議和問題解答，優化您的待辦事項和行事曆。
-                </p>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
-              <div class="service-item">
-                <h2>智能提醒</h2>
-                <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
-              </div>
-            </swiper-slide>
-          </swiper>
-        </div>
-      </div>
-    </div>
-    <div class="services-container">
-      <div class="service-item">
-        <h2>1對1專業個人秘書</h2>
-        <p>獨享私人秘書服務，量身定制時間管理方案，隨時隨地提供專業諮詢。</p>
-      </div>
-      <div class="service-item">
-        <h2>智能聊天機器人</h2>
-        <p>
-          智能助手隨時待命，提供高效建議和問題解答，優化您的待辦事項和行事曆。
-        </p>
-      </div>
-      <div class="service-item">
-        <h2>智能提醒</h2>
-        <p>即時提醒重要事件和任務，確保您不再錯過任何關鍵時刻。</p>
-      </div>
-    </div> -->
+    <h2>設計計畫</h2>
     <main>
-      <h2>開始制定計畫</h2>
-      <div class="todolist_event">
-        <!-- <div class="Todolist">
-          <label for="">請輸入內容</label>
-          <el-input
-            v-model="input"
-            style="width: 240px"
-            placeholder="請輸入內容"
-          />
-          <label for="">起始時間</label>
-          <input type="date" v-model="startDatevalue" />
-          <label for="">結束時間</label>
-          <input type="date" v-model="endDatevalue" />
-          <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
-          @keydown.enter="sendBtn"  沒用
-        </div> -->
-        <el-form :model="newEvent">
-          <el-form-item label="Event Title">
-            <el-input v-model="newEvent.title" />
-          </el-form-item>
-          <el-form-item label="Date">
-            <el-date-picker
-              v-model="newEvent.date"
-              type="datetimerange"
-              start-placeholder="Start date"
-              end-placeholder="End date"
-              format="YYYY-MM-DD HH:mm"
-              date-format="YYYY/MM/DD ddd"
-              time-format="HH:mm"
-              value-format="YYYY-MM-DD HH:mm"
-            />
-          </el-form-item>
-          <!-- <el-form-item label="Start Time">
-            <el-date-picker
-              v-model="newEvent.start"
-              type="datetime"
-            />
-          </el-form-item>
-          <el-form-item label="End Time">
-            <el-date-picker
-              v-model="newEvent.end"
-              type="datetime"
-            />
-          </el-form-item> -->
-          <el-form-item>
-            <el-button type="primary" @click="addEvent">Add Event</el-button>
-          </el-form-item>
-        </el-form>
-        <!-- <form class="" @submit.prevent="addEvent">
-          <input v-model="newEvent.title" placeholder="Event Title" />
-          <input type="date" v-model="newEvent.start" placeholder="Start Time" />
-          <input type="date" v-model="newEvent.end" placeholder="End Time" />
-          <button type="submit">Add Event</button>
-        </form> -->
-        <div class="calendar">
-          <Qalendar
-            :selected-date="new Date()"
-            :events="events"
-            :config="config"
-            @edit-event="
-              (v) => {
-                console.log(v);
-              }
-            "
-            @delete-event="
-              (v) => {
-                console.log(v);
-              }
-            "
-          />
-        </div>
+      <form action="">
+        <ul class="todo_box_row_One">
+          <li>
+            <label for="">主題名稱</label>
+            <input type="text" />
+          </li>
+          <li>
+            <label for="">計畫名稱</label>
+            <input type="text" />
+          </li>
+          <li>
+            <label for="">開始時間</label>
+            <input type="date" />
+          </li>
+          <li>
+            <label for="">結束時間</label>
+            <input type="date" />
+          </li>
+        </ul>
+        <ul class="todo_box_row_two">
+          <li>
+            <label for="">單元名稱</label>
+            <input type="text" />
+          </li>
+          <li>
+            <label for="">單元目標</label>
+            <input type="text" />
+          </li>
+        </ul>
+        <button>送出</button>
+      </form>
+      <div class="calendar_box">
+        <Qalendar
+          :selected-date="new Date(2022, 0, 8)"
+          :events="events"
+          :config="config"
+        />
       </div>
+      <router-link>
+        了解更多
+        <font-awesome-icon icon="fa-solid fa-arrow-right" />
+      </router-link>
     </main>
-
-    <div class="output">
-      <div class="output_box" v-for="obj in outText" :key="obj.id">
-        <input type="checkbox" />
-        <h2>{{ obj.text }}</h2>
-
-        <h2>開始時間{{ obj.startDate }}</h2>
-        <h2>結束時間{{ obj.endDate }}</h2>
-
-        <!-- :value="obj.text" ===> 指向第40行.text
-             :disabled="obj.disabled"  ===> 指向第42行:disabled -->
-        <div class="btn_box">
-          <button @click="editBtn(obj)">修改</button>
-          <button @click="saveBtn(obj)">儲存</button>
-          <button @click="deleteBtn(obj.id)">刪除</button>
-        </div>
-      </div>
-    </div>
-
-    <button @click="openService">服務開關</button>
   </div>
 </template>
 
 <script setup>
-import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -215,43 +62,6 @@ import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import { Qalendar } from "qalendar";
 
 const modules = ref(null); // 使用 ref 創建一個響應式變量
-
-const VipData = ref([]);
-
-const VipServe = ref([]);
-
-const addToCart = (item) => {
-  store.addToCart(item);
-  productInfo.title = item.title;
-  productInfo.visible = true;
-};
-
-// console.log(booksdata.value, VipData.value,VipServe.value);
-
-const arr = [
-  axios.get(
-    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
-  ),
-];
-
-onMounted(async () => {
-  try {
-    const resArr = await Promise.allSettled(arr); // 使用 Promise.allSettled
-    resArr.forEach((result, index) => {
-      if (result.status === "fulfilled") {
-        console.log(result.value.data);
-        if (index === 0) {
-          VipServe.value = result.value.data.products; // 會員等級分級介紹
-        }
-      } else {
-        console.log(`Promise at index ${index} failed:`, result.reason);
-      }
-    });
-  } catch (error) {
-    console.log("錯誤處理", error);
-  }
-  console.log("執行其他動作");
-});
 
 const isShow = ref(false);
 const input = ref("");
@@ -339,28 +149,27 @@ const photo = ref([
 
 const newEvent = ref({
   title: "",
-  date: [],
+  start: "",
+  end: "",
 });
 
-const events = ref([]);
+const events = ref([
+  // ...existing events
+]);
 
 const config = ref({
   // ...existing config
 });
 
 const addEvent = () => {
-  const { title, date } = newEvent.value; // 只能用原本的參數
-  const [start = "", end = ""] = date;
+  const { title, start, end } = newEvent.value;
   const newEventObj = {
-    title, // 當key與value相同時, 可以省略:value 原始為{title: title}
-    time: { start, end },
+    title: title,
+    time: { start: start, end: end },
     color: "blue", // Example color
     isEditable: true,
     id: Date.now().toString(), // Simple ID generation
-    description: "sjkfshfsfkugeyhtriueygeruiygerugyeruiyg",
   };
-
-  console.log(newEventObj);
   events.value.push(newEventObj);
   newEvent.value = { title: "", start: "", end: "" }; // Reset form
 };
@@ -368,306 +177,85 @@ const addEvent = () => {
 
 <style lang="scss" scoped>
 @import "qalendar/dist/style.css"; //這裡吃不到，所以改放全域CSS
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f3d19e;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
 .wrap {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  ul {
+  form {
+    background-color: #0176c3;
+    width: 40vw;
+    height: 750px;
     display: flex;
-    list-style: none;
-    padding: 0;
-    @media (max-width: 768px) {
-      display: none;
-    }
-    li {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    // flex-direction: column;
+    .todo_box_row_One {
+      // border: 5px solid #000;
       display: flex;
+      flex-direction: column;
+      width: 50%;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      border: 2px solid red;
-      margin: 10px;
-
-      .service-circle {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #eebe77, #d48c3e);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s;
-
-        &:hover {
-          transform: scale(1.1);
-        }
-
-        h2 {
-          color: white;
-          text-align: center;
-          font-size: 18px;
-          padding: 20px;
+      height: 500px;
+      list-style: none;
+      gap: 20px;
+      li {
+        width: 100%;
+        // border: 2px solid red;
+        input {
+          width: 80%;
+          padding: 10px 0;
+          border-radius: 20px;
         }
       }
-      img {
-        width: 300px;
-        height: 200px;
-        object-fit: contain;
-        // border: 5px solid turquoise;
-      }
     }
-  }
-  .Vip_Serve_list {
-    border: 5px solid red;
-    li {
-      max-width: 300px;
-      text-align: center;
-    }
-    img {
-      max-width: 100%;
-      height: 200px;
-      object-fit: contain;
-      object-position: center;
-    }
-    @media (max-width: 480px) {
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-  }
-}
-
-.swiper_box {
-  // border: 5px solid gold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  h2 {
-    text-align: center;
-  }
-  .swiper_demo_one {
-    width: 100%;
-    // border: 2px solid rebeccapurple;
-    height: 300px;
-    /* 調整小圓點的位置到輪播器底部 */
-  }
-  .service-item {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 50px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    //好像無法設高
-
-    h2 {
-      text-align: center;
-      font-size: 30px;
-      color: #eebe77;
-    }
-    p {
-      width: 80%;
-      text-align: center;
-      font-size: 20px;
-      color: #333333;
-      // border: 1px solid red;
-    }
-  }
-}
-
-.services-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  background-color: #f3d19e;
-  @media (max-width: 768px) {
-    // display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .service-item {
-    width: 30%;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 181px;
-    @media (max-width: 768px) {
-      width: 80%;
-    }
-    h2 {
-      font-size: 20px;
-      color: #eebe77;
-    }
-    p {
-      font-size: 16px;
-      color: #333333;
-    }
-  }
-}
-main {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  h2 {
-    text-align: center;
-    color: red;
-    border: 2px solid tomato;
-  }
-  .todolist_event {
-    display: flex;
-    .Todolist {
-      width: 50%;
-      margin: 150px 0;
+    .todo_box_row_two {
+      // border: 5px solid #000;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      padding: 20px; /* 內邊距 */
-      background-color: white; /* 背景顏色 */
-      border-radius: 8px; /* 圓角 */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
-      max-width: 300px; /* 最大寬度 */
-      margin: 20px auto; /* 外邊距，居中 */
-      button {
-        display: block;
-        padding: 10px 20px;
-        margin: 20px auto;
-        width: 50%;
-        flex: 0 0 auto;
-        border: none;
-        border-radius: 5px;
-        background-color: #d48c3e;
-        font-size: 16px;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+      list-style: none;
+      gap: 20px;
+      li {
+        width: 100%;
+        // border: 2px solid red;
+        input {
+          width: 80%;
+          padding: 10px 0;
+          border-radius: 20px;
+        }
       }
     }
-    .calendar {
-      width: 50%;
-      padding: 20px; /* 內邊距 */
-      background-color: white; /* 背景顏色 */
-      border-radius: 8px; /* 圓角 */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
-      max-width: 400px; /* 最大寬度 */
-      margin: 20px auto; /* 外邊距，居中 */
-      height: 50vh;
+    button {
+      padding: 20px 50px;
+      background-color: #d9d9d9;
+      border-radius: 40px;
     }
   }
-}
-
-.output_box {
-  display: flex;
-  // justify-content: space-evenly;
-  gap: 15px;
-  // align-items: center;
-  flex-direction: row;
-  // border: 5px solid gray;
-  padding: 15px;
-  input {
-    // background-color: orange;
-    color: #000;
+  .calendar_box {
+    width: 40vw;
+    border: 5px solid palegreen;
+    height: 500px;
   }
-  h2 {
-    color: green;
-    font-size: 15px;
-  }
-  .btn_box {
+  a {
+    width: 200px;
     display: flex;
-    // width: 100%;
-    // border: 5px solid red;
     justify-content: center;
     align-items: center;
+    padding: 20px 40px; /* 內邊距 */
+    background-color: #40b9a9; /* 背景顏色 */
+    color: #000; /* 字體顏色 */
+    border: none; /* 去掉邊框 */
+    border-radius: 20px; /* 圓角 */
+    font-size: 24px; /* 字體大小 */
+    cursor: pointer; /* 游標樣式 */
+    margin: 20px auto;
   }
-}
-
-h2 {
-  font-family: Helvetica;
-  font-size: 36px;
-  margin-top: 40px;
-  color: #333;
-}
-
-input[type="checkbox"] {
-  display: none;
-
-  &:checked + label svg .circle {
-    animation: circle 1s ease-in-out forwards;
-  }
-
-  &:checked + label svg .tick {
-    animation: tick 0.8s ease-out forwards 0.95s;
-  }
-}
-
-@keyframes circle {
-  from {
-    stroke-dashoffset: 1194;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes tick {
-  from {
-    stroke-dashoffset: 350;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.swiper_wrap {
-  /* 確保包裹容器有足夠的大小 */
-  width: 100%;
-  max-width: 600px; /* 或您希望的最大寬度 */
-  margin: auto;
-}
-
-.mySwiper {
-  height: 200px; /* 根據您的需求調整高度 */
-}
-
-.swiper_demo_one {
-  // border: 2px solid red;
-  width: 100%;
-  height: 40vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 使用 :deep() 选择器调整 Swiper 分页器小圆点的样式 */
-:deep(.swiper-pagination-bullet) {
-  background-color: #fff; /* 更改小圆点的背景颜色 */
-  width: 12px; /* 调整小圆点的宽度 */
-  height: 12px; /* 调整小圆点的高度 */
-  opacity: 0.7; /* 设置小圆点的透明度 */
-}
-:deep(.swiper-pagination) {
-  text-align: center; /* 确保小圆点居中 */
-  bottom: 0; /* 控制小圆点距离底部的距离 */
-  left: 0; /* 控制小圆点距离左侧的距离 */
-  width: 100%; /* 确保分页器宽度与 Swiper 容器相同 */
-  // border: 2px solid red;
-}
-/* 调整当前激活的小圆点样式 */
-:deep(.swiper-pagination-bullet-active) {
-  background-color: #17bf28; /* 更改活动小圆点的背景颜色 */
-  opacity: 1; /* 设置活动小圆点的透明度为完全不透明 */
 }
 </style>
