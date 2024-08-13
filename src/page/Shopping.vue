@@ -11,7 +11,7 @@
           <h4>{{ item.title }}</h4>
           <span>${{ item.price }}元</span>
         </div>
-        <button @click="store.addToCart(item)">加入購物車</button>
+        <button @click="addToCart(item)">加入購物車</button>
       </div>
     </li>
   </ul>
@@ -26,7 +26,7 @@
           <h4>{{ item.title }}</h4>
           <span>${{ item.price }}元</span>
         </div>
-        <button @click="store.addToCart(item)">加入購物車</button>
+        <button @click="addToCart(item)">加入購物車</button>
       </div>
     </li>
   </ul>
@@ -80,6 +80,16 @@
   <aside>
     <div class="shopping_cart"></div>
   </aside>
+  <el-dialog v-model="productInfo.visible" title="加入購物車" width="500" center>
+    <span>
+      {{ productInfo.title }}已加入購物車
+    </span>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="productInfo.visible = false">關閉</el-button>
+      </div>
+    </template>
+  </el-dialog>
 </template>
 
 <!-- <template>
@@ -102,15 +112,27 @@
 
 <script setup>
 import axios from "axios";
-import { ref, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useCartStore } from "../stores/cart.js";
 const store = useCartStore();
+// const visible = ref(false);
+// 加入購物車彈窗的狀態
+const productInfo = reactive({
+  visible: false, // 彈窗的開關
+  title: '', // 商品名稱
+})
 
 const booksdata = ref([]);
 
 const VipData = ref([]);
 
 const VipServe = ref([]);
+
+const addToCart = (item) => {
+  store.addToCart(item)
+  productInfo.title = item.title
+  productInfo.visible = true
+}
 
 // console.log(booksdata.value, VipData.value,VipServe.value);
 
@@ -125,16 +147,6 @@ const arr = [
 ];
 
 onMounted(async () => {
-  // try {
-  //   axios
-  //     .get(`https://vue3-course-api.hexschool.io/api/2024vipshopping/products`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       data.value = res.data.products;
-  //     });
-  // } catch (e) {
-  //   console.log(e);
-  // }
   try {
     const resArr = await Promise.all(arr); //Promise.allSettled  沒生效????
     console.log(resArr[0].data);

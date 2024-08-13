@@ -4,10 +4,10 @@
       <h2>Hi，XXX名金卡會員您好</h2>
       <h2>您目前已享有以下哪些服務</h2>
       <ul>
-        <li>
+        <li v-for="item in VipServe" :key="item.id">
           <input type="checkbox" id="check1" />
           <label for="check1" class="service-circle">
-            <h2>1對1專業個人秘書</h2>
+            <h2>{{ item.title }}</h2>
           </label>
           <label for="check1">
             <svg width="200" height="200" v-show="isShow">
@@ -33,68 +33,7 @@
               />
             </svg>
           </label>
-          <h2>您已購買此服務，並已使用</h2>
-        </li>
-        <li>
-          <input type="checkbox" id="check1" />
-          <label for="check1" class="service-circle">
-            <h2>智能聊天機器人</h2>
-          </label>
-          <label for="check1">
-            <svg width="200" height="200" v-show="isShow">
-              <circle
-                fill="none"
-                stroke="#68E534"
-                stroke-width="5"
-                cx="100"
-                cy="100"
-                r="47.5"
-                class="circle"
-                stroke-linecap="round"
-                transform="rotate(-90 100 100)"
-              />
-              <polyline
-                fill="none"
-                stroke="#68E534"
-                stroke-width="6"
-                points="70,100 90,120 130,80"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="tick"
-              />
-            </svg>
-          </label>
-          <h2>您已購買此服務，並已使用</h2>
-        </li>
-        <li>
-          <input type="checkbox" id="check1" />
-          <label for="check1" class="service-circle">
-            <h2>智能提醒</h2>
-          </label>
-          <label for="check1">
-            <svg width="200" height="200" v-show="isShow">
-              <circle
-                fill="none"
-                stroke="#68E534"
-                stroke-width="5"
-                cx="100"
-                cy="100"
-                r="47.5"
-                class="circle"
-                stroke-linecap="round"
-                transform="rotate(-90 100 100)"
-              />
-              <polyline
-                fill="none"
-                stroke="#68E534"
-                stroke-width="6"
-                points="70,100 90,120 130,80"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="tick"
-              />
-            </svg>
-          </label>
+          <img :src="item.imageUrl" :alt="item.title" />
           <h2>您已購買此服務，並已使用</h2>
         </li>
       </ul>
@@ -167,7 +106,7 @@
     <main>
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
-        <div class="Todolist">
+        <!-- <div class="Todolist">
           <label for="">請輸入內容</label>
           <el-input
             v-model="input"
@@ -179,19 +118,61 @@
           <label for="">結束時間</label>
           <input type="date" v-model="endDatevalue" />
           <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
-          <!--@keydown.enter="sendBtn"  沒用-->
-        </div>
-        <form @submit.prevent="addEvent">
-        <input v-model="newEvent.title" placeholder="Event Title" />
-        <input type="date" v-model="newEvent.start" placeholder="Start Time" />
-        <input type="date" v-model="newEvent.end" placeholder="End Time" />
-        <button type="submit">Add Event</button>
-      </form>
+          @keydown.enter="sendBtn"  沒用
+        </div> -->
+        <el-form :model="newEvent">
+          <el-form-item label="Event Title">
+            <el-input v-model="newEvent.title" />
+          </el-form-item>
+          <el-form-item label="Date">
+            <el-date-picker
+              v-model="newEvent.date"
+              type="datetimerange"
+              start-placeholder="Start date"
+              end-placeholder="End date"
+              format="YYYY-MM-DD HH:mm"
+              date-format="YYYY/MM/DD ddd"
+              time-format="HH:mm"
+              value-format="YYYY-MM-DD HH:mm"
+            />
+          </el-form-item>
+          <!-- <el-form-item label="Start Time">
+            <el-date-picker
+              v-model="newEvent.start"
+              type="datetime"
+            />
+          </el-form-item>
+          <el-form-item label="End Time">
+            <el-date-picker
+              v-model="newEvent.end"
+              type="datetime"
+            />
+          </el-form-item> -->
+          <el-form-item>
+            <el-button type="primary" @click="addEvent">Add Event</el-button>
+          </el-form-item>
+        </el-form>
+        <!-- <form class="" @submit.prevent="addEvent">
+          <input v-model="newEvent.title" placeholder="Event Title" />
+          <input type="date" v-model="newEvent.start" placeholder="Start Time" />
+          <input type="date" v-model="newEvent.end" placeholder="End Time" />
+          <button type="submit">Add Event</button>
+        </form> -->
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
             :events="events"
             :config="config"
+            @edit-event="
+              (v) => {
+                console.log(v);
+              }
+            "
+            @delete-event="
+              (v) => {
+                console.log(v);
+              }
+            "
           />
         </div>
       </div>
@@ -220,7 +201,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import axios from "axios";
+import { ref, onMounted } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -233,6 +215,43 @@ import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import { Qalendar } from "qalendar";
 
 const modules = ref(null); // 使用 ref 創建一個響應式變量
+
+const VipData = ref([]);
+
+const VipServe = ref([]);
+
+const addToCart = (item) => {
+  store.addToCart(item);
+  productInfo.title = item.title;
+  productInfo.visible = true;
+};
+
+// console.log(booksdata.value, VipData.value,VipServe.value);
+
+const arr = [
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
+];
+
+onMounted(async () => {
+  try {
+    const resArr = await Promise.allSettled(arr); // 使用 Promise.allSettled
+    resArr.forEach((result, index) => {
+      if (result.status === "fulfilled") {
+        console.log(result.value.data);
+        if (index === 0) {
+          VipServe.value = result.value.data.products; // 會員等級分級介紹
+        }
+      } else {
+        console.log(`Promise at index ${index} failed:`, result.reason);
+      }
+    });
+  } catch (error) {
+    console.log("錯誤處理", error);
+  }
+  console.log("執行其他動作");
+});
 
 const isShow = ref(false);
 const input = ref("");
@@ -320,27 +339,28 @@ const photo = ref([
 
 const newEvent = ref({
   title: "",
-  start: "",
-  end: "",
+  date: [],
 });
 
-const events = ref([
-  // ...existing events
-]);
+const events = ref([]);
 
 const config = ref({
   // ...existing config
 });
 
 const addEvent = () => {
-  const { title, start, end } = newEvent.value;
+  const { title, date } = newEvent.value; // 只能用原本的參數
+  const [start = "", end = ""] = date;
   const newEventObj = {
-    title: title,
-    time: { start: start, end: end },
+    title, // 當key與value相同時, 可以省略:value 原始為{title: title}
+    time: { start, end },
     color: "blue", // Example color
     isEditable: true,
     id: Date.now().toString(), // Simple ID generation
+    description: "sjkfshfsfkugeyhtriueygeruiygerugyeruiyg",
   };
+
+  console.log(newEventObj);
   events.value.push(newEventObj);
   newEvent.value = { title: "", start: "", end: "" }; // Reset form
 };
@@ -368,13 +388,12 @@ body {
     @media (max-width: 768px) {
       display: none;
     }
-
     li {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      // border: 2px solid red;
+      border: 2px solid red;
       margin: 10px;
 
       .service-circle {
@@ -400,43 +419,30 @@ body {
           padding: 20px;
         }
       }
+      img {
+        width: 300px;
+        height: 200px;
+        object-fit: contain;
+        // border: 5px solid turquoise;
+      }
     }
   }
-
-  .banner {
-    display: flex;
-    // justify-content: center;
-    // align-items: center;
-    background-color: #eebe77;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 30px 0;
-    flex-direction: column;
-    @media (max-width: 768px) {
-      width: 90%;
+  .Vip_Serve_list {
+    border: 5px solid red;
+    li {
+      max-width: 300px;
+      text-align: center;
     }
-  }
-  .slogan {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 0 0 20px 0;
-    @media (max-width: 768px) {
-      font-size: 18px;
+    img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: contain;
+      object-position: center;
     }
-  }
-  .cta-button {
-    margin: 0 auto;
-    background-color: #d48c3e;
-    color: #ffffff;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #b6702e;
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
   }
 }

@@ -35,7 +35,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope,faUser } from "@fortawesome/free-regular-svg-icons";
 
 import {
   faBars,
@@ -64,6 +64,7 @@ library.add(
   faFacebook,
   faInstagram,
   faXTwitter,
+  faUser,
 );
 
 const pinia = createPinia();
