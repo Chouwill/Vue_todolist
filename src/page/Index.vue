@@ -17,15 +17,18 @@
           :modules="modules"
           class="mySwiper"
         >
-          <swiper-slide>Slide 1</swiper-slide>
-          <swiper-slide>Slide 2</swiper-slide
+          <swiper-slide v-for="item in VipServe" :key="item.id">
+            <img :src="item.imageUrl" alt="" style="max-width: 300px;">
+            <h4>{{ item.title }}</h4>
+          </swiper-slide>
+          <!-- <swiper-slide>Slide 2</swiper-slide 
           ><swiper-slide>Slide 3</swiper-slide>
           <swiper-slide>Slide 4</swiper-slide
           ><swiper-slide>Slide 5</swiper-slide>
           <swiper-slide>Slide 6</swiper-slide
           ><swiper-slide>Slide 7</swiper-slide>
           <swiper-slide>Slide 8</swiper-slide
-          ><swiper-slide>Slide 9</swiper-slide>
+          ><swiper-slide>Slide 9</swiper-slide>  -->
         </swiper>
       </div>
     </div>
@@ -61,8 +64,7 @@
             </li>
             <li>
               <p>
-                人生目標諮詢規劃：
-                規劃您的人生大方向，，助您實現更有意義的人生。
+                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
               </p>
             </li>
             <li>
@@ -71,13 +73,13 @@
           </ol>
         </div>
         <div class="main_img">
-          <img src="/src/image/start_paln-2.png" alt="" />
+          <img src="/src/image/New idea-amico.svg" alt="" />
         </div>
       </div>
 
       <div class="main_team">
         <div class="main_img">
-          <img src="/src/image/start_paln-2.png" alt="" />
+          <img src="/src/image/Travel insurance-bro.svg" alt="" />
         </div>
         <div class="main_text">
           <h2>享受放鬆生活</h2>
@@ -141,14 +143,26 @@
     width: 100%;
     display: flex;
     height: 30vh;
+
     .bg {
       width: 50%;
       background-color: #751313;
+      background-image: url("/src/image/Personal\ goals-bro.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
     .Carousel_box {
       // background-color: olive;
       width: 50%;
       border: 2px solid tan;
+      @media (max-width: 768px) {
+        display: block;
+        margin: 0 auto;
+      }
     }
   }
   .mySwiper {
@@ -160,6 +174,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      
     }
     ::v-deep .swiper-pagination-bullet-active {
       background: #00ff00; // 設定活動分頁點顏色
@@ -193,6 +208,10 @@
           max-width: 100%;
           height: 100%;
           object-fit: contain;
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 50vh;
+          }
         }
       }
       .main_text {
@@ -226,18 +245,35 @@
 </style>
 
 <script setup>
-import { ref } from "vue";
-// Import Swiper Vue.js components
+import axios from "axios";
+import { ref, onMounted } from "vue";
+
 import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/effect-flip";
+import "swiper/css/pagination";
 
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+const VipServe = ref([]);
 
-// 使用 setup 語法糖直接定義模組
-const modules = [Autoplay, Pagination, Navigation];
+const arr = [
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
+  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
+];
+
+onMounted(async () => {
+  try {
+    const resArr = await Promise.all(arr);
+    console.log(resArr[1].data);
+    VipServe.value = resArr[2].data.products;
+  } catch (error) {
+    console.log("錯誤處理", error);
+  }
+  console.log("執行其他動作");
+});
 </script>

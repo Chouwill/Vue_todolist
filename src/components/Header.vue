@@ -2,18 +2,33 @@
   <header>
     <nav>
       <div class="menu_width">
-        <router-link to="/">關於我們</router-link>
-        <router-link to="/">豐富資源</router-link>
+        <router-link to="/aboutus">關於我們</router-link>
+        <router-link to="/shopping">加值商城</router-link>
       </div>
       <div class="menu_width">
         <router-link to="/todolist">開始Plan</router-link>
-
-        <router-link to="/">享受放鬆生活</router-link>
+        <router-link to="/enjoylife">享受放鬆生活</router-link>
       </div>
     </nav>
+    <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
+      <li>
+        <router-link to="/aboutus">關於我們</router-link>
+      </li>
+      <li>
+        <router-link to="/shopping">加值商城</router-link>
+      </li>
+      <li>
+        <router-link to="/todolist">開始Plan</router-link>
+      </li>
+      <li>
+        <router-link to="/enjoylife">享受放鬆生活</router-link>
+      </li>
+    </ul>
     <div class="logo_box">
-      <img src="/src/image/Dream_LOGO.png" alt="" />
-      <h2>設計你的讀書計畫Plan</h2>
+      <router-link to="/">
+        <img src="/src/image/Dream_LOGO.png" alt="" />
+        <h2>設計你的讀書計畫Plan</h2>
+      </router-link>
     </div>
     <div class="user_box">
       <div>
@@ -27,6 +42,11 @@
           />
         </router-link>
       </div>
+    </div>
+    <div class="phone_menu_btn" @click="openMenu">
+      <button>
+        <font-awesome-icon icon="fa-solid fa-bars" class="menu_bar" />
+      </button>
     </div>
   </header>
 </template>
@@ -43,6 +63,7 @@ header {
   height: 15vh;
   display: flex;
   // padding: 100px 0;
+  position: relative;
   nav {
     width: 30%;
     border: 2px solid #000;
@@ -50,6 +71,13 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      display: none;
+    }
+    @media (max-width: 430px) {
+      background-color: orange;
+    }
 
     .menu_width {
       display: flex;
@@ -60,6 +88,10 @@ header {
       // justify-content: flex-start;
       // align-items: flex-start;
       flex-direction: column;
+      @media (max-width: 768px) {
+        display: block;
+        width: 100%;
+      }
       &:nth-child(1) {
         // border: 3px solid orange;
         text-align: right;
@@ -73,17 +105,74 @@ header {
         display: block;
       }
     }
+    // .phone_menu_list{
+    //   display: none;
+    //   @media (max-width: 768px) {
+    //   background-color: rgb(0, 255, 89);
+    //   display: block;
+    //   width: 200px;
+    // }
+    // }
+  }
+  .desktop_menu {
+    display: none;
+    border: 20px solid red;
+    @media (max-width: 768px) {
+      width: 400px;
+      background-color: orange;
+      border: 20px solid tomato;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 0;
+    }
+    &.active {
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgb(0, 255, 8);
+      border: 10px solid red;
+      color: orange;
+      @media (max-width: 768px) {
+        background-color: orange;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: rgb(0, 255, 8);
+        border: 10px solid red;
+        color: orange;
+      }
+    }
   }
   .logo_box {
     border: 2px solid red;
     width: 40%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     flex-direction: column;
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      justify-content: flex-end;
+      width: 50%;
+    }
     img {
-      max-width: 14%;
-      object-fit: contain;
+      max-width: 9%;
+      object-fit: cover;
+      @media (max-width: 768px) {
+        max-width: 24%;
+      }
+    }
+    h2 {
+      font-size: 18px;
+      text-align: center;
+      @media (max-width: 768px) {
+        font-size: 15px;
+      }
     }
   }
   .user_box {
@@ -93,12 +182,42 @@ header {
     justify-content: center;
     align-items: center;
     gap: 0;
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      display: none;
+    }
     div {
       display: flex;
       width: 30%;
       // border: 2px solid red;
       .user_link {
         font-size: 35px;
+      }
+    }
+  }
+  .phone_menu_btn {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 50%;
+      margin: 0 50px;
+    }
+    button {
+      border: none;
+      background: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      outline: none;
+      .menu_bar {
+        @media (max-width: 768px) {
+          color: orange;
+          font-size: 30px;
+        }
       }
     }
   }
@@ -124,10 +243,6 @@ const openCartlink = () => {
 const openMenu = (e) => {
   // openbtn.value = !openbtn.value;
   menuActive.value = !menuActive.value;
-  // console.log(e.target.nodeName);
-  // if (e.target.nodeName === "P") {
-  //   menu.value = false;
-  // }
   console.log(menuActive.value);
 };
 // ------------------------------------------------------------------

@@ -44,6 +44,7 @@
         了解更多
         <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </router-link>
+      <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
     </main>
   </div>
 </template>
@@ -256,6 +257,9 @@ const addEvent = () => {
     font-size: 24px; /* 字體大小 */
     cursor: pointer; /* 游標樣式 */
     margin: 20px auto;
+  }
+  h2{
+    text-align: center;
   }
 }
 </style>

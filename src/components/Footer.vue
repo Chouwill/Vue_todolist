@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <footer>
     <nav>
       <div class="menu_width">
         <router-link to="/">關於我們</router-link>
@@ -19,17 +19,26 @@
       <h2>聯絡我們</h2>
       <div>
         <router-link to="/">
-          <font-awesome-icon icon="fa-brands fa-facebook" class="community_link" />
+          <font-awesome-icon
+            icon="fa-brands fa-facebook"
+            class="community_link"
+          />
         </router-link>
         <router-link to="/">
-          <font-awesome-icon icon="fa-brands fa-instagram" class="community_link" />
+          <font-awesome-icon
+            icon="fa-brands fa-instagram"
+            class="community_link"
+          />
         </router-link>
         <router-link to="/">
-          <font-awesome-icon icon="fa-regular fa-envelope" class="community_link" />
+          <font-awesome-icon
+            icon="fa-regular fa-envelope"
+            class="community_link"
+          />
         </router-link>
       </div>
     </div>
-  </header>
+  </footer>
 </template>
 
 <style lang="scss" scoped>
@@ -38,7 +47,7 @@
   box-sizing: border-box;
   margin: 0 auto;
 }
-header {
+footer {
   width: 100%;
   background-color: #4ba0d7;
   height: 15vh;
@@ -51,6 +60,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      display: none;
+    }
 
     .menu_width {
       display: flex;
@@ -82,9 +95,24 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    h2{
+      @media (max-width: 414px) {
+      font-size: 20px;
+    }
+    }
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+    }
     img {
-      max-width: 14%;
+      max-width: 9%;
       object-fit: contain;
+      @media (max-width: 768px) {
+      max-width: 15%;
+    }
     }
   }
   .community_box {
@@ -95,15 +123,29 @@ header {
     align-items: center;
     gap: 10px;
     flex-direction: column;
-    h2{
-      width: 30%;
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+    }
+    h2 {
+      font-size: 20px;
+      @media (max-width: 414px) {
+        font-size: 20px;
+      }
     }
     div {
       display: flex;
       width: 30%;
+      gap: 10px;
       // border: 2px solid red;
       .community_link {
         font-size: 35px;
+        @media (max-width: 414px) {
+          font-size: 20px;
+        }
       }
     }
   }
