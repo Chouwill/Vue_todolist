@@ -2,36 +2,39 @@
   <div class="wrap">
     <h2>設計計畫</h2>
     <main>
-      <form action="">
-        <ul class="todo_box_row_One">
-          <li>
-            <label for="">主題名稱</label>
-            <input type="text" />
-          </li>
-          <li>
-            <label for="">計畫名稱</label>
-            <input type="text" />
-          </li>
-          <li>
-            <label for="">開始時間</label>
-            <input type="date" />
-          </li>
-          <li>
-            <label for="">結束時間</label>
-            <input type="date" />
-          </li>
-        </ul>
-        <ul class="todo_box_row_two">
-          <li>
+      <!-- <form class="form--tolist"> -->
+        <!-- <div class="form_box">
+
+        </div> -->
+        <!-- <div class="form_box">
+          <div>
             <label for="">單元名稱</label>
             <input type="text" />
-          </li>
-          <li>
+          </div>
+          <div>
             <label for="">單元目標</label>
             <input type="text" />
-          </li>
-        </ul>
-        <button>送出</button>
+          </div>
+        </div> -->
+        <!-- <div class="form_item">
+          <label class="form_label">主題名稱</label>
+          <input v-modal="newEvent.title" class="form_input" type="text" />
+        </div>
+        <div class="form_item">
+          <label class="form_label">計畫名稱</label>
+          <input class="form_input" type="text" />
+        </div>
+        <div class="form_item">
+          <label class="form_label">開始時間</label>
+          <input v-modal="newEvent." class="form_input" type="datetime-local" />
+        </div>
+        <div class="form_item">
+          <label class="form_label">結束時間</label>
+          <input class="form_input" type="datetime-local" />
+        </div>
+        <div class="form_item" style="justify-content: center">
+          <button @click="addEvent">送出</button>
+        </div>
       </form>
       <div class="calendar_box">
         <Qalendar
@@ -39,23 +42,10 @@
           :events="events"
           :config="config"
         />
+      </div> -->
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
-        <!-- <div class="Todolist">
-          <label for="">請輸入內容</label>
-          <el-input
-            v-model="input"
-            style="width: 240px"
-            placeholder="請輸入內容"
-          />
-          <label for="">起始時間</label>
-          <input type="date" v-model="startDatevalue" />
-          <label for="">結束時間</label>
-          <input type="date" v-model="endDatevalue" />
-          <button @click="sendBtn" @keydown.enter="sendBtn">送出999</button>
-          @keydown.enter="sendBtn"  沒用
-        </div> -->
-        <el-form :model="newEvent">
+        <el-form :model="newEvent" :label-width="120">
           <el-form-item label="Event Title">
             <el-input v-model="newEvent.title" />
           </el-form-item>
@@ -71,28 +61,18 @@
               value-format="YYYY-MM-DD HH:mm"
             />
           </el-form-item>
-          <!-- <el-form-item label="Start Time">
-            <el-date-picker
-              v-model="newEvent.start"
-              type="datetime"
+          <el-form-item label="Description">
+            <el-input
+              v-model="newEvent.description"
+              :rows="2"
+              type="textarea"
+              resize="none"
             />
           </el-form-item>
-          <el-form-item label="End Time">
-            <el-date-picker
-              v-model="newEvent.end"
-              type="datetime"
-            />
-          </el-form-item> -->
           <el-form-item>
             <el-button type="primary" @click="addEvent">Add Event</el-button>
           </el-form-item>
         </el-form>
-        <!-- <form class="" @submit.prevent="addEvent">
-          <input v-model="newEvent.title" placeholder="Event Title" />
-          <input type="date" v-model="newEvent.start" placeholder="Start Time" />
-          <input type="date" v-model="newEvent.end" placeholder="End Time" />
-          <button type="submit">Add Event</button>
-        </form> -->
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
@@ -210,11 +190,8 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
-
-const newEvent = ref({
-  title: "",
-  date: []
-});
+const initObj = { title: "", date: [new Date(), new Date()], description: "" }
+const newEvent = ref(JSON.parse(localStorage.getItem('calendarEvents') || JSON.stringify(initObj)));
 
 const events = ref([]);
 
@@ -223,7 +200,7 @@ const config = ref({
 });
 
 const addEvent = () => {
-  const { title, date } = newEvent.value; // 只能用原本的參數
+  const { title, date, description } = newEvent.value; // 只能用原本的參數
   const [start = '', end = ''] = date;
   const newEventObj = {
     title, // 當key與value相同時, 可以省略:value 原始為{title: title}
@@ -231,12 +208,13 @@ const addEvent = () => {
     color: "blue", // Example color
     isEditable: true,
     id: Date.now().toString(), // Simple ID generation
-    description: 'sjkfshfsfkugeyhtriueygeruiygerugyeruiyg'
+    description,
   };
 
   console.log(newEventObj)
   events.value.push(newEventObj);
-  newEvent.value = { title: "", start: "", end: "" }; // Reset form
+  localStorage.setItem("calendarEvents", JSON.stringify(newEventObj));
+  newEvent.value = initObj; // Reset form
 };
 </script>
 
@@ -256,19 +234,34 @@ const addEvent = () => {
     }
     form {
       background-color: #0176c3;
-      width: 40vw;
-      height: 750px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 10px 0;
-      // flex-direction: column;
-      @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
-        width: 100%;
-        flex-direction: column;
-        flex-wrap: nowrap;
+      width: 40vw; // 螢幕寬度的40%
+      max-width: 1200px;
+      padding: 5%;
+      // height: 750px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // flex-wrap: wrap;
+      // margin: 10px 0;
+      // // flex-direction: column;
+      // @media (max-width: 768px) {
+      //   background-color: rgb(0, 255, 89);
+      //   width: 100%;
+      //   flex-direction: column;
+      //   flex-wrap: nowrap;
+      // }
+      .form_item {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 10px;
+        .form_label {
+          display: inline-block;
+          flex: 1;
+        }
+        .form_input {
+          width: 80%;
+          flex: 2;
+        }
       }
       .todo_box_row_One {
         // border: 5px solid #000;
@@ -290,40 +283,41 @@ const addEvent = () => {
           // border: 2px solid red;
           input {
             width: 80%;
-            padding: 10px 0;
+            padding: 10px;
             border-radius: 20px;
           }
         }
       }
-      .todo_box_row_two {
-        // border: 5px solid #000;
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        height: 500px;
-        list-style: none;
-        gap: 20px;
-        @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
-        width: 70%;
-        // flex-direction: row;
-      }
-        li {
-          width: 100%;
-          // border: 2px solid red;
-          input {
-            width: 80%;
-            padding: 10px 0;
-            border-radius: 20px;
-          }
-        }
-      }
+      // .todo_box_row_two {
+      //   // border: 5px solid #000;
+      //   display: flex;
+      //   flex-direction: column;
+      //   width: 50%;
+      //   justify-content: center;
+      //   align-items: center;
+      //   height: 500px;
+      //   list-style: none;
+      //   gap: 20px;
+      //   @media (max-width: 768px) {
+      //   background-color: rgb(0, 255, 89);
+      //   width: 70%;
+      //   // flex-direction: row;
+      // }
+      //   li {
+      //     width: 100%;
+      //     // border: 2px solid red;
+      //     input {
+      //       width: 80%;
+      //       padding: 10px;
+      //       border-radius: 20px;
+      //     }
+      //   }
+      // }
       button {
-        padding: 20px 50px;
+        padding: 5px 50px;
         background-color: #d9d9d9;
         border-radius: 40px;
+        font-size: 14px;
       }
     }
     .calendar_box {

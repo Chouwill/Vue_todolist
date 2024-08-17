@@ -1,16 +1,12 @@
 <template>
   <header>
-    <nav>
-      <div class="menu_width">
-        <router-link to="/aboutus">關於我們</router-link>
-        <router-link to="/shopping">加值商城</router-link>
-      </div>
-      <div class="menu_width">
-        <router-link to="/todolist">開始Plan</router-link>
-        <router-link to="/enjoylife">享受放鬆生活</router-link>
-      </div>
+    <nav :class="['desktop_menu', { active: menuActive }]">
+      <router-link to="/aboutus">關於我們</router-link>
+      <router-link to="/shopping">加值商城</router-link>
+      <router-link to="/todolist">開始Plan</router-link>
+      <router-link to="/enjoylife">享受放鬆生活</router-link>
     </nav>
-    <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
+    <!-- <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
       <li>
         <router-link to="/aboutus">關於我們</router-link>
       </li>
@@ -23,7 +19,7 @@
       <li>
         <router-link to="/enjoylife">享受放鬆生活</router-link>
       </li>
-    </ul>
+    </ul> -->
     <div class="logo_box">
       <router-link to="/">
         <img src="/src/image/Dream_LOGO.png" alt="" />
@@ -115,37 +111,48 @@ header {
     // }
   }
   .desktop_menu {
-    display: none;
+    // display: none;
     // border: 20px solid red;
     @media (max-width: 768px) {
-      width: 400px;
-      background-color: orange;
-      // border: 20px solid tomato;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      right: 0;
+      display: none;
+      // width: 400px;
+      // background-color: orange;
+      // // border: 20px solid tomato;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // position: absolute;
+      // right: 0;
     }
     &.active {
-      width: 350px;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      z-index: 100;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 16px;
       background-color: rgb(0, 255, 8);
       // border: 10px solid red;
       color: orange;
-      @media (max-width: 768px) {
-        background-color: orange;
-        width: 200px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        background-color: rgb(0, 255, 8);
-        // border: 10px solid red;
-        color: orange;
-      }
+      // @media (max-width: 768px) {
+      //   background-color: orange;
+      //   width: 200px;
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: center;
+      //   justify-content: flex-end;
+      //   background-color: rgb(0, 255, 8);
+      //   // border: 10px solid red;
+      //   color: orange;
+      // }
     }
   }
   .logo_box {
