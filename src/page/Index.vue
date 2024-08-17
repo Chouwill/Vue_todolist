@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div class="page_header">
-      <div class="bg"></div>
+      <div class="bg">
+        <h2>
+          Make<br />
+          your dream come true
+        </h2>
+      </div>
       <div class="Carousel_box">
         <swiper
           :spaceBetween="30"
@@ -18,7 +23,7 @@
           class="mySwiper"
         >
           <swiper-slide v-for="item in VipServe" :key="item.id">
-            <img :src="item.imageUrl" alt="" style="max-width: 300px;">
+            <img :src="item.imageUrl" alt="" style="max-width: 300px" />
             <h4>{{ item.title }}</h4>
           </swiper-slide>
           <!-- <swiper-slide>Slide 2</swiper-slide 
@@ -139,26 +144,44 @@
 }
 .container {
   background-color: #c7eeff;
+  // background-color: #fff;
+
+  // background-color: white;
+
   .page_header {
     width: 100%;
     display: flex;
     height: 30vh;
+    position: relative;
 
     .bg {
-      width: 50%;
-      background-color: #751313;
-      background-image: url("/src/image/Personal\ goals-bro.svg");
+      width: 40%;
+      // border: 2px solid red;
+      // background-image: url("/src/image/Personal\ goals-bro.svg");
+      background-color: #4ba0d7;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      height: 30vh;
+      
       @media (max-width: 768px) {
         display: none;
+      }
+      h2 {
+        position: relative;
+        color: orange;
+        top: 30px;
+        left: 372px;
+        z-index: 10;
+        text-align: center;
+        font-size: 35px;
       }
     }
     .Carousel_box {
       // background-color: olive;
-      width: 50%;
-      border: 2px solid tan;
+      width: 60%;
+      height: 30vh;
+      // border: 2px solid tan;
       @media (max-width: 768px) {
         display: block;
         margin: 0 auto;
@@ -174,7 +197,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      
     }
     ::v-deep .swiper-pagination-bullet-active {
       background: #00ff00; // 設定活動分頁點顏色
@@ -184,22 +206,25 @@
     }
   }
   main {
+    margin: 20px 0;
     width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
     // border: 5px solid olive;
+    background-color: #fff;
+
     flex-wrap: wrap;
     .main_team {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 5px solid olive;
+      // border: 50px solid olive;
       flex-direction: row;
 
       .main_img {
-        border: 2px solid yellow;
+        // border: 2px solid yellow;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -215,7 +240,7 @@
         }
       }
       .main_text {
-        border: 2px solid yellow;
+        // border: 2px solid yellow;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -224,13 +249,13 @@
         height: 100%;
         h2 {
           width: 70%;
-          border: 2px solid red;
+          // border: 2px solid red;
           text-align: left;
           color: #43aac1;
         }
         ol {
           width: 100%;
-          border: 2px solid rgb(35, 14, 76);
+          // border: 2px solid rgb(35, 14, 76);
           font-size: 25px;
           li {
             p {

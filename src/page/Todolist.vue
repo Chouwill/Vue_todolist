@@ -35,7 +35,7 @@
       </form>
       <div class="calendar_box">
         <Qalendar
-          :selected-date="new Date(2022, 0, 8)"
+          :selected-date="new Date()"
           :events="events"
           :config="config"
         />
@@ -183,83 +183,117 @@ const addEvent = () => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  form {
-    background-color: #0176c3;
-    width: 40vw;
-    height: 750px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 10px 0;
-    // flex-direction: column;
-    .todo_box_row_One {
-      // border: 5px solid #000;
+  main {
+    width: 100%;
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      width: 100%;
+      // display: none;
+    }
+    form {
+      background-color: #0176c3;
+      width: 40vw;
+      height: 750px;
       display: flex;
-      flex-direction: column;
-      width: 50%;
       justify-content: center;
       align-items: center;
-      height: 500px;
-      list-style: none;
-      gap: 20px;
-      li {
+      flex-wrap: wrap;
+      margin: 10px 0;
+      // flex-direction: column;
+      @media (max-width: 768px) {
+        background-color: rgb(0, 255, 89);
         width: 100%;
-        // border: 2px solid red;
-        input {
-          width: 80%;
-          padding: 10px 0;
-          border-radius: 20px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+      .todo_box_row_One {
+        // border: 5px solid #000;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        list-style: none;
+        gap: 20px;
+        @media (max-width: 768px) {
+        background-color: rgb(0, 255, 89);
+        width: 70%;
+        // flex-direction: row;
+      }
+        li {
+          width: 100%;
+          // border: 2px solid red;
+          input {
+            width: 80%;
+            padding: 10px 0;
+            border-radius: 20px;
+          }
         }
       }
+      .todo_box_row_two {
+        // border: 5px solid #000;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        list-style: none;
+        gap: 20px;
+        @media (max-width: 768px) {
+        background-color: rgb(0, 255, 89);
+        width: 70%;
+        // flex-direction: row;
+      }
+        li {
+          width: 100%;
+          // border: 2px solid red;
+          input {
+            width: 80%;
+            padding: 10px 0;
+            border-radius: 20px;
+          }
+        }
+      }
+      button {
+        padding: 20px 50px;
+        background-color: #d9d9d9;
+        border-radius: 40px;
+      }
     }
-    .todo_box_row_two {
-      // border: 5px solid #000;
+    .calendar_box {
+      width: 40vw;
+      border: 5px solid palegreen;
+      height: 500px;
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgb(0, 255, 89);
+        width: 80%;
+        margin: 0 auto;
+        // flex-direction: row;
+      }
+    }
+    a {
+      width: 200px;
       display: flex;
-      flex-direction: column;
-      width: 50%;
       justify-content: center;
       align-items: center;
-      height: 500px;
-      list-style: none;
-      gap: 20px;
-      li {
-        width: 100%;
-        // border: 2px solid red;
-        input {
-          width: 80%;
-          padding: 10px 0;
-          border-radius: 20px;
-        }
-      }
+      padding: 20px 40px; /* 內邊距 */
+      background-color: #40b9a9; /* 背景顏色 */
+      color: #000; /* 字體顏色 */
+      border: none; /* 去掉邊框 */
+      border-radius: 20px; /* 圓角 */
+      font-size: 24px; /* 字體大小 */
+      cursor: pointer; /* 游標樣式 */
+      margin: 20px auto;
     }
-    button {
-      padding: 20px 50px;
-      background-color: #d9d9d9;
-      border-radius: 40px;
+    h2 {
+      text-align: center;
     }
-  }
-  .calendar_box {
-    width: 40vw;
-    border: 5px solid palegreen;
-    height: 500px;
-  }
-  a {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 40px; /* 內邊距 */
-    background-color: #40b9a9; /* 背景顏色 */
-    color: #000; /* 字體顏色 */
-    border: none; /* 去掉邊框 */
-    border-radius: 20px; /* 圓角 */
-    font-size: 24px; /* 字體大小 */
-    cursor: pointer; /* 游標樣式 */
-    margin: 20px auto;
-  }
-  h2{
-    text-align: center;
   }
 }
 </style>

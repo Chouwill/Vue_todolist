@@ -27,15 +27,15 @@
     <div class="logo_box">
       <router-link to="/">
         <img src="/src/image/Dream_LOGO.png" alt="" />
-        <h2>設計你的讀書計畫Plan</h2>
+        <h2>設計你的計畫Plan</h2>
       </router-link>
     </div>
     <div class="user_box">
       <div>
-        <router-link to="/">
+        <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
-        <router-link to="/">
+        <router-link to="/shopping">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
             class="user_link"
@@ -66,7 +66,7 @@ header {
   position: relative;
   nav {
     width: 30%;
-    border: 2px solid #000;
+    // border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
@@ -116,11 +116,11 @@ header {
   }
   .desktop_menu {
     display: none;
-    border: 20px solid red;
+    // border: 20px solid red;
     @media (max-width: 768px) {
       width: 400px;
       background-color: orange;
-      border: 20px solid tomato;
+      // border: 20px solid tomato;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -133,7 +133,7 @@ header {
       flex-direction: column;
       align-items: center;
       background-color: rgb(0, 255, 8);
-      border: 10px solid red;
+      // border: 10px solid red;
       color: orange;
       @media (max-width: 768px) {
         background-color: orange;
@@ -143,13 +143,13 @@ header {
         align-items: center;
         justify-content: flex-end;
         background-color: rgb(0, 255, 8);
-        border: 10px solid red;
+        // border: 10px solid red;
         color: orange;
       }
     }
   }
   .logo_box {
-    border: 2px solid red;
+    // border: 2px solid red;
     width: 40%;
     display: flex;
     // justify-content: center;
@@ -177,7 +177,7 @@ header {
   }
   .user_box {
     width: 30%;
-    border: 3px solid pink;
+    // border: 3px solid pink;
     display: flex;
     justify-content: center;
     align-items: center;
