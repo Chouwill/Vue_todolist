@@ -1,303 +1,266 @@
 <template>
   <div class="container">
     <div class="page_header">
-      <div class="product_feature">
-        <div class="feature_tiltle">
-          <h2>夢想時間計畫產品特色</h2>
-          <!-- <p>與傳統筆記本相比具有以下優勢</p> -->
-        </div>
-        <ul class="main_box">
-          <li>
-            <span>經濟實惠</span>
-            <img src="/src/image/Online_Shopping-1.png" alt="" />
-            <p>
-              夢想時間計劃以其高性價比脫穎而出，無需大量投資即可享受到優質的時間管理和目標達成策略。
-            </p>
-          </li>
-          <li>
-            <span>簡單好使用</span>
-            <img src="/src/image/list.png" alt="" />
-            <p>
-              設計優雅簡約，使用者體驗極佳。無論您是初學者還是經驗豐富的時間管理專家，都能輕鬆上手，快速掌握系統，立即提升工作效率和生活品質。
-            </p>
-          </li>
-          <li>
-            <span>AI智能提醒</span>
-            <img src="/src/image/remind-2.png" alt="" />
-            <p>
-              憑藉先進的人工智慧技術，夢想時間計劃能夠根據您的個人習慣和偏好，自動化產生提醒和建議。
-            </p>
-          </li>
-          <li>
-            <span>快速制定</span>
-            <img src="/src/image/start_paln-2.png" alt="" />
-            <p>實現夢想，從這裡開始！</p>
-            <!-- <br /> -->
-            <p>VIP服務，讓你的計畫更上一層樓。</p>
-          </li>
-        </ul>
+      <div class="bg">
+        <h2>
+          Make<br />
+          your dream come true
+        </h2>
+      </div>
+      <div class="Carousel_box">
+        <swiper
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :pagination="{
+            clickable: true,
+          }"
+          :navigation="false"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="item in VipServe" :key="item.id">
+            <img :src="item.imageUrl" alt="" style="max-width: 300px" />
+            <h4>{{ item.title }}</h4>
+          </swiper-slide>
+          <!-- <swiper-slide>Slide 2</swiper-slide 
+          ><swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Slide 4</swiper-slide
+          ><swiper-slide>Slide 5</swiper-slide>
+          <swiper-slide>Slide 6</swiper-slide
+          ><swiper-slide>Slide 7</swiper-slide>
+          <swiper-slide>Slide 8</swiper-slide
+          ><swiper-slide>Slide 9</swiper-slide>  -->
+        </swiper>
       </div>
     </div>
     <main>
-      <div class="wrap_box">
-        <ul class="title_box">
-          <li class="title">
-            <span>優質服務</span>
-            <h4>備受好評</h4>
-          </li>
-          <li class="title">
-            <span>10萬</span>
-            <h4>各大平台載次數</h4>
-          </li>
-          <li class="title">
-            <span>#1</span>
-            <h4>民調學習工具 排名第一</h4>
-          </li>
-        </ul>
+      <div class="main_team">
+        <div class="main_img">
+          <img src="/src/image/start_paln-2.png" alt="" />
+        </div>
+        <div class="main_text">
+          <h2>客製你的Plan</h2>
+          <ol>
+            <li>
+              <p>客製讀書計畫： 創建您專屬的讀書計畫</p>
+            </li>
+            <li>
+              <p>
+                人生目標諮詢規劃：
+                規劃您的人生大方向，，助您實現更有意義的人生。
+              </p>
+            </li>
+            <li>
+              <p>$加值功能，附有AI功能的專屬祕書，檢視進度</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="main_team">
+        <div class="main_text">
+          <h2>豐富的資源</h2>
+          <ol>
+            <li>
+              <p>推薦合適的主題資源</p>
+            </li>
+            <li>
+              <p>
+                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
+              </p>
+            </li>
+            <li>
+              <p>更多更豐富的外部資源共享分享與您</p>
+            </li>
+          </ol>
+        </div>
+        <div class="main_img">
+          <img src="/src/image/New idea-amico.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="main_team">
+        <div class="main_img">
+          <img src="/src/image/Travel insurance-bro.svg" alt="" />
+        </div>
+        <div class="main_text">
+          <h2>享受放鬆生活</h2>
+          <ol>
+            <li>
+              <p>
+                休閒娛樂生活建議：
+                在忙碌的學習計畫中，我們強烈鼓勵您享受休閒娛樂生活。參與您喜歡的運動和娛樂活動
+              </p>
+            </li>
+            <li>
+              <p>
+                自訂提醒功能：
+                設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
+              </p>
+            </li>
+            <li>
+              <p>
+                紀錄人生重要時刻：
+                除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
+              </p>
+            </li>
+          </ol>
+        </div>
       </div>
     </main>
   </div>
 </template>
 
 <style lang="scss" scoped>
-* {
-  list-style: none;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-html {
-  background-color: #f9f9f9;
-}
-.container {
-  // width: 100%;
-}
-.page_header {
+.swiper {
   width: 100%;
-  padding: 50px 0;
-  // background-color: #215d95;
-  background-color: #f9f9f9;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  .product_feature {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // border: 5px solid greenyellow;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+* {
+  // list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.container {
+  background-color: #c7eeff;
+  // background-color: #fff;
+
+  // background-color: white;
+
+  .page_header {
     width: 100%;
-    flex-wrap: wrap;
-    background-color: #f9f9f9;
-    .feature_tiltle {
-      h2 {
-        font-size: 35px;
-        text-align: center;
-        color: #333333;
+    display: flex;
+    height: 30vh;
+    position: relative;
+
+    .bg {
+      width: 40%;
+      // border: 2px solid red;
+      // background-image: url("/src/image/Personal\ goals-bro.svg");
+      background-color: #4ba0d7;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      height: 30vh;
+      
+      @media (max-width: 768px) {
+        display: none;
       }
-      p {
+      h2 {
+        position: relative;
+        color: orange;
+        top: 30px;
+        left: 372px;
+        z-index: 10;
         text-align: center;
         font-size: 35px;
-        color: grey;
-        @media (max-width: 768px) {
-          font-size: 25px;
-        }
-        @media (max-width: 430px) {
-          max-width: 245px;
-          // border: 5px solid red;
-          font-size: 19px;
-        }
+      }
+    }
+    .Carousel_box {
+      // background-color: olive;
+      width: 60%;
+      height: 30vh;
+      // border: 2px solid tan;
+      @media (max-width: 768px) {
+        display: block;
+        margin: 0 auto;
       }
     }
   }
-  .main_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 83%;
-    flex-wrap: wrap;
-    gap: 25px;
-    border: 2px solid gray;
-    @media (max-width: 768px) {
+  .mySwiper {
+    ::v-deep .swiper-pagination {
+      position: absolute;
+      top: 50%;
+      left: 10px; /* 確保 right 屬性設置 */
+      transform: translateY(-50%); /* 確保 translateY 設置 */
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-    li {
-      // border: 2px solid orange;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      max-width: 35%;
-      height: 670px;
-      @media (max-width: 768px) {
-        width: 70%;
-      }
-      span {
-        font-size: 35px;
-        font-weight: bolder;
-        @media (max-width: 768px) {
-          font-size: 30px;
-          font-weight: bolder;
-        }
-      }
-      img {
-        // border: 1px solid indianred;
-        width: 100%;
-        height: 500px;
-        object-fit: contain;
-        @media (max-width: 768px) {
-          width: 70%;
-          height: 250px;
-        }
-      }
-      p {
-        max-width: 500px;
-      }
-    }
-    li:nth-child(1) {
-      // border: 2px solid red;
+    ::v-deep .swiper-pagination-bullet-active {
+      background: #00ff00; // 設定活動分頁點顏色
+      width: 10px;
+      height: 10px;
+      border-radius: 20px;
     }
   }
-  .main_footer {
-    // background-color: rebeccapurple;
-    width: 80%;
+  main {
+    margin: 20px 0;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
-    // border: 5px solid orange;
-    @media (max-width: 768px) {
+    // border: 5px solid olive;
+    background-color: #fff;
+
+    flex-wrap: wrap;
+    .main_team {
       width: 100%;
       display: flex;
-      flex-direction: column;
-    }
-
-    img {
-      display: block;
-      max-width: 40%;
-
-      // height: 500px;
-      object-fit: contain;
-      @media (max-width: 768px) {
-        max-width: 90%;
-      }
-    }
-    .main_text {
-      // border: 2px solid orange;
-      width: 30%;
-      padding: 40px 0;
-      text-align: center;
-      p {
-        margin: 20px auto;
-        width: 300px;
-        // color: red;
-        text-align: center;
-        // border: 5px solid red;
-      }
-      @media (max-width: 768px) {
-        width: 100%;
-      }
-      button {
-        margin: 0 auto;
-        padding: 20px 30px;
-        border-radius: 20px;
-        border: none;
-        background-color: orange;
-        font-size: 15px;
-        // color: white;
-      }
-    }
-  }
-}
-main {
-  width: 100%;
-  // background-color: #f3d19e;
-  background-color: #f0e6d6;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  .wrap_box {
-    width: 100%;
-    // background-color: #f8e3c5;
-    background-color: #f0e6d6;
-
-    @media (max-width: 768px) {
-      width: 100%;
-      background-color: #f0e6d6;
-    }
-
-    .title_box {
+      justify-content: center;
+      align-items: center;
+      // border: 50px solid olive;
       flex-direction: row;
-      width: 70%;
-      display: flex;
-      margin: 0 auto;
-      background-color: #f0e6d6;
-      @media (max-width: 768px) {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-      }
 
-      @media (max-width: 607px) {
-        // width: 100%;
+      .main_img {
+        // border: 2px solid yellow;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
-        padding: 0 50px;
-
-        // border: 10px solid blue;
+        flex: 1;
+        img {
+          max-width: 100%;
+          height: 100%;
+          object-fit: contain;
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 50vh;
+          }
+        }
       }
-      .title {
-        width: 100%;
-        padding: 20px 0;
-        flex-direction: column;
-        background-color: #f0e6d6;
-        // border: 2px solid palegreen;
+      .main_text {
+        // border: 2px solid yellow;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        @media (max-width: 607px) {
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+        h2 {
+          width: 70%;
+          // border: 2px solid red;
+          text-align: left;
+          color: #43aac1;
+        }
+        ol {
           width: 100%;
-          // height: 300px;
-          // background-color: orange;
-        }
-
-        span {
-          color: #215d95;
-          color: #ff9900;
-          font-weight: bolder;
-          font-size: 40px;
-          padding: 0 15px;
-          @media (max-width: 768px) {
-            font-size: 23px;
-          }
-          @media (max-width: 520px) {
-            font-size: 23px;
-            text-align-last: left;
-          }
-        }
-        h4 {
-          font-size: 15px;
-          @media (max-width: 768px) {
-            font-size: 20px;
-          }
-          @media (max-width: 520px) {
-            font-size: 19px;
-            text-align-last: left;
+          // border: 2px solid rgb(35, 14, 76);
+          font-size: 25px;
+          li {
+            p {
+              font-size: 25px;
+            }
           }
         }
       }
@@ -305,3 +268,37 @@ main {
   }
 }
 </style>
+
+<script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-flip";
+import "swiper/css/pagination";
+
+const VipServe = ref([]);
+
+const arr = [
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
+  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
+];
+
+onMounted(async () => {
+  try {
+    const resArr = await Promise.all(arr);
+    console.log(resArr[1].data);
+    VipServe.value = resArr[2].data.products;
+  } catch (error) {
+    console.log("錯誤處理", error);
+  }
+  console.log("執行其他動作");
+});
+</script>

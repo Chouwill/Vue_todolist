@@ -147,16 +147,6 @@ const arr = [
 ];
 
 onMounted(async () => {
-  // try {
-  //   axios
-  //     .get(`https://vue3-course-api.hexschool.io/api/2024vipshopping/products`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       data.value = res.data.products;
-  //     });
-  // } catch (e) {
-  //   console.log(e);
-  // }
   try {
     const resArr = await Promise.all(arr); //Promise.allSettled  沒生效????
     console.log(resArr[0].data);

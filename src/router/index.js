@@ -46,6 +46,11 @@ const routes = [
     name: "Windows",
     component: () => import("@/page/Windows.vue"),
   },
+  {
+    path: "/enjoylife",
+    name: "Enjoylife",
+    component: () => import("@/page/Enjoylife.vue"),
+  },
   
 ];
 
