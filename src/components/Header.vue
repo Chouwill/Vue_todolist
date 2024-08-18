@@ -1,16 +1,12 @@
 <template>
   <header>
-    <nav>
-      <div class="menu_width">
-        <router-link to="/aboutus">關於我們</router-link>
-        <router-link to="/shopping">加值商城</router-link>
-      </div>
-      <div class="menu_width">
-        <router-link to="/todolist">開始Plan</router-link>
-        <router-link to="/enjoylife">享受放鬆生活</router-link>
-      </div>
+    <nav :class="['desktop_menu', { active: menuActive }]">
+      <router-link to="/aboutus">關於我們</router-link>
+      <router-link to="/shopping">加值商城</router-link>
+      <router-link to="/todolist">開始Plan</router-link>
+      <router-link to="/enjoylife">享受放鬆生活</router-link>
     </nav>
-    <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
+    <!-- <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
       <li>
         <router-link to="/aboutus">關於我們</router-link>
       </li>
@@ -23,10 +19,10 @@
       <li>
         <router-link to="/enjoylife">享受放鬆生活</router-link>
       </li>
-    </ul>
+    </ul> -->
     <div class="logo_box">
       <router-link to="/">
-        <img src="/src/image/Dream_LOGO.png" alt="" />
+        <!-- <img src="/src/image/Dream_LOGO.png" alt="" /> -->
         <h2>設計你的計畫Plan</h2>
       </router-link>
     </div>
@@ -42,6 +38,11 @@
           />
         </router-link>
       </div>
+    </div>
+    <div class="phone_menu_cancel">
+      <button>
+        <font-awesome-icon icon="fa-solid fa-xmark" />
+      </button>
     </div>
     <div class="phone_menu_btn" @click="openMenu">
       <button>
@@ -71,89 +72,69 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    a {
+      font-size: 20px;
+    }
     @media (max-width: 768px) {
       background-color: rgb(0, 255, 89);
       display: none;
     }
     @media (max-width: 430px) {
-      background-color: orange;
+      background-color: rgb(217, 255, 0);
+      
     }
-
-    .menu_width {
-      display: flex;
-      width: 250px;
-      // border: 5px solid rosybrown;
-      gap: 0px;
-      font-size: 25px;
-      // justify-content: flex-start;
-      // align-items: flex-start;
-      flex-direction: column;
-      @media (max-width: 768px) {
-        display: block;
-        width: 100%;
-      }
-      &:nth-child(1) {
-        // border: 3px solid orange;
-        text-align: right;
-      }
-      a,
-      .router-link {
-        // text-align: left;
-        color: bisque;
-        width: 100%;
-        white-space: nowrap;
-        display: block;
-      }
-    }
-    // .phone_menu_list{
-    //   display: none;
-    //   @media (max-width: 768px) {
-    //   background-color: rgb(0, 255, 89);
-    //   display: block;
-    //   width: 200px;
-    // }
-    // }
   }
   .desktop_menu {
-    display: none;
+    // display: none;
     // border: 20px solid red;
     @media (max-width: 768px) {
-      width: 400px;
-      background-color: orange;
-      // border: 20px solid tomato;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      right: 0;
+      display: none;
+      // width: 400px;
+      // background-color: orange;
+      // // border: 20px solid tomato;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // position: absolute;
+      // right: 0;
     }
     &.active {
-      width: 350px;
+      width: 50vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      z-index: 100;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: rgb(0, 255, 8);
+      justify-content: center;
+      gap: 16px;
+      // background-color: rgb(0, 255, 8);
       // border: 10px solid red;
-      color: orange;
-      @media (max-width: 768px) {
-        background-color: orange;
-        width: 200px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        background-color: rgb(0, 255, 8);
-        // border: 10px solid red;
-        color: orange;
-      }
+      color: rgb(68, 0, 255);
+      // @media (max-width: 768px) {
+      //   background-color: orange;
+      //   width: 200px;
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: center;
+      //   justify-content: flex-end;
+      //   background-color: rgb(0, 255, 8);
+      //   // border: 10px solid red;
+      //   color: orange;
+      // }
     }
   }
   .logo_box {
     // border: 2px solid red;
     width: 40%;
     display: flex;
-    // justify-content: center;
-    // align-items: center;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
@@ -168,10 +149,16 @@ header {
       }
     }
     h2 {
-      font-size: 18px;
+      font-size: 25px;
       text-align: center;
       @media (max-width: 768px) {
-        font-size: 15px;
+        font-size: 35px;
+        line-height: 3.2;
+      }
+      @media (max-width: 768px) {
+        font-size: 17px;
+        line-height: 6.2;
+        // margin-left: 20px;
       }
     }
   }
@@ -203,6 +190,7 @@ header {
       align-items: center;
       width: 50%;
       margin: 0 50px;
+      z-index: 10;
     }
     button {
       border: none;

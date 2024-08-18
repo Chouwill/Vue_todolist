@@ -108,8 +108,7 @@ onMounted(async () => {
                 height: 50%;
             }
             a{
-                width: 50%;
-                
+                width: 50%; 
                 position: absolute;
                 background-color: #AFBF30;
                 bottom: 0;
