@@ -116,15 +116,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    // background-color: #9fd658;
+    background-color: #9fd658;
     margin: 50px 0 0 0;
-    // border: 5px solid orange;
+    border: 5px solid orange;
     position: relative;
-// 
-    height: 200px;
     img {
       position: relative;
-      width: 10%;
+      max-width: 100%;
       object-fit: contain;
 
       // border: 5px solid red;
@@ -132,7 +130,7 @@
     h2 {
       color: red;
       position: relative;
-      right: 225px;
+      right: 450px;
       text-align: center;
       font-size: 35px;
     }

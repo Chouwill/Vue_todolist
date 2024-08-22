@@ -12,7 +12,7 @@
       </div>
     </nav>
     <div class="logo_box">
-      <img src="/src/image/Dream_LOGO.png" alt="" />
+      <!-- <img src="/src/image/Dream_LOGO.png" alt="" /> -->
       <h2>設計你的讀書計畫Plan</h2>
     </div>
     <div class="community_box">
