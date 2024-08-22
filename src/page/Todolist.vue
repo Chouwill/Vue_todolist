@@ -2,47 +2,6 @@
   <div class="wrap">
     <h2>設計計畫</h2>
     <main>
-      <!-- <form class="form--tolist"> -->
-        <!-- <div class="form_box">
-
-        </div> -->
-        <!-- <div class="form_box">
-          <div>
-            <label for="">單元名稱</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label for="">單元目標</label>
-            <input type="text" />
-          </div>
-        </div> -->
-        <!-- <div class="form_item">
-          <label class="form_label">主題名稱</label>
-          <input v-modal="newEvent.title" class="form_input" type="text" />
-        </div>
-        <div class="form_item">
-          <label class="form_label">計畫名稱</label>
-          <input class="form_input" type="text" />
-        </div>
-        <div class="form_item">
-          <label class="form_label">開始時間</label>
-          <input v-modal="newEvent." class="form_input" type="datetime-local" />
-        </div>
-        <div class="form_item">
-          <label class="form_label">結束時間</label>
-          <input class="form_input" type="datetime-local" />
-        </div>
-        <div class="form_item" style="justify-content: center">
-          <button @click="addEvent">送出</button>
-        </div>
-      </form>
-      <div class="calendar_box">
-        <Qalendar
-          :selected-date="new Date()"
-          :events="events"
-          :config="config"
-        />
-      </div> -->
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
         <el-form :model="newEvent" :label-width="120">
@@ -78,8 +37,16 @@
             :selected-date="new Date()"
             :events="events"
             :config="config"
-            @edit-event="(v) => {console.log(v)}"
-            @delete-event="(v) => {console.log(v)}"
+            @edit-event="
+              (v) => {
+                console.log(v);
+              }
+            "
+            @delete-event="
+              (v) => {
+                console.log(v);
+              }
+            "
           />
         </div>
       </div>
@@ -190,8 +157,10 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
-const initObj = { title: "", date: [new Date(), new Date()], description: "" }
-const newEvent = ref(JSON.parse(localStorage.getItem('calendarEvents') || JSON.stringify(initObj)));
+const initObj = { title: "", date: [new Date(), new Date()], description: "" };
+const newEvent = ref(
+  JSON.parse(localStorage.getItem("calendarEvents") || JSON.stringify(initObj))
+);
 
 const events = ref([]);
 
@@ -201,7 +170,7 @@ const config = ref({
 
 const addEvent = () => {
   const { title, date, description } = newEvent.value; // 只能用原本的參數
-  const [start = '', end = ''] = date;
+  const [start = "", end = ""] = date;
   const newEventObj = {
     title, // 當key與value相同時, 可以省略:value 原始為{title: title}
     time: { start, end },
@@ -211,7 +180,7 @@ const addEvent = () => {
     description,
   };
 
-  console.log(newEventObj)
+  console.log(newEventObj);
   events.value.push(newEventObj);
   localStorage.setItem("calendarEvents", JSON.stringify(newEventObj));
   newEvent.value = initObj; // Reset form
@@ -227,112 +196,82 @@ const addEvent = () => {
   flex-direction: column;
   main {
     width: 100%;
+    // display: flex;
+    border: 2px solid red;
+    h2 {
+    }
     @media (max-width: 768px) {
       background-color: rgb(0, 255, 89);
       width: 100%;
       // display: none;
     }
-    form {
-      background-color: #0176c3;
-      width: 40vw; // 螢幕寬度的40%
-      max-width: 1200px;
-      padding: 5%;
-      // height: 750px;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // flex-wrap: wrap;
-      // margin: 10px 0;
-      // // flex-direction: column;
-      // @media (max-width: 768px) {
-      //   background-color: rgb(0, 255, 89);
-      //   width: 100%;
-      //   flex-direction: column;
-      //   flex-wrap: nowrap;
-      // }
-      .form_item {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 10px;
-        .form_label {
-          display: inline-block;
-          flex: 1;
-        }
-        .form_input {
-          width: 80%;
-          flex: 2;
-        }
-      }
-      .todo_box_row_One {
-        // border: 5px solid #000;
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        height: 500px;
-        list-style: none;
-        gap: 20px;
-        @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
-        width: 70%;
-        // flex-direction: row;
-      }
-        li {
-          width: 100%;
-          // border: 2px solid red;
-          input {
+    .todolist_event {
+      display: flex;
+      form {
+        background-color: #0176c3;
+        width: 40vw; // 螢幕寬度的40%
+        max-width: 1200px;
+        padding: 5%;
+
+        .form_item {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 10px;
+          .form_label {
+            display: inline-block;
+            flex: 1;
+          }
+          .form_input {
             width: 80%;
-            padding: 10px;
-            border-radius: 20px;
+            flex: 2;
           }
         }
+        .todo_box_row_One {
+          // border: 5px solid #000;
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          justify-content: center;
+          align-items: center;
+          height: 500px;
+          list-style: none;
+          gap: 20px;
+          @media (max-width: 768px) {
+            background-color: rgb(0, 255, 89);
+            width: 70%;
+            // flex-direction: row;
+          }
+          li {
+            width: 100%;
+            // border: 2px solid red;
+            input {
+              width: 80%;
+              padding: 10px;
+              border-radius: 20px;
+            }
+          }
+        }
+        button {
+          padding: 5px 50px;
+          background-color: #d9d9d9;
+          border-radius: 40px;
+          font-size: 14px;
+        }
       }
-      // .todo_box_row_two {
-      //   // border: 5px solid #000;
-      //   display: flex;
-      //   flex-direction: column;
-      //   width: 50%;
-      //   justify-content: center;
-      //   align-items: center;
-      //   height: 500px;
-      //   list-style: none;
-      //   gap: 20px;
-      //   @media (max-width: 768px) {
-      //   background-color: rgb(0, 255, 89);
-      //   width: 70%;
-      //   // flex-direction: row;
-      // }
-      //   li {
-      //     width: 100%;
-      //     // border: 2px solid red;
-      //     input {
-      //       width: 80%;
-      //       padding: 10px;
-      //       border-radius: 20px;
-      //     }
-      //   }
-      // }
-      button {
-        padding: 5px 50px;
-        background-color: #d9d9d9;
-        border-radius: 40px;
-        font-size: 14px;
-      }
-    }
-    .calendar {
-      width: 40vw;
-      border: 5px solid palegreen;
-      height: 500px;
-      @media (max-width: 768px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: rgb(0, 255, 89);
-        width: 80%;
-        margin: 0 auto;
-        // flex-direction: row;
+      .calendar {
+        width: 40vw;
+        border: 5px solid palegreen;
+        height: 500px;
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background-color: rgb(0, 255, 89);
+          width: 80%;
+          margin: 0 auto;
+          // flex-direction: row;
+        }
       }
     }
     a {
