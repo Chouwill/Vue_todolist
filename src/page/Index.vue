@@ -63,8 +63,8 @@
         </div>
       </div>
       <div class="main_team">
-        <div class="main_img_deskTop_pg">
-          <img src="/src/image/New idea-amico.svg" alt="" />
+        <div class="main_img">
+          <img src="/src/image/New_idea.png" alt="" />
         </div>
         <div class="main_text">
           <h2>豐富的資源</h2>
@@ -83,7 +83,7 @@
           </ol>
         </div>
         <div class="main_img_only">
-          <img src="/src/image/New idea-amico.svg" alt="" />
+          <img src="/src/image/New_idea.png" alt="" />
         </div>
       </div>
       <div class="main_team">
@@ -210,145 +210,82 @@
     }
   }
   main {
-    margin: 20px 0;
-    width: 80%;
+    width: 90%;
+    gap: 25px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    // border: 15px solid rgb(128, 0, 0);
-    background-color: #fff;
-
-    flex-wrap: wrap;
+    border: 2px solid red;
+    @media (max-width: 768px) {
+      width: 100%;
+      flex-direction: column;
+      background-color: orange;
+    }
     @media (max-width: 414px) {
       width: 100%;
-      // height: 500px;
+      flex-direction: column;
+      // background-color: rgb(51, 0, 255);
     }
     .main_team {
-      width: 100%;
+      width: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
-      // border: 50px solid olive;
-      flex-direction: row;
+      flex-direction: column;
+      border: 5px solid palegreen;
+      height: 1000px;
       @media (max-width: 414px) {
-        width: 100%;
-        flex-direction: column;
-        flex-wrap: wrap;
-        // border: 5px solid rgb(128, 83, 0);
-        gap: 15px;
-        margin: 10px 0;
+      width: 100%;
+      height: 550px;
+      flex-direction: column;
+      // background-color: rgb(51, 0, 255);
+    }
+      .main_img_only {
+        display: none;
       }
-
       .main_img {
-        // border: 5px solid yellow;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
+        border: 2px solid #000;
         img {
-          max-width: 100%;
-
-          height: 100%;
-          object-fit: contain;
-          @media (max-width: 768px) {
-            width: 100%;
-            height: 500px;
-          }
+          border: 3px solid orange;
+          width: 500px;
+          height: 310px;
           @media (max-width: 414px) {
-            max-width: 250px;
-            width: 100%;
-            height: 250px;
-            flex-wrap: wrap;
-            border: 5px solid green;
+            display: none;
           }
         }
       }
       .main_text {
-        // border: 5px solid rgb(255, 187, 0);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        flex: 1;
+        width: 500px;
         height: 500px;
-        margin: 0 20px;
-        h2 {
+        border: 2px solid yellow;
+        @media (max-width: 414px) {
           width: 100%;
-          font-size: 30px;
-          // border: 2px solid red;
-          text-align: left;
-          color: #43aac1;
-          @media (max-width: 768px) {
-            font-size: 25px;
-          }
-          @media (max-width: 414px) {
-            // line-height: 10;
-          }
+          height: 550px;
+          border: 6px solid rebeccapurple;
+        }
+        h2 {
+          text-align: center;
+          font-size: 24px;
         }
         ol {
-          width: 100%;
-          font-size: 17px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          width: 400px;
+          height: 400px;
+          border: 1px solid red;
+          @media (max-width: 414px) {
+            gap: 5px;
+          }
           li {
             p {
-              font-size: 25px;
-              .special_text {
-                font-size: 28px;
-                color: gold;
-                font-weight: 700;
-              }
-              @media (max-width: 768px) {
-                font-size: 17px;
-              }
-              @media (max-width: 414px) {
-                line-height: 2.5;
-              }
+              font-size: 19px;
             }
-          }
-        }
-      }
-      .main_img_deskTop_pg {
-        display: none; // 預設隱藏
-
-        @media (max-width: 414px) {
-          display: block; // 在手機顯示
-        }
-
-        img {
-          max-width: 100%;
-          height: 100%;
-          object-fit: contain;
-
-          @media (max-width: 768px) {
-            display: none; // 在平板隱藏
-          }
-
-          @media (max-width: 414px) {
-            display: block; // 在手機顯示
-            width: 100%;
-            height: 250px;
-            flex-wrap: wrap;
-            border: 5px solid orange;
-          }
-        }
-      }
-      .main_img_only {
-        // border: 5px solid red;
-        // border: 5px solid yellow;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-        img {
-          max-width: 100%;
-
-          height: 100%;
-          object-fit: contain;
-          @media (max-width: 768px) {
-            width: 100%;
-            height: 500px;
-          }
-          @media (max-width: 414px) {
-            display: none;
           }
         }
       }

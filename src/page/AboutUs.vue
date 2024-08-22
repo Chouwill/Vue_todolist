@@ -86,7 +86,7 @@
       </div>
       <div class="introduce_team">
         <div class="introduce_img">
-          <img src="/src/image/Travel insurance-bro.svg" alt="" />
+          <img src="/src/image/New_idea.png" alt="" />
         </div>
         <div class="introduce_text">
           <h2>享受放鬆生活</h2>
