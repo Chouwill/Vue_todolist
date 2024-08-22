@@ -1,71 +1,117 @@
 <template>
   <div class="container">
     <div class="page_header">
-      <div class="left_banner">
-        <img src="/src/image/BookPlan.png" alt="" />
-        <h2>夢想時間計畫</h2>
-        <div class="page_link">
-          <a href="#">開始體驗</a>
-          <a href="#">查看方案</a>
-        </div>
+      <div class="bg">
+        <h2>
+          Make<br />
+          your dream come true
+        </h2>
       </div>
-      <div class="right_banner">
-        <img src="/src/image/goal.png" alt="" />
+      <div class="Carousel_box">
+        <swiper
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :pagination="{
+            clickable: true,
+          }"
+          :navigation="false"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="item in VipServe" :key="item.id">
+            <img :src="item.imageUrl" alt="" style="max-width: 300px" />
+            <h4>{{ item.title }}</h4>
+          </swiper-slide>
+          <!-- <swiper-slide>Slide 2</swiper-slide 
+          ><swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Slide 4</swiper-slide
+          ><swiper-slide>Slide 5</swiper-slide>
+          <swiper-slide>Slide 6</swiper-slide
+          ><swiper-slide>Slide 7</swiper-slide>
+          <swiper-slide>Slide 8</swiper-slide
+          ><swiper-slide>Slide 9</swiper-slide>  -->
+        </swiper>
       </div>
     </div>
     <main>
-      <div class="wrap_box">
-        <ul class="title_box">
-          <li class="title">
-            <span>優質服務</span>
-            <h4>備受好評</h4>
-          </li>
-          <li class="title">
-            <span>10萬</span>
-            <h4>各大平台載次數</h4>
-          </li>
-          <li class="title">
-            <span>#1</span>
-            <h4>民調學習工具 排名第一</h4>
-          </li>
-        </ul>
-      </div>
-      <div class="product_feature">
-        <div class="feature_tiltle">
-          <h2>產品特色</h2>
-          <p>夢想時間計畫與傳統筆記本相比具有以下優勢</p>
-        </div>
-        <ul class="main_box">
-          <li>
-            <span>經濟實惠</span>
-            <img src="/src/image/Online_Shopping-1.png" alt="" />
-            <p>
-              夢想時間計劃以其高性價比脫穎而出，無需大量投資即可享受到優質的時間管理和目標達成策略。
-            </p>
-          </li>
-          <li>
-            <span>簡單好使用</span>
-            <img src="/src/image/list.png" alt="" />
-            <p>
-              設計優雅簡約，使用者體驗極佳。無論您是初學者還是經驗豐富的時間管理專家，都能輕鬆上手，快速掌握系統，立即提升工作效率和生活品質。
-            </p>
-          </li>
-          <li>
-            <span>AI智能提醒</span>
-            <img src="/src/image/remind-2.png" alt="" />
-            <p>
-              憑藉先進的人工智慧技術，夢想時間計劃能夠根據您的個人習慣和偏好，自動化產生提醒和建議。
-            </p>
-          </li>
-        </ul>
-        <div class="main_footer">
+      <div class="main_team">
+        <div class="main_img">
           <img src="/src/image/start_paln-2.png" alt="" />
-          <div class="main_text">
-            <h2>開始規劃</h2>
-            <p>實現夢想，從這裡開始！</p>
-            <p>VIP服務，讓你的計畫更上一層樓。</p>
-            <button>快速規劃</button>
-          </div>
+        </div>
+        <div class="main_text">
+          <h2>客製你的Plan</h2>
+          <ol>
+            <li>
+              <p>客製讀書計畫： 創建您專屬的讀書計畫</p>
+            </li>
+            <li>
+              <p>
+                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="special_text">$加值功能</span>
+                並享有AI功能的專屬祕書，檢視進度
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="main_team">
+        <div class="main_img_deskTop_pg">
+          <img src="/src/image/New idea-amico.svg" alt="" />
+        </div>
+        <div class="main_text">
+          <h2>豐富的資源</h2>
+          <ol>
+            <li>
+              <p>推薦合適的書籍資源</p>
+            </li>
+            <!-- <li>
+              <p>
+                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
+              </p>
+            </li> -->
+            <li>
+              <p>更多更豐富的外部資源共享分享與您</p>
+            </li>
+          </ol>
+        </div>
+        <div class="main_img_only">
+          <img src="/src/image/New idea-amico.svg" alt="" />
+        </div>
+      </div>
+      <div class="main_team">
+        <div class="main_img">
+          <img src="/src/image/Travel insurance-bro.svg" alt="" />
+        </div>
+        <div class="main_text">
+          <h2>享受放鬆生活</h2>
+          <ol>
+            <li>
+              <p>
+                休閒娛樂生活建議：
+                在忙碌的學習計畫中，我們強烈鼓勵您享受休閒娛樂生活。參與您喜歡的運動和娛樂活動
+              </p>
+            </li>
+            <li>
+              <p>
+                自訂提醒功能：
+                設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
+              </p>
+            </li>
+            <li>
+              <p>
+                紀錄人生重要時刻：
+                除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
+              </p>
+            </li>
+          </ol>
         </div>
       </div>
     </main>
@@ -73,379 +119,274 @@
 </template>
 
 <style lang="scss" scoped>
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 * {
-  list-style: none;
+  // list-style: none;
   box-sizing: border-box;
   text-decoration: none;
 }
-html {
-  background-color: #f9f9f9;
-}
 .container {
-  // width: 100%;
-}
-.page_header {
-  width: 100%;
-  padding: 50px 0;
-  // background-color: #215d95;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  .left_banner {
-    // border: 10px solid red;
-    width: 60%;
-    padding: 50px 0;
-    // background-color: #21954d;
+  background-color: #fff;
+  .page_header {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    height: 900px;
     // border: 5px solid #000;
-    img {
-      width: 10%;
+    position: relative;
+    margin: 40px 0;
+
+    .bg {
+      width: 40%;
+      // border: 2px solid red;
+      // background-image: url("/src/image/Personal\ goals-bro.svg");
+      background-color: #4ba0d7;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      max-height: 900px;
+
       @media (max-width: 768px) {
-        min-width: 35%;
+        display: none;
       }
-    }
-    h2 {
-      font-size: 25px;
-    }
-    .page_link {
-      a {
-        // border: 5px solid #000;
-        padding: 15px 20px;
-        background-color: #007bff;
-        border-radius: 5px;
-        margin: 0 10px;
-        @media (max-width: 414px) {
-          padding: 15px 10px;
-          background-color: palevioletred;
-        }
-        &:nth-child(2) {
-          background-color: #66b3ff;
-          text-decoration: none;
-          // border: 3px solid white;
-          padding: 15px 10px;
-          border-radius: 5px;
-          color: white;
-        }
-        @media (max-width: 414px) {
-          padding: 15px 10px;
-          background-color: palevioletred;
-        }
-      }
-    }
-  }
-  .right_banner {
-    // border: 1px solid red;
-    width: 40%;
-    @media (max-width: 768px) {
-      border: 5px solid thistle;
-      width: 60%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    img {
-      max-width: 70%;
-      object-fit: contain;
-      // border: 1px solid red;
-    }
-  }
-}
-main {
-  width: 100%;
-  // background-color: #f3d19e;
-  background-color: #f0e6d6;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  .wrap_box {
-    width: 100%;
-    // background-color: #f8e3c5;
-    background-color: #f0e6d6;
-
-    @media (max-width: 768px) {
-      width: 100%;
-      background-color: #f0e6d6;
-    }
-
-    .title_box {
-      flex-direction: row;
-      width: 70%;
-      display: flex;
-      margin: 0 auto;
-      background-color: #f0e6d6;
-      @media (max-width: 768px) {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-      }
-
-      @media (max-width: 607px) {
-        // width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        padding: 0 50px;
-
-        // border: 10px solid blue;
-      }
-      .title {
-        width: 100%;
-        padding: 20px 0;
-        flex-direction: column;
-        background-color: #f0e6d6;
-        // border: 2px solid palegreen;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        @media (max-width: 607px) {
-          width: 100%;
-          // height: 300px;
-          // background-color: orange;
-        }
-
-        span {
-          color: #215d95;
-          color: #ff9900;
-          font-weight: bolder;
-          font-size: 40px;
-          padding: 0 15px;
-          @media (max-width: 768px) {
-            font-size: 23px;
-          }
-          @media (max-width: 520px) {
-            font-size: 23px;
-            text-align-last: left;
-          }
-        }
-        h4 {
-          font-size: 15px;
-          @media (max-width: 768px) {
-            font-size: 20px;
-          }
-          @media (max-width: 520px) {
-            font-size: 19px;
-            text-align-last: left;
-          }
-        }
-      }
-    }
-  }
-  .product_feature {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // border: 5px solid greenyellow;
-    width: 100%;
-    flex-wrap: wrap;
-    background-color: #f9f9f9;
-    .feature_tiltle {
       h2 {
-        font-size: 35px;
+        position: absolute;
+        color: orange;
+        bottom: 450px;
+        left: 600px;
+        z-index: 10;
         text-align: center;
-        color: #333333
+        font-size: 45px;
+        line-height: 1.2;
       }
-      p {
-        text-align: center;
-        font-size: 35px;
-        color: grey;
-        @media (max-width: 768px) {
-          font-size: 25px;
-        }
-        @media (max-width: 430px) {
-          max-width: 245px;
-          // border: 5px solid red;
-          font-size: 19px;
-        }
+    }
+    .Carousel_box {
+      // background-color: olive;
+      width: 60%;
+      // height: 30vh;
+      max-height: 900px;
+      // border: 2px solid tan;
+      @media (max-width: 768px) {
+        display: block;
+        margin: 0 auto;
       }
     }
   }
-  .main_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 768px) {
+  .mySwiper {
+    ::v-deep .swiper-pagination {
+      position: absolute;
+      top: 50%;
+      left: 10px; /* 確保 right 屬性設置 */
+      transform: translateY(-50%); /* 確保 translateY 設置 */
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-    li {
-      // border: 2px solid orange;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 50%;
-      @media (max-width: 768px) {
-        width: 70%;
-      }
-      span {
-        font-size: 35px;
-        font-weight: bolder;
-        @media (max-width: 768px) {
-          font-size: 30px;
-          font-weight: bolder;
-        }
-      }
-      img {
-        // border: 1px solid indianred;
-        width: 100%;
-        height: 500px;
-        object-fit: contain;
-        @media (max-width: 768px) {
-          width: 70%;
-          height: 250px;
-        }
-      }
-      p {
-        max-width: 500px;
-      }
-    }
-    li:nth-child(1) {
-      // border: 2px solid red;
+    ::v-deep .swiper-pagination-bullet-active {
+      background: #00ff00; // 設定活動分頁點顏色
+      width: 10px;
+      height: 10px;
+      border-radius: 20px;
     }
   }
-  .main_footer {
-    // background-color: rebeccapurple;
+  main {
+    margin: 20px 0;
     width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    // border: 5px solid orange;
-    @media (max-width: 768px) {
+    // border: 15px solid rgb(128, 0, 0);
+    background-color: #fff;
+
+    flex-wrap: wrap;
+    @media (max-width: 414px) {
+      width: 100%;
+      // height: 500px;
+    }
+    .main_team {
       width: 100%;
       display: flex;
-      flex-direction: column;
-    }
-
-    img {
-      display: block;
-      max-width: 40%;
-
-      // height: 500px;
-      object-fit: contain;
-      @media (max-width: 768px) {
-        max-width: 90%;
-      }
-    }
-    .main_text {
-      // border: 2px solid orange;
-      width: 30%;
-      padding: 40px 0;
-      text-align: center;
-      p {
-        margin: 20px auto;
-        width: 300px;
-        // color: red;
-        text-align: center;
-        // border: 5px solid red;
-      }
-      @media (max-width: 768px) {
+      justify-content: center;
+      align-items: center;
+      // border: 50px solid olive;
+      flex-direction: row;
+      @media (max-width: 414px) {
         width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+        // border: 5px solid rgb(128, 83, 0);
+        gap: 15px;
+        margin: 10px 0;
       }
-      button {
-        margin: 0 auto;
-        padding: 20px 30px;
-        border-radius: 20px;
-        border: none;
-        background-color: orange;
-        font-size: 15px;
-        // color: white;
+
+      .main_img {
+        // border: 5px solid yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        img {
+          max-width: 100%;
+
+          height: 100%;
+          object-fit: contain;
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 500px;
+          }
+          @media (max-width: 414px) {
+            max-width: 250px;
+            width: 100%;
+            height: 250px;
+            flex-wrap: wrap;
+            border: 5px solid green;
+          }
+        }
+      }
+      .main_text {
+        // border: 5px solid rgb(255, 187, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: 1;
+        height: 500px;
+        margin: 0 20px;
+        h2 {
+          width: 100%;
+          font-size: 30px;
+          // border: 2px solid red;
+          text-align: left;
+          color: #43aac1;
+          @media (max-width: 768px) {
+            font-size: 25px;
+          }
+          @media (max-width: 414px) {
+            // line-height: 10;
+          }
+        }
+        ol {
+          width: 100%;
+          font-size: 17px;
+          li {
+            p {
+              font-size: 25px;
+              .special_text {
+                font-size: 28px;
+                color: gold;
+                font-weight: 700;
+              }
+              @media (max-width: 768px) {
+                font-size: 17px;
+              }
+              @media (max-width: 414px) {
+                line-height: 2.5;
+              }
+            }
+          }
+        }
+      }
+      .main_img_deskTop_pg {
+        display: none; // 預設隱藏
+
+        @media (max-width: 414px) {
+          display: block; // 在手機顯示
+        }
+
+        img {
+          max-width: 100%;
+          height: 100%;
+          object-fit: contain;
+
+          @media (max-width: 768px) {
+            display: none; // 在平板隱藏
+          }
+
+          @media (max-width: 414px) {
+            display: block; // 在手機顯示
+            width: 100%;
+            height: 250px;
+            flex-wrap: wrap;
+            border: 5px solid orange;
+          }
+        }
+      }
+      .main_img_only {
+        // border: 5px solid red;
+        // border: 5px solid yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        img {
+          max-width: 100%;
+
+          height: 100%;
+          object-fit: contain;
+          @media (max-width: 768px) {
+            width: 100%;
+            height: 500px;
+          }
+          @media (max-width: 414px) {
+            display: none;
+          }
+        }
       }
     }
   }
 }
-
-// @media (max-width: 768px) {
-//   .page_header {
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 0 auto;
-//     .left_banner {
-//       width: 60%;
-//       border: 5px solid gold;
-//     }
-//     .right_banner {
-//       border: 5px solid thistle;
-//       width: 60%;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//     }
-//   }
-//   main {
-//     .wrap_box {
-//       border: 3px solid red;
-//       width: 100%;
-//       .title_box {
-//         .title {
-//           span {
-//             font-size: 35px;
-//           }
-//           h4 {
-//             font-size: 15px;
-//           }
-//         }
-//       }
-//     }
-//     .product_feature {
-//       .feature_tiltle {
-//         h2 {
-//           font-size: 35px;
-//           color: red;
-//         }
-//         p {
-//           font-size: 30px;
-//         }
-//       }
-//       .main_box {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 10px;
-//         li {
-//           width: 70%;
-//           // border: 2px solid orangered;
-//           span {
-//             font-size: 30px;
-//             font-weight: bolder;
-//           }
-//           img {
-//             width: 70%;
-//             height: 250px;
-//           }
-//         }
-//       }
-//     }
-//     .main_footer {
-//       width: 100%;
-//       display: flex;
-//       flex-direction: column;
-//       img {
-//         width: 90%;
-//       }
-//       .main_text {
-//         width: 100%;
-//       }
-//     }
-//   }
-// }
 </style>
+
+<script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-flip";
+import "swiper/css/pagination";
+
+const VipServe = ref([]);
+
+const arr = [
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
+  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
+];
+
+onMounted(async () => {
+  try {
+    const resArr = await Promise.all(arr);
+    console.log(resArr[1].data);
+    VipServe.value = resArr[2].data.products;
+  } catch (error) {
+    console.log("錯誤處理", error);
+  }
+  console.log("執行其他動作");
+});
+</script>

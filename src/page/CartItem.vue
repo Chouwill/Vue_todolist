@@ -1,24 +1,28 @@
 <template>
   <tr>
-    <td>
-      <img :src="product.imageUrl" alt="" width="50" />
-      <h4>{{ product.title }}</h4>
-    </td>
-    <td>{{ product.price }}</td>
-    <td style="display: flex; justify-content: center; align-items: center">
-      <div class="delebox">
-        <font-awesome-icon icon="fa-solid fa-minus" @click="store.minus(product.id)" />
-      </div>
-      <h3>{{ product.quantity }}</h3>
-      <div class="addbox">
-        <font-awesome-icon icon="fa-solid fa-plus" @click="store.add(product.id)" />
+    <td class="product-info">
+      <div class="flex-box">
+        <img :src="product.imageUrl" alt="" width="50" />
+        <h4>{{ product.title }}</h4>
       </div>
     </td>
-    <td>
+    <td class="product-price">{{ product.price }}</td>
+    <td class="quantity-control">
+      <div class="flex-box">
+        <div class="delebox">
+          <font-awesome-icon icon="fa-solid fa-minus" @click="store.minus(product.id)" />
+        </div>
+        <h3>{{ product.quantity }}</h3>
+        <div class="addbox">
+          <font-awesome-icon icon="fa-solid fa-plus" @click="store.add(product.id)" />
+        </div>
+      </div>
+    </td>
+    <td class="product-price-total">
       <h4 style="text-align: center">{{ product.price * product.quantity }}</h4>
     </td>
-    <td>
-      <button @click="store.remove(product.id)">刪除</button>
+    <td class="product-delete">
+      <el-button type="danger" @click="store.remove(product.id)">刪除</el-button>
     </td>
   </tr>
 </template>
@@ -79,8 +83,8 @@ TotalCalculator();
 
 <style lang="scss" scoped>
 tr {
-  td:first-child {
-    text-align: center;
+  td.product-info .flex-box {
+    // text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,12 +92,13 @@ tr {
     img { flex: 1 }
     h4 { flex: 2 }
   }
-  td:nth-child(2) {
-    background-color: yellow;
+  td.product-price {
+    // background-color: yellow;
     text-align: center;
   }
-  td:nth-child(3) {
-    background-color: teal;
+  td.quantity-control .flex-box {
+    height: 100%;
+    // background-color: teal;
     text-align: center;
     display: flex;
     justify-content: center;
