@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Dream_Plan_CDN/',
+  base: '/DreamPlan_CDN/',  // 需要與gitHub專案名稱一樣/
   plugins: [vue()],
   resolve: {
     alias: {

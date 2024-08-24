@@ -1,49 +1,217 @@
 <template>
   <header>
-    <div class="header_logo">
-      <router-link to="/">夢想時間計畫</router-link>
-    </div>
-    <nav>
-      <ul :class="['desktop_menu', { active: menuActive }]">
-        <li>
-          <router-link to="/todolist">開始體驗</router-link>
-        </li>
-        <li>
-          <router-link to="/login">會員中心</router-link>
-        </li>
-        <!-- <li>
-          <router-link to="/registermember">註冊</router-link>
-        </li> -->
-        <!-- <li>
-          <router-link @click="loginlink" to="/membercenter"
-            >會員中心</router-link
-          >
-        </li> -->
-        <li>
-          <router-link to="/shopping" @click="openCartlink"
-            >加值服務商城</router-link
-          >
-          <router-link to="/cart">
-            <font-awesome-icon
-              icon="fa-solid fa-cart-shopping"
-              class="cartOpen"
-              v-show="cartlink"
-            />
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/aboutus">使用說明</router-link>
-        </li>
-      </ul>
+    <nav :class="['desktop_menu', { active: menuActive }]">
+      <router-link to="/aboutus">關於我們</router-link>
+      <router-link to="/shopping">加值商城</router-link>
+      <router-link to="/todolist">開始Plan</router-link>
+      <router-link to="/enjoylife">享受放鬆生活</router-link>
     </nav>
-    <div class="phone_menu" @click="openMenu">
+    <!-- <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
+      <li>
+        <router-link to="/aboutus">關於我們</router-link>
+      </li>
+      <li>
+        <router-link to="/shopping">加值商城</router-link>
+      </li>
+      <li>
+        <router-link to="/todolist">開始Plan</router-link>
+      </li>
+      <li>
+        <router-link to="/enjoylife">享受放鬆生活</router-link>
+      </li>
+    </ul> -->
+    <div class="logo_box">
+      <router-link to="/">
+        <!-- <img src="/src/image/Dream_LOGO.png" alt="" /> -->
+        <h2>設計你的計畫Plan</h2>
+      </router-link>
+    </div>
+    <div class="user_box">
+      <div>
+        <router-link to="/login">
+          <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
+        </router-link>
+        <router-link to="/shopping">
+          <font-awesome-icon
+            icon="fa-solid fa-cart-shopping"
+            class="user_link"
+          />
+        </router-link>
+      </div>
+    </div>
+    <div class="phone_menu_cancel">
       <button>
-        <font-awesome-icon icon="fa-solid fa-bars" />
+        <font-awesome-icon icon="fa-solid fa-xmark" />
       </button>
     </div>
-    <!-- <router-link to="/membercenter">會員中心</router-link> -->
+    <div class="phone_menu_btn" @click="openMenu">
+      <button>
+        <font-awesome-icon icon="fa-solid fa-bars" class="menu_bar" />
+      </button>
+    </div>
   </header>
 </template>
+
+<style lang="scss" scoped>
+* {
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+header {
+  width: 100%;
+  background-color: #4ba0d7;
+  height: 15vh;
+  display: flex;
+  // padding: 100px 0;
+  position: relative;
+  nav {
+    width: 30%;
+    // border: 2px solid #000;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      font-size: 20px;
+    }
+    @media (max-width: 768px) {
+      background-color: rgb(0, 255, 89);
+      display: none;
+    }
+    @media (max-width: 430px) {
+      background-color: rgb(217, 255, 0);
+      
+    }
+  }
+  .desktop_menu {
+    // display: none;
+    // border: 20px solid red;
+    @media (max-width: 768px) {
+      display: none;
+      // width: 400px;
+      // background-color: orange;
+      // // border: 20px solid tomato;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // position: absolute;
+      // right: 0;
+    }
+    &.active {
+      width: 50vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      // background-color: rgb(0, 255, 8);
+      // border: 10px solid red;
+      color: rgb(68, 0, 255);
+      // @media (max-width: 768px) {
+      //   background-color: orange;
+      //   width: 200px;
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: center;
+      //   justify-content: flex-end;
+      //   background-color: rgb(0, 255, 8);
+      //   // border: 10px solid red;
+      //   color: orange;
+      // }
+    }
+  }
+  .logo_box {
+    // border: 2px solid red;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      justify-content: flex-end;
+      width: 50%;
+    }
+    img {
+      max-width: 9%;
+      object-fit: cover;
+      @media (max-width: 768px) {
+        max-width: 24%;
+      }
+    }
+    h2 {
+      font-size: 25px;
+      text-align: center;
+      @media (max-width: 768px) {
+        font-size: 35px;
+        line-height: 3.2;
+      }
+      @media (max-width: 768px) {
+        font-size: 17px;
+        line-height: 6.2;
+        // margin-left: 20px;
+      }
+    }
+  }
+  .user_box {
+    width: 30%;
+    // border: 3px solid pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      display: none;
+    }
+    div {
+      display: flex;
+      width: 30%;
+      // border: 2px solid red;
+      .user_link {
+        font-size: 35px;
+      }
+    }
+  }
+  .phone_menu_btn {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 50%;
+      margin: 0 50px;
+      z-index: 10;
+    }
+    button {
+      border: none;
+      background: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      outline: none;
+      .menu_bar {
+        @media (max-width: 768px) {
+          color: orange;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
@@ -63,10 +231,6 @@ const openCartlink = () => {
 const openMenu = (e) => {
   // openbtn.value = !openbtn.value;
   menuActive.value = !menuActive.value;
-  // console.log(e.target.nodeName);
-  // if (e.target.nodeName === "P") {
-  //   menu.value = false;
-  // }
   console.log(menuActive.value);
 };
 // ------------------------------------------------------------------
@@ -109,108 +273,3 @@ const isLoginMemberStatus = async () => {
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
 </script>
-
-<style lang="scss" scoped>
-* {
-  list-style: none;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-header {
-  background-color: #e8c6a5;
-  background-color: #eebe77;
-  // background-color: #3c91e0;
-  background-color: #003366;
-  width: 100%;
-  display: flex;
-  padding: 30px 0;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  .header_logo {
-    flex: 1;
-    margin: 0 50px;
-    a {
-      font-size: 35px;
-      color: #D9D9D9;
-      @media (max-width: 430px) {
-        font-size: 19px;
-      }
-    }
-  }
-  nav {
-    flex: 1;
-
-    ul {
-      display: flex;
-      // width: 80%;
-      justify-content: space-evenly;
-      align-items: center;
-      li {
-        margin: 0 auto;
-        list-style: none;
-
-        a {
-          font-size: 18px;
-          color: #D9D9D9;
-          font-weight: 700;
-        }
-      }
-    }
-  }
-  .phone_menu {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  header {
-    width: 100%;
-    padding: 0 0;
-    // max-height: 80px;
-    position: relative;
-    .header_logo {
-      h2 {
-        font-size: 30px;
-        font-weight: 700;
-      }
-    }
-    nav {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      position: relative;
-      height: 100px;
-      // background-color: red;
-      // border: 5px solid green;
-      box-sizing: border-box;
-      .desktop_menu {
-        // display: flex;
-        // flex-direction: column;
-        // // width: 100%;
-        // // height: 500px;
-        // background-color: #f5e4d0;
-        display: none;
-        width: 100%;
-        margin: 0 auto;
-        &.active {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: orange;
-        }
-      }
-    }
-    .phone_menu {
-      display: block;
-      margin-right: 20px;
-
-      button {
-        border: none;
-        padding: 10px 15px;
-        border-radius: 20px;
-      }
-    }
-  }
-}
-</style>
