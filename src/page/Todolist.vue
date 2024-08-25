@@ -5,6 +5,12 @@
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
         <el-form :model="newEvent" :label-width="120">
+          <el-form-item>
+            {{ formType === "create" ? "創建事件" : "編輯事件" }}
+          </el-form-item>
+          <el-form-item v-show="formType === 'edit'" label="ID">
+            <el-input v-model="newEvent.id" disabled />
+          </el-form-item>
           <el-form-item label="Event Title">
             <el-input v-model="newEvent.title" />
           </el-form-item>
@@ -28,8 +34,9 @@
               resize="none"
             />
           </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="addEvent">Add Event</el-button>
+          <el-form-item style="display: flex; width: 300px;">
+            <el-button type="primary" @click="resetEvent">取消</el-button>
+            <el-button type="primary" @click="addEvent">送出</el-button>
           </el-form-item>
         </el-form>
         <div class="calendar">
@@ -37,16 +44,8 @@
             :selected-date="new Date()"
             :events="events"
             :config="config"
-            @edit-event="
-              (v) => {
-                console.log(v);
-              }
-            "
-            @delete-event="
-              (v) => {
-                console.log(v);
-              }
-            "
+            @edit-event="editEvent"
+            @delete-event="deleteEvent"
           />
         </div>
       </div>
@@ -157,38 +156,80 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
-const initObj = { title: "", date: [new Date(), new Date()], description: "" };
-const newEvent = ref(
-  JSON.parse(localStorage.getItem("calendarEvents") || JSON.stringify(initObj))
-);
+// ------------------------------------------------------------------------------------------------------------------
+// 主要JS
 
-const events = ref([]);
+const initObj = {id: "", title: "", date: [new Date(), new Date()], description: "" };
+const newEvent = ref(initObj); //  儲存預設樣式
+const formType = ref("create"); // 'create' | 'edit' // 定義字串
+const events = ref(
+  JSON.parse(localStorage.getItem("calendarEvents") || "[]") || []
+);
 
 const config = ref({
   // ...existing config
 });
 
+const saveStorage = () => {
+  localStorage.setItem("calendarEvents", JSON.stringify(events.value));
+};
+
+// 創建事件/編輯事件
 const addEvent = () => {
-  const { title, date, description } = newEvent.value; // 只能用原本的參數
+  const { id, title, date, description } = newEvent.value; // 只能用原本的參數
   const [start = "", end = ""] = date;
   const newEventObj = {
     title, // 當key與value相同時, 可以省略:value 原始為{title: title}
     time: { start, end },
     color: "blue", // Example color
     isEditable: true,
-    id: Date.now().toString(), // Simple ID generation
+    id: id || Date.now().toString(), // Simple ID generation
     description,
   };
-
   console.log(newEventObj);
-  events.value.push(newEventObj);
-  localStorage.setItem("calendarEvents", JSON.stringify(newEventObj));
+
+  if (formType.value === "create") {
+    events.value.push(newEventObj);
+  } else {
+    const idx = events.value.findIndex(ev => ev.id === id)
+    events.value.splice(idx, 1, newEventObj)
+  }
+  saveStorage();
   newEvent.value = initObj; // Reset form
+  formType.value = 'create'
+};
+
+// 編輯事件
+const editEvent = (id) => {
+  formType.value = "edit"; //  變成修改狀態
+  const event = events.value.find((ev) => ev.id === id);
+  console.log("event: ", event);
+  const { time, ...rest } = event;
+  newEvent.value = {
+    ...rest,
+    date: time ? [time.start, time.end] : [],
+  };
+};
+
+// reset   取消功能
+const resetEvent = () => {
+  if (formType.value === "edit") {
+    formType.value = "create";
+  }
+  newEvent.value = initObj; // Reset form
+};
+
+// 刪除事件
+const deleteEvent = (id) => {
+  console.log(events.value.find((ev) => ev.id === id)); // find
+  events.value = events.value.filter((ev) => ev.id !== id); //  ev  =  一個events的子項目
+  saveStorage();
 };
 </script>
 
 <style lang="scss" scoped>
-@import "qalendar/dist/style.css"; //這裡吃不到，所以改放全域CSS
+@import "qalendar/dist/style.css";
+/* 這裡吃不到，所以改放全域CSS */
 .wrap {
   display: flex;
   justify-content: center;
@@ -208,7 +249,7 @@ const addEvent = () => {
     .todolist_event {
       display: flex;
       form {
-        background-color: #0176c3;
+        // background-color: #0176c3;
         width: 40vw; // 螢幕寬度的40%
         max-width: 1200px;
         padding: 5%;

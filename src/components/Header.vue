@@ -1,37 +1,23 @@
 <template>
   <header>
+    <div class="logo_box">
+      <router-link to="/">
+        <!-- <h2>設計你的計畫Plan</h2> -->
+        <img src="/src/image/Dream_Plan.png" alt="" />
+      </router-link>
+    </div>
     <nav :class="['desktop_menu', { active: menuActive }]">
       <router-link to="/aboutus">關於我們</router-link>
       <router-link to="/shopping">加值商城</router-link>
       <router-link to="/todolist">開始Plan</router-link>
       <router-link to="/enjoylife">享受放鬆生活</router-link>
     </nav>
-    <!-- <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
-      <li>
-        <router-link to="/aboutus">關於我們</router-link>
-      </li>
-      <li>
-        <router-link to="/shopping">加值商城</router-link>
-      </li>
-      <li>
-        <router-link to="/todolist">開始Plan</router-link>
-      </li>
-      <li>
-        <router-link to="/enjoylife">享受放鬆生活</router-link>
-      </li>
-    </ul> -->
-    <div class="logo_box">
-      <router-link to="/">
-        <!-- <img src="/src/image/Dream_LOGO.png" alt="" /> -->
-        <h2>設計你的計畫Plan</h2>
-      </router-link>
-    </div>
     <div class="user_box">
       <div>
         <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
-        <router-link to="/shopping">
+        <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
             class="user_link"
@@ -39,9 +25,9 @@
         </router-link>
       </div>
     </div>
-    <div class="phone_menu_cancel">
+    <div class="phone_menu_cancel" style="display: none;">
       <button>
-        <font-awesome-icon icon="fa-solid fa-xmark" />
+        <!-- <font-awesome-icon icon="fa-solid fa-xmark" /> -->
       </button>
     </div>
     <div class="phone_menu_btn" @click="openMenu">
@@ -61,18 +47,54 @@
 header {
   width: 100%;
   background-color: #4ba0d7;
+  background-color: #1e7fb8;
   height: 15vh;
   display: flex;
   // padding: 100px 0;
   position: relative;
+
+  .logo_box {
+    border: 2px solid red;
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      justify-content: flex-end;
+      width: 50%;
+    }
+    img {
+      max-width: 50%;
+      object-fit: cover;
+      @media (max-width: 768px) {
+        max-width: 24%;
+      }
+    }
+    h2 {
+      font-size: 25px;
+      text-align: center;
+      @media (max-width: 768px) {
+        font-size: 35px;
+        line-height: 3.2;
+      }
+      @media (max-width: 768px) {
+        font-size: 17px;
+        line-height: 6.2;
+        // margin-left: 20px;
+      }
+    }
+  }
   nav {
-    width: 30%;
-    // border: 2px solid #000;
+    width: 33.3%;
+    border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     a {
+      color: white;
       font-size: 20px;
     }
     @media (max-width: 768px) {
@@ -81,7 +103,6 @@ header {
     }
     @media (max-width: 430px) {
       background-color: rgb(217, 255, 0);
-      
     }
   }
   .desktop_menu {
@@ -129,42 +150,9 @@ header {
       // }
     }
   }
-  .logo_box {
-    // border: 2px solid red;
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
-      justify-content: flex-end;
-      width: 50%;
-    }
-    img {
-      max-width: 9%;
-      object-fit: cover;
-      @media (max-width: 768px) {
-        max-width: 24%;
-      }
-    }
-    h2 {
-      font-size: 25px;
-      text-align: center;
-      @media (max-width: 768px) {
-        font-size: 35px;
-        line-height: 3.2;
-      }
-      @media (max-width: 768px) {
-        font-size: 17px;
-        line-height: 6.2;
-        // margin-left: 20px;
-      }
-    }
-  }
   .user_box {
-    width: 30%;
-    // border: 3px solid pink;
+    width: 33.3%;
+    border: 3px solid pink;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,6 +166,7 @@ header {
       width: 30%;
       // border: 2px solid red;
       .user_link {
+        color: white;
         font-size: 35px;
       }
     }

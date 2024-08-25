@@ -148,19 +148,25 @@
 }
 .container {
   background-color: #fff;
+  background-color: #c7eeff;
+
   .page_header {
-    width: 100%;
+    width: 80%;
     display: flex;
-    height: 900px;
+    height: 450px;
+    justify-content: center;
+    // align-items: center;
     // border: 5px solid #000;
-    position: relative;
     margin: 40px 0;
+    position: relative;
 
     .bg {
       width: 40%;
       // border: 2px solid red;
       // background-image: url("/src/image/Personal\ goals-bro.svg");
       background-color: #4ba0d7;
+      background-color: #96cde4;
+
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -171,9 +177,9 @@
       }
       h2 {
         position: absolute;
-        color: orange;
-        bottom: 450px;
-        left: 600px;
+        color: rgb(4, 169, 51);
+        bottom: 150px;
+        right: 500px;
         z-index: 10;
         text-align: center;
         font-size: 45px;
@@ -182,7 +188,7 @@
     }
     .Carousel_box {
       // background-color: olive;
-      width: 60%;
+      width: 40%;
       // height: 30vh;
       max-height: 900px;
       // border: 2px solid tan;
@@ -236,11 +242,11 @@
       border: 5px solid palegreen;
       height: 1000px;
       @media (max-width: 414px) {
-      width: 100%;
-      height: 550px;
-      flex-direction: column;
-      // background-color: rgb(51, 0, 255);
-    }
+        width: 100%;
+        height: 550px;
+        flex-direction: column;
+        // background-color: rgb(51, 0, 255);
+      }
       .main_img_only {
         display: none;
       }
