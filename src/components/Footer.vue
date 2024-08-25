@@ -44,58 +44,19 @@ footer {
   background-color: #1e7fb8;
   height: 15vh;
   display: flex;
-  // nav {
-  //   width: 30%;
-  //   border: 2px solid #000;
-  //   padding: 20px 0;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   @media (max-width: 768px) {
-  //     background-color: rgb(0, 255, 89);
-  //     display: none;
-  //   }
-
-  //   .menu_width {
-  //     display: flex;
-  //     width: 250px;
-  //     // border: 5px solid rosybrown;
-  //     gap: 0px;
-  //     font-size: 25px;
-  //     // justify-content: flex-start;
-  //     // align-items: flex-start;
-  //     flex-direction: column;
-  //     &:nth-child(1) {
-  //       // border: 3px solid orange;
-  //       text-align: right;
-  //     }
-  //     a,
-  //     .router-link {
-  //       // text-align: left;
-  //       color: bisque;
-  //       width: 100%;
-  //       white-space: nowrap;
-  //       display: block;
-  //     }
-  //   }
-  // }
+  position: relative;
+  @media (max-width: 414px) {
+    justify-content: center;
+    align-items: center;
+  }
   .logo_box {
     width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    h2 {
-      @media (max-width: 414px) {
-        font-size: 20px;
-      }
-    }
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%;
+      display: none;
     }
     img {
       max-width: 50%;
@@ -110,45 +71,73 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
     h4 {
       text-align: center;
       font-size: 20px;
       color: white;
+      @media (max-width: 768px) {
+        font-size: 17px;
+      }
     }
   }
   .community_box {
     width: 30%;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-direction: column;
-    @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%;
-    }
+    
     h2 {
       font-size: 20px;
       color: white;
-
+      @media (max-width: 768px) {
+        display: none;
+      }
       @media (max-width: 414px) {
         font-size: 20px;
       }
     }
     div {
       display: flex;
+      justify-content: center;
+      align-items: center;
       width: 30%;
       gap: 10px;
-      .community_link {
-        font-size: 35px;
-        color: white;
-
+      @media (max-width: 414px) {
+        position: absolute;
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        // background-color: orange;
+        height: 300px;
+        bottom: 120px;
+      }
+      a {
+        background-color: #1e7fb8;
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
         @media (max-width: 414px) {
-          font-size: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .community_link {
+          font-size: 35px;
+          color: white;
+          @media (max-width: 768px) {
+          }
+
+          @media (max-width: 414px) {
+            top: 15px;
+            bottom: 16px;
+            right: 25px;
+            font-size: 30px;
+          }
         }
       }
     }
