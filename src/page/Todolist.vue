@@ -34,7 +34,7 @@
               resize="none"
             />
           </el-form-item>
-          <el-form-item style="display: flex; width: 300px;">
+          <el-form-item class="form-item">
             <el-button type="primary" @click="resetEvent">取消</el-button>
             <el-button type="primary" @click="addEvent">送出</el-button>
           </el-form-item>
@@ -49,11 +49,11 @@
           />
         </div>
       </div>
+      <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
       <router-link>
         了解更多
         <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </router-link>
-      <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
     </main>
   </div>
 </template>
@@ -159,7 +159,12 @@ const photo = ref([
 // ------------------------------------------------------------------------------------------------------------------
 // 主要JS
 
-const initObj = {id: "", title: "", date: [new Date(), new Date()], description: "" };
+const initObj = {
+  id: "",
+  title: "",
+  date: [new Date(), new Date()],
+  description: "",
+};
 const newEvent = ref(initObj); //  儲存預設樣式
 const formType = ref("create"); // 'create' | 'edit' // 定義字串
 const events = ref(
@@ -191,12 +196,12 @@ const addEvent = () => {
   if (formType.value === "create") {
     events.value.push(newEventObj);
   } else {
-    const idx = events.value.findIndex(ev => ev.id === id)
-    events.value.splice(idx, 1, newEventObj)
+    const idx = events.value.findIndex((ev) => ev.id === id);
+    events.value.splice(idx, 1, newEventObj);
   }
   saveStorage();
   newEvent.value = initObj; // Reset form
-  formType.value = 'create'
+  formType.value = "create";
 };
 
 // 編輯事件
@@ -257,6 +262,7 @@ const deleteEvent = (id) => {
         .form_item {
           display: flex;
           gap: 8px;
+          // border: 50px solid palegreen;
           margin-bottom: 10px;
           .form_label {
             display: inline-block;
@@ -293,10 +299,16 @@ const deleteEvent = (id) => {
           }
         }
         button {
-          padding: 5px 50px;
-          background-color: #d9d9d9;
-          border-radius: 40px;
+          padding: 10px 30px;
+          background-color: #4a4ab1;
+          // border-radius: 40px;
           font-size: 14px;
+          &:nth-child(1) {
+            padding: 10px 30px;
+            background-color: red;
+            // border-radius: 40px;
+            font-size: 14px;
+          }
         }
       }
       .calendar {
@@ -315,6 +327,9 @@ const deleteEvent = (id) => {
         }
       }
     }
+    h2 {
+      text-align: center;
+    }
     a {
       width: 200px;
       display: flex;
@@ -328,9 +343,6 @@ const deleteEvent = (id) => {
       font-size: 24px; /* 字體大小 */
       cursor: pointer; /* 游標樣式 */
       margin: 20px auto;
-    }
-    h2 {
-      text-align: center;
     }
   }
 }

@@ -262,6 +262,7 @@ onMounted(async () => {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         gap: 20px;
         width: 300px;
         // border: 5px solid green;
@@ -271,10 +272,11 @@ onMounted(async () => {
           justify-content: center;
           align-items: center;
           gap: 10px;
-          background-color: #4ba0d7;
+          // background-color: #4ba0d7;
+          // background-color: #4bd76e;
           padding: 5px 10px;
           height: 60px;
-          position: absolute;
+          // position: absolute;
 
           bottom: 73px;
           opacity: 0.8;

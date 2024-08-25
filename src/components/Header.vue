@@ -52,9 +52,16 @@ header {
   display: flex;
   // padding: 100px 0;
   position: relative;
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    }
 
   .logo_box {
-    border: 2px solid red;
+    // border: 2px solid red;
     width: 33.3%;
     display: flex;
     justify-content: center;
@@ -62,14 +69,28 @@ header {
     flex-direction: column;
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
+      display: flex;
       justify-content: flex-end;
-      width: 50%;
+      width: 85%;
+      align-items: center;
+    }
+    @media (max-width: 414px) {
+      // background-color: rgb(0, 255, 89);
+      display: flex;
+      justify-content: flex-end;
+      width: 85%;
+      align-items: center;
     }
     img {
       max-width: 50%;
       object-fit: cover;
       @media (max-width: 768px) {
-        max-width: 24%;
+        max-width: 75%;
+        
+      }
+      @media (max-width: 414px) {
+        max-width: 100%;
+        
       }
     }
     h2 {

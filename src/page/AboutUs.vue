@@ -14,10 +14,10 @@
       <!-- ------------------------------------------ -->
       <div class="main_introduce">
         <div class="introduce_team">
-          <div class="introduce_img">
+          <div class="introduce_img order-1">
             <img src="/src/image/start_paln-2.png" alt="" />
           </div>
-          <div class="introduce_text">
+          <div class="introduce_text order-2">
             <h2>客製你的Plan</h2>
             <ol>
               <li>
@@ -39,10 +39,10 @@
           </div>
         </div>
         <div class="introduce_team">
-          <div class="introduce_img">
+          <div class="introduce_img order-3">
             <img src="/src/image/New_idea.png" alt="" />
           </div>
-          <div class="introduce_text">
+          <div class="introduce_text order-4">
             <h2>豐富的資源</h2>
             <ol>
               <li>
@@ -59,15 +59,15 @@
               </li>
             </ol>
           </div>
-          <div class="introduce_img_only">
-            <img src="/src/image/New_idea.png" alt="" />
-          </div>
+          <!-- <div class="main_img_only" style="display: none;">
+          <img src="/src/image/New_idea.png" alt="" />
+        </div> -->
         </div>
         <div class="introduce_team">
-          <div class="introduce_img">
-            <img src="/src/image/Travel insurance-bro.svg" alt="" />
+          <div class="introduce_img order-5">
+            <img src="/src/image/Travel_insurance_bro.png" alt="" />
           </div>
-          <div class="introduce_text">
+          <div class="introduce_text order-6">
             <h2>享受放鬆生活</h2>
             <ol>
               <li>
@@ -82,7 +82,8 @@
                   設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
                 </p>
               </li>
-              <li>
+              <button @click="OpenTextFun">顯示更多</button>
+              <li class="text_more" v-if="OpenText">
                 <p>
                   紀錄人生重要時刻：
                   除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
@@ -104,6 +105,8 @@
 <style lang="scss" scoped>
 .container {
   width: 100%;
+  background-color: #c7eeff;
+
   .banner {
     display: flex;
     justify-content: center;
@@ -137,7 +140,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    background-color: white;
+    // border: 2px solid red;
     @media (max-width: 768px) {
       width: 100%;
       flex-direction: column;
@@ -158,14 +162,15 @@
       }
     }
     .main_introduce {
-      border: 6px solid brown;
-      width: 100%;
-      display: flex;
+      // border: 6px solid brown;
+      width: 85%;
       gap: 25px;
-
-      flex-direction: row;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      // border: 20px solid red;
+      flex-wrap: wrap;
       @media (max-width: 768px) {
         width: 100%;
         flex-direction: column;
@@ -177,15 +182,26 @@
         // background-color: rgb(51, 0, 255);
       }
       .introduce_team {
-        width: 30%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        border: 5px solid palegreen;
-        height: 1000px;
+        // flex-direction: column;
+        // border: 5px solid palegreen;
+        border-bottom: 2px solid gray;
+        height: 500px;
+        &:nth-child(3){
+          border-bottom: none;
+        }
         @media (max-width: 768px) {
-          width: 80%;
+          width: 90%;
+          height: 550px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          border: 5px solid brown;
+          // background-color: rgb(51, 0, 255);
         }
         @media (max-width: 414px) {
           width: 100%;
@@ -193,15 +209,28 @@
           flex-direction: column;
           // background-color: rgb(51, 0, 255);
         }
-        .introduce_img_only {
-          display: none;
-        }
         .introduce_img {
-          border: 2px solid #000;
+          // border: 10px solid #000;
+          width: 50%;
+          @media (max-width: 768px) {
+            width: 50%;
+            height: 450px;
+            flex-direction: column;
+            border: 5px solid tomato;
+          }
+          @media (max-width: 414px) {
+            display: none;
+          }
           img {
-            border: 3px solid orange;
-            width: 500px;
-            height: 310px;
+            // border: 3px solid orange;
+            width: 100%;
+            height: 420px;
+            @media (max-width: 768px) {
+              width: 100%;
+              height: 450px;
+              flex-direction: column;
+              // border: 5px solid tomato;
+            }
             @media (max-width: 414px) {
               display: none;
             }
@@ -212,9 +241,17 @@
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          flex-wrap: wrap;
           width: 500px;
-          height: 500px;
-          border: 2px solid yellow;
+          height: 420px;
+          // border: 2px solid yellow;
+          background-color: white;
+          @media (max-width: 768px) {
+            flex-direction: row;
+            width: 50%;
+            // height: 350px;
+            border: 5px solid rgb(0, 255, 64);
+          }
           @media (max-width: 414px) {
             width: 100%;
             height: 550px;
@@ -227,19 +264,48 @@
           ol {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
             gap: 15px;
+
             width: 400px;
-            height: 400px;
-            border: 1px solid red;
+            // height: 400px;
+            // border: 1px solid red;
+            @media (max-width: 768px) {
+              width: 300px;
+              // height: 450px;
+              border: 7px solid rgb(255, 0, 174);
+            }
             @media (max-width: 414px) {
               gap: 5px;
             }
             li {
               p {
                 font-size: 19px;
+                overflow: hidden;
+                @media (max-width: 768px) {
+                  font-size: 15px;
+                }
               }
             }
+            .text_more {
+              // display: none;
+            }
+            button {
+              width: 150px;
+              padding: 10px 5px;
+              margin: 0 auto;
+            }
           }
+        }
+        .order-1 {
+          order: 1;
+        }
+        .order-2 {
+          order: 2;
+        }
+        .order-3 {
+          order: 3;
         }
       }
     }
@@ -259,4 +325,12 @@
 }
 </style>
 
-<script></script>
+<script setup>
+import { ref } from "vue";
+const OpenText = ref(false);
+
+const OpenTextFun = () => {
+  OpenText.value = !OpenText.value;
+  console.log(OpenText.value);
+};
+</script>

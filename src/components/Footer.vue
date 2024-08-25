@@ -73,6 +73,7 @@ footer {
     align-items: center;
     @media (max-width: 768px) {
       width: 100%;
+      border: 5px solid red;
     }
     h4 {
       text-align: center;
@@ -80,6 +81,9 @@ footer {
       color: white;
       @media (max-width: 768px) {
         font-size: 17px;
+        width: 100%;
+        border: 5px solid red;
+        margin: 0 auto;
       }
     }
   }
@@ -107,8 +111,20 @@ footer {
       align-items: center;
       width: 30%;
       gap: 10px;
+      border: 5px solid red;
+
+      @media (max-width: 768px) {
+        position: fixed;
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        // background-color: orange;
+        height: 300px;
+        bottom: 120px;
+        right: 0;
+      }
       @media (max-width: 414px) {
-        position: absolute;
+        position: fixed;
         width: 100px;
         display: flex;
         flex-direction: column;
@@ -121,15 +137,26 @@ footer {
         width: 70px;
         height: 70px;
         border-radius: 70px;
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // border: 10px solid red;
+        }
         @media (max-width: 414px) {
           display: flex;
           justify-content: center;
           align-items: center;
+          // border: 10px solid red;
         }
         .community_link {
           font-size: 35px;
           color: white;
           @media (max-width: 768px) {
+            top: 15px;
+            bottom: 16px;
+            right: 25px;
+            font-size: 30px;
           }
 
           @media (max-width: 414px) {

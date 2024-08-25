@@ -88,7 +88,7 @@
       </div>
       <div class="main_team">
         <div class="main_img order-5">
-          <img src="/src/image/Travel insurance-bro.svg" alt="" />
+          <img src="/src/image/Travel_insurance_bro.png" alt="" />
         </div>
         <div class="main_text order-6">
           <h2>享受放鬆生活</h2>
@@ -115,6 +115,8 @@
           </ol>
         </div>
       </div>
+      <!-- ---- -->
+      
     </main>
   </div>
 </template>
@@ -348,17 +350,15 @@
       }
       .order-1 {
         order: 1;
-        
       }
       .order-2 {
         order: 2;
-        
       }
       .order-3 {
         order: 3;
-        
       }
     }
+    
   }
 }
 </style>
