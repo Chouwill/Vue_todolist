@@ -45,9 +45,16 @@ footer {
   height: 15vh;
   display: flex;
   position: relative;
+  @media (max-width: 768px) {
+      // display: none;
+      width: 100%;
+      border: 9px solid rgb(0, 255, 60);
+      justify-content: center;
+      align-items: center;
+    }
   @media (max-width: 414px) {
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
   }
   .logo_box {
     width: 30%;
@@ -73,7 +80,19 @@ footer {
     align-items: center;
     @media (max-width: 768px) {
       width: 100%;
-      border: 5px solid red;
+      border: 5px solid rgb(14, 1, 1);
+    position: absolute;
+      top: 30px;
+      left: 0;
+      border: 5px solid rgb(14, 1, 1);
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 414px) {
+      width: 100%;
+      border: 5px solid rgb(14, 1, 1);
+      justify-content: center;
+      align-items: center;
     }
     h4 {
       text-align: center;
@@ -81,6 +100,12 @@ footer {
       color: white;
       @media (max-width: 768px) {
         font-size: 17px;
+        width: 100%;
+        border: 5px solid red;
+        margin: 0 auto;
+      }
+      @media (max-width: 414px) {
+        font-size: 15px;
         width: 100%;
         border: 5px solid red;
         margin: 0 auto;
@@ -94,6 +119,13 @@ footer {
     align-items: center;
     gap: 10px;
     flex-direction: column;
+    @media (max-width: 768px) {
+        display: none;
+      }
+    @media (max-width: 414px) {
+        display: flex;
+        // 會影響footer_describe 在RWD footer佔滿100%寬度，但不要影響子層div標籤CSS，絕對定位顯現
+      }
     
     h2 {
       font-size: 20px;
@@ -111,7 +143,7 @@ footer {
       align-items: center;
       width: 30%;
       gap: 10px;
-      border: 5px solid red;
+      // border: 5px solid red;
 
       @media (max-width: 768px) {
         position: fixed;
@@ -152,6 +184,9 @@ footer {
         .community_link {
           font-size: 35px;
           color: white;
+          &:hover{
+            color: orange;
+          }
           @media (max-width: 768px) {
             top: 15px;
             bottom: 16px;

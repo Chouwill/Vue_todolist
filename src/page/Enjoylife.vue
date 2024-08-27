@@ -22,6 +22,9 @@ onMounted(async () => {
 </script>
 <template>
   <div class="container">
+    <h2>
+      規劃人生目標的同時，享受與放鬆生活是達成目標的助力，讓旅遊與美食豐富你的每一步。
+    </h2>
     <main>
       <div class="div">
         <h2>國內旅遊</h2>
@@ -74,14 +77,16 @@ onMounted(async () => {
 }
 .container {
   width: 100%;
+  background-color: #c7eeff;
   main {
     width: 100%;
+    margin: 50px 0;
     .div {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 5px solid olive;
+      // border: 5px solid olive;
       flex-direction: column;
       h2 {
         width: 70%;
@@ -126,7 +131,6 @@ onMounted(async () => {
             flex-wrap: wrap;
             // height: 500px;
             border: 5px solid orange;
-
           }
           h4 {
             text-align: center;
@@ -140,19 +144,19 @@ onMounted(async () => {
           a {
             width: 50%;
             position: absolute;
-            background-color: #afbf30;
+            background-color: #4ba0d7;
             bottom: 0;
             text-align: center;
             font-weight: 700;
             font-size: 15px;
             padding: 10px 0;
             @media (max-width: 768px) {
-              width: 61%;
+              width: 200px;
               flex-wrap: wrap;
               // height: 500px;
             }
             @media (max-width: 414px) {
-              width: 78%;
+              width: 200px;
               flex-wrap: wrap;
               // height: 500px;
             }

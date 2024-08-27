@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="banner">
-      <img src="/src/image/adventure-1807495_1920 1.png" alt="" />
+      <img src="/src/image/people-1979261_1920.jpg" alt="" />
       <h2>ABOUT<br />US</h2>
     </div>
     <main>
@@ -112,7 +112,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    // background-color: #9fd658;
+    background-color: #9fd658;
     margin: 50px 0 0 0;
     // border: 5px solid orange;
     position: relative;
@@ -120,7 +120,8 @@
     height: 200px;
     img {
       position: relative;
-      width: 10%;
+      width: 1000px;
+      height: 200px;
       object-fit: contain;
 
       // border: 5px solid red;
@@ -214,7 +215,7 @@
           width: 50%;
           @media (max-width: 768px) {
             width: 50%;
-            height: 450px;
+            height: 420px;
             flex-direction: column;
             border: 5px solid tomato;
           }

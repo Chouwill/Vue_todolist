@@ -6,12 +6,34 @@
         <img src="/src/image/Dream_Plan.png" alt="" />
       </router-link>
     </div>
-    <nav :class="['desktop_menu', { active: menuActive }]">
-      <router-link to="/aboutus">關於我們</router-link>
-      <router-link to="/shopping">加值商城</router-link>
-      <router-link to="/todolist">開始Plan</router-link>
-      <router-link to="/enjoylife">享受放鬆生活</router-link>
-    </nav>
+    <ul :class="['desktop_menu', { active: menuActive }]">
+      <li>
+        <router-link to="/aboutus">關於我們</router-link>
+      </li>
+      <li>
+        <router-link to="/shopping">加值商城</router-link>
+      </li>
+      <li>
+        <router-link to="/todolist">開始Plan</router-link>
+      </li>
+      <li>
+        <router-link to="/enjoylife">享受放鬆生活</router-link>
+      </li>
+      <li class="user_team_link">
+        <router-link to="/login">
+          <font-awesome-icon
+            icon="fa-regular fa-user"
+            class="deskTop_user_link"
+          />
+        </router-link>
+        <router-link to="/cart">
+          <font-awesome-icon
+            icon="fa-solid fa-cart-shopping"
+            class="deskTop_user_link"
+          />
+        </router-link>
+      </li>
+    </ul>
     <div class="user_box">
       <div>
         <router-link to="/login">
@@ -25,7 +47,7 @@
         </router-link>
       </div>
     </div>
-    <div class="phone_menu_cancel" style="display: none;">
+    <div class="phone_menu_cancel" style="display: none">
       <button>
         <!-- <font-awesome-icon icon="fa-solid fa-xmark" /> -->
       </button>
@@ -44,6 +66,12 @@
   box-sizing: border-box;
   margin: 0 auto;
 }
+a{
+  &:hover{
+    // background-color: orange;
+    color: orange;
+  }
+}
 header {
   width: 100%;
   background-color: #4ba0d7;
@@ -58,7 +86,7 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    }
+  }
 
   .logo_box {
     // border: 2px solid red;
@@ -86,11 +114,9 @@ header {
       object-fit: cover;
       @media (max-width: 768px) {
         max-width: 75%;
-        
       }
       @media (max-width: 414px) {
         max-width: 100%;
-        
       }
     }
     h2 {
@@ -107,17 +133,13 @@ header {
       }
     }
   }
-  nav {
+  ul {
     width: 33.3%;
     border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    a {
-      color: white;
-      font-size: 20px;
-    }
     @media (max-width: 768px) {
       background-color: rgb(0, 255, 89);
       display: none;
@@ -125,14 +147,42 @@ header {
     @media (max-width: 430px) {
       background-color: rgb(217, 255, 0);
     }
+    li {
+      &:nth-child(5) {
+        display: none;
+        @media (max-width: 768px) {
+          display: flex;
+          border: 5px solid red;
+          justify-content: flex-start;
+          // width: 100px;
+        }
+      }
+      a {
+        color: white;
+        font-size: 20px;
+      }
+    }
+    // .deskTop_user_link {
+    //   display: none;
+    //   @media (max-width: 768px) {
+    //     // background-color: rgb(0, 255, 89);
+    //     display: block;
+    //     color: white;
+    //     font-size: 40px;
+    //   }
+    //   @media (max-width: 430px) {
+    //     background-color: rgb(217, 255, 0);
+    //     display: block;
+    //   }
+    // }
   }
   .desktop_menu {
     // display: none;
     // border: 20px solid red;
     @media (max-width: 768px) {
-      display: none;
+      //display: none;
       // width: 400px;
-      // background-color: orange;
+      background-color: orange;
       // // border: 20px solid tomato;
       // display: flex;
       // justify-content: center;
@@ -155,20 +205,44 @@ header {
       align-items: center;
       justify-content: center;
       gap: 16px;
-      // background-color: rgb(0, 255, 8);
-      // border: 10px solid red;
       color: rgb(68, 0, 255);
-      // @media (max-width: 768px) {
-      //   background-color: orange;
-      //   width: 200px;
-      //   display: flex;
-      //   flex-direction: column;
-      //   align-items: center;
-      //   justify-content: flex-end;
-      //   background-color: rgb(0, 255, 8);
-      //   // border: 10px solid red;
-      //   color: orange;
-      // }
+      @media (max-width: 768px) {
+        display: flex;
+      }
+      li {
+        border-bottom: 3px solid gray;
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        &:nth-child(5){
+          width: 40%;
+          justify-content: flex-start;
+          text-align: left;
+          border-bottom: none;
+        }
+        a {
+          // border-bottom: 3px solid gray;
+          width: 100%;
+          text-align: left;
+          padding: 10px 0;
+          display: flex;
+          @media (max-width: 768px) {
+            display: flex;
+            color: #4bd76e;
+            
+          }
+        }
+      }
+      .user_team_link{
+        text-align: left;
+        width: 40%;
+        a{
+          color: #000;
+          text-align: left;
+          font-size: 30px;
+        }
+      }
     }
   }
   .user_box {
@@ -189,6 +263,9 @@ header {
       .user_link {
         color: white;
         font-size: 35px;
+        &:hover{
+          color: orange;
+        }
       }
     }
   }

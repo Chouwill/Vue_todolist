@@ -23,8 +23,8 @@
           class="mySwiper"
         >
           <swiper-slide v-for="item in VipServe" :key="item.id">
-            <img :src="item.imageUrl" alt="" style="max-width: 300px" />
-            <h4>{{ item.title }}</h4>
+            <img :src="item.imageUrl" alt="" style="max-width: 100%" />
+            <!-- <h4>{{ item.title }}</h4> -->
           </swiper-slide>
           <!-- <swiper-slide>Slide 2</swiper-slide 
           ><swiper-slide>Slide 3</swiper-slide>
@@ -140,7 +140,7 @@
 
 .swiper-slide img {
   display: block;
-  width: 100%;
+  // width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -377,11 +377,10 @@ const VipServe = ref([]);
 
 const arr = [
   axios.get(
-    "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
-  ),
-  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
-  axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
+  ),
+  axios.get(
+    "https://vue3-course-api.hexschool.io/api/dream_service/products"
   ),
 ];
 
@@ -389,7 +388,7 @@ onMounted(async () => {
   try {
     const resArr = await Promise.all(arr);
     console.log(resArr[1].data);
-    VipServe.value = resArr[2].data.products;
+    VipServe.value = resArr[1].data.products;
   } catch (error) {
     console.log("錯誤處理", error);
   }

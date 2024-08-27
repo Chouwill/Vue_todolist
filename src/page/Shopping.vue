@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2>閱讀助力，PRO加值。升級你的計畫，精選書籍與PRO會員帶你走得更遠</h2>
     <div class="page_title">
       <h2>加值服務商城</h2>
       <h3>優質書籍推薦:</h3>
@@ -145,7 +146,7 @@ const arr = [
   axios.get(
     "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
   ),
-  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get("https://vue3-course-api.hexschool.io/api/dream_vip_edit/products"),
   axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
   ),
@@ -178,6 +179,7 @@ onMounted(async () => {
 .container {
   width: 100%;
   border: 5px solid red;
+  background-color: #c7eeff;
   .page_title {
     width: 100%;
     // border: 10px solid rgb(102, 0, 255);
@@ -230,13 +232,13 @@ onMounted(async () => {
       gap: 30px;
     }
     li {
-      width: calc(100% - 30px) / 3;
-      // width: 90%;
+      // width: calc(100% - 30px) / 3;
+      width: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      // border: 5px solid yellow;
+      border: 5px solid yellow;
       position: relative;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 加深陰影效果 */
       @media (max-width: 768px) {
@@ -281,7 +283,17 @@ onMounted(async () => {
           bottom: 73px;
           opacity: 0.8;
 
-          h4,
+          h4 {
+            width: 100px;
+            font-weight: 900;
+            font-size: 13px; //太大每個購物車按鈕會不一樣
+            color: #31267c;
+            text-align: center;
+            // background-color: #d77a4b;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
           span {
             font-weight: 900;
             font-size: 13px; //太大每個購物車按鈕會不一樣
@@ -326,7 +338,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    // border: 5px solid red;
+    border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -341,13 +353,13 @@ onMounted(async () => {
       gap: 30px;
     }
     li {
-      width: calc(100% - 30px) / 3;
-      // width: 90%;
+      // width: calc(100% - 30px) / 3;
+      width: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      // border: 5px solid yellow;
+      border: 5px solid yellow;
       position: relative;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 加深陰影效果 */
       @media (max-width: 768px) {
@@ -527,8 +539,10 @@ onMounted(async () => {
     line-height: 1.6;
 
     thead {
-      background-color: #f5e4d0;
-      color: #795227; // 深灰色文字
+      // background-color: #f5e4d0;
+      background-color: #82bae0;
+      font-weight: 700;
+      color: #0c0702; // 深灰色文字
       text-align: center;
 
       th {

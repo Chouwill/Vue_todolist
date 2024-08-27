@@ -1,69 +1,71 @@
 <template>
-  <div class="login_box">
-    <div class="login_header">
-      <router-link to="/login">會員登入</router-link>
-      <router-link to="/registermember">會員註冊</router-link>
-    </div>
-    <ul class="main_login">
-      <li>
-        <label for="">使用者名稱</label>
-        <br />
-        <el-input
-          v-model="UserName"
-          style="width: 240px"
-          type="text"
-          placeholder="請輸入帳號"
-        />
-      </li>
-      <li>
-        <label for="">使用者帳號</label>
-        <br />
-        <el-input
-          v-model="UserInput"
-          style="width: 240px"
-          type="e-mail"
-          placeholder="請輸入帳號"
-        />
-      </li>
-      <li>
-        <label for="">密碼 </label>
-        <el-input
-          v-model="Password"
-          style="width: 240px"
-          type="password"
-          placeholder="請輸入密碼"
-          show-password
-        />
-      </li>
-      <li>
-        <label for="">確認密碼 </label>
-        <el-input
-          v-model="DoublePassword"
-          style="width: 240px"
-          type="password"
-          placeholder="確認輸入密碼"
-          show-password
-        />
-      </li>
-      <!-- <li class="check_link">
+  <div class="container">
+    <div class="Register_box">
+      <div class="Register_header">
+        <router-link to="/login">會員登入</router-link>
+        <router-link to="/registermember">會員註冊</router-link>
+      </div>
+      <ul class="main_Register">
+        <li>
+          <label for="">使用者名稱</label>
+          <br />
+          <el-input
+            v-model="UserName"
+            style="width: 240px"
+            type="text"
+            placeholder="請輸入帳號"
+          />
+        </li>
+        <li>
+          <label for="">使用者帳號</label>
+          <br />
+          <el-input
+            v-model="UserInput"
+            style="width: 240px"
+            type="e-mail"
+            placeholder="請輸入帳號"
+          />
+        </li>
+        <li>
+          <label for="">密碼 </label>
+          <el-input
+            v-model="Password"
+            style="width: 240px"
+            type="password"
+            placeholder="請輸入密碼"
+            show-password
+          />
+        </li>
+        <li>
+          <label for="">確認密碼 </label>
+          <el-input
+            v-model="DoublePassword"
+            style="width: 240px"
+            type="password"
+            placeholder="確認輸入密碼"
+            show-password
+          />
+        </li>
+        <!-- <li class="check_link">
           <input type="checkbox" name="" id="">
           <p>
             註冊即表示您同意提供真實資料並保護您的賬戶安全。
           </p>
         </li> -->
-      <li>
-        <!-- <input  type="button" value="登入" /> -->
-        <el-button
-          @click="RegisterSend"
-          style="width: 240px; background-color: #eebe77"
-          type="success"
-          ><p style="color: #000; font-size: 16px;">註冊</p></el-button
-        >
-      </li>
-      <!-- <li class="forget_link">
+        <li>
+          <!-- <input  type="button" value="登入" /> -->
+          <el-button
+            @click="RegisterSend"
+            style="width: 240px; background-color: #4ba0d7"
+            type="success"
+            ><p style="color: #000; font-size: 16px">註冊</p></el-button
+          >
+        </li>
+        <!-- <li class="forget_link">
             <a href="">忘記密碼</a>
           </li> -->
-    </ul>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -127,7 +129,15 @@ const RegisterSend = async (email) => {
   text-decoration: none;
   box-sizing: border-box;
 }
-.login_box {
+.container {
+  width: 100%;
+  background-color: #c7eeff;
+  height: 70vh;
+  @media (max-width: 768px) {
+    height: 85vh;
+  }
+}
+.Register_box {
   // border: 5px solid red;
   display: flex;
   justify-content: center;
@@ -138,7 +148,10 @@ const RegisterSend = async (email) => {
   height: 400px;
   background-color: #f2f2f2;
   padding: 15px 30px;
-  .login_header {
+  @media (max-width: 768px) {
+    margin-top: 200px;
+    }
+  .Register_header {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -155,14 +168,14 @@ const RegisterSend = async (email) => {
     }
     a:nth-child(2) {
       color: green;
-      background-color: #eebe77;
+      background-color: #4ba0d7;
       display: flex;
       flex: 1;
       justify-content: center;
       align-items: center;
     }
   }
-  .main_login {
+  .main_Register {
     width: 100%;
     // border: 1px solid green;
     // height: 150px;
@@ -177,7 +190,7 @@ const RegisterSend = async (email) => {
 
       width: 240px;
       display: flex;
-      
+
       flex-wrap: wrap;
       // border: 2px solid darkblue;
     }
