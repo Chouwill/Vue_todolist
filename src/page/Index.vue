@@ -2,6 +2,7 @@
   <div class="container">
     <div class="page_header">
       <div class="bg">
+        <h1>Dream Plan</h1>
         <h2>
           Make<br />
           your dream come true
@@ -169,12 +170,18 @@
       // background-image: url("/src/image/Personal\ goals-bro.svg");
       background-color: #4ba0d7;
       background-color: #96cde4;
-
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
       max-height: 900px;
-
+      // position: relative;
+      img{
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: 237px;
+        right: 128px;
+      }
       @media (max-width: 768px) {
         display: none;
       }
