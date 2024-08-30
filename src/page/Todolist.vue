@@ -243,11 +243,11 @@ const deleteEvent = (id) => {
   main {
     width: 100%;
     // display: flex;
-    border: 2px solid red;
+    // border: 2px solid red;
     h2 {
     }
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
+      // background-color: rgb(0, 255, 89);
       width: 100%;
       // display: none;
     }
@@ -284,7 +284,7 @@ const deleteEvent = (id) => {
           list-style: none;
           gap: 20px;
           @media (max-width: 768px) {
-            background-color: rgb(0, 255, 89);
+            // background-color: rgb(0, 255, 89);
             width: 70%;
             // flex-direction: row;
           }
@@ -300,12 +300,12 @@ const deleteEvent = (id) => {
         }
         button {
           padding: 10px 30px;
-          background-color: #4a4ab1;
+          // background-color: #4a4ab1;
           // border-radius: 40px;
           font-size: 14px;
           &:nth-child(1) {
             padding: 10px 30px;
-            background-color: red;
+            // background-color: red;
             // border-radius: 40px;
             font-size: 14px;
           }
@@ -313,14 +313,14 @@ const deleteEvent = (id) => {
       }
       .calendar {
         width: 40vw;
-        border: 5px solid palegreen;
+        // border: 5px solid palegreen;
         height: 500px;
         @media (max-width: 768px) {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          background-color: rgb(0, 255, 89);
+          // background-color: rgb(0, 255, 89);
           width: 80%;
           margin: 0 auto;
           // flex-direction: row;
@@ -336,7 +336,7 @@ const deleteEvent = (id) => {
       justify-content: center;
       align-items: center;
       padding: 20px 40px; /* 內邊距 */
-      background-color: #40b9a9; /* 背景顏色 */
+      // background-color: #40b9a9; /* 背景顏色 */
       color: #000; /* 字體顏色 */
       border: none; /* 去掉邊框 */
       border-radius: 20px; /* 圓角 */

@@ -117,7 +117,6 @@
         </div>
       </div>
       <!-- ---- -->
-      
     </main>
   </div>
 </template>
@@ -175,7 +174,7 @@
       background-position: center;
       max-height: 900px;
       // position: relative;
-      img{
+      img {
         width: 100%;
         height: 50px;
         position: absolute;
@@ -237,7 +236,7 @@
     @media (max-width: 768px) {
       width: 100%;
       flex-direction: column;
-      background-color: orange;
+      // background-color: orange;
     }
     @media (max-width: 414px) {
       width: 100%;
@@ -250,7 +249,7 @@
       justify-content: center;
       align-items: center;
       // flex-direction: column;
-      border: 5px solid palegreen;
+      // border: 5px solid palegreen;
       height: 500px;
       @media (max-width: 768px) {
         width: 90%;
@@ -259,7 +258,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        border: 5px solid brown;
+        // border: 5px solid brown;
         // background-color: rgb(51, 0, 255);
       }
       @media (max-width: 414px) {
@@ -270,12 +269,13 @@
       }
       .main_img {
         // border: 10px solid #000;
-        width: 50%;
+        width: 500px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
         @media (max-width: 768px) {
           width: 50%;
           height: 450px;
           flex-direction: column;
-          border: 5px solid tomato;
+          // border: 5px solid tomato;
         }
         @media (max-width: 414px) {
           display: none;
@@ -312,7 +312,7 @@
         @media (max-width: 414px) {
           width: 100%;
           height: 550px;
-          border: 6px solid rebeccapurple;
+          // border: 6px solid rebeccapurple;
         }
         h2 {
           text-align: center;
@@ -331,7 +331,7 @@
           @media (max-width: 768px) {
             width: 300px;
             height: 450px;
-            border: 2px solid rgb(0, 255, 64);
+            // border: 2px solid rgb(0, 255, 64);
           }
           @media (max-width: 414px) {
             gap: 5px;
@@ -365,7 +365,6 @@
         order: 3;
       }
     }
-    
   }
 }
 </style>
@@ -386,9 +385,7 @@ const arr = [
   axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
   ),
-  axios.get(
-    "https://vue3-course-api.hexschool.io/api/dream_service/products"
-  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/dream_service/products"),
 ];
 
 onMounted(async () => {

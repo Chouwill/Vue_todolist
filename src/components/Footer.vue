@@ -48,7 +48,7 @@ footer {
   @media (max-width: 768px) {
       // display: none;
       width: 100%;
-      border: 9px solid rgb(0, 255, 60);
+      // border: 9px solid rgb(0, 255, 60);
       justify-content: center;
       align-items: center;
     }
@@ -80,17 +80,17 @@ footer {
     align-items: center;
     @media (max-width: 768px) {
       width: 100%;
-      border: 5px solid rgb(14, 1, 1);
+      // border: 5px solid rgb(14, 1, 1);
     position: absolute;
       top: 30px;
       left: 0;
-      border: 5px solid rgb(14, 1, 1);
+      // border: 5px solid rgb(14, 1, 1);
       justify-content: center;
       align-items: center;
     }
     @media (max-width: 414px) {
       width: 100%;
-      border: 5px solid rgb(14, 1, 1);
+      // border: 5px solid rgb(14, 1, 1);
       justify-content: center;
       align-items: center;
     }
@@ -101,13 +101,14 @@ footer {
       @media (max-width: 768px) {
         font-size: 17px;
         width: 100%;
-        border: 5px solid red;
+        // border: 5px solid red;
         margin: 0 auto;
       }
       @media (max-width: 414px) {
         font-size: 15px;
         width: 100%;
-        border: 5px solid red;
+        // border: 5px solid red;
+        line-height: 4;
         margin: 0 auto;
       }
     }

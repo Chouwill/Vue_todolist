@@ -91,14 +91,14 @@ onMounted(async () => {
       h2 {
         width: 70%;
         text-align: left;
-        border: 2px solid red;
+        // border: 2px solid red;
       }
       ul {
         width: 70%;
         display: flex;
         gap: 20px;
         list-style: none;
-        border: 5px solid orange;
+        // border: 5px solid orange;
         justify-content: center;
         align-items: center;
         @media (max-width: 768px) {
@@ -112,17 +112,17 @@ onMounted(async () => {
           // height: 500px;
         }
         li {
-          width: 100%;
+          width: 20%;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          border: 5px solid red;
+          // border: 5px solid red;
           position: relative;
           @media (max-width: 768px) {
-            width: 80%;
+            width: 40%;
             flex-wrap: wrap;
-            border: 5px solid rgb(25, 0, 255);
+            // border: 5px solid rgb(25, 0, 255);
 
             // height: 500px;
           }
@@ -130,7 +130,7 @@ onMounted(async () => {
             width: 75%;
             flex-wrap: wrap;
             // height: 500px;
-            border: 5px solid orange;
+            // border: 5px solid orange;
           }
           h4 {
             text-align: center;
@@ -142,7 +142,7 @@ onMounted(async () => {
             // height: 50%;
           }
           a {
-            width: 50%;
+            width: 200px;
             position: absolute;
             background-color: #4ba0d7;
             bottom: 0;

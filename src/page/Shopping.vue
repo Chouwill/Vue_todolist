@@ -178,7 +178,7 @@ onMounted(async () => {
 }
 .container {
   width: 100%;
-  border: 5px solid red;
+  // border: 5px solid red;
   background-color: #c7eeff;
   .page_title {
     width: 100%;
@@ -191,7 +191,7 @@ onMounted(async () => {
       width: 100%;
       text-align: center;
       @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
+        // background-color: rgb(0, 255, 89);
         text-align: left;
         width: 95%;
       }
@@ -201,7 +201,7 @@ onMounted(async () => {
       text-align: left;
       // border: 5px solid salmon;
       @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
+        // background-color: rgb(0, 255, 89);
         text-align: left;
         width: 90%;
       }
@@ -225,7 +225,7 @@ onMounted(async () => {
       gap: 30px;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
@@ -238,7 +238,7 @@ onMounted(async () => {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border: 5px solid yellow;
+      // border: 5px solid yellow;
       position: relative;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 加深陰影效果 */
       @media (max-width: 768px) {
@@ -248,7 +248,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 0, 179);
+        // background-color: rgb(255, 0, 179);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -338,7 +338,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    border: 5px solid red;
+    // border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -346,7 +346,7 @@ onMounted(async () => {
       flex-wrap: wrap;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
@@ -359,7 +359,7 @@ onMounted(async () => {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      border: 5px solid yellow;
+      // border: 5px solid yellow;
       position: relative;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 加深陰影效果 */
       @media (max-width: 768px) {
@@ -369,7 +369,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 85, 0);
+        // background-color: rgb(255, 85, 0);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -472,7 +472,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 0, 179);
+        // background-color: rgb(255, 0, 179);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -524,7 +524,7 @@ onMounted(async () => {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     @media (max-width: 768px) {
-      border: 5px solid red;
+      // border: 5px solid red;
       max-width: 900px;
       width: auto;
     }

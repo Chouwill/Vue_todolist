@@ -3,7 +3,7 @@
     <div class="logo_box">
       <router-link to="/">
         <!-- <h2>設計你的計畫Plan</h2> -->
-        <img src="/src/image/Dream_Plan.png" alt="" />
+        <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" />
       </router-link>
     </div>
     <ul :class="['desktop_menu', { active: menuActive }]">
@@ -66,8 +66,8 @@
   box-sizing: border-box;
   margin: 0 auto;
 }
-a{
-  &:hover{
+a {
+  &:hover {
     // background-color: orange;
     color: orange;
   }
@@ -76,10 +76,17 @@ header {
   width: 100%;
   background-color: #4ba0d7;
   background-color: #1e7fb8;
+  background-color: #c7eeff;
   height: 15vh;
   display: flex;
   // padding: 100px 0;
-  position: relative;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -90,11 +97,13 @@ header {
 
   .logo_box {
     // border: 2px solid red;
-    width: 33.3%;
+    width: 20%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+    border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
       display: flex;
@@ -110,7 +119,7 @@ header {
       align-items: center;
     }
     img {
-      max-width: 50%;
+      max-width: 85%;
       object-fit: cover;
       @media (max-width: 768px) {
         max-width: 75%;
@@ -134,32 +143,34 @@ header {
     }
   }
   ul {
-    width: 33.3%;
-    border: 2px solid #000;
+    width: 60%;
+    // border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
+      // background-color: rgb(0, 255, 89);
       display: none;
     }
     @media (max-width: 430px) {
-      background-color: rgb(217, 255, 0);
+      // background-color: rgb(217, 255, 0);
     }
     li {
       &:nth-child(5) {
         display: none;
         @media (max-width: 768px) {
           display: flex;
-          border: 5px solid red;
+          // border: 5px solid red;
           justify-content: flex-start;
           // width: 100px;
         }
       }
       a {
         color: white;
+        color: #000;
         font-size: 20px;
+        font-weight: 700;
       }
     }
     // .deskTop_user_link {
@@ -215,7 +226,7 @@ header {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        &:nth-child(5){
+        &:nth-child(5) {
           width: 40%;
           justify-content: flex-start;
           text-align: left;
@@ -230,14 +241,13 @@ header {
           @media (max-width: 768px) {
             display: flex;
             color: #4bd76e;
-            
           }
         }
       }
-      .user_team_link{
+      .user_team_link {
         text-align: left;
         width: 40%;
-        a{
+        a {
           color: #000;
           text-align: left;
           font-size: 30px;
@@ -246,8 +256,8 @@ header {
     }
   }
   .user_box {
-    width: 33.3%;
-    border: 3px solid pink;
+    width: 20%;
+    // border: 3px solid pink;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -262,8 +272,9 @@ header {
       // border: 2px solid red;
       .user_link {
         color: white;
+        color: #000;
         font-size: 35px;
-        &:hover{
+        &:hover {
           color: orange;
         }
       }
@@ -297,10 +308,19 @@ header {
     }
   }
 }
+/* 圓角樣式 */
+.rounded {
+    border-radius: 0 0 20px 0; /* 只有右下角有圓角 */
+}
+
+/* 方塊樣式 */
+.square {
+    border-radius: 0; /* 恢復為方塊 */
+}
 </style>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -359,4 +379,21 @@ const isLoginMemberStatus = async () => {
 // axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
+
+const logoClass = ref("logo rounded");
+
+const handleScroll = () => {
+  if (window.screenY > 0) {
+    logoClass.value = "logo square";
+  } else {
+    logoClass.value = "logo rounded";
+  }
+};
+
+onMounted(()=>{
+  window.addEventListener('scroll', handleScroll);
+})
+onBeforeUnmount(()=>{
+  window.removeEventListener('scroll', handleScroll);
+})
 </script>
