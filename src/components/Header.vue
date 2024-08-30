@@ -3,7 +3,7 @@
     <div class="logo_box">
       <router-link to="/">
         <!-- <h2>設計你的計畫Plan</h2> -->
-        <img src="/src/image/Dream_Plan.png" alt="" />
+        <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" />
       </router-link>
     </div>
     <ul :class="['desktop_menu', { active: menuActive }]">
@@ -76,6 +76,8 @@ header {
   width: 100%;
   background-color: #4ba0d7;
   background-color: #1e7fb8;
+  background-color: #4021BF;
+
   height: 15vh;
   display: flex;
   // padding: 100px 0;
@@ -86,6 +88,7 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
+    background-color: #1F2D41;
   }
 
   .logo_box {
@@ -135,7 +138,7 @@ header {
   }
   ul {
     width: 33.3%;
-    border: 2px solid #000;
+    // border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
@@ -210,7 +213,7 @@ header {
         display: flex;
       }
       li {
-        border-bottom: 3px solid gray;
+        // border-bottom: 3px solid gray;
         width: 80%;
         display: flex;
         justify-content: flex-start;
@@ -247,7 +250,7 @@ header {
   }
   .user_box {
     width: 33.3%;
-    border: 3px solid pink;
+    // border: 3px solid pink;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,41 +1,23 @@
 <template>
   <div class="container">
-    <div class="page_header">
-      <div class="bg">
-        <h1>Dream Plan</h1>
+    <div class="Index_header">
+      <div class="main_left">
         <h2>
-          Make<br />
-          your dream come true
+          Build your next plan faster with<br />
+          Dream Plan
         </h2>
+        <h4>
+          Welcome to DreamPlan, a toolkit for building perfect plan
+          interfaces,<br />
+          created by the development team at Start Bootstrap
+        </h4>
+        <div class="link_box">
+          <a href="#">view Demo -></a>
+          <a href="#">view Demo -></a>
+        </div>
       </div>
-      <div class="Carousel_box">
-        <swiper
-          :spaceBetween="30"
-          :centeredSlides="true"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-          :pagination="{
-            clickable: true,
-          }"
-          :navigation="false"
-          :modules="modules"
-          class="mySwiper"
-        >
-          <swiper-slide v-for="item in VipServe" :key="item.id">
-            <img :src="item.imageUrl" alt="" style="max-width: 100%" />
-            <!-- <h4>{{ item.title }}</h4> -->
-          </swiper-slide>
-          <!-- <swiper-slide>Slide 2</swiper-slide 
-          ><swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide
-          ><swiper-slide>Slide 5</swiper-slide>
-          <swiper-slide>Slide 6</swiper-slide
-          ><swiper-slide>Slide 7</swiper-slide>
-          <swiper-slide>Slide 8</swiper-slide
-          ><swiper-slide>Slide 9</swiper-slide>  -->
-        </swiper>
+      <div class="main_right">
+        <img src="/src/image/goal.png" alt="" />
       </div>
     </div>
     <main>
@@ -117,7 +99,6 @@
         </div>
       </div>
       <!-- ---- -->
-      
     </main>
   </div>
 </template>
@@ -152,35 +133,74 @@
 }
 .container {
   background-color: #fff;
-  background-color: #c7eeff;
-
-  .page_header {
-    width: 80%;
+  .Index_header {
+    width: 100%;
     display: flex;
     height: 450px;
     justify-content: center;
     // align-items: center;
     // border: 5px solid #000;
-    margin: 40px 0;
-    position: relative;
-
-    .bg {
+    background-color: #4021bf;
+    .main_left {
       width: 40%;
-      // border: 2px solid red;
-      // background-image: url("/src/image/Personal\ goals-bro.svg");
-      background-color: #4ba0d7;
-      background-color: #96cde4;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      max-height: 900px;
-      // position: relative;
-      img{
+      // border: 5px solid orange;
+      // opacity: 1;
+      // transform: translateZ(0);
+      @media (max-width: 768px) {
+        height: 1000px;
+      }
+      h2 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        line-height: 2;
+        border: 5px solid #000;
+        @media (max-width: 768px) {
+        }
+      }
+      h4 {
+        font-size: 1.15rem;
+        color: hsla(0, 0%, 100%, 0.5);
+        line-height: 1.5;
+        margin-bottom: 40px;
+      }
+      .link_box {
+        display: flex;
+        justify-content: center;
+        width: 500px;
+        // border: 5px solid red;
+        // height: 100px;
+        gap: 20px;
+        @media (max-width: 768px) {
+          border: 5px solid wheat;
+          width: 100%;
+          margin-bottom: 100px;
+        }
+        a {
+          &:first-child {
+            color: #fff;
+            background-color: #009476;
+            border-color: #00876b;
+            padding: 15px 15px;
+            border-radius: 20px;
+          }
+          &:nth-child(2) {
+            color: #fff;
+            background-color: #009476;
+            border-color: #00876b;
+            padding: 15px 15px;
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+
+    .main_right {
+      width: 40%;
+      // border: 5px solid red;
+      img {
         width: 100%;
-        height: 50px;
-        position: absolute;
-        bottom: 237px;
-        right: 128px;
+        height: 400px;
+        object-fit: cover;
       }
       @media (max-width: 768px) {
         display: none;
@@ -250,7 +270,7 @@
       justify-content: center;
       align-items: center;
       // flex-direction: column;
-      border: 5px solid palegreen;
+      // border: 5px solid palegreen;
       height: 500px;
       @media (max-width: 768px) {
         width: 90%;
@@ -365,7 +385,6 @@
         order: 3;
       }
     }
-    
   }
 }
 </style>
@@ -386,9 +405,7 @@ const arr = [
   axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
   ),
-  axios.get(
-    "https://vue3-course-api.hexschool.io/api/dream_service/products"
-  ),
+  axios.get("https://vue3-course-api.hexschool.io/api/dream_service/products"),
 ];
 
 onMounted(async () => {

@@ -42,6 +42,7 @@ footer {
   width: 100%;
   // background-color: #4ba0d7;
   background-color: #1e7fb8;
+  // background-color: #FFFFFF;
   height: 15vh;
   display: flex;
   position: relative;
@@ -98,6 +99,7 @@ footer {
       text-align: center;
       font-size: 20px;
       color: white;
+      color: #a2acba;
       @media (max-width: 768px) {
         font-size: 17px;
         width: 100%;
@@ -130,6 +132,7 @@ footer {
     h2 {
       font-size: 20px;
       color: white;
+      color: #a2acba;
       @media (max-width: 768px) {
         display: none;
       }
@@ -184,6 +187,7 @@ footer {
         .community_link {
           font-size: 35px;
           color: white;
+          color: #a2acba;
           &:hover{
             color: orange;
           }
