@@ -39,12 +39,12 @@
         <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
-        <router-link to="/cart">
+        <!-- <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
             class="user_link"
           />
-        </router-link>
+        </router-link> -->
       </div>
     </div>
     <div class="phone_menu_cancel" style="display: none">
@@ -76,8 +76,10 @@ header {
   width: 100%;
   background-color: #4ba0d7;
   background-color: #1e7fb8;
-  background-color: #c7eeff;
-  height: 15vh;
+  // background-color: #c7eeff;
+  background-color: #a0d8f0;
+
+  height: 10vh;
   display: flex;
   // padding: 100px 0;
   position: fixed;
@@ -86,7 +88,7 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -98,25 +100,25 @@ header {
   .logo_box {
     // border: 2px solid red;
     width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+    //display: flex;
+    //justify-content: center;
+    //align-items: flex-start;
+    //flex-direction: column;
     border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
-      display: flex;
-      justify-content: flex-end;
+      // display: flex;
+      // justify-content: flex-end;
       width: 85%;
-      align-items: center;
+      // align-items: center;
     }
     @media (max-width: 414px) {
       // background-color: rgb(0, 255, 89);
-      display: flex;
-      justify-content: flex-end;
+      // display: flex;
+      // justify-content: flex-end;
       width: 85%;
-      align-items: center;
+      // align-items: center;
     }
     img {
       max-width: 85%;
@@ -193,7 +195,7 @@ header {
     @media (max-width: 768px) {
       //display: none;
       // width: 400px;
-      background-color: orange;
+      background-color: #7daac4;
       // // border: 20px solid tomato;
       // display: flex;
       // justify-content: center;
@@ -221,7 +223,7 @@ header {
         display: flex;
       }
       li {
-        border-bottom: 3px solid gray;
+        border-bottom: 3px solid rgb(49, 46, 46);
         width: 80%;
         display: flex;
         justify-content: flex-start;
@@ -240,7 +242,7 @@ header {
           display: flex;
           @media (max-width: 768px) {
             display: flex;
-            color: #4bd76e;
+            color: #000;
           }
         }
       }
@@ -383,6 +385,7 @@ const isLoginMemberStatus = async () => {
 const logoClass = ref("logo rounded");
 
 const handleScroll = () => {
+  console.log(window.screenY)
   if (window.screenY > 0) {
     logoClass.value = "logo square";
   } else {

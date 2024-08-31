@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="logo_box">
-      <img src="/src/image/Dream_Plan.png" alt="" />
+      <!-- <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" /> -->
     </div>
     <div class="footer_describe">
       <h4>版權所有 ©Copyright 2024.All Rights Reserved.</h4>
@@ -41,20 +41,24 @@
 footer {
   width: 100%;
   // background-color: #4ba0d7;
-  background-color: #1e7fb8;
-  height: 15vh;
+  background-color: #a0d8f0;
+  height: 12vh;
+  // margin-bottom: 15vh;
   display: flex;
   position: relative;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+
   @media (max-width: 768px) {
-      // display: none;
-      width: 100%;
-      // border: 9px solid rgb(0, 255, 60);
-      justify-content: center;
-      align-items: center;
-    }
+    // display: none;
+    width: 100%;
+    // border: 9px solid rgb(0, 255, 60);
+    justify-content: center;
+    align-items: center;
+  }
   @media (max-width: 414px) {
     // justify-content: center;
     // align-items: center;
+    width: 100%;  
   }
   .logo_box {
     width: 30%;
@@ -81,7 +85,7 @@ footer {
     @media (max-width: 768px) {
       width: 100%;
       // border: 5px solid rgb(14, 1, 1);
-    position: absolute;
+      position: absolute;
       top: 30px;
       left: 0;
       // border: 5px solid rgb(14, 1, 1);
@@ -90,7 +94,7 @@ footer {
     }
     @media (max-width: 414px) {
       width: 100%;
-      // border: 5px solid rgb(14, 1, 1);
+      border: 5px solid rgb(14, 1, 1);
       justify-content: center;
       align-items: center;
     }
@@ -107,36 +111,38 @@ footer {
       @media (max-width: 414px) {
         font-size: 15px;
         width: 100%;
-        // border: 5px solid red;
+        border: 5px solid red;
         line-height: 4;
         margin: 0 auto;
       }
     }
   }
   .community_box {
-    width: 30%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
     flex-direction: column;
-    @media (max-width: 768px) {
-        display: none;
-      }
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    // padding-top: 10px;
+
     @media (max-width: 414px) {
-        display: flex;
-        // 會影響footer_describe 在RWD footer佔滿100%寬度，但不要影響子層div標籤CSS，絕對定位顯現
-      }
-    
+      // display: flex;
+      // 會影響footer_describe 在RWD footer佔滿100%寬度，但不要影響子層div標籤CSS，絕對定位顯現
+    }
+
     h2 {
       font-size: 20px;
       color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      // line-height: 2;
       @media (max-width: 768px) {
         display: none;
       }
-      @media (max-width: 414px) {
-        font-size: 20px;
-      }
+      //@media (max-width: 414px) {
+      //font-size: 20px;
+      //}
     }
     div {
       display: flex;
@@ -149,43 +155,35 @@ footer {
       @media (max-width: 768px) {
         position: fixed;
         width: 100px;
-        display: flex;
         flex-direction: column;
         // background-color: orange;
         height: 300px;
         bottom: 120px;
         right: 0;
       }
-      @media (max-width: 414px) {
-        position: fixed;
-        width: 100px;
-        display: flex;
-        flex-direction: column;
-        // background-color: orange;
-        height: 300px;
-        bottom: 120px;
-      }
       a {
-        background-color: #1e7fb8;
+        // background-color: #1e7fb8;
         width: 70px;
         height: 70px;
-        border-radius: 70px;
         @media (max-width: 768px) {
           display: flex;
           justify-content: center;
           align-items: center;
-          // border: 10px solid red;
+          border-radius: 70px;
+          background-color: #1e7fb8;
+
+          // border: 100px solid red;
         }
         @media (max-width: 414px) {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          //display: flex;
+          //justify-content: center;
+          //align-items: center;
           // border: 10px solid red;
         }
         .community_link {
           font-size: 35px;
           color: white;
-          &:hover{
+          &:hover {
             color: orange;
           }
           @media (max-width: 768px) {
@@ -196,10 +194,7 @@ footer {
           }
 
           @media (max-width: 414px) {
-            top: 15px;
-            bottom: 16px;
-            right: 25px;
-            font-size: 30px;
+            z-index: 5000;
           }
         }
       }

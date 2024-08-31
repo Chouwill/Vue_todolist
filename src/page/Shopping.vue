@@ -450,7 +450,7 @@ onMounted(async () => {
       flex-wrap: wrap;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;

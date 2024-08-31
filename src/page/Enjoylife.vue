@@ -92,6 +92,12 @@ onMounted(async () => {
         width: 70%;
         text-align: left;
         // border: 2px solid red;
+        @media (max-width: 768px) {
+          width: 100%;
+          flex-wrap: wrap;
+          // height: 500px;
+          text-align: center;
+        }
       }
       ul {
         width: 70%;
@@ -140,6 +146,7 @@ onMounted(async () => {
             width: 200px;
             height: 300px;
             // height: 50%;
+            object-fit: cover;
           }
           a {
             width: 200px;

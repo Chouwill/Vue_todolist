@@ -2,7 +2,7 @@
   <div class="container">
     <div class="page_header">
       <div class="bg">
-        <h1>Dream Plan</h1>
+        <!-- <h1>Dream Plan</h1> -->
         <h2>
           Make<br />
           your dream come true
@@ -106,8 +106,8 @@
                 設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
               </p>
             </li>
-            <button @click="OpenTextFun">顯示更多</button>
-            <li class="text_more" v-if="OpenText">
+            <!-- <button>顯示更多</button> -->
+            <li class="text_more">
               <p>
                 紀錄人生重要時刻：
                 除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
@@ -150,6 +150,7 @@
   text-decoration: none;
 }
 .container {
+  margin-top: 10vh;
   background-color: #fff;
   background-color: #c7eeff;
 
@@ -184,9 +185,15 @@
       @media (max-width: 768px) {
         display: none;
       }
+      h1 {
+        color: #000;
+        position: absolute;
+        bottom: 150px;
+        right: 50px;
+      }
       h2 {
         position: absolute;
-        color: rgb(4, 169, 51);
+        color: #2c3e99;
         bottom: 150px;
         right: 500px;
         z-index: 10;
@@ -201,9 +208,17 @@
       // height: 30vh;
       max-height: 900px;
       // border: 2px solid tan;
+      // z-index: 2;
       @media (max-width: 768px) {
         display: block;
         margin: 0 auto;
+        width: 100%;
+      }
+      @media (max-width: 414px) {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        // z-index: 2;
       }
     }
   }
@@ -218,7 +233,7 @@
       gap: 10px;
     }
     ::v-deep .swiper-pagination-bullet-active {
-      background: #00ff00; // 設定活動分頁點顏色
+      background: #2c3e99; // 設定活動分頁點顏色
       width: 10px;
       height: 10px;
       border-radius: 20px;
@@ -297,17 +312,18 @@
       }
       .main_text {
         display: flex;
-        justify-content: center;
+        justify-content: safe center;
         align-items: center;
         flex-direction: column;
         width: 500px;
         height: 420px;
+        overflow-y: auto;
         // border: 2px solid yellow;
         background-color: white;
         @media (max-width: 768px) {
           width: 50%;
           height: 450px;
-          border: 2px solid rgb(0, 255, 64);
+          // border: 2px solid rgb(0, 255, 64);
         }
         @media (max-width: 414px) {
           width: 100%;
@@ -398,11 +414,4 @@ onMounted(async () => {
   }
   console.log("執行其他動作");
 });
-
-const OpenText = ref(false);
-
-const OpenTextFun = () => {
-  OpenText.value = !OpenText.value;
-  console.log(OpenText.value);
-};
 </script>

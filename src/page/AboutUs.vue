@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="banner">
-      <img src="/src/image/people-1979261_1920.jpg" alt="" />
-      <h2>ABOUT<br />US</h2>
+      <!-- <img src="/src/image/people-1979261_1920.jpg" alt="" /> -->
+      <h2>ABOUT US</h2>
     </div>
     <main>
       <div class="about_us_title">
@@ -82,13 +82,13 @@
                   設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
                 </p>
               </li>
-              <button @click="OpenTextFun">顯示更多</button>
-              <li class="text_more" v-if="OpenText">
-                <p>
-                  紀錄人生重要時刻：
-                  除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
-                </p>
-              </li>
+              <!-- <button @click="OpenTextFun">顯示更多</button> -->
+              <!-- <li class="text_more" v-if="OpenText"> -->
+              <p>
+                紀錄人生重要時刻：
+                除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
+              </p>
+              <!-- </li> -->
             </ol>
           </div>
         </div>
@@ -106,7 +106,7 @@
 .container {
   width: 100%;
   background-color: #c7eeff;
-
+  margin-top: 10vh;
   .banner {
     display: flex;
     justify-content: center;
@@ -123,13 +123,11 @@
       width: 1000px;
       height: 200px;
       object-fit: contain;
-
-      // border: 5px solid red;
     }
     h2 {
-      color: red;
-      position: relative;
-      right: 225px;
+      color: #000;
+      // position: relative;
+      // right: 225px;
       text-align: center;
       font-size: 35px;
     }
@@ -191,7 +189,7 @@
         // border: 5px solid palegreen;
         // border-bottom: 2px solid gray;
         height: 500px;
-        &:nth-child(3){
+        &:nth-child(3) {
           border-bottom: none;
         }
         @media (max-width: 768px) {
@@ -206,7 +204,7 @@
         }
         @media (max-width: 414px) {
           width: 100%;
-          height: 550px;
+          height: 350px;
           flex-direction: column;
           // background-color: rgb(51, 0, 255);
         }
@@ -246,17 +244,20 @@
           width: 500px;
           height: 420px;
           // border: 2px solid yellow;
+          overflow-y: auto;
+
           background-color: white;
           @media (max-width: 768px) {
             flex-direction: row;
             width: 50%;
             // height: 350px;
-            border: 5px solid rgb(0, 255, 64);
+            // border: 5px solid rgb(0, 255, 64);
           }
           @media (max-width: 414px) {
             width: 100%;
-            height: 550px;
-            border: 6px solid rebeccapurple;
+            height: 350px;
+            // border: 6px solid rebeccapurple;
+            gap: 10px;
           }
           h2 {
             text-align: center;
@@ -275,7 +276,7 @@
             @media (max-width: 768px) {
               width: 300px;
               // height: 450px;
-              border: 7px solid rgb(255, 0, 174);
+              // border: 7px solid rgb(255, 0, 174);
             }
             @media (max-width: 414px) {
               gap: 5px;

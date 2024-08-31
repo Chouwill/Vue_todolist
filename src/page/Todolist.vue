@@ -8,7 +8,7 @@
           <el-form-item>
             {{ formType === "create" ? "創建事件" : "編輯事件" }}
           </el-form-item>
-          <el-form-item v-show="formType === 'edit'" label="ID">
+          <el-form-item v-show="formType === 'edit' && newEvent.id" label="ID">
             <el-input v-model="newEvent.id" disabled />
           </el-form-item>
           <el-form-item label="Event Title">
@@ -34,10 +34,14 @@
               resize="none"
             />
           </el-form-item>
-          <el-form-item class="form-item">
-            <el-button type="primary" @click="resetEvent">取消</el-button>
+          <!-- <el-form-item class="form-item">
             <el-button type="primary" @click="addEvent">送出</el-button>
-          </el-form-item>
+            <el-button type="primary" @click="resetEvent">取消</el-button>
+          </el-form-item> -->
+          <div class="form-item_oth">
+            <el-button type="primary" @click="addEvent">送出</el-button>
+            <el-button type="primary" @click="resetEvent">取消</el-button>
+          </div>
         </el-form>
         <div class="calendar">
           <Qalendar
@@ -61,7 +65,7 @@
 <script setup>
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
-
+import dayjs from "dayjs";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -183,9 +187,15 @@ const saveStorage = () => {
 const addEvent = () => {
   const { id, title, date, description } = newEvent.value; // 只能用原本的參數
   const [start = "", end = ""] = date;
+  console.log(start, end);
   const newEventObj = {
     title, // 當key與value相同時, 可以省略:value 原始為{title: title}
-    time: { start, end },
+    time: {
+      start: dayjs(start).isValid()
+        ? dayjs(start).format("YYYY-MM-DD HH:mm")
+        : "",
+      end: dayjs(end).isValid() ? dayjs(end).format("YYYY-MM-DD HH:mm") : "",
+    },
     color: "blue", // Example color
     isEditable: true,
     id: id || Date.now().toString(), // Simple ID generation
@@ -260,10 +270,12 @@ const deleteEvent = (id) => {
         padding: 5%;
 
         .form_item {
+          width: 200px;
           display: flex;
           gap: 8px;
-          // border: 50px solid palegreen;
+          border: 5px solid rgb(195, 103, 21);
           margin-bottom: 10px;
+          
           .form_label {
             display: inline-block;
             flex: 1;
@@ -273,43 +285,24 @@ const deleteEvent = (id) => {
             flex: 2;
           }
         }
-        .todo_box_row_One {
-          // border: 5px solid #000;
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          justify-content: center;
-          align-items: center;
-          height: 500px;
-          list-style: none;
-          gap: 20px;
-          @media (max-width: 768px) {
-            // background-color: rgb(0, 255, 89);
-            width: 70%;
-            // flex-direction: row;
-          }
-          li {
-            width: 100%;
-            // border: 2px solid red;
-            input {
-              width: 80%;
-              padding: 10px;
-              border-radius: 20px;
-            }
-          }
-        }
-        button {
-          padding: 10px 30px;
-          // background-color: #4a4ab1;
-          // border-radius: 40px;
-          font-size: 14px;
-          &:nth-child(1) {
-            padding: 10px 30px;
-            // background-color: red;
-            // border-radius: 40px;
-            font-size: 14px;
-          }
-        }
+        
+        // button {
+        //   padding: 10px 30px;
+        //   // background-color: #4a4ab1;
+        //   // border-radius: 40px;
+        //   font-size: 14px;
+        //   @media (max-width: 768px) {
+        //     background-color: rgb(0, 255, 89);
+        //     width: 70%;
+        //     // flex-direction: row;
+        //   }
+        //   &:nth-child(1) {
+        //     padding: 10px 30px;
+        //     // background-color: red;
+        //     // border-radius: 40px;
+        //     font-size: 14px;
+        //   }
+        // }
       }
       .calendar {
         width: 40vw;
@@ -336,14 +329,36 @@ const deleteEvent = (id) => {
       justify-content: center;
       align-items: center;
       padding: 20px 40px; /* 內邊距 */
-      // background-color: #40b9a9; /* 背景顏色 */
+      background-color: #60a6cf;
       color: #000; /* 字體顏色 */
       border: none; /* 去掉邊框 */
       border-radius: 20px; /* 圓角 */
       font-size: 24px; /* 字體大小 */
       cursor: pointer; /* 游標樣式 */
       margin: 20px auto;
+      
     }
   }
 }
+
+.form-item_oth{
+  width: 500px;
+  border: 5px solid palegoldenrod;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      width: 90%;
+      // display: none;
+      justify-content: flex-end;
+    }
+  @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      width: 90%;
+      // display: none;
+      justify-content: flex-end;
+    }
+}
+
 </style>

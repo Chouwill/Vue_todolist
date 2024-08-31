@@ -1,7 +1,7 @@
 <template>
   <div class="cartopen_box">
     <main>
-      <h2>我是購物車</h2>
+      <h2>購物車</h2>
       <table>
         <thead>
           <tr>
@@ -14,13 +14,22 @@
           </tr>
         </thead>
         <tbody>
-          <CartItem v-for="product in store.shoppingCart" :key="product.id" :product="product" />
+          <CartItem
+            v-for="product in store.shoppingCart"
+            :key="product.id"
+            :product="product"
+          />
         </tbody>
         <tfoot>
           <tr>
             <td colspan="4"></td>
             <td>
-              <button v-if="store.shoppingCart.length > 0" @click="store.removeAll">一鍵刪除</button>
+              <button
+                v-if="store.shoppingCart.length > 0"
+                @click="store.removeAll"
+              >
+                一鍵刪除
+              </button>
             </td>
           </tr>
         </tfoot>
@@ -100,12 +109,22 @@ const cancel_Buy = (id) => {
   align-items: center;
   flex-direction: column;
   width: 70%;
+  // height: 120vh;
+
+  //   border: 10px solid red;
+  position: relative;
   @media (max-width: 768px) {
     // border: 5px solid red;
     width: 100%;
+    justify-content: center;
+    align-items: center;
   }
-  //   border: 10px solid red;
-  position: relative;
+  @media (max-width: 414px) {
+    // border: 5px solid red;
+    width: 90%;
+    margin: 0 auto;
+    // height: 1000px;
+  }
   .cancel_box {
     // border: 1px solid forestgreen;
     button {
@@ -115,42 +134,86 @@ const cancel_Buy = (id) => {
     }
   }
   main {
+    @media (max-width: 414px) {
+    // border: 5px solid red;
+    width: 350px;
+    margin: 0 auto;
+    // height: 1000px;
+  }
+    h2 {
+      text-align: center;
+      font-size: 35px;
+    }
     table {
       border-collapse: collapse; /* 讓邊框合併為一條線 */
     }
 
     table {
+      border: 5px solid green;
+      width: 80%;
+      margin: 0 auto;
+      @media (max-width: 768px) {
+        margin: 0 auto;
+        
+
+      }
+      @media (max-width: 414px) {
+        margin: 0 auto;
+        width: 390px;
+
+      }
       thead {
         tr {
           // border: 3px solid palegreen;
-          background-color: red;
+          background-color: #c1c7e7;
         }
         td {
           text-align: center;
-          font-size: 20px;
+          font-size: 25px;
+          font-weight: 700;
+          background-color: #3f50a9;
+          @media (max-width: 768px) {
+            font-size: 20px;
+          }
         }
         .product-name {
           width: 270px;
           height: 50px;
-          background-color: forestgreen;
+          // background-color: #2c3e99;
           height: 30px;
+          @media (max-width: 768px) {
+            width: 5%;
+            background-color: orange;
+          }
         }
         .product-price {
           width: 200px;
-          background-color: pink;
+          // background-color: #2c3e99;
           height: 30px;
+          @media (max-width: 768px) {
+            width: 5%;
+            background-color: orange;
+          }
         }
         .quantity {
           width: 150px;
-          background-color: orange;
+          // background-color: #2c3e99;
           height: 30px;
+          @media (max-width: 768px) {
+            width: 5%;
+            background-color: orange;
+          }
         }
-        .oth {
-          width: 100px;
-        }
+        // .oth {
+        //   width: 100px;
+        // }
         .othMethod {
           width: 200px;
-          background-color: gray;
+          // background-color: #2c3e99;
+          @media (max-width: 768px) {
+            width: 5%;
+            background-color: orange;
+          }
         }
       }
     }
@@ -187,6 +250,7 @@ const cancel_Buy = (id) => {
         padding: 15px 25px;
         border-radius: 20px;
         background-color: red;
+        background-color: #7480bc;
       }
     }
   }
