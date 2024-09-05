@@ -39,12 +39,12 @@
         <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
-        <!-- <router-link to="/cart">
+        <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
             class="user_link"
           />
-        </router-link> -->
+        </router-link>
       </div>
     </div>
     <div class="phone_menu_cancel" style="display: none">
@@ -74,11 +74,7 @@ a {
 }
 header {
   width: 100%;
-  background-color: #4ba0d7;
-  background-color: #1e7fb8;
-  // background-color: #c7eeff;
   background-color: #a0d8f0;
-
   height: 10vh;
   display: flex;
   // padding: 100px 0;
@@ -88,7 +84,7 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+  // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -171,8 +167,12 @@ header {
       a {
         color: white;
         color: #000;
+        // color: red;
         font-size: 20px;
         font-weight: 700;
+        &:hover {
+          color: #3b96cb;
+        }
       }
     }
     // .deskTop_user_link {
@@ -192,6 +192,7 @@ header {
   .desktop_menu {
     // display: none;
     // border: 20px solid red;
+
     @media (max-width: 768px) {
       //display: none;
       // width: 400px;
@@ -277,7 +278,7 @@ header {
         color: #000;
         font-size: 35px;
         &:hover {
-          color: orange;
+          color: #3b96cb;
         }
       }
     }
@@ -312,12 +313,12 @@ header {
 }
 /* 圓角樣式 */
 .rounded {
-    border-radius: 0 0 20px 0; /* 只有右下角有圓角 */
+  border-radius: 0 0 20px 0; /* 只有右下角有圓角 */
 }
 
 /* 方塊樣式 */
 .square {
-    border-radius: 0; /* 恢復為方塊 */
+  border-radius: 0; /* 恢復為方塊 */
 }
 </style>
 
@@ -385,7 +386,7 @@ const isLoginMemberStatus = async () => {
 const logoClass = ref("logo rounded");
 
 const handleScroll = () => {
-  console.log(window.screenY)
+  console.log(window.screenY);
   if (window.screenY > 0) {
     logoClass.value = "logo square";
   } else {
@@ -393,10 +394,10 @@ const handleScroll = () => {
   }
 };
 
-onMounted(()=>{
-  window.addEventListener('scroll', handleScroll);
-})
-onBeforeUnmount(()=>{
-  window.removeEventListener('scroll', handleScroll);
-})
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>

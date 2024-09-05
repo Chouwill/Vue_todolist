@@ -153,6 +153,8 @@
   margin-top: 10vh;
   background-color: #fff;
   background-color: #c7eeff;
+  background-color: #a0d8f0;
+
 
   .page_header {
     width: 80%;
@@ -200,6 +202,7 @@
         text-align: center;
         font-size: 45px;
         line-height: 1.2;
+        text-shadow: 2px 2px 4px #ffffff; /* 增加白色陰影 */
       }
     }
     .Carousel_box {

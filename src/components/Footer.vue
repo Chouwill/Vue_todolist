@@ -101,7 +101,7 @@ footer {
     h4 {
       text-align: center;
       font-size: 20px;
-      color: white;
+      color: #000;
       @media (max-width: 768px) {
         font-size: 17px;
         width: 100%;
@@ -133,7 +133,7 @@ footer {
 
     h2 {
       font-size: 20px;
-      color: white;
+      color: #000;
       text-align: center;
       margin-bottom: 10px;
       // line-height: 2;
@@ -182,9 +182,9 @@ footer {
         }
         .community_link {
           font-size: 35px;
-          color: white;
+          color: #000;
           &:hover {
-            color: orange;
+            color: #3b96cb;
           }
           @media (max-width: 768px) {
             top: 15px;

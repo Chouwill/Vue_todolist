@@ -1,8 +1,12 @@
 <template>
   <div class="container">
     <div class="banner">
-      <!-- <img src="/src/image/people-1979261_1920.jpg" alt="" /> -->
-      <h2>ABOUT US</h2>
+      <div class="banner_box">
+        <img src="/src/image/Pngtreecalendarplan.png" alt="" />
+        <div class="banner_text">
+          <h2>ABOUT <br />US</h2>
+        </div>
+      </div>
     </div>
     <main>
       <div class="about_us_title">
@@ -84,10 +88,10 @@
               </li>
               <!-- <button @click="OpenTextFun">顯示更多</button> -->
               <!-- <li class="text_more" v-if="OpenText"> -->
-              <p>
+              <!-- <p>
                 紀錄人生重要時刻：
                 除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
-              </p>
+              </p> -->
               <!-- </li> -->
             </ol>
           </div>
@@ -106,30 +110,77 @@
 .container {
   width: 100%;
   background-color: #c7eeff;
+  background-color: #a0d8f0;
+
   margin-top: 10vh;
   .banner {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    // background-color: #9fd658;
-    margin: 50px 0 0 0;
+    background-color: #a0d8f0;
+    margin: 0 0 0 0;
     // border: 5px solid orange;
     position: relative;
-    //
-    height: 200px;
+    height: auto;
+    @media (max-width: 768px) {
+      width: 100%;
+      flex-direction: column;
+      // background-color: orange;
+    }
+    @media (max-width: 414px) {
+      width: 100%;
+      flex-direction: column;
+      // background-color: rgb(51, 0, 255);
+    }
+    .banner_box {
+      width: 50%;
+      border: 2px solid rgb(122, 5, 99);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      @media (max-width: 768px) {
+        width: 500px;
+        border: 2px solid rgb(122, 5, 99);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (max-width: 414px) {
+        width: 100%;
+      }
+    }
     img {
       position: relative;
-      width: 1000px;
-      height: 200px;
-      object-fit: contain;
+      max-width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border: 9px solid palegreen;
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
+      @media (max-width: 414px) {
+        // display: none;
+        // height: 350px;
+      }
     }
     h2 {
       color: #000;
-      // position: relative;
-      // right: 225px;
+      position: absolute;
+      // right: 580px;
+      top: 25px;
+      left: 175px;
       text-align: center;
-      font-size: 35px;
+      font-size: 55px;
+      @media (max-width: 768px) {
+        top: 0;
+        left: 0;
+      }
+      @media (max-width: 414px) {
+        display: none;
+      }
     }
   }
   main {
@@ -140,6 +191,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    margin: 20px 0;
     // border: 2px solid red;
     @media (max-width: 768px) {
       width: 100%;

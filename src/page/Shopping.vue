@@ -180,6 +180,8 @@ onMounted(async () => {
   width: 100%;
   // border: 5px solid red;
   background-color: #c7eeff;
+  background-color: #a0d8f0;
+
   .page_title {
     width: 100%;
     // border: 10px solid rgb(102, 0, 255);

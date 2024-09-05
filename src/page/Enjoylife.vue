@@ -22,12 +22,12 @@ onMounted(async () => {
 </script>
 <template>
   <div class="container">
-    <h2>
+    <!-- <h2>
       規劃人生目標的同時，享受與放鬆生活是達成目標的助力，讓旅遊與美食豐富你的每一步。
-    </h2>
+    </h2> -->
     <main>
       <div class="div">
-        <h2>國內旅遊</h2>
+        <h2 class="item_title">國內旅遊</h2>
         <ul v-for="item in enjoyData" :key="item.id">
           <li>
             <h4>大英博物館</h4>
@@ -47,7 +47,7 @@ onMounted(async () => {
         </ul>
       </div>
       <div class="div">
-        <h2>美食饗宴</h2>
+        <h2 class="item_title">美食饗宴</h2>
         <ul v-for="item in enjoyData" :key="item.id">
           <li>
             <h4>日式生魚片之旅</h4>
@@ -78,9 +78,10 @@ onMounted(async () => {
 .container {
   width: 100%;
   background-color: #c7eeff;
+  background-color: #a0d8f0;
   main {
     width: 100%;
-    margin: 50px 0;
+    margin: 150px 0;
     .div {
       width: 100%;
       display: flex;
@@ -88,10 +89,16 @@ onMounted(async () => {
       align-items: center;
       // border: 5px solid olive;
       flex-direction: column;
-      h2 {
+      .item_title {
         width: 70%;
         text-align: left;
-        // border: 2px solid red;
+        border: 2px solid red;
+        @media (max-width: 768px) {
+          width: 100%;
+          flex-wrap: wrap;
+          // height: 500px;
+          text-align: center;
+        }
         @media (max-width: 768px) {
           width: 100%;
           flex-wrap: wrap;

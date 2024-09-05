@@ -29,12 +29,15 @@ html{
   align-items: center;
   flex-direction: column;
   /* border: 2px solid firebrick; */
+  background-color: #a0d8f0;
+
 }
 a,button{
   cursor: pointer;
 }
 a{
   color: black;
+  
 }
 
 img{
@@ -52,6 +55,8 @@ body {
 
 body {
   background: #eee;
+  background-color: #a0d8f0;
+
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #000;

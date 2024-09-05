@@ -84,7 +84,8 @@ const LoginSend = async () => {
 .container {
   width: 100%;
   background-color: #c7eeff;
-  height: 70vh;
+  background-color: #a0d8f0;
+  height: 90vh;
   @media (max-width: 768px) {
     height: 85vh;
     }

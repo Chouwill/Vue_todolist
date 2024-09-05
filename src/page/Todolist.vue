@@ -5,44 +5,50 @@
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
         <el-form :model="newEvent" :label-width="120">
-          <el-form-item>
-            {{ formType === "create" ? "創建事件" : "編輯事件" }}
-          </el-form-item>
-          <el-form-item v-show="formType === 'edit' && newEvent.id" label="ID">
-            <el-input v-model="newEvent.id" disabled />
-          </el-form-item>
-          <el-form-item label="Event Title">
-            <el-input v-model="newEvent.title" />
-          </el-form-item>
-          <el-form-item label="Date">
-            <el-date-picker
-              v-model="newEvent.date"
-              type="datetimerange"
-              start-placeholder="Start date"
-              end-placeholder="End date"
-              format="YYYY-MM-DD HH:mm"
-              date-format="YYYY/MM/DD ddd"
-              time-format="HH:mm"
-              value-format="YYYY-MM-DD HH:mm"
-            />
-          </el-form-item>
-          <el-form-item label="Description">
-            <el-input
-              v-model="newEvent.description"
-              :rows="2"
-              type="textarea"
-              resize="none"
-            />
-          </el-form-item>
-          <!-- <el-form-item class="form-item">
+          <div class="form_item">
+            <el-form-item>
+              {{ formType === "create" ? "創建事件" : "編輯事件" }}
+            </el-form-item>
+            <el-form-item
+              v-show="formType === 'edit' && newEvent.id"
+              label="ID"
+            >
+              <el-input v-model="newEvent.id" disabled />
+            </el-form-item>
+            <el-form-item label="Event Title" class="title">
+              <el-input v-model="newEvent.title" />
+            </el-form-item>
+            <el-form-item label="Date">
+              <el-date-picker
+                v-model="newEvent.date"
+                type="datetimerange"
+                start-placeholder="Start date"
+                end-placeholder="End date"
+                format="YYYY-MM-DD HH:mm"
+                date-format="YYYY/MM/DD ddd"
+                time-format="HH:mm"
+                value-format="YYYY-MM-DD HH:mm"
+              />
+            </el-form-item>
+            <el-form-item label="Description">
+              <el-input
+                v-model="newEvent.description"
+                :rows="2"
+                type="textarea"
+                resize="none"
+              />
+            </el-form-item>
+            <!-- <el-form-item class="form-item">
             <el-button type="primary" @click="addEvent">送出</el-button>
             <el-button type="primary" @click="resetEvent">取消</el-button>
           </el-form-item> -->
-          <div class="form-item_oth">
-            <el-button type="primary" @click="addEvent">送出</el-button>
-            <el-button type="primary" @click="resetEvent">取消</el-button>
+            <div class="form-item_oth">
+              <el-button type="primary" @click="addEvent">送出</el-button>
+              <el-button type="primary" @click="resetEvent">取消</el-button>
+            </div>
           </div>
         </el-form>
+
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
@@ -54,7 +60,7 @@
         </div>
       </div>
       <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
-      <router-link>
+      <router-link to="/shopping">
         了解更多
         <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </router-link>
@@ -250,78 +256,129 @@ const deleteEvent = (id) => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  // background-color: #a0aff0;
+  height: 900px;
+  @media (max-width: 768px) {
+    height: 150vh;
+    margin: 40px 0;
+  }
+  @media (max-width: 768px) {
+    
+  }
+
   main {
     width: 100%;
-    // display: flex;
-    // border: 2px solid red;
     h2 {
+      text-align: center;
     }
     @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
       width: 100%;
-      // display: none;
     }
     .todolist_event {
       display: flex;
+      flex-direction: row;
+      align-items: center;
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
       form {
-        // background-color: #0176c3;
         width: 40vw; // 螢幕寬度的40%
         max-width: 1200px;
         padding: 5%;
-
-        .form_item {
-          width: 200px;
+        border: 5px solid rgb(195, 103, 21);
+        @media (max-width: 768px) {
+          width: 650px;
+          // border: 5px solid rgb(195, 103, 21);
           display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        @media (max-width: 414px) {
+          width: 350px;
+          // border: 5px solid rgb(195, 103, 21);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .form_item {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           gap: 8px;
-          border: 5px solid rgb(195, 103, 21);
+          border: 2px solid rgb(176, 20, 155);
           margin-bottom: 10px;
-          
-          .form_label {
-            display: inline-block;
-            flex: 1;
+          @media (max-width: 768px) {
+            width: 300px;
+            justify-content: start;
+            align-items: start;
           }
-          .form_input {
-            width: 80%;
-            flex: 2;
+          .el-form-item {
+            width: 100%;
+            // border: 2px solid rgb(15, 17, 156);
+            @media (max-width: 768px) {
+              width: 500px;
+            }
+            @media (max-width: 414px) {
+              width: 300px;
+            }
+            label {
+              font-weight: bold;
+              color: #333;
+            }
+            .el-input__inner {
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              &:focus {
+                border-color: #409eff;
+              }
+            }
+            .el-date-editor--datetimerange {
+              width: 100%;
+              .el-input__inner {
+                width: 100%;
+              }
+            }
+            .el-textarea__inner {
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              &:focus {
+                border-color: #409eff;
+              }
+            }
+          }
+          .form-item_oth {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            .el-button {
+              border-radius: 5px;
+              padding: 10px 20px;
+              &:first-child {
+                background-color: #409eff;
+                color: #fff;
+              }
+              &:last-child {
+                background-color: #f56c6c;
+                color: #fff;
+              }
+            }
           }
         }
-        
-        // button {
-        //   padding: 10px 30px;
-        //   // background-color: #4a4ab1;
-        //   // border-radius: 40px;
-        //   font-size: 14px;
-        //   @media (max-width: 768px) {
-        //     background-color: rgb(0, 255, 89);
-        //     width: 70%;
-        //     // flex-direction: row;
-        //   }
-        //   &:nth-child(1) {
-        //     padding: 10px 30px;
-        //     // background-color: red;
-        //     // border-radius: 40px;
-        //     font-size: 14px;
-        //   }
-        // }
       }
       .calendar {
         width: 40vw;
-        // border: 5px solid palegreen;
         height: 500px;
         @media (max-width: 768px) {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          // background-color: rgb(0, 255, 89);
           width: 80%;
           margin: 0 auto;
-          // flex-direction: row;
         }
       }
-    }
-    h2 {
-      text-align: center;
     }
     a {
       width: 200px;
@@ -336,29 +393,25 @@ const deleteEvent = (id) => {
       font-size: 24px; /* 字體大小 */
       cursor: pointer; /* 游標樣式 */
       margin: 20px auto;
-      
     }
   }
 }
 
-.form-item_oth{
-  width: 500px;
-  border: 5px solid palegoldenrod;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
-      width: 90%;
-      // display: none;
-      justify-content: flex-end;
-    }
-  @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
-      width: 90%;
-      // display: none;
-      justify-content: flex-end;
-    }
+/* 只在 768px 寬度以下調整樣式 */
+@media (max-width: 768px) {
+  .wrap main form {
+    width: 90%; /* 調整表格寬度 */
+    font-size: 14px; /* 調整字體大小 */
+  }
+  .wrap main .form_item .el-form-item,
+  .wrap main .form_item .form-item_oth {
+    font-size: 14px; /* 調整字體大小 */
+    padding: 5px; /* 調整內邊距 */
+    height: auto; /* 調整高度 */
+  }
+  .wrap main .form-item_oth .el-button {
+    padding: 10px 20px; /* 調整按鈕內邊距 */
+    font-size: 14px; /* 調整字體大小 */
+  }
 }
-
 </style>
