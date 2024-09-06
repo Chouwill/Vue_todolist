@@ -2,121 +2,189 @@
   <div class="container">
     <div class="page_header">
       <div class="bg">
-        <!-- <h1>Dream Plan</h1> -->
-        <h2>
-          Make<br />
-          your dream come true
-        </h2>
+        <img
+          src="https://cdn.wegic.ai/assets/onepage/ai/image/ad48df62-2da6-469f-b7f3-5a70286d187d.jpeg"
+          alt=""
+        />
       </div>
-      <div class="Carousel_box">
-        <swiper
-          :spaceBetween="30"
-          :centeredSlides="true"
-          :autoplay="{
-            delay: 2500,
-            disableOnInteraction: false,
-          }"
-          :pagination="{
-            clickable: true,
-          }"
-          :navigation="false"
-          :modules="modules"
-          class="mySwiper"
-        >
-          <swiper-slide v-for="item in VipServe" :key="item.id">
-            <img :src="item.imageUrl" alt="" style="max-width: 100%" />
-            <!-- <h4>{{ item.title }}</h4> -->
-          </swiper-slide>
-          <!-- <swiper-slide>Slide 2</swiper-slide 
-          ><swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide
-          ><swiper-slide>Slide 5</swiper-slide>
-          <swiper-slide>Slide 6</swiper-slide
-          ><swiper-slide>Slide 7</swiper-slide>
-          <swiper-slide>Slide 8</swiper-slide
-          ><swiper-slide>Slide 9</swiper-slide>  -->
-        </swiper>
+      <div class="try_box">
+        <h2>掌控你的任務和目標</h2>
+        <button>立刻體驗</button>
+      </div>
+      <div class="link_box">
+        <div class="text_link">
+          <h2>UP NEXT</h2>
+          <h2>輕鬆安排每一天</h2>
+          <font-awesome-icon
+            icon="fa-solid fa-arrow-right"
+            class="arrow_link"
+          />
+        </div>
+        <div class="bg_link">
+          <img
+            src="https://cdn.wegic.ai/assets/onepage/ai/image/0c20fd21-edf0-44c0-b461-6d2bb0af20c3.jpeg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
     <main>
-      <div class="main_team">
-        <div class="main_img order-1">
-          <img src="/src/image/start_paln-2.png" alt="" />
+      <div class="main_introduce_one">
+        <div class="main_text_one">
+          <h2>提升你的生產力</h2>
+          <p>
+            使用我們的待辦事項和日曆功能，輕鬆管理任務和目標，享受井然有序的生活。
+          </p>
+          <router-link to="/todolist">了解更多</router-link>
         </div>
-        <div class="main_text order-2">
-          <h2>客製你的Plan</h2>
-          <ol>
-            <li>
-              <p>客製讀書計畫： 創建您專屬的讀書計畫</p>
-            </li>
-            <li>
-              <p>
-                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
-              </p>
-            </li>
-            <li>
-              <p>
-                <span class="special_text">$加值功能</span>
-                並享有AI功能的專屬祕書，檢視進度
-              </p>
-            </li>
-          </ol>
-        </div>
-      </div>
-      <div class="main_team">
-        <div class="main_img order-3">
-          <img src="/src/image/New_idea.png" alt="" />
-        </div>
-        <div class="main_text order-4">
-          <h2>豐富的資源</h2>
-          <ol>
-            <li>
-              <p>推薦合適的主題資源</p>
-            </li>
-            <li>
-              <p>
-                人生目標諮詢規劃： 規劃您的人生大方向，助您實現更有意義的人生。
-              </p>
-            </li>
-            <li>
-              <p>更多更豐富的外部資源共享分享與您</p>
-            </li>
-          </ol>
-        </div>
-        <!-- <div class="main_img_only" style="display: none;">
-          <img src="/src/image/New_idea.png" alt="" />
-        </div> -->
-      </div>
-      <div class="main_team">
-        <div class="main_img order-5">
-          <img src="/src/image/Travel_insurance_bro.png" alt="" />
-        </div>
-        <div class="main_text order-6">
-          <h2>享受放鬆生活</h2>
-          <ol>
-            <li>
-              <p>
-                休閒娛樂生活建議：
-                在忙碌的學習計畫中，我們強烈鼓勵您享受休閒娛樂生活。參與您喜歡的運動和娛樂活動
-              </p>
-            </li>
-            <li>
-              <p>
-                自訂提醒功能：
-                設定提醒通知，確保您不會錯過任何重要的學習或目標達成日期。同時，提醒您也要安排時間享受屬於自己的休閒時光，讓身心得以充分放鬆。
-              </p>
-            </li>
-            <!-- <button>顯示更多</button> -->
-            <li class="text_more">
-              <p>
-                紀錄人生重要時刻：
-                除了讀書計畫，您還可以使用我們的服務記錄休閒娛樂生活中的精彩瞬間，分享您的喜悅和愉悅。
-              </p>
-            </li>
-          </ol>
+        <div class="main_img_one">
+          <img
+            src="https://cdn.wegic.ai/assets/onepage/ai/image/176b7b66-8d82-4e8b-a6be-756a20391c3d.jpeg"
+            alt=""
+          />
+          <div class="people_num">
+            <div class="check_icon">
+              <font-awesome-icon
+                icon="fa-solid fa-check"
+                class="check_icon_img"
+              />
+            </div>
+            <div class="num_text">
+              <span>5000+</span>
+              <p>滿意用戶</p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- ---- -->
+      <div class="main_introduce_two">
+        <div class="visitor_img">
+          <img
+            src="https://cdn.wegic.ai/assets/onepage/ai/image/f86c5cfe-e0d3-476b-8bc8-cb3c509ad8dc.jpeg"
+            alt=""
+          />
+        </div>
+        <div class="visitor_text">
+          <h4>
+            PlanItAll幫助我更好地管理日常任務​​和長期目標，<br />讓我的生活變得更有秩序和更有效率。
+          </h4>
+
+          <div class="visitor_name">
+            <h5>李華</h5>
+            <p>創業者</p>
+          </div>
+        </div>
+      </div>
+      <div class="main_introduce_three">
+        <div class="title_box">
+          <h2>立即加入PlanltAll</h2>
+          <p>註冊免費帳戶，或升級到PRO會員，享受更多高級功能。</p>
+        </div>
+        <ul>
+          <li>
+            <div class="title_icon">
+              <font-awesome-icon
+                icon="fa-solid fa-check"
+                class="function_icon"
+              />
+              <h4>日曆整合</h4>
+            </div>
+            <p>同步所有日程</p>
+          </li>
+          <li>
+            <div class="title_icon">
+              <font-awesome-icon
+                icon="fa-regular fa-calendar"
+                class="function_icon"
+              />
+              <h4>提醒功能</h4>
+            </div>
+            <p>不再錯過重要時刻</p>
+          </li>
+          <li>
+            <div class="title_icon">
+              <font-awesome-icon
+                icon="fa-regular fa-bell"
+                class="function_icon"
+              />
+              <h4>待辦事項</h4>
+            </div>
+            <p>高效管理你的任務</p>
+          </li>
+        </ul>
+        <router-link> 立即註冊 </router-link>
+      </div>
+      <div class="question">
+    <ul class="left_question">
+      <li>
+        <div class="control">
+          <h5>免費版和付費版有什麼差別？</h5>
+          <button @click="OpenQuestion(0)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[0]">
+          免費版提供基礎的待辦事項和日曆功能，付費版解鎖更多高級功能。
+        </h5>
+      </li>
+      <li>
+        <div class="control">
+          <h5>是否有學生或非營利組織的折扣？</h5>
+          <button @click="OpenQuestion(1)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[1]">
+          我們為學生和非營利組織提供特別折扣，請聯絡我們以了解詳情。
+        </h5>
+      </li>
+      <li>
+        <div class="control">
+          <h5>價格是如何決定的？</h5>
+          <button @click="OpenQuestion(2)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[2]">
+          價格根據你選擇的功能和服務套餐而定，請查看我們的價格頁面。
+        </h5>
+      </li>
+    </ul>
+    <ul class="right_question">
+      <li>
+        <div class="control">
+          <h5>使用這個產品需要程式設計知識嗎？</h5>
+          <button @click="OpenQuestion(3)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[3]">
+          不需要，PlanItAll設計為用戶友好的介面，任何人都可以輕鬆上手。
+        </h5>
+      </li>
+      <li>
+        <div class="control">
+          <h5>是否有成為代理商的機會？</h5>
+          <button @click="OpenQuestion(4)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[4]">
+          是的，我們歡迎有興趣的合作夥伴加入我們的代理商計劃，請聯絡我們以了解更多資訊。
+        </h5>
+      </li>
+      <li>
+        <div class="control">
+          <h5>接受哪些付款方式？</h5>
+          <button @click="OpenQuestion(5)">
+            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+          </button>
+        </div>
+        <h5 v-show="questions[5]">
+          我們接受多種支付方式，包括信用卡、支付寶和微信支付。
+        </h5>
+      </li>
+    </ul>
+  </div>
     </main>
   </div>
 </template>
@@ -155,95 +223,93 @@
   background-color: #c7eeff;
   background-color: #a0d8f0;
 
-
   .page_header {
-    width: 80%;
-    display: flex;
-    height: 450px;
-    justify-content: center;
-    // align-items: center;
-    // border: 5px solid #000;
-    margin: 40px 0;
+    width: 100%;
     position: relative;
-
     .bg {
-      width: 40%;
-      // border: 2px solid red;
-      // background-image: url("/src/image/Personal\ goals-bro.svg");
-      background-color: #4ba0d7;
-      background-color: #96cde4;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      max-height: 900px;
-      // position: relative;
+      width: 100%;
+      border: 5px solid palegreen;
+      position: relative;
       img {
         width: 100%;
-        height: 50px;
-        position: absolute;
-        bottom: 237px;
-        right: 128px;
-      }
-      @media (max-width: 768px) {
-        display: none;
-      }
-      h1 {
-        color: #000;
-        position: absolute;
-        bottom: 150px;
-        right: 50px;
-      }
-      h2 {
-        position: absolute;
-        color: #2c3e99;
-        bottom: 150px;
-        right: 500px;
-        z-index: 10;
-        text-align: center;
-        font-size: 45px;
-        line-height: 1.2;
-        text-shadow: 2px 2px 4px #ffffff; /* 增加白色陰影 */
+        height: 1000px;
+        // border: 8px solid rgb(25, 42, 110);
+        object-fit: cover;
       }
     }
-    .Carousel_box {
-      // background-color: olive;
-      width: 40%;
-      // height: 30vh;
-      max-height: 900px;
-      // border: 2px solid tan;
-      // z-index: 2;
-      @media (max-width: 768px) {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-      }
-      @media (max-width: 414px) {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        // z-index: 2;
-      }
-    }
-  }
-  .mySwiper {
-    ::v-deep .swiper-pagination {
-      position: absolute;
-      top: 50%;
-      left: 10px; /* 確保 right 屬性設置 */
-      transform: translateY(-50%); /* 確保 translateY 設置 */
+    .try_box {
+      width: 500px;
+      height: 250px;
+      // border: 3px solid peru;
       display: flex;
+      justify-content: center;
+      align-items: flex-start;
       flex-direction: column;
-      gap: 10px;
+      position: absolute;
+      top: 500px;
+      left: 250px;
+      h2 {
+        color: white;
+        font-size: 55px;
+        font-weight: bolder;
+        // position: absolute;
+      }
+      button {
+        // position: absolute;
+        width: 122px;
+        height: 60px;
+        padding: 20px 20px;
+        background-color: #000;
+        color: white;
+        border-radius: 10px;
+        font-size: 20px;
+      }
     }
-    ::v-deep .swiper-pagination-bullet-active {
-      background: #2c3e99; // 設定活動分頁點顏色
-      width: 10px;
-      height: 10px;
-      border-radius: 20px;
+    .link_box {
+      width: 505px;
+      height: 250px;
+      border: 1px solid peru;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: row;
+      position: absolute;
+      bottom: 130px;
+      right: 0;
+      .text_link {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 250px;
+        justify-content: center;
+        align-items: center;
+        h2 {
+          color: rgb(163, 16, 16);
+          font-size: 25px;
+          font-weight: bolder;
+          // position: absolute;
+          line-height: 0.5;
+        }
+        .arrow_link {
+          font-size: 35px;
+        }
+      }
+      .bg_link {
+        width: 100%;
+        flex: 1;
+        border: 1px solid palegreen;
+        height: 250px;
+        img {
+          max-width: 100%;
+          height: 250px;
+          object-fit: cover;
+        }
+      }
     }
   }
+
   main {
-    width: 70%;
+    width: 100%;
     gap: 25px;
     display: flex;
     flex-direction: column;
@@ -261,127 +327,246 @@
       flex-direction: column;
       // background-color: rgb(51, 0, 255);
     }
-    .main_team {
+    .main_introduce_one {
       width: 100%;
+      background-color: #e8fff4;
       display: flex;
       justify-content: center;
       align-items: center;
-      // flex-direction: column;
-      // border: 5px solid palegreen;
-      height: 500px;
-      @media (max-width: 768px) {
-        width: 90%;
-        height: 550px;
+      border: 2px solid peru;
+      gap: 100px;
+      .main_text_one {
+        gap: 15px;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        // border: 5px solid brown;
-        // background-color: rgb(51, 0, 255);
-      }
-      @media (max-width: 414px) {
-        width: 100%;
-        height: 550px;
         flex-direction: column;
-        // background-color: rgb(51, 0, 255);
-      }
-      .main_img {
-        // border: 10px solid #000;
-        width: 500px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
-        @media (max-width: 768px) {
-          width: 50%;
-          height: 450px;
-          flex-direction: column;
-          // border: 5px solid tomato;
-        }
-        @media (max-width: 414px) {
-          display: none;
-        }
-        img {
-          // border: 3px solid orange;
-          width: 100%;
-          height: 420px;
-          @media (max-width: 768px) {
-            width: 100%;
-            height: 450px;
-            flex-direction: column;
-            // border: 5px solid tomato;
-          }
-          @media (max-width: 414px) {
-            display: none;
-          }
-        }
-      }
-      .main_text {
-        display: flex;
-        justify-content: safe center;
-        align-items: center;
-        flex-direction: column;
-        width: 500px;
-        height: 420px;
-        overflow-y: auto;
-        // border: 2px solid yellow;
-        background-color: white;
-        @media (max-width: 768px) {
-          width: 50%;
-          height: 450px;
-          // border: 2px solid rgb(0, 255, 64);
-        }
-        @media (max-width: 414px) {
-          width: 100%;
-          height: 550px;
-          // border: 6px solid rebeccapurple;
-        }
+        border: 2px solid peru;
+
         h2 {
-          text-align: center;
-          font-size: 24px;
+          font-size: 25px;
         }
-        ol {
+        p {
+          font-size: 15px;
+        }
+        a {
+          width: 100px;
+          padding: 15px 15px;
+          background-color: #21b57f;
+          color: white;
+          border-radius: 10px;
+        }
+      }
+      .main_img_one {
+        width: 400px;
+        border: 5px solid palevioletred;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+        height: 500px;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 786px;
+        }
+        .people_num {
+          width: 450px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          flex-direction: column;
+          border: 2px solid palegreen;
+          background-color: #21b57f;
+          height: 200px;
+          position: absolute;
+          bottom: 0;
+
+          .check_icon {
+            padding: 25px;
+            background-color: white;
+            border-radius: 100%;
+            margin-left: 40px;
+            margin-top: 40px;
+            .check_icon_img {
+              font-size: 40px;
+              color: #21b57f;
+            }
+          }
+          .num_text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+            span {
+              font-size: 25px;
+              font-weight: 900;
+              text-align: center;
+            }
+            p {
+              color: gray;
+              font-size: 15px;
+              text-align: center;
+            }
+          }
+        }
+        a {
+          padding: 15px 15px;
+          background-color: #21b57f;
+          color: white;
+        }
+      }
+    }
+    .main_introduce_two {
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid peru;
+      // gap: 100px;
+      height: 500px;
+      .visitor_img {
+        width: 50%;
+        // width: 200px;
+        display: flex;
+        border: 2px solid rgb(164, 12, 30);
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 20px;
+        img {
+          max-width: 35%;
+          border-radius: 20px;
+        }
+      }
+      .visitor_text {
+        width: 50%;
+        border: 5px solid palevioletred;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        height: 500px;
+        padding-left: 50px;
+
+        h4 {
+          font-size: 25px;
+        }
+        .visitor_name {
+          line-height: 0.5;
+          h5 {
+            font-size: 20px;
+          }
+          p {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .main_introduce_three {
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .title_box {
+        font-size: 25px;
+        text-align: center;
+      }
+      ul {
+        display: flex;
+        width: 50%;
+        border: 5px solid palegreen;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 150px;
+        li {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: flex-start;
-          gap: 15px;
-
-          width: 400px;
-          height: 400px;
-          // border: 1px solid red;
-          @media (max-width: 768px) {
-            width: 300px;
-            height: 450px;
-            // border: 2px solid rgb(0, 255, 64);
-          }
-          @media (max-width: 414px) {
-            gap: 5px;
-          }
-          li {
-            p {
-              font-size: 19px;
-              overflow: hidden;
-              @media (max-width: 768px) {
-                font-size: 15px;
-              }
+          align-items: center;
+          .title_icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            gap: 20px;
+            .function_icon {
+              font-size: 25px;
+              color: #21b57f;
+            }
+            h4 {
+              font-size: 25px;
             }
           }
-          .text_more {
-            // display: none;
-          }
-          button {
-            width: 150px;
-            padding: 10px 5px;
-            margin: 0 auto;
+          p {
+            color: gray;
+            font-size: 15px;
+            text-align: center;
           }
         }
       }
-      .order-1 {
-        order: 1;
+      a {
+        padding: 20px 40px;
+        background-color: #21b57f;
+        border-radius: 20px;
+        color: white;
+        font-size: 20px;
       }
-      .order-2 {
-        order: 2;
+    }
+    .question {
+      width: 100%;
+      background-color: #ffffff;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        list-style: none;
+        font-size: 20px;
+        // border: 5px solid palegreen;
+        li {
+          .control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            &:hover {
+              background-color: #f1f1f1;
+            }
+            button {
+              border: none;
+              width: 50px;
+              height: 35px;
+              background-color: #21b57f;
+              color: white;
+              border-radius: 5px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+              transition: background-color 0.3s ease;
+              &:hover {
+                background-color: #1a9e6f;
+              }
+              .btn_plus {
+                font-size: 20px;
+              }
+            }
+          }
+          h5 {
+        max-height: 100px; /* 設置最大高度 */
+        overflow-y: auto; /* 添加滾動條 */
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
-      .order-3 {
-        order: 3;
+        }
       }
     }
   }
@@ -397,6 +582,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-flip";
 import "swiper/css/pagination";
+
+const questions = ref([false, false, false, false, false, false]);
 
 const VipServe = ref([]);
 
@@ -417,4 +604,14 @@ onMounted(async () => {
   }
   console.log("執行其他動作");
 });
+
+const OpenQuestion = (index) => {
+  questions.value[index] = !questions.value[index];
+  console.log(questions.value);
+};
+
+// (0) 和 [0] 是相互匹配的。具體來說：
+
+// (0) 是函數調用語法，用於調用函數並傳遞參數。
+// [0] 是陣列訪問語法，用於訪問或設置陣列中的元素
 </script>

@@ -1,40 +1,21 @@
 <template>
   <header>
     <div class="logo_box">
-      <router-link to="/">
-        <!-- <h2>設計你的計畫Plan</h2> -->
-        <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" />
-      </router-link>
+      <!-- <h2>設計你的計畫Plan</h2> -->
+      <img src="https://cdn.wegic.ai/assets/onepage/thread/icon/1725554422140.png" alt="LOGO" />
     </div>
     <ul :class="['desktop_menu', { active: menuActive }]">
       <li>
-        <router-link to="/aboutus">關於我們</router-link>
+        <router-link to="/">首頁</router-link>
       </li>
       <li>
-        <router-link to="/shopping">加值商城</router-link>
+        <router-link to="/todolist">任務管理</router-link>
       </li>
       <li>
-        <router-link to="/todolist">開始Plan</router-link>
-      </li>
-      <li>
-        <router-link to="/enjoylife">享受放鬆生活</router-link>
-      </li>
-      <li class="user_team_link">
-        <router-link to="/login">
-          <font-awesome-icon
-            icon="fa-regular fa-user"
-            class="deskTop_user_link"
-          />
-        </router-link>
-        <router-link to="/cart">
-          <font-awesome-icon
-            icon="fa-solid fa-cart-shopping"
-            class="deskTop_user_link"
-          />
-        </router-link>
-      </li>
+        <router-link to="/calendar">日曆</router-link>
+      </li>   
     </ul>
-    <div class="user_box">
+    <!-- <div class="user_box">
       <div>
         <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
@@ -45,6 +26,18 @@
             class="user_link"
           />
         </router-link>
+      </div>
+    </div> -->
+    <div class="JoinUs_box">
+      <div>
+        <a href="#"
+          >Join us
+          <font-awesome-icon icon="fa-solid fa-arrow-right" class="user_link" />
+        </a>
+        <a href="#">
+          Contact us
+          <font-awesome-icon icon="fa-solid fa-arrow-right" class="user_link" />
+        </a>
       </div>
     </div>
     <div class="phone_menu_cancel" style="display: none">
@@ -74,7 +67,7 @@ a {
 }
 header {
   width: 100%;
-  background-color: #a0d8f0;
+  background-color: #F3F3F2;
   height: 10vh;
   display: flex;
   // padding: 100px 0;
@@ -84,6 +77,8 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
+  border: 2px solid teal;
+  border-radius: 50px;
   // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
   @media (max-width: 768px) {
     position: fixed;
@@ -94,14 +89,14 @@ header {
   }
 
   .logo_box {
-    // border: 2px solid red;
+    border: 2px solid red;
     width: 20%;
-    //display: flex;
-    //justify-content: center;
-    //align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     //flex-direction: column;
-    border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    // border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
       // display: flex;
@@ -117,7 +112,7 @@ header {
       // align-items: center;
     }
     img {
-      max-width: 85%;
+      max-width: 13%;
       object-fit: cover;
       @media (max-width: 768px) {
         max-width: 75%;
@@ -142,11 +137,12 @@ header {
   }
   ul {
     width: 60%;
-    // border: 2px solid #000;
-    padding: 20px 0;
+    border: 2px solid #000;
+    // padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
     @media (max-width: 768px) {
       // background-color: rgb(0, 255, 89);
       display: none;
@@ -155,6 +151,11 @@ header {
       // background-color: rgb(217, 255, 0);
     }
     li {
+                border: 5px solid red;
+
+      &:nth-child(1){
+        // margin-left: 150px;
+      }
       &:nth-child(5) {
         display: none;
         @media (max-width: 768px) {
@@ -258,7 +259,7 @@ header {
       }
     }
   }
-  .user_box {
+  .JoinUs_box {
     width: 20%;
     // border: 3px solid pink;
     display: flex;
@@ -271,14 +272,20 @@ header {
     }
     div {
       display: flex;
-      width: 30%;
+      flex-direction: row;
+      width: 85%;
       // border: 2px solid red;
-      .user_link {
-        color: white;
-        color: #000;
-        font-size: 35px;
-        &:hover {
-          color: #3b96cb;
+      a {
+        font-size: 20px;
+        padding: 15px 15px;
+        &:nth-child(2){
+            background-color: #009266;
+            border-radius: 50px;
+          }
+        .user_link {
+          color: white;
+          color: #000;
+          font-size: 20px;
         }
       }
     }

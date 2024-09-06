@@ -45,6 +45,8 @@ import {
   faCartShopping,
   faArrowUp,
   faArrowRight,
+  faCheck,
+  
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -52,6 +54,11 @@ import {
   faFacebook,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+
+import {
+  faCalendar,
+  faBell,
+} from "@fortawesome/free-regular-svg-icons";
 
 /* add icons to the library */
 library.add(
@@ -67,6 +74,9 @@ library.add(
   faXTwitter,
   faUser,
   faArrowRight,
+  faCheck,
+  faCalendar,
+  faBell,
 );
 
 const pinia = createPinia();

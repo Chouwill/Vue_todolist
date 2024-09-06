@@ -19,9 +19,6 @@ const isRegisterMember = ref(false);
 <template>
   <div class="container">
     <Header />
-    <!-- <Windows /> -->
-    <!-- <Login /> -->
-    <!-- <RegisterMember /> -->
      
     <router-view></router-view>
     <Footer />
@@ -42,6 +39,7 @@ const isRegisterMember = ref(false);
   align-items: center;
   flex-direction: column;
   position: relative;
+  
   header {
     nav {
       border: 10px solid red;
