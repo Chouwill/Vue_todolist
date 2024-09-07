@@ -1,13 +1,17 @@
 <template>
   <footer>
     <div class="logo_box">
-      <!-- <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" /> -->
+      <h4>© 2024 PlanItAll</h4>
     </div>
-    <div class="footer_describe">
-      <h4>版權所有 ©Copyright 2024.All Rights Reserved.</h4>
-    </div>
+    <ul class="footer_menu">
+      <li>關於我們</li>
+      <li>我們的服務</li>
+      <li>隱私政策</li>
+      <li>條款與條件</li>
+      <li>贊助</li>
+    </ul>
     <div class="community_box">
-      <h2>聯絡我們</h2>
+      <!-- <h2>聯絡我們</h2> -->
       <div>
         <router-link to="/">
           <font-awesome-icon
@@ -41,12 +45,14 @@
 footer {
   width: 100%;
   // background-color: #4ba0d7;
-  background-color: #a0d8f0;
-  height: 12vh;
+  background-color: hsl(198, 73%, 78%);
+  background-color: #e8fff4;
+  // height: 12vh;
   // margin-bottom: 15vh;
   display: flex;
   position: relative;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
     // display: none;
@@ -58,46 +64,35 @@ footer {
   @media (max-width: 414px) {
     // justify-content: center;
     // align-items: center;
-    width: 100%;  
+    width: 100%;
   }
   .logo_box {
-    width: 30%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid olive;
     @media (max-width: 768px) {
       display: none;
     }
-    img {
-      max-width: 50%;
+    h4 {
+      font-size: 25px;
       object-fit: contain;
       @media (max-width: 768px) {
         max-width: 15%;
       }
     }
   }
-  .footer_describe {
-    width: 40%;
+  .footer_menu {
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    @media (max-width: 768px) {
-      width: 100%;
-      // border: 5px solid rgb(14, 1, 1);
-      position: absolute;
-      top: 30px;
-      left: 0;
-      // border: 5px solid rgb(14, 1, 1);
-      justify-content: center;
-      align-items: center;
-    }
-    @media (max-width: 414px) {
-      width: 100%;
-      border: 5px solid rgb(14, 1, 1);
-      justify-content: center;
-      align-items: center;
-    }
+    border: 5px solid rgb(14, 1, 1);
+
+   
     h4 {
       text-align: center;
       font-size: 20px;
@@ -119,38 +114,25 @@ footer {
   }
   .community_box {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    // flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
-    width: 30%;
+    width: 40%;
     height: 100%;
     // padding-top: 10px;
+    border: 5px solid pink;
 
     @media (max-width: 414px) {
       // display: flex;
       // 會影響footer_describe 在RWD footer佔滿100%寬度，但不要影響子層div標籤CSS，絕對定位顯現
     }
 
-    h2 {
-      font-size: 20px;
-      color: #000;
-      text-align: center;
-      margin-bottom: 10px;
-      // line-height: 2;
-      @media (max-width: 768px) {
-        display: none;
-      }
-      //@media (max-width: 414px) {
-      //font-size: 20px;
-      //}
-    }
+    
     div {
       display: flex;
-      justify-content: center;
-      align-items: center;
       width: 30%;
       gap: 10px;
-      // border: 5px solid red;
+      border: 5px solid red;
 
       @media (max-width: 768px) {
         position: fixed;

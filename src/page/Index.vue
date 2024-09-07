@@ -113,78 +113,102 @@
         </ul>
         <router-link> 立即註冊 </router-link>
       </div>
+      <div class="Teaching_steps">
+        <div class="inner_box">
+          <div class="img_box">
+            <img
+              src="https://cdn.wegic.ai/assets/onepage/ai/image/68edf881-f269-4843-9bff-1a4f7e7090ae.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="step_title">
+            <h2>開始使用PlanItAll的步驟</h2>
+            <ol>
+              <li>
+                <h3>註冊一個免費帳戶，開始體驗基礎功能。</h3>
+              </li>
+              <li>
+                <h3>建立和管理你的待辦事項和行事曆事件。</h3>
+              </li>
+              <li>
+                <h3>升級到PRO會員，解鎖更多高級功能。</h3>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
       <div class="question">
-    <ul class="left_question">
-      <li>
-        <div class="control">
-          <h5>免費版和付費版有什麼差別？</h5>
-          <button @click="OpenQuestion(0)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[0]">
-          免費版提供基礎的待辦事項和日曆功能，付費版解鎖更多高級功能。
-        </h5>
-      </li>
-      <li>
-        <div class="control">
-          <h5>是否有學生或非營利組織的折扣？</h5>
-          <button @click="OpenQuestion(1)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[1]">
-          我們為學生和非營利組織提供特別折扣，請聯絡我們以了解詳情。
-        </h5>
-      </li>
-      <li>
-        <div class="control">
-          <h5>價格是如何決定的？</h5>
-          <button @click="OpenQuestion(2)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[2]">
-          價格根據你選擇的功能和服務套餐而定，請查看我們的價格頁面。
-        </h5>
-      </li>
-    </ul>
-    <ul class="right_question">
-      <li>
-        <div class="control">
-          <h5>使用這個產品需要程式設計知識嗎？</h5>
-          <button @click="OpenQuestion(3)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[3]">
-          不需要，PlanItAll設計為用戶友好的介面，任何人都可以輕鬆上手。
-        </h5>
-      </li>
-      <li>
-        <div class="control">
-          <h5>是否有成為代理商的機會？</h5>
-          <button @click="OpenQuestion(4)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[4]">
-          是的，我們歡迎有興趣的合作夥伴加入我們的代理商計劃，請聯絡我們以了解更多資訊。
-        </h5>
-      </li>
-      <li>
-        <div class="control">
-          <h5>接受哪些付款方式？</h5>
-          <button @click="OpenQuestion(5)">
-            <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
-          </button>
-        </div>
-        <h5 v-show="questions[5]">
-          我們接受多種支付方式，包括信用卡、支付寶和微信支付。
-        </h5>
-      </li>
-    </ul>
-  </div>
+        <ul class="left_question">
+          <li>
+            <div class="control">
+              <h5>免費版和付費版有什麼差別？</h5>
+              <button @click="OpenQuestion(0)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[0]">
+              免費版提供基礎的待辦事項和日曆功能，付費版解鎖更多高級功能。
+            </h5>
+          </li>
+          <li>
+            <div class="control">
+              <h5>是否有學生或非營利組織的折扣？</h5>
+              <button @click="OpenQuestion(1)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[1]">
+              我們為學生和非營利組織提供特別折扣，請聯絡我們以了解詳情。
+            </h5>
+          </li>
+          <li>
+            <div class="control">
+              <h5>價格是如何決定的？</h5>
+              <button @click="OpenQuestion(2)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[2]">
+              價格根據你選擇的功能和服務套餐而定，請查看我們的價格頁面。
+            </h5>
+          </li>
+        </ul>
+        <ul class="right_question">
+          <li>
+            <div class="control">
+              <h5>使用這個產品需要程式設計知識嗎？</h5>
+              <button @click="OpenQuestion(3)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[3]">
+              不需要，PlanItAll設計為用戶友好的介面，任何人都可以輕鬆上手。
+            </h5>
+          </li>
+          <li>
+            <div class="control">
+              <h5>是否有成為代理商的機會？</h5>
+              <button @click="OpenQuestion(4)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[4]">
+              是的，我們歡迎有興趣的合作夥伴加入我們的代理商計劃，請聯絡我們以了解更多資訊。
+            </h5>
+          </li>
+          <li>
+            <div class="control">
+              <h5>接受哪些付款方式？</h5>
+              <button @click="OpenQuestion(5)">
+                <font-awesome-icon icon="fa-solid fa-plus" class="btn_plus" />
+              </button>
+            </div>
+            <h5 v-show="questions[5]">
+              我們接受多種支付方式，包括信用卡、支付寶和微信支付。
+            </h5>
+          </li>
+        </ul>
+      </div>
     </main>
   </div>
 </template>
@@ -513,6 +537,71 @@
         font-size: 20px;
       }
     }
+    .Teaching_steps {
+      background-color: #e8fff4;
+      width: 100%;
+      height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+      .inner_box{
+        width: 1000px;
+        display: flex;
+        height: 700px;
+        border: 5px solid olive;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .img_box {
+        width: 500px;
+        height: 500px;
+        border: 5px solid olive;
+        position: relative;
+
+        img {
+          max-width: 100%;
+          height: 100%;
+        }
+      }
+      .step_title {
+        width: 500px;
+        height: 300px;
+        border: 2px solid orange;
+        position: relative;
+        right: 50px;
+        h2 {
+          font-size: 35px;
+        }
+        ol {
+          width: 500px;
+          border: 1px solid red;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          color: #1a9e6f;
+          li {
+            width: 100%;
+            text-align-last: left;
+            height: 50px;
+            // border: 1px solid red;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            line-height: 0.5;
+            font-size: 30px;
+            color: #00a372;
+            border-bottom: 2px solid #d2dbd7;
+            h3 {
+              content: "";
+              color: #cf2222;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      }
+    }
     .question {
       width: 100%;
       background-color: #ffffff;
@@ -559,13 +648,13 @@
             }
           }
           h5 {
-        max-height: 100px; /* 設置最大高度 */
-        overflow-y: auto; /* 添加滾動條 */
-        padding: 10px;
-        background-color: #f9f9f9;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
+            max-height: 100px; /* 設置最大高度 */
+            overflow-y: auto; /* 添加滾動條 */
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }
