@@ -135,7 +135,7 @@
     }
     .banner_box {
       width: 50%;
-      border: 2px solid rgb(122, 5, 99);
+      // border: 2px solid rgb(122, 5, 99);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -143,7 +143,7 @@
 
       @media (max-width: 768px) {
         width: 500px;
-        border: 2px solid rgb(122, 5, 99);
+        // border: 2px solid rgb(122, 5, 99);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -157,7 +157,7 @@
       max-width: 100%;
       height: 350px;
       object-fit: cover;
-      border: 9px solid palegreen;
+      // border: 9px solid palegreen;
       @media (max-width: 768px) {
         max-width: 100%;
       }

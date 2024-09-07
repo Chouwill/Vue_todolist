@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>閱讀助力，PRO加值。升級你的計畫，精選書籍與PRO會員帶你走得更遠</h2>
+    <!-- <h2>閱讀助力，PRO加值。升級你的計畫，精選書籍與PRO會員帶你走得更遠</h2> -->
     <div class="page_title">
       <h2>加值服務商城</h2>
       <h3>優質書籍推薦:</h3>
@@ -178,6 +178,7 @@ onMounted(async () => {
 }
 .container {
   width: 100%;
+  height: auto;
   // border: 5px solid red;
   background-color: #c7eeff;
   background-color: #a0d8f0;
@@ -192,6 +193,7 @@ onMounted(async () => {
     h2 {
       width: 100%;
       text-align: center;
+      margin-top: 100px;
       @media (max-width: 768px) {
         // background-color: rgb(0, 255, 89);
         text-align: left;
@@ -218,7 +220,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    border: 5px solid red;
+    // border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -341,7 +343,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    border: 5px solid red;
+    // border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -447,7 +449,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    border: 3px solid palegreen;
+    // border: 3px solid palegreen;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;

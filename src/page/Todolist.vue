@@ -257,7 +257,7 @@ const deleteEvent = (id) => {
   align-items: center;
   flex-direction: column;
   // background-color: #a0aff0;
-  height: 900px;
+  height: 1000px;
   @media (max-width: 768px) {
     height: 150vh;
     margin: 40px 0;
@@ -269,6 +269,7 @@ const deleteEvent = (id) => {
   main {
     width: 100%;
     h2 {
+      margin-top: 100px;
       text-align: center;
     }
     @media (max-width: 768px) {
@@ -394,7 +395,7 @@ const deleteEvent = (id) => {
       border-radius: 20px; /* 圓角 */
       font-size: 24px; /* 字體大小 */
       cursor: pointer; /* 游標樣式 */
-      margin: 20px auto;
+      margin: 50px auto;
     }
   }
 }

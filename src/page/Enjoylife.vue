@@ -92,7 +92,7 @@ onMounted(async () => {
       .item_title {
         width: 70%;
         text-align: left;
-        border: 2px solid red;
+        // border: 2px solid red;
         @media (max-width: 768px) {
           width: 100%;
           flex-wrap: wrap;

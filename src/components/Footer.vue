@@ -94,7 +94,7 @@ footer {
     }
     @media (max-width: 414px) {
       width: 100%;
-      border: 5px solid rgb(14, 1, 1);
+      // border: 5px solid rgb(14, 1, 1);
       justify-content: center;
       align-items: center;
     }
@@ -111,7 +111,7 @@ footer {
       @media (max-width: 414px) {
         font-size: 15px;
         width: 100%;
-        border: 5px solid red;
+        // border: 5px solid red;
         line-height: 4;
         margin: 0 auto;
       }
