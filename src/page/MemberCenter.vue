@@ -99,7 +99,12 @@ const data = ref(true);
 
 onMounted(async () => {
   try {
-    const res = await axios.get(`/api/v1/users/showMe`);
+    const apiBaseURL = import.meta.env.VITE_APP_API_BASE_URL;
+    console.log(`Base URL: ${apiBaseURL}`); // 確認 API URL
+    const apiURL = `${apiBaseURL}/api/v1/users/`;
+    console.log(`登入API URL: ${apiURL}`); // 確認 API URL
+
+    const res = await axios.get(apiURL);
     console.log(res);
     data.value = false;
     name.value = res.data.user.name;

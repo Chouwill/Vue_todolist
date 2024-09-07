@@ -37,7 +37,12 @@
     <div class="user_box">
       <div>
         <router-link to="/login">
-          <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
+          <template v-if="userName">
+            {{ userName }}
+          </template>
+          <template v-else>
+            <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
+          </template>
         </router-link>
         <router-link to="/cart">
           <font-awesome-icon
@@ -323,7 +328,7 @@ header {
 </style>
 
 <script setup>
-import { onMounted, ref, onBeforeUnmount } from "vue";
+import { onMounted, ref, onBeforeUnmount, defineProps } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -399,5 +404,12 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", handleScroll);
+});
+
+const props = defineProps({
+  userName: {
+    type: String,
+    default: "",
+  },
 });
 </script>

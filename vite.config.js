@@ -21,7 +21,7 @@ export default defineConfig({
       },
       "/RenderApi": {
         // 代理配置
-        target: "https://backend.onrender.com", //  localhost本地確保這裡是正確的 URL
+        target: "https://backend-zg7i.onrender.com", //  localhost本地確保這裡是正確的 URL
         changeOrigin: true,
       },
     },

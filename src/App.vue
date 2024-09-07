@@ -18,12 +18,12 @@ const isRegisterMember = ref(false);
 
 <template>
   <div class="container">
-    <Header />
+    <Header :userName="userName" />
     <!-- <Windows /> -->
     <!-- <Login /> -->
     <!-- <RegisterMember /> -->
      
-    <router-view></router-view>
+    <router-view @updateUserName="onUpdateUserName"></router-view>
     <Footer />
   </div>
 </template>
