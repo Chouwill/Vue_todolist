@@ -218,7 +218,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    // border: 5px solid red;
+    border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -333,6 +333,7 @@ onMounted(async () => {
     }
   }
   .Vip_product_list {
+    width: 1141px;
     max-width: 60%;
     display: flex;
     justify-content: center;
@@ -340,7 +341,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    // border: 5px solid red;
+    border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -438,6 +439,7 @@ onMounted(async () => {
     }
   }
   .Vip_Serve_list {
+    width: 1141px;
     max-width: 60%;
     display: flex;
     justify-content: center;
@@ -445,6 +447,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
+    border: 3px solid palegreen;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;

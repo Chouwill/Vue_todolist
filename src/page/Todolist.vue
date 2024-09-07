@@ -285,7 +285,7 @@ const deleteEvent = (id) => {
         width: 40vw; // 螢幕寬度的40%
         max-width: 1200px;
         padding: 5%;
-        border: 5px solid rgb(195, 103, 21);
+        // border: 5px solid rgb(195, 103, 21);
         @media (max-width: 768px) {
           width: 650px;
           // border: 5px solid rgb(195, 103, 21);
@@ -307,7 +307,7 @@ const deleteEvent = (id) => {
           justify-content: center;
           align-items: center;
           gap: 8px;
-          border: 2px solid rgb(176, 20, 155);
+          // border: 2px solid rgb(176, 20, 155);
           margin-bottom: 10px;
           @media (max-width: 768px) {
             width: 300px;
@@ -353,15 +353,17 @@ const deleteEvent = (id) => {
             justify-content: space-evenly;
             width: 100%;
             .el-button {
-              border-radius: 5px;
-              padding: 10px 20px;
+              border-radius: 10px;
+              padding: 20px 30px;
               &:first-child {
-                background-color: #409eff;
+                background-color: #2684FF;
                 color: #fff;
+                font-weight: 700;
               }
               &:last-child {
-                background-color: #f56c6c;
+                background-color: #b90e0e;
                 color: #fff;
+                font-weight: 700;
               }
             }
           }

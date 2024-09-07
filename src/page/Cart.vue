@@ -51,9 +51,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="send_box">
-        <button @click="checkSend">結帳送出</button>
-      </div>
+      
     </main>
   </div>
 </template>
@@ -234,16 +232,7 @@ const cancel_Buy = (id) => {
       }
     }
 
-    .send_box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      button {
-        padding: 15px 25px;
-        border-radius: 20px;
-        background-color: #7480bc;
-      }
-    }
+   
     .AllDelebtn {
       background-color: #f56c6c;
       padding: 8px 15px;

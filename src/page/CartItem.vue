@@ -33,11 +33,21 @@
       >
     </td>
   </tr>
+  <div class="send_box">
+    <button @click="checkProduct">結帳送出</button>
+  </div>
 </template>
 
 <script setup>
 import { useCartStore } from "../stores/cart.js";
-import { ref, defineProps, defineEmits, watch, defineExpose,onMounted } from "vue";
+import {
+  ref,
+  defineProps,
+  defineEmits,
+  watch,
+  defineExpose,
+  onMounted,
+} from "vue";
 
 const store = useCartStore();
 const props = defineProps({
@@ -85,6 +95,8 @@ defineExpose({
 
 <style lang="scss" scoped>
 tr {
+  width: 100%;
+  border: 2px solid red;
   td.product-info .flex-box {
     // text-align: center;
     display: flex;
@@ -112,4 +124,16 @@ tr {
     gap: 15px;
   }
 }
+.send_box {
+  width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid yellow;
+      button {
+        padding: 15px 25px;
+        border-radius: 20px;
+        background-color: #7480bc;
+      }
+    }
 </style>

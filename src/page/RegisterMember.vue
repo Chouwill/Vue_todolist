@@ -102,7 +102,9 @@ const RegisterSend = async (email) => {
     // );
     // console.log(LoginInfo);
     try {
-      const res = await axios.post(`/api/v1/auth/register`, {
+      const apiURL = `${import.meta.VITE_APP_API_BASE_URL}/api/v1/auth/register`;
+      console.log(`註冊API URL: ${apiURL}`); // 確認 API URL
+      const res = await axios.post(apiURL, {
         name: UserName.value,
         email: UserInput.value,
         password: Password.value,

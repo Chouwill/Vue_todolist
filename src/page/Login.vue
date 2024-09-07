@@ -48,6 +48,7 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+
 const UserInput = ref("123456@gmail.com");
 const Password = ref("12345678");
 
@@ -62,7 +63,12 @@ const LoginSend = async () => {
   //   Password: Password.value,
   // });
   try {
-    const response = await axios.post(`/api/v1/auth/login`, {
+    const apiBaseURL = import.meta.env.VITE_APP_API_BASE_URL;
+    console.log(`Base URL: ${apiBaseURL}`); // 確認 API URL
+    const apiURL = `${apiBaseURL}/api/v1/auth/login`;
+    console.log(`登入API URL: ${apiURL}`); // 確認 API URL
+    
+    const response = await axios.post(apiURL, {
       email: UserInput.value,
       password: Password.value,
     });
@@ -88,7 +94,7 @@ const LoginSend = async () => {
   height: 90vh;
   @media (max-width: 768px) {
     height: 85vh;
-    }
+  }
   .login_box {
     // border: 5px solid red;
     max-width: 500px; //為何改成這個就變小了，我需要自適應變化
