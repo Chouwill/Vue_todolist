@@ -10,11 +10,17 @@
     <td class="quantity-control">
       <div class="flex-box">
         <div class="delebox">
-          <font-awesome-icon icon="fa-solid fa-minus" @click="store.minus(product.id)" />
+          <font-awesome-icon
+            icon="fa-solid fa-minus"
+            @click="store.minus(product.id)"
+          />
         </div>
         <h3>{{ product.quantity }}</h3>
         <div class="addbox">
-          <font-awesome-icon icon="fa-solid fa-plus" @click="store.add(product.id)" />
+          <font-awesome-icon
+            icon="fa-solid fa-plus"
+            @click="store.add(product.id)"
+          />
         </div>
       </div>
     </td>
@@ -22,31 +28,26 @@
       <h4 style="text-align: center">{{ product.price * product.quantity }}</h4>
     </td>
     <td class="product-delete">
-      <el-button type="danger" @click="store.remove(product.id)">刪除</el-button>
+      <el-button type="danger" @click="store.remove(product.id)"
+        >刪除</el-button
+      >
     </td>
   </tr>
+  <div class="send_box">
+    <button @click="checkProduct">結帳送出</button>
+  </div>
 </template>
 
 <script setup>
 import { useCartStore } from "../stores/cart.js";
-import { ref, computed } from "vue";
-
-const productquantity = ref(1);
-
-// const
-
-// const store = useCartStore();
-// defineProps({
-//   product: {
-//     id: String,
-//     imageUrl: String,
-//     title: String,
-//     description: String,
-//     origin_price: Number,
-//     price: Number,
-//     quantity: Number,
-//   },
-// });
+import {
+  ref,
+  defineProps,
+  defineEmits,
+  watch,
+  defineExpose,
+  onMounted,
+} from "vue";
 
 const store = useCartStore();
 const props = defineProps({
@@ -61,36 +62,53 @@ const props = defineProps({
   },
 });
 
-const TotalCalculator = () => {
-  if (productquantity.value === 0) {
-    Total.value = 0;
+const emit = defineEmits(["checkCart"]);
+
+const checkProduct = () => {
+  console.log("checkProduct 被調用"); // 添加日誌
+  if (!props.product || Object.keys(props.product).length === 0) {
+    emit("checkCart", "購物車為空");
+    alert("購物車為空");
   } else {
-    Total.value = productquantity.value * props.product.price;
+    emit("checkCart", "請繼續結帳");
+    alert("請繼續結帳");
   }
 };
+// onMounted(() => {
+//   checkProduct();  //那我要重複檢查觸發
+// });
 
+watch(
+  () => props.product,
+  (newVal, oldVal) => {
+    console.log("props.product 變化了", newVal, oldVal); // 添加日誌
+    checkProduct();
+  },
+  { deep: true }
+);
 
-
-const Total = ref();
-
-TotalCalculator();
-
-
-
-
-
+// 將 checkProduct 方法暴露給父組件
+defineExpose({
+  checkProduct,
+});
 </script>
 
 <style lang="scss" scoped>
 tr {
+  width: 100%;
+  border: 2px solid red;
   td.product-info .flex-box {
     // text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    img { flex: 1 }
-    h4 { flex: 2 }
+    img {
+      flex: 1;
+    }
+    h4 {
+      flex: 2;
+    }
   }
   td.product-price {
     // background-color: yellow;
@@ -106,4 +124,16 @@ tr {
     gap: 15px;
   }
 }
+.send_box {
+  width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid yellow;
+      button {
+        padding: 15px 25px;
+        border-radius: 20px;
+        background-color: #7480bc;
+      }
+    }
 </style>

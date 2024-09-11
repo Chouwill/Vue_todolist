@@ -5,56 +5,65 @@
       <h2>開始制定計畫</h2>
       <div class="todolist_event">
         <el-form :model="newEvent" :label-width="120">
-          <el-form-item label="Event Title">
-            <el-input v-model="newEvent.title" />
-          </el-form-item>
-          <el-form-item label="Date">
-            <el-date-picker
-              v-model="newEvent.date"
-              type="datetimerange"
-              start-placeholder="Start date"
-              end-placeholder="End date"
-              format="YYYY-MM-DD HH:mm"
-              date-format="YYYY/MM/DD ddd"
-              time-format="HH:mm"
-              value-format="YYYY-MM-DD HH:mm"
-            />
-          </el-form-item>
-          <el-form-item label="Description">
-            <el-input
-              v-model="newEvent.description"
-              :rows="2"
-              type="textarea"
-              resize="none"
-            />
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="addEvent">Add Event</el-button>
-          </el-form-item>
+          <div class="form_item">
+            <el-form-item>
+              {{ formType === "create" ? "創建事件" : "編輯事件" }}
+            </el-form-item>
+            <el-form-item
+              v-show="formType === 'edit' && newEvent.id"
+              label="ID"
+            >
+              <el-input v-model="newEvent.id" disabled />
+            </el-form-item>
+            <el-form-item label="Event Title" class="title">
+              <el-input v-model="newEvent.title" />
+            </el-form-item>
+            <el-form-item label="Date">
+              <el-date-picker
+                v-model="newEvent.date"
+                type="datetimerange"
+                start-placeholder="Start date"
+                end-placeholder="End date"
+                format="YYYY-MM-DD HH:mm"
+                date-format="YYYY/MM/DD ddd"
+                time-format="HH:mm"
+                value-format="YYYY-MM-DD HH:mm"
+              />
+            </el-form-item>
+            <el-form-item label="Description">
+              <el-input
+                v-model="newEvent.description"
+                :rows="2"
+                type="textarea"
+                resize="none"
+              />
+            </el-form-item>
+            <!-- <el-form-item class="form-item">
+            <el-button type="primary" @click="addEvent">送出</el-button>
+            <el-button type="primary" @click="resetEvent">取消</el-button>
+          </el-form-item> -->
+            <div class="form-item_oth">
+              <el-button type="primary" @click="addEvent">送出</el-button>
+              <el-button type="primary" @click="resetEvent">取消</el-button>
+            </div>
+          </div>
         </el-form>
+
         <div class="calendar">
           <Qalendar
             :selected-date="new Date()"
             :events="events"
             :config="config"
-            @edit-event="
-              (v) => {
-                console.log(v);
-              }
-            "
-            @delete-event="
-              (v) => {
-                console.log(v);
-              }
-            "
+            @edit-event="editEvent"
+            @delete-event="deleteEvent"
           />
         </div>
       </div>
-      <router-link>
+      <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
+      <router-link to="/shopping">
         了解更多
         <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </router-link>
-      <h2>付費會員獨享特殊挑戰和專屬訓練計畫，讓閱讀更具挑戰性。</h2>
     </main>
   </div>
 </template>
@@ -62,7 +71,7 @@
 <script setup>
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
-
+import dayjs from "dayjs";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -157,120 +166,219 @@ const photo = ref([
   "https://picsum.photos/300/200/?random=6",
   "https://picsum.photos/300/200/?random=7",
 ]);
-const initObj = { title: "", date: [new Date(), new Date()], description: "" };
-const newEvent = ref(
-  JSON.parse(localStorage.getItem("calendarEvents") || JSON.stringify(initObj))
-);
+// ------------------------------------------------------------------------------------------------------------------
+// 主要JS
 
-const events = ref([]);
+const initObj = {
+  id: "",
+  title: "",
+  date: [new Date(), new Date()],
+  description: "",
+};
+const newEvent = ref(initObj); //  儲存預設樣式
+const formType = ref("create"); // 'create' | 'edit' // 定義字串
+const events = ref(
+  JSON.parse(localStorage.getItem("calendarEvents") || "[]") || []
+);
 
 const config = ref({
   // ...existing config
 });
 
+const saveStorage = () => {
+  localStorage.setItem("calendarEvents", JSON.stringify(events.value));
+};
+
+// 創建事件/編輯事件
 const addEvent = () => {
-  const { title, date, description } = newEvent.value; // 只能用原本的參數
+  const { id, title, date, description } = newEvent.value; // 只能用原本的參數
   const [start = "", end = ""] = date;
+  console.log(start, end);
   const newEventObj = {
     title, // 當key與value相同時, 可以省略:value 原始為{title: title}
-    time: { start, end },
+    time: {
+      start: dayjs(start).isValid()
+        ? dayjs(start).format("YYYY-MM-DD HH:mm")
+        : "",
+      end: dayjs(end).isValid() ? dayjs(end).format("YYYY-MM-DD HH:mm") : "",
+    },
     color: "blue", // Example color
     isEditable: true,
-    id: Date.now().toString(), // Simple ID generation
+    id: id || Date.now().toString(), // Simple ID generation
     description,
   };
-
   console.log(newEventObj);
-  events.value.push(newEventObj);
-  localStorage.setItem("calendarEvents", JSON.stringify(newEventObj));
+
+  if (formType.value === "create") {
+    events.value.push(newEventObj);
+  } else {
+    const idx = events.value.findIndex((ev) => ev.id === id);
+    events.value.splice(idx, 1, newEventObj);
+  }
+  saveStorage();
   newEvent.value = initObj; // Reset form
+  formType.value = "create";
+};
+
+// 編輯事件
+const editEvent = (id) => {
+  formType.value = "edit"; //  變成修改狀態
+  const event = events.value.find((ev) => ev.id === id);
+  console.log("event: ", event);
+  const { time, ...rest } = event;
+  newEvent.value = {
+    ...rest,
+    date: time ? [time.start, time.end] : [],
+  };
+};
+
+// reset   取消功能
+const resetEvent = () => {
+  if (formType.value === "edit") {
+    formType.value = "create";
+  }
+  newEvent.value = initObj; // Reset form
+};
+
+// 刪除事件
+const deleteEvent = (id) => {
+  console.log(events.value.find((ev) => ev.id === id)); // find
+  events.value = events.value.filter((ev) => ev.id !== id); //  ev  =  一個events的子項目
+  saveStorage();
 };
 </script>
 
 <style lang="scss" scoped>
-@import "qalendar/dist/style.css"; //這裡吃不到，所以改放全域CSS
+@import "qalendar/dist/style.css";
+/* 這裡吃不到，所以改放全域CSS */
 .wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  // background-color: #a0aff0;
+  height: 900px;
+  @media (max-width: 768px) {
+    height: 150vh;
+    margin: 40px 0;
+  }
+  @media (max-width: 768px) {
+    
+  }
+
   main {
     width: 100%;
-    // display: flex;
-    border: 2px solid red;
     h2 {
+      text-align: center;
     }
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
       width: 100%;
-      // display: none;
     }
     .todolist_event {
       display: flex;
+      flex-direction: row;
+      align-items: center;
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
       form {
-        background-color: #0176c3;
         width: 40vw; // 螢幕寬度的40%
         max-width: 1200px;
         padding: 5%;
-
-        .form_item {
+        // border: 5px solid rgb(195, 103, 21);
+        @media (max-width: 768px) {
+          width: 650px;
+          // border: 5px solid rgb(195, 103, 21);
           display: flex;
-          gap: 8px;
-          margin-bottom: 10px;
-          .form_label {
-            display: inline-block;
-            flex: 1;
-          }
-          .form_input {
-            width: 80%;
-            flex: 2;
-          }
-        }
-        .todo_box_row_One {
-          // border: 5px solid #000;
-          display: flex;
-          flex-direction: column;
-          width: 50%;
           justify-content: center;
           align-items: center;
-          height: 500px;
-          list-style: none;
-          gap: 20px;
+        }
+        @media (max-width: 414px) {
+          width: 350px;
+          // border: 5px solid rgb(195, 103, 21);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .form_item {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          // border: 2px solid rgb(176, 20, 155);
+          margin-bottom: 10px;
           @media (max-width: 768px) {
-            background-color: rgb(0, 255, 89);
-            width: 70%;
-            // flex-direction: row;
+            width: 300px;
+            justify-content: start;
+            align-items: start;
           }
-          li {
+          .el-form-item {
             width: 100%;
-            // border: 2px solid red;
-            input {
-              width: 80%;
-              padding: 10px;
-              border-radius: 20px;
+            // border: 2px solid rgb(15, 17, 156);
+            @media (max-width: 768px) {
+              width: 500px;
+            }
+            @media (max-width: 414px) {
+              width: 300px;
+            }
+            label {
+              font-weight: bold;
+              color: #333;
+            }
+            .el-input__inner {
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              &:focus {
+                border-color: #409eff;
+              }
+            }
+            .el-date-editor--datetimerange {
+              width: 100%;
+              .el-input__inner {
+                width: 100%;
+              }
+            }
+            .el-textarea__inner {
+              border-radius: 5px;
+              border: 1px solid #ccc;
+              &:focus {
+                border-color: #409eff;
+              }
             }
           }
-        }
-        button {
-          padding: 5px 50px;
-          background-color: #d9d9d9;
-          border-radius: 40px;
-          font-size: 14px;
+          .form-item_oth {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            .el-button {
+              border-radius: 10px;
+              padding: 20px 30px;
+              &:first-child {
+                background-color: #2684FF;
+                color: #fff;
+                font-weight: 700;
+              }
+              &:last-child {
+                background-color: #b90e0e;
+                color: #fff;
+                font-weight: 700;
+              }
+            }
+          }
         }
       }
       .calendar {
         width: 40vw;
-        border: 5px solid palegreen;
         height: 500px;
         @media (max-width: 768px) {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          background-color: rgb(0, 255, 89);
           width: 80%;
           margin: 0 auto;
-          // flex-direction: row;
         }
       }
     }
@@ -280,7 +388,7 @@ const addEvent = () => {
       justify-content: center;
       align-items: center;
       padding: 20px 40px; /* 內邊距 */
-      background-color: #40b9a9; /* 背景顏色 */
+      background-color: #60a6cf;
       color: #000; /* 字體顏色 */
       border: none; /* 去掉邊框 */
       border-radius: 20px; /* 圓角 */
@@ -288,9 +396,24 @@ const addEvent = () => {
       cursor: pointer; /* 游標樣式 */
       margin: 20px auto;
     }
-    h2 {
-      text-align: center;
-    }
+  }
+}
+
+/* 只在 768px 寬度以下調整樣式 */
+@media (max-width: 768px) {
+  .wrap main form {
+    width: 90%; /* 調整表格寬度 */
+    font-size: 14px; /* 調整字體大小 */
+  }
+  .wrap main .form_item .el-form-item,
+  .wrap main .form_item .form-item_oth {
+    font-size: 14px; /* 調整字體大小 */
+    padding: 5px; /* 調整內邊距 */
+    height: auto; /* 調整高度 */
+  }
+  .wrap main .form-item_oth .el-button {
+    padding: 10px 20px; /* 調整按鈕內邊距 */
+    font-size: 14px; /* 調整字體大小 */
   }
 }
 </style>

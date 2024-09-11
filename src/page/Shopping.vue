@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2>閱讀助力，PRO加值。升級你的計畫，精選書籍與PRO會員帶你走得更遠</h2>
     <div class="page_title">
       <h2>加值服務商城</h2>
       <h3>優質書籍推薦:</h3>
@@ -145,7 +146,7 @@ const arr = [
   axios.get(
     "https://vue3-course-api.hexschool.io/api/dreamcompressionapi/products"
   ),
-  axios.get("https://vue3-course-api.hexschool.io/api/vipbookplan/products"),
+  axios.get("https://vue3-course-api.hexschool.io/api/dream_vip_edit/products"),
   axios.get(
     "https://vue3-course-api.hexschool.io/api/bookplanerviceintroduction/products"
   ),
@@ -177,7 +178,10 @@ onMounted(async () => {
 }
 .container {
   width: 100%;
-  border: 5px solid red;
+  // border: 5px solid red;
+  background-color: #c7eeff;
+  background-color: #a0d8f0;
+
   .page_title {
     width: 100%;
     // border: 10px solid rgb(102, 0, 255);
@@ -189,7 +193,7 @@ onMounted(async () => {
       width: 100%;
       text-align: center;
       @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
+        // background-color: rgb(0, 255, 89);
         text-align: left;
         width: 95%;
       }
@@ -199,7 +203,7 @@ onMounted(async () => {
       text-align: left;
       // border: 5px solid salmon;
       @media (max-width: 768px) {
-        background-color: rgb(0, 255, 89);
+        // background-color: rgb(0, 255, 89);
         text-align: left;
         width: 90%;
       }
@@ -214,7 +218,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    // border: 5px solid red;
+    border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -223,15 +227,15 @@ onMounted(async () => {
       gap: 30px;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
       gap: 30px;
     }
     li {
-      width: calc(100% - 30px) / 3;
-      // width: 90%;
+      // width: calc(100% - 30px) / 3;
+      width: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -246,7 +250,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 0, 179);
+        // background-color: rgb(255, 0, 179);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -262,6 +266,7 @@ onMounted(async () => {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         gap: 20px;
         width: 300px;
         // border: 5px solid green;
@@ -271,15 +276,26 @@ onMounted(async () => {
           justify-content: center;
           align-items: center;
           gap: 10px;
-          background-color: #4ba0d7;
+          // background-color: #4ba0d7;
+          // background-color: #4bd76e;
           padding: 5px 10px;
           height: 60px;
-          position: absolute;
+          // position: absolute;
 
           bottom: 73px;
           opacity: 0.8;
 
-          h4,
+          h4 {
+            width: 100px;
+            font-weight: 900;
+            font-size: 13px; //太大每個購物車按鈕會不一樣
+            color: #31267c;
+            text-align: center;
+            // background-color: #d77a4b;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
           span {
             font-weight: 900;
             font-size: 13px; //太大每個購物車按鈕會不一樣
@@ -317,6 +333,7 @@ onMounted(async () => {
     }
   }
   .Vip_product_list {
+    width: 1141px;
     max-width: 60%;
     display: flex;
     justify-content: center;
@@ -324,7 +341,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
-    // border: 5px solid red;
+    border: 5px solid red;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -332,15 +349,15 @@ onMounted(async () => {
       flex-wrap: wrap;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
       gap: 30px;
     }
     li {
-      width: calc(100% - 30px) / 3;
-      // width: 90%;
+      // width: calc(100% - 30px) / 3;
+      width: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -355,7 +372,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 85, 0);
+        // background-color: rgb(255, 85, 0);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -422,6 +439,7 @@ onMounted(async () => {
     }
   }
   .Vip_Serve_list {
+    width: 1141px;
     max-width: 60%;
     display: flex;
     justify-content: center;
@@ -429,6 +447,7 @@ onMounted(async () => {
     flex-wrap: wrap;
     padding: 0 24px;
     margin-bottom: 3rem;
+    border: 3px solid palegreen;
     @media (max-width: 768px) {
       // background-color: rgb(55, 0, 255);
       display: flex;
@@ -436,7 +455,7 @@ onMounted(async () => {
       flex-wrap: wrap;
     }
     @media (max-width: 414px) {
-      background-color: rgb(0, 255, 47);
+      // background-color: rgb(0, 255, 47);
       display: flex;
       max-width: 100%;
       flex-wrap: wrap;
@@ -458,7 +477,7 @@ onMounted(async () => {
         flex-direction: column;
       }
       @media (max-width: 414px) {
-        background-color: rgb(255, 0, 179);
+        // background-color: rgb(255, 0, 179);
         display: flex;
         width: 80%;
         flex-direction: column;
@@ -510,7 +529,7 @@ onMounted(async () => {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     @media (max-width: 768px) {
-      border: 5px solid red;
+      // border: 5px solid red;
       max-width: 900px;
       width: auto;
     }
@@ -525,8 +544,10 @@ onMounted(async () => {
     line-height: 1.6;
 
     thead {
-      background-color: #f5e4d0;
-      color: #795227; // 深灰色文字
+      // background-color: #f5e4d0;
+      background-color: #82bae0;
+      font-weight: 700;
+      color: #0c0702; // 深灰色文字
       text-align: center;
 
       th {

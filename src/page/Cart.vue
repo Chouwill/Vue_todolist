@@ -1,7 +1,7 @@
 <template>
   <div class="cartopen_box">
     <main>
-      <h2>我是購物車</h2>
+      <h2>購物車</h2>
       <table>
         <thead>
           <tr>
@@ -14,13 +14,25 @@
           </tr>
         </thead>
         <tbody>
-          <CartItem v-for="product in store.shoppingCart" :key="product.id" :product="product" />
+          <CartItem
+            v-for="product in store.shoppingCart"
+            :key="product.id"
+            :product="product"
+            @checkCart="handleCheckCart"
+            ref="cartItems"
+          />
         </tbody>
         <tfoot>
           <tr>
             <td colspan="4"></td>
             <td>
-              <button v-if="store.shoppingCart.length > 0" @click="store.removeAll">一鍵刪除</button>
+              <button
+                v-if="store.shoppingCart.length > 0"
+                @click="store.removeAll"
+                class="AllDelebtn"
+              >
+                一鍵刪除
+              </button>
             </td>
           </tr>
         </tfoot>
@@ -39,22 +51,32 @@
           </tr>
         </tbody>
       </table>
-      <div class="send_box">
-        <button @click="checkSend">結帳送出</button>
-      </div>
+      
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { useCartStore } from "../stores/cart.js";
 import CartItem from "./CartItem.vue";
 
 const store = useCartStore();
+const cartItems = ref([]); // 使用 ref 來獲取子組件的引用
+
+onMounted(() => {
+  // 確保在組件掛載後獲取子組件的引用
+  cartItems.value = Object.values(cartItems.value);
+});
+
+const handleCheckCart = (message) => {
+  console.log(message); // 處理子組件傳遞的訊息
+  alert(message);
+};
 
 const checkSend = () => {
-  alert("謝謝您完成訂購");
+  console.log("checkSend 被調用"); // 添加日誌
+
 };
 
 // {
@@ -88,6 +110,10 @@ const cancel_Buy = (id) => {
   const numericId = Number(id);
   prodlist.value = prodlist.value.filter((product) => product.id !== numericId);
 };
+
+// const checkoutFun = ()=>{
+
+// }
 </script>
 
 <style lang="scss" scoped>
@@ -100,14 +126,19 @@ const cancel_Buy = (id) => {
   align-items: center;
   flex-direction: column;
   width: 70%;
-  @media (max-width: 768px) {
-    // border: 5px solid red;
-    width: 100%;
-  }
-  //   border: 10px solid red;
   position: relative;
+  // background-color: #3fa952;
+  height: 1000px;
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 414px) {
+    width: 90%;
+    margin: 0 auto;
+  }
   .cancel_box {
-    // border: 1px solid forestgreen;
     button {
       padding: 15px 10px;
       position: absolute;
@@ -115,42 +146,63 @@ const cancel_Buy = (id) => {
     }
   }
   main {
+    // border: 5px solid #000;
+    width: 70%;
+    // height: 500px;
+    @media (max-width: 414px) {
+      width: 100%;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      font-size: 35px;
+    }
     table {
       border-collapse: collapse; /* 讓邊框合併為一條線 */
+      @media (max-width: 768px) {
+        margin: 0 auto;
+      }
+      @media (max-width: 414px) {
+        width: 100%;
+        margin: 0 auto;
+      }
     }
 
     table {
+      // border: 5px solid green;
+      width: 80%;
+      margin: 0 auto;
+      @media (max-width: 768px) {
+        margin: 0 auto;
+      }
+      @media (max-width: 414px) {
+        margin: 0 auto;
+        width: 390px;
+      }
       thead {
         tr {
-          // border: 3px solid palegreen;
-          background-color: red;
+          background-color: #c1c7e7;
         }
         td {
           text-align: center;
-          font-size: 20px;
+          font-size: 25px;
+          font-weight: 700;
+          background-color: #5198c0;
+          @media (max-width: 768px) {
+            font-size: 20px;
+          }
         }
-        .product-name {
-          width: 270px;
-          height: 50px;
-          background-color: forestgreen;
-          height: 30px;
-        }
-        .product-price {
-          width: 200px;
-          background-color: pink;
-          height: 30px;
-        }
-        .quantity {
-          width: 150px;
-          background-color: orange;
-          height: 30px;
-        }
-        .oth {
-          width: 100px;
-        }
+        .product-name,
+        .product-price,
+        .quantity,
         .othMethod {
-          width: 200px;
-          background-color: gray;
+          height: 30px;
+          @media (max-width: 768px) {
+            height: 40px;
+          }
+          @media (max-width: 414px) {
+            height: 50px;
+          }
         }
       }
     }
@@ -164,30 +216,29 @@ const cancel_Buy = (id) => {
       margin: 50px 0;
 
       tr {
-        width: 700px;
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        // border-bottom: 5px solid red;
-
         td {
           width: 100%;
           text-align: center;
+          @media (max-width: 414px) {
+            font-size: 14px;
+            padding: 10px 5px;
+          }
         }
       }
     }
 
-    .send_box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // border: 5px solid rebeccapurple;
-      button {
-        padding: 15px 25px;
-        border-radius: 20px;
-        background-color: red;
-      }
+   
+    .AllDelebtn {
+      background-color: #f56c6c;
+      padding: 8px 15px;
+      border-radius: 6px;
+      color: white;
+      // max-width: 70px;
     }
   }
 }

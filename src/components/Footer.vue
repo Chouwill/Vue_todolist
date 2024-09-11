@@ -1,19 +1,10 @@
 <template>
   <footer>
-    <nav>
-      <div class="menu_width">
-        <router-link to="/">關於我們</router-link>
-        <router-link to="/">豐富資源</router-link>
-      </div>
-      <div class="menu_width">
-        <router-link to="/">開始Plan</router-link>
-
-        <router-link to="/">享受放鬆生活</router-link>
-      </div>
-    </nav>
     <div class="logo_box">
-      <img src="/src/image/Dream_LOGO.png" alt="" />
-      <h2>設計你的讀書計畫Plan</h2>
+      <!-- <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" /> -->
+    </div>
+    <div class="footer_describe">
+      <h4>版權所有 ©Copyright 2024.All Rights Reserved.</h4>
     </div>
     <div class="community_box">
       <h2>聯絡我們</h2>
@@ -49,102 +40,162 @@
 }
 footer {
   width: 100%;
-  background-color: #4ba0d7;
-  height: 15vh;
+  // background-color: #4ba0d7;
+  background-color: #a0d8f0;
+  height: 12vh;
+  // margin-bottom: 15vh;
   display: flex;
-  // padding: 100px 0;
-  nav {
+  position: relative;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+
+  @media (max-width: 768px) {
+    // display: none;
+    width: 100%;
+    // border: 9px solid rgb(0, 255, 60);
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 414px) {
+    // justify-content: center;
+    // align-items: center;
+    width: 100%;  
+  }
+  .logo_box {
     width: 30%;
-    border: 2px solid #000;
-    padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
       display: none;
     }
-
-    .menu_width {
-      display: flex;
-      width: 250px;
-      // border: 5px solid rosybrown;
-      gap: 0px;
-      font-size: 25px;
-      // justify-content: flex-start;
-      // align-items: flex-start;
-      flex-direction: column;
-      &:nth-child(1) {
-        // border: 3px solid orange;
-        text-align: right;
-      }
-      a,
-      .router-link {
-        // text-align: left;
-        color: bisque;
-        width: 100%;
-        white-space: nowrap;
-        display: block;
+    img {
+      max-width: 50%;
+      object-fit: contain;
+      @media (max-width: 768px) {
+        max-width: 15%;
       }
     }
   }
-  .logo_box {
-    border: 2px solid red;
+  .footer_describe {
     width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    h2{
-      @media (max-width: 414px) {
-      font-size: 20px;
-    }
-    }
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
-      display: flex;
+      width: 100%;
+      // border: 5px solid rgb(14, 1, 1);
+      position: absolute;
+      top: 30px;
+      left: 0;
+      // border: 5px solid rgb(14, 1, 1);
       justify-content: center;
       align-items: center;
-      width: 50%;
     }
-    img {
-      max-width: 9%;
-      object-fit: contain;
+    @media (max-width: 414px) {
+      width: 100%;
+      border: 5px solid rgb(14, 1, 1);
+      justify-content: center;
+      align-items: center;
+    }
+    h4 {
+      text-align: center;
+      font-size: 20px;
+      color: #000;
       @media (max-width: 768px) {
-      max-width: 15%;
-    }
+        font-size: 17px;
+        width: 100%;
+        // border: 5px solid red;
+        margin: 0 auto;
+      }
+      @media (max-width: 414px) {
+        font-size: 15px;
+        width: 100%;
+        border: 5px solid red;
+        line-height: 4;
+        margin: 0 auto;
+      }
     }
   }
   .community_box {
-    width: 30%;
-    border: 3px solid pink;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
     flex-direction: column;
-    @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    // padding-top: 10px;
+
+    @media (max-width: 414px) {
+      // display: flex;
+      // 會影響footer_describe 在RWD footer佔滿100%寬度，但不要影響子層div標籤CSS，絕對定位顯現
     }
+
     h2 {
       font-size: 20px;
-      @media (max-width: 414px) {
-        font-size: 20px;
+      color: #000;
+      text-align: center;
+      margin-bottom: 10px;
+      // line-height: 2;
+      @media (max-width: 768px) {
+        display: none;
       }
+      //@media (max-width: 414px) {
+      //font-size: 20px;
+      //}
     }
     div {
       display: flex;
+      justify-content: center;
+      align-items: center;
       width: 30%;
       gap: 10px;
-      // border: 2px solid red;
-      .community_link {
-        font-size: 35px;
+      // border: 5px solid red;
+
+      @media (max-width: 768px) {
+        position: fixed;
+        width: 100px;
+        flex-direction: column;
+        // background-color: orange;
+        height: 300px;
+        bottom: 120px;
+        right: 0;
+      }
+      a {
+        // background-color: #1e7fb8;
+        width: 70px;
+        height: 70px;
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 70px;
+          background-color: #1e7fb8;
+
+          // border: 100px solid red;
+        }
         @media (max-width: 414px) {
-          font-size: 20px;
+          //display: flex;
+          //justify-content: center;
+          //align-items: center;
+          // border: 10px solid red;
+        }
+        .community_link {
+          font-size: 35px;
+          color: #000;
+          &:hover {
+            color: #3b96cb;
+          }
+          @media (max-width: 768px) {
+            top: 15px;
+            bottom: 16px;
+            right: 25px;
+            font-size: 30px;
+          }
+
+          @media (max-width: 414px) {
+            z-index: 5000;
+          }
         }
       }
     }

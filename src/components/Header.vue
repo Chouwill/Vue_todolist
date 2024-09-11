@@ -1,12 +1,12 @@
 <template>
   <header>
-    <nav :class="['desktop_menu', { active: menuActive }]">
-      <router-link to="/aboutus">關於我們</router-link>
-      <router-link to="/shopping">加值商城</router-link>
-      <router-link to="/todolist">開始Plan</router-link>
-      <router-link to="/enjoylife">享受放鬆生活</router-link>
-    </nav>
-    <!-- <ul :class="['desktop_menu', { active: menuActive }]" v-show="menuActive">
+    <div class="logo_box">
+      <router-link to="/">
+        <!-- <h2>設計你的計畫Plan</h2> -->
+        <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" />
+      </router-link>
+    </div>
+    <ul :class="['desktop_menu', { active: menuActive }]">
       <li>
         <router-link to="/aboutus">關於我們</router-link>
       </li>
@@ -19,19 +19,27 @@
       <li>
         <router-link to="/enjoylife">享受放鬆生活</router-link>
       </li>
-    </ul> -->
-    <div class="logo_box">
-      <router-link to="/">
-        <!-- <img src="/src/image/Dream_LOGO.png" alt="" /> -->
-        <h2>設計你的計畫Plan</h2>
-      </router-link>
-    </div>
+      <li class="user_team_link">
+        <router-link to="/login">
+          <font-awesome-icon
+            icon="fa-regular fa-user"
+            class="deskTop_user_link"
+          />
+        </router-link>
+        <router-link to="/cart">
+          <font-awesome-icon
+            icon="fa-solid fa-cart-shopping"
+            class="deskTop_user_link"
+          />
+        </router-link>
+      </li>
+    </ul>
     <div class="user_box">
       <div>
         <router-link to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
-        <router-link to="/shopping">
+        <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
             class="user_link"
@@ -39,9 +47,9 @@
         </router-link>
       </div>
     </div>
-    <div class="phone_menu_cancel">
+    <div class="phone_menu_cancel" style="display: none">
       <button>
-        <font-awesome-icon icon="fa-solid fa-xmark" />
+        <!-- <font-awesome-icon icon="fa-solid fa-xmark" /> -->
       </button>
     </div>
     <div class="phone_menu_btn" @click="openMenu">
@@ -58,39 +66,137 @@
   box-sizing: border-box;
   margin: 0 auto;
 }
+a {
+  &:hover {
+    // background-color: orange;
+    color: orange;
+  }
+}
 header {
   width: 100%;
-  background-color: #4ba0d7;
-  height: 15vh;
+  background-color: #a0d8f0;
+  height: 10vh;
   display: flex;
   // padding: 100px 0;
-  position: relative;
-  nav {
-    width: 30%;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .logo_box {
+    // border: 2px solid red;
+    width: 20%;
+    //display: flex;
+    //justify-content: center;
+    //align-items: flex-start;
+    //flex-direction: column;
+    border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    @media (max-width: 768px) {
+      // background-color: rgb(0, 255, 89);
+      // display: flex;
+      // justify-content: flex-end;
+      width: 85%;
+      // align-items: center;
+    }
+    @media (max-width: 414px) {
+      // background-color: rgb(0, 255, 89);
+      // display: flex;
+      // justify-content: flex-end;
+      width: 85%;
+      // align-items: center;
+    }
+    img {
+      max-width: 85%;
+      object-fit: cover;
+      @media (max-width: 768px) {
+        max-width: 75%;
+      }
+      @media (max-width: 414px) {
+        max-width: 100%;
+      }
+    }
+    h2 {
+      font-size: 25px;
+      text-align: center;
+      @media (max-width: 768px) {
+        font-size: 35px;
+        line-height: 3.2;
+      }
+      @media (max-width: 768px) {
+        font-size: 17px;
+        line-height: 6.2;
+        // margin-left: 20px;
+      }
+    }
+  }
+  ul {
+    width: 60%;
     // border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    a {
-      font-size: 20px;
-    }
     @media (max-width: 768px) {
-      background-color: rgb(0, 255, 89);
+      // background-color: rgb(0, 255, 89);
       display: none;
     }
     @media (max-width: 430px) {
-      background-color: rgb(217, 255, 0);
-      
+      // background-color: rgb(217, 255, 0);
     }
+    li {
+      &:nth-child(5) {
+        display: none;
+        @media (max-width: 768px) {
+          display: flex;
+          // border: 5px solid red;
+          justify-content: flex-start;
+          // width: 100px;
+        }
+      }
+      a {
+        color: white;
+        color: #000;
+        // color: red;
+        font-size: 20px;
+        font-weight: 700;
+        &:hover {
+          color: #3b96cb;
+        }
+      }
+    }
+    // .deskTop_user_link {
+    //   display: none;
+    //   @media (max-width: 768px) {
+    //     // background-color: rgb(0, 255, 89);
+    //     display: block;
+    //     color: white;
+    //     font-size: 40px;
+    //   }
+    //   @media (max-width: 430px) {
+    //     background-color: rgb(217, 255, 0);
+    //     display: block;
+    //   }
+    // }
   }
   .desktop_menu {
     // display: none;
     // border: 20px solid red;
+
     @media (max-width: 768px) {
-      display: none;
+      //display: none;
       // width: 400px;
-      // background-color: orange;
+      background-color: #7daac4;
       // // border: 20px solid tomato;
       // display: flex;
       // justify-content: center;
@@ -113,57 +219,47 @@ header {
       align-items: center;
       justify-content: center;
       gap: 16px;
-      // background-color: rgb(0, 255, 8);
-      // border: 10px solid red;
       color: rgb(68, 0, 255);
-      // @media (max-width: 768px) {
-      //   background-color: orange;
-      //   width: 200px;
-      //   display: flex;
-      //   flex-direction: column;
-      //   align-items: center;
-      //   justify-content: flex-end;
-      //   background-color: rgb(0, 255, 8);
-      //   // border: 10px solid red;
-      //   color: orange;
-      // }
-    }
-  }
-  .logo_box {
-    // border: 2px solid red;
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
-      justify-content: flex-end;
-      width: 50%;
-    }
-    img {
-      max-width: 9%;
-      object-fit: cover;
       @media (max-width: 768px) {
-        max-width: 24%;
+        display: flex;
       }
-    }
-    h2 {
-      font-size: 25px;
-      text-align: center;
-      @media (max-width: 768px) {
-        font-size: 35px;
-        line-height: 3.2;
+      li {
+        border-bottom: 3px solid rgb(49, 46, 46);
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        &:nth-child(5) {
+          width: 40%;
+          justify-content: flex-start;
+          text-align: left;
+          border-bottom: none;
+        }
+        a {
+          // border-bottom: 3px solid gray;
+          width: 100%;
+          text-align: left;
+          padding: 10px 0;
+          display: flex;
+          @media (max-width: 768px) {
+            display: flex;
+            color: #000;
+          }
+        }
       }
-      @media (max-width: 768px) {
-        font-size: 17px;
-        line-height: 6.2;
-        // margin-left: 20px;
+      .user_team_link {
+        text-align: left;
+        width: 40%;
+        a {
+          color: #000;
+          text-align: left;
+          font-size: 30px;
+        }
       }
     }
   }
   .user_box {
-    width: 30%;
+    width: 20%;
     // border: 3px solid pink;
     display: flex;
     justify-content: center;
@@ -178,7 +274,12 @@ header {
       width: 30%;
       // border: 2px solid red;
       .user_link {
+        color: white;
+        color: #000;
         font-size: 35px;
+        &:hover {
+          color: #3b96cb;
+        }
       }
     }
   }
@@ -210,10 +311,19 @@ header {
     }
   }
 }
+/* 圓角樣式 */
+.rounded {
+  border-radius: 0 0 20px 0; /* 只有右下角有圓角 */
+}
+
+/* 方塊樣式 */
+.square {
+  border-radius: 0; /* 恢復為方塊 */
+}
 </style>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -272,4 +382,22 @@ const isLoginMemberStatus = async () => {
 // axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
 //   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
+
+const logoClass = ref("logo rounded");
+
+const handleScroll = () => {
+  console.log(window.screenY);
+  if (window.screenY > 0) {
+    logoClass.value = "logo square";
+  } else {
+    logoClass.value = "logo rounded";
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
