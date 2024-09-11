@@ -102,7 +102,12 @@ const RegisterSend = async (email) => {
     // );
     // console.log(LoginInfo);
     try {
-      const apiURL = `${import.meta.VITE_APP_API_BASE_URL}/api/v1/auth/register`;
+      const mode = import.meta.env.MODE;
+      console.log(mode);
+      const url =
+        mode === "development" ? "/api" : import.meta.env.VITE_APP_API_BASE_URL;
+      console.log(url);
+      const apiURL = `${url}/v1/auth/register`;
       console.log(`註冊API URL: ${apiURL}`); // 確認 API URL
       const res = await axios.post(apiURL, {
         name: UserName.value,
@@ -153,7 +158,7 @@ const RegisterSend = async (email) => {
   padding: 15px 30px;
   @media (max-width: 768px) {
     margin-top: 200px;
-    }
+  }
   .Register_header {
     display: flex;
     justify-content: center;

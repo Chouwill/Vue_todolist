@@ -63,11 +63,15 @@ const LoginSend = async () => {
   //   Password: Password.value,
   // });
   try {
-    const mode = import.meta.env.MODE;
+    const mode = import.meta.env.MODE;  // 判斷在何種模式
+    console.log(mode);
     const apiBaseURL = import.meta.env.VITE_APP_API_BASE_URL;
+    // console.log(apiBaseURL);
     console.log(`Base URL: ${apiBaseURL}`); // 確認 API URL
     const url =
       mode === "development" ? "/api" : import.meta.env.VITE_APP_API_BASE_URL;
+      console.log(url);
+      
     const apiURL = `${url}/v1/auth/login`;
     console.log(`登入API URL: ${apiURL}`); // 確認 API URL
 

@@ -22,3 +22,19 @@ axios 串接 會員、登入、註冊、
 
 yarn dev --host
 
+
+## 打包完丟後端
+public資料夾部屬，然後上render網站
+
+
+
+## 打包完丟後端
+.env.development  線下開發
+
+.env.production  線上司服器運行
+
+
+
+
+
+
