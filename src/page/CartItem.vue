@@ -33,9 +33,9 @@
       >
     </td>
   </tr>
-  <div class="send_box">
+  <!-- <div class="send_box">
     <button @click="checkProduct">結帳送出</button>
-  </div>
+  </div> -->
 </template>
 
 <script setup>
@@ -96,7 +96,7 @@ defineExpose({
 <style lang="scss" scoped>
 tr {
   width: 100%;
-  border: 2px solid red;
+  // border: 2px solid red;
   td.product-info .flex-box {
     // text-align: center;
     display: flex;
@@ -129,7 +129,7 @@ tr {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 2px solid yellow;
+      // border: 2px solid yellow;
       button {
         padding: 15px 25px;
         border-radius: 20px;

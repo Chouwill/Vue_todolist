@@ -21,11 +21,11 @@ const routes = [
     name: "RegisterMember",
     component: () => import("@/page/RegisterMember.vue"),
   },
-  {
-    path: "/membercenter",
-    name: "MemberCenter",
-    component: () => import("@/page/MemberCenter.vue"),
-  },
+  // {
+    // path: "/membercenter",
+  //   name: "MemberCenter",
+  //   component: () => import("@/page/MemberCenter.vue"),
+  // },
   {
     path: "/shopping",
     name: "Shopping",

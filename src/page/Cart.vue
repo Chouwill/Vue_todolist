@@ -51,13 +51,15 @@
           </tr>
         </tbody>
       </table>
-      
+      <div class="send_box">
+        <button @click="checkProduct">結帳送出</button>
+      </div>
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref,onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useCartStore } from "../stores/cart.js";
 import CartItem from "./CartItem.vue";
 
@@ -76,7 +78,10 @@ const handleCheckCart = (message) => {
 
 const checkSend = () => {
   console.log("checkSend 被調用"); // 添加日誌
-
+};
+const checkProduct = () => {
+  // console.log("checkSend 被調用"); // 添加日誌
+  alert("您已送出訂單");
 };
 
 // {
@@ -232,13 +237,24 @@ const cancel_Buy = (id) => {
       }
     }
 
-   
     .AllDelebtn {
       background-color: #f56c6c;
       padding: 8px 15px;
       border-radius: 6px;
       color: white;
       // max-width: 70px;
+    }
+    .send_box{
+      width: 55%;
+      // border: 5px solid palegreen;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      button{
+        padding: 10px 25px;
+        background-color: #5198c0;
+        border-radius: 20px;
+      }
     }
   }
 }

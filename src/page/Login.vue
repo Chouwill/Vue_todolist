@@ -49,8 +49,8 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
-const UserInput = ref("123456@gmail.com");
-const Password = ref("12345678");
+const UserInput = ref("RED123456@gmail.com");
+const Password = ref("123456");
 
 const router = useRouter();
 console.log(router);
@@ -63,15 +63,15 @@ const LoginSend = async () => {
   //   Password: Password.value,
   // });
   try {
-    const mode = import.meta.env.MODE;  // 判斷在何種模式
+    const mode = import.meta.env.MODE; // 判斷在何種模式
     console.log(mode);
     const apiBaseURL = import.meta.env.VITE_APP_API_BASE_URL;
     // console.log(apiBaseURL);
     console.log(`Base URL: ${apiBaseURL}`); // 確認 API URL
     const url =
       mode === "development" ? "/api" : import.meta.env.VITE_APP_API_BASE_URL;
-      console.log(url);
-      
+    console.log(url);
+
     const apiURL = `${url}/v1/auth/login`;
     console.log(`登入API URL: ${apiURL}`); // 確認 API URL
 
@@ -82,7 +82,9 @@ const LoginSend = async () => {
     console.log(response.request.status);
     if (response.request.status === 200) {
       alert("Ok");
-      router.push("MemberCenter"); // 跳轉畫面
+      localStorage.setItem("isLoggedIn", "true"); // 設定登入狀態
+      localStorage.setItem("userName", response.data.user.name); // 儲存使用者名稱
+      // router.push("MemberCenter"); // 跳轉畫面
     }
   } catch (error) {
     console.error(error);
@@ -98,9 +100,12 @@ const LoginSend = async () => {
   width: 100%;
   background-color: #c7eeff;
   background-color: #a0d8f0;
-  height: 90vh;
+  height: 100vh;
   @media (max-width: 768px) {
-    height: 85vh;
+    height: 105vh;
+  }
+  @media (max-width: 414px) {
+    height: 105vh;
   }
   .login_box {
     // border: 5px solid red;

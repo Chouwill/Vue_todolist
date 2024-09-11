@@ -2,7 +2,6 @@
   <header>
     <div class="logo_box">
       <router-link to="/">
-        <!-- <h2>設計你的計畫Plan</h2> -->
         <img src="/src/image/Dream_Plan-Photoroom (1).png" alt="" />
       </router-link>
     </div>
@@ -20,12 +19,18 @@
         <router-link to="/enjoylife">享受放鬆生活</router-link>
       </li>
       <li class="user_team_link">
-        <router-link to="/login">
+        <router-link v-if="!isLoggedIn" to="/login">
           <font-awesome-icon
             icon="fa-regular fa-user"
             class="deskTop_user_link"
           />
         </router-link>
+        <div v-else class="user_container" @mouseover="showLogout = true" @mouseleave="showLogout = false">
+          <router-link to="/membercenter" class="login_user_name">
+            {{ truncatedUserName }}
+          </router-link>
+          <button v-if="showLogout" @click="logout" class="logout_button">登出</button>
+        </div>
         <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
@@ -36,9 +41,15 @@
     </ul>
     <div class="user_box">
       <div>
-        <router-link to="/login">
+        <router-link v-if="!isLoggedIn" to="/login">
           <font-awesome-icon icon="fa-regular fa-user" class="user_link" />
         </router-link>
+        <div v-else class="user_container" @mouseover="showLogout = true" @mouseleave="showLogout = false">
+          <router-link to="/membercenter" class="login_user_name">
+            {{ truncatedUserName }}
+          </router-link>
+          <button v-if="showLogout" @click="logout" class="logout_button">登出</button>
+        </div>
         <router-link to="/cart">
           <font-awesome-icon
             icon="fa-solid fa-cart-shopping"
@@ -60,6 +71,100 @@
   </header>
 </template>
 
+<script setup>
+import { onMounted, ref, onBeforeUnmount, watch } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+
+const router = useRouter();
+const menuActive = ref(false);
+const openbtn = ref(true);
+const cartlink = ref(false);
+const isLoggedIn = ref(false);
+const userName = ref(""); // 定義 userName 變數
+const truncatedUserName = ref(""); // 定義截取後的 userName 變數
+const MAX_NAME_LENGTH = 3; // 設定最大顯示長度
+const showLogout = ref(false); // 控制登出按鈕顯示
+
+const openCartlink = () => {
+  cartlink.value = !cartlink.value;
+};
+
+const openMenu = (e) => {
+  menuActive.value = !menuActive.value;
+  console.log(menuActive.value);
+};
+
+const checkLoginStatus = () => {
+  isLoggedIn.value = localStorage.getItem("isLoggedIn") === "true";
+  if (isLoggedIn.value) {
+    userName.value = localStorage.getItem("userName");
+    truncatedUserName.value =
+      userName.value.length > MAX_NAME_LENGTH
+        ? userName.value.substring(0, MAX_NAME_LENGTH) + "..."
+        : userName.value;
+  }
+};
+
+const login = async (credentials) => {
+  try {
+    const response = await axios.post("/api/login", credentials);
+    if (response.data.success) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userName", response.data.userName);
+      isLoggedIn.value = true;
+      userName.value = response.data.userName;
+      truncatedUserName.value =
+        userName.value.length > MAX_NAME_LENGTH
+          ? userName.value.substring(0, MAX_NAME_LENGTH) + "..."
+          : userName.value;
+      router.push("/membercenter");
+    } else {
+      console.error("Login failed:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+  }
+};
+
+const logout = () => {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("userName");
+  isLoggedIn.value = false;
+  router.push("/login");
+};
+
+onMounted(() => {
+  checkLoginStatus();
+  window.addEventListener("scroll", handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+watch(isLoggedIn, (newVal) => {
+  if (newVal) {
+    userName.value = localStorage.getItem("userName");
+    truncatedUserName.value =
+      userName.value.length > MAX_NAME_LENGTH
+        ? userName.value.substring(0, MAX_NAME_LENGTH) + "..."
+        : userName.value;
+  }
+});
+
+const logoClass = ref("logo rounded");
+
+const handleScroll = () => {
+  console.log(window.scrollY);
+  if (window.scrollY > 0) {
+    logoClass.value = "logo square";
+  } else {
+    logoClass.value = "logo rounded";
+  }
+};
+</script>
+
 <style lang="scss" scoped>
 * {
   list-style: none;
@@ -68,7 +173,6 @@
 }
 a {
   &:hover {
-    // background-color: orange;
     color: orange;
   }
 }
@@ -77,14 +181,12 @@ header {
   background-color: #a0d8f0;
   height: 10vh;
   display: flex;
-  // padding: 100px 0;
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  // box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* 陰影效果 */
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
@@ -94,27 +196,14 @@ header {
   }
 
   .logo_box {
-    // border: 2px solid red;
     width: 20%;
-    //display: flex;
-    //justify-content: center;
-    //align-items: flex-start;
-    //flex-direction: column;
-    border-radius: 0 0 100px 0; // background-color: #f9f9f9; /* 淺灰色背景 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    border-radius: 0 0 100px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
-      // display: flex;
-      // justify-content: flex-end;
       width: 85%;
-      // align-items: center;
     }
     @media (max-width: 414px) {
-      // background-color: rgb(0, 255, 89);
-      // display: flex;
-      // justify-content: flex-end;
       width: 85%;
-      // align-items: center;
     }
     img {
       max-width: 85%;
@@ -136,38 +225,31 @@ header {
       @media (max-width: 768px) {
         font-size: 17px;
         line-height: 6.2;
-        // margin-left: 20px;
       }
     }
   }
   ul {
     width: 60%;
-    // border: 2px solid #000;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
       display: none;
     }
     @media (max-width: 430px) {
-      // background-color: rgb(217, 255, 0);
     }
     li {
       &:nth-child(5) {
         display: none;
         @media (max-width: 768px) {
           display: flex;
-          // border: 5px solid red;
           justify-content: flex-start;
-          // width: 100px;
         }
       }
       a {
         color: white;
         color: #000;
-        // color: red;
         font-size: 20px;
         font-weight: 700;
         &:hover {
@@ -175,34 +257,10 @@ header {
         }
       }
     }
-    // .deskTop_user_link {
-    //   display: none;
-    //   @media (max-width: 768px) {
-    //     // background-color: rgb(0, 255, 89);
-    //     display: block;
-    //     color: white;
-    //     font-size: 40px;
-    //   }
-    //   @media (max-width: 430px) {
-    //     background-color: rgb(217, 255, 0);
-    //     display: block;
-    //   }
-    // }
   }
   .desktop_menu {
-    // display: none;
-    // border: 20px solid red;
-
     @media (max-width: 768px) {
-      //display: none;
-      // width: 400px;
       background-color: #7daac4;
-      // // border: 20px solid tomato;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // position: absolute;
-      // right: 0;
     }
     &.active {
       width: 50vw;
@@ -236,7 +294,6 @@ header {
           border-bottom: none;
         }
         a {
-          // border-bottom: 3px solid gray;
           width: 100%;
           text-align: left;
           padding: 10px 0;
@@ -256,30 +313,62 @@ header {
           font-size: 30px;
         }
       }
+      
     }
   }
   .user_box {
     width: 20%;
-    // border: 3px solid pink;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0;
     @media (max-width: 768px) {
-      // background-color: rgb(0, 255, 89);
       display: none;
     }
     div {
       display: flex;
       width: 30%;
-      // border: 2px solid red;
+      // border: 2px solid palegreen;
+      justify-content: center;
+      align-items: center;
       .user_link {
         color: white;
         color: #000;
         font-size: 35px;
+
         &:hover {
           color: #3b96cb;
         }
+      }
+      .login_user_name {
+        font-size: 20px;
+        color: red;
+        @media (max-width: 768px) {
+          font-size: 15px;;
+        }
+        @media (max-width: 414px) {
+          font-size: 15px;;
+        }
+      }
+      .logout_button {
+        display: flex;
+        font-size: 15px;
+        color: blue;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        padding: 10px 50px;
+        background-color: #fff;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .user_container:hover .logout_button {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }
@@ -311,93 +400,16 @@ header {
     }
   }
 }
-/* 圓角樣式 */
 .rounded {
-  border-radius: 0 0 20px 0; /* 只有右下角有圓角 */
+  border-radius: 0 0 20px 0;
+}
+.square {
+  border-radius: 0;
 }
 
-/* 方塊樣式 */
-.square {
-  border-radius: 0; /* 恢復為方塊 */
+header .desktop_menu.active .user_team_link a.login_user_name[data-v-c970699f] {
+  color: #d70b0b;
+  text-align: left;
+  font-size: 20px; // 調整字體大小
 }
 </style>
-
-<script setup>
-import { onMounted, ref, onBeforeUnmount } from "vue";
-import { useRouter } from "vue-router";
-import axios from "axios";
-
-const router = useRouter();
-const menuActive = ref(false);
-const openbtn = ref(true);
-//視窗開關
-
-const cartlink = ref(false); // 尚未進入購物商城時，購物車icon是關閉
-
-const openCartlink = () => {
-  cartlink.value = !cartlink.value;
-};
-
-const openMenu = (e) => {
-  // openbtn.value = !openbtn.value;
-  menuActive.value = !menuActive.value;
-  console.log(menuActive.value);
-};
-// ------------------------------------------------------------------
-// step 1 點擊會員中心判斷是否登入，否，則會帶到登入或註冊
-
-// 目前無法進入會員中心，並且無法判斷狀態
-
-const loginlink = () => {
-  router.push("Login");
-};
-
-const isLoginMemberStatus = async () => {
-  //檢查 是否維持在登入狀態，否，則會被導入登入或註冊
-  console.log(UserInput.value);
-  console.log(Password.value);
-  // axios.post(`http://localhost:2500/api/v1/auth/login`, {
-  //   email: UserInput.value,
-  //   Password: Password.value,
-  // });
-  try {
-    const response = await axios.post(`/api/v1/auth/login`, {
-      email: UserInput.value,
-      password: Password.value,
-    });
-    console.log(response.request.status);
-    if (response.request.status === 200) {
-      alert("Ok");
-      router.push("MemberCenter"); // 跳轉畫面
-    } else {
-      alert("你未登入");
-      router.push("Login");
-    }
-  } catch (error) {
-    console.error(error);
-    alert("使用者帳號密碼錯誤");
-  }
-};
-
-// axios.get("https://vue3-course-api.hexschool.io/api/apitest2024/products"),
-//   axios.get("https://vue3-course-api.hexschool.io/api/2024vipplan/products"),
-//   axios.get("https://vue3-course-api.hexschool.io/api/2024vipservice/products"),
-
-const logoClass = ref("logo rounded");
-
-const handleScroll = () => {
-  console.log(window.screenY);
-  if (window.screenY > 0) {
-    logoClass.value = "logo square";
-  } else {
-    logoClass.value = "logo rounded";
-  }
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
-</script>

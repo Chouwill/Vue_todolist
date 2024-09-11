@@ -140,9 +140,12 @@ const RegisterSend = async (email) => {
   width: 100%;
   background-color: #c7eeff;
   background-color: #a0d8f0;
-  height: 90vh;
+  height: 100vh;
   @media (max-width: 768px) {
-    height: 85vh;
+    height: 105vh;
+  }
+  @media (max-width: 414px) {
+    height: 105vh;
   }
 }
 .Register_box {
