@@ -63,11 +63,14 @@ const LoginSend = async () => {
   //   Password: Password.value,
   // });
   try {
+    const mode = import.meta.env.MODE;
     const apiBaseURL = import.meta.env.VITE_APP_API_BASE_URL;
     console.log(`Base URL: ${apiBaseURL}`); // 確認 API URL
-    const apiURL = `/api/v1/auth/login`;
+    const url =
+      mode === "development" ? "/api" : import.meta.env.VITE_APP_API_BASE_URL;
+    const apiURL = `${url}/v1/auth/login`;
     console.log(`登入API URL: ${apiURL}`); // 確認 API URL
-    
+
     const response = await axios.post(apiURL, {
       email: UserInput.value,
       password: Password.value,

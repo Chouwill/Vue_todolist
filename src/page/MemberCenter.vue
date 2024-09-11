@@ -99,7 +99,9 @@ const data = ref(true);
 
 onMounted(async () => {
   try {
-    const res = await axios.get(`/api/v1/users/showMe`);
+    const mode = import.meta.env.MODE;
+    const url = mode === 'development' ? '/api' : import.meta.env.VITE_APP_API_BASE_URL;
+    const res = await axios.get(`${url}/v1/users/showMe`);
     console.log(res);
     data.value = false;
     name.value = res.data.user.name;
