@@ -1,71 +1,58 @@
 <script setup>
 import axios from "axios";
-import { ref, reactive, onMounted } from "vue";
+import Windows from "../components/Windows.vue";
+import { useReserveStore } from "../stores/Reserve.js";
+import { ref, onMounted, computed } from "vue";
 
-const enjoyData = ref([]);
+const store = useReserveStore();
 
-const arr = [
-  axios.get("https://vue3-course-api.hexschool.io/api/enjoylife_api/products"),
-];
+const products = ref([]);
+const ReserveFuned = ref(null);
+console.log(store);
 
 onMounted(async () => {
-  try {
-    const resArr = await Promise.all(arr); //Promise.allSettled  沒生效????
-    console.log(resArr[0].data);
-    enjoyData.value = resArr[0].data.products; //  享受生活API
-    // ---------------------------------------------
-  } catch (error) {
-    console.log("錯誤處理", error);
-  }
-  console.log("執行其他動作");
+  await store.getDataList();
+  products.value = store.reseveArr.products; //   傳遞給products
+  // console.log("Loaded products:", store.reseveArr); // 調試信息
+  console.log("Pinia傳遞給Products", products.value);
 });
+
+const ReserveFun = (index) => {
+  ReserveFuned.value = products.value[index]   //尋找index
+  console.log(ReserveFuned.value);
+  
+};
 </script>
+
 <template>
   <div class="container">
-    <!-- <h2>
-      規劃人生目標的同時，享受與放鬆生活是達成目標的助力，讓旅遊與美食豐富你的每一步。
-    </h2> -->
     <main>
+      <Windows :product="ReserveFuned"/>
       <div class="div">
         <h2 class="item_title">國內旅遊</h2>
-        <ul v-for="item in enjoyData" :key="item.id">
-          <li>
-            <h4>大英博物館</h4>
+        <ul>
+          <li v-for="(item, index) in products.slice(0, 3)" :key="item.id">
+            <h4>{{ item.title }}</h4>
             <img :src="item.imageUrl" alt="" />
-            <a href="https://britishmuseum.org.cn/" target="_blank">查看活動</a>
-          </li>
-          <li>
-            <h4>威尼斯水上嘉年華</h4>
-            <img :src="item.imagesUrl" alt="" />
-            <a href="https://event.liontravel.com/zh-tw/europe/carnival-of-venice" target="_blank">查看活動</a>
-          </li>
-          <li>
-            <h4>澎湖潛水漫步</h4>
-            <img :src="item.imagesUrl[1]" alt="" />
-            <a href="http://www.ezpenghu.com.tw/travel_10.htm" target="_blank">查看活動</a>
+            <a href="#" @click.prevent="ReserveFun(index)">查看活動</a>
           </li>
         </ul>
       </div>
       <div class="div">
         <h2 class="item_title">美食饗宴</h2>
-        <ul v-for="item in enjoyData" :key="item.id">
-          <li>
-            <h4>日式生魚片之旅</h4>
-            <img :src="item.imagesUrl[2]" alt="" />
-            <a href="https://tabelog.com/tw/tokyo/A1302/A130202/13117221/" target="_blank">查看活動</a>
-          </li>
-          <li>
-            <h4>法式牛排晚餐</h4>
-
-            <img :src="item.imagesUrl[3]" alt="" />
-            <a href="https://www.cairns-stonegrill.com.tw/" target="_blank">查看活動</a>
-          </li>
-          <li>
-            <h4>經典美式蘋果派</h4>
-            <img :src="item.imagesUrl[4]" alt="" />
-            <a href="https://onepercent.storm.mg/article/4085378" target="_blank">查看活動</a>
+        <ul>
+          <li v-for="(item,index) in products.slice(3, 6)" :key="item.id">
+            <h4>{{ item.title }}</h4>
+            <img :src="item.imageUrl" alt="" />
+            <a href="#" @click.prevent="ReserveFun(index+3)">查看活動</a>
           </li>
         </ul>
+      </div>
+
+      <div class="result">
+        <!-- {{ store.reseveArr }} -->
+        <h2>您已成功訂購</h2>
+        <h2>{{ store.CustomerDate.value }}</h2>
       </div>
     </main>
   </div>

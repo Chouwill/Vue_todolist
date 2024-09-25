@@ -7,9 +7,9 @@ const routes = [
     component: () => import("@/page/Index.vue"),
   },
   {
-    path: "/todolist",
-    name: "Todolist",
-    component: () => import("@/page/Todolist.vue"),
+    // path: "/todolist",
+    // name: "Todolist",
+    // component: () => import("@/page/Todolist.vue"),
   },
   {
     path: "/login",
@@ -41,11 +41,11 @@ const routes = [
     name: "Cart",
     component: () => import("@/page/Cart.vue"),
   },
-  {
-    path: "/windows",
-    name: "Windows",
-    component: () => import("@/page/Windows.vue"),
-  },
+  // {
+  //   path: "/windows",
+  //   name: "Windows",
+  //   component: () => import("@/page/Windows.vue"),
+  // },
   {
     path: "/enjoylife",
     name: "Enjoylife",

@@ -1,4 +1,13 @@
 <script setup>
+import { onMounted } from "vue";
+
+import { useReserveStore } from "./stores/Reserve.js";
+
+const store = useReserveStore();
+onMounted(() => {
+  store.getDataList();
+});
+
 /**
  * Import the Header component from the specified file path.
  */
@@ -22,7 +31,7 @@ const isRegisterMember = ref(false);
     <!-- <Windows /> -->
     <!-- <Login /> -->
     <!-- <RegisterMember /> -->
-     
+
     <router-view></router-view>
     <Footer />
   </div>
@@ -49,5 +58,3 @@ const isRegisterMember = ref(false);
   }
 }
 </style>
-
-

@@ -12,9 +12,9 @@
       <li>
         <router-link to="/shopping">加值商城</router-link>
       </li>
-      <li>
+      <!-- <li>
         <router-link to="/todolist">開始Plan</router-link>
-      </li>
+      </li> -->
       <li>
         <router-link to="/enjoylife">享受放鬆生活</router-link>
       </li>
@@ -156,7 +156,7 @@ watch(isLoggedIn, (newVal) => {
 const logoClass = ref("logo rounded");
 
 const handleScroll = () => {
-  console.log(window.scrollY);
+  // console.log(window.scrollY);
   if (window.scrollY > 0) {
     logoClass.value = "logo square";
   } else {
@@ -240,7 +240,7 @@ header {
     @media (max-width: 430px) {
     }
     li {
-      &:nth-child(5) {
+      &:nth-child(4) {
         display: none;
         @media (max-width: 768px) {
           display: flex;
