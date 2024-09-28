@@ -27,7 +27,7 @@ const ReserveFun = (index) => {
 <template>
   <div class="container">
     <main>
-      <Windows :product="ReserveFuned"/>
+      <!-- <Windows :product="ReserveFuned"/>   暫無使用-->
       <div class="div">
         <h2 class="item_title">國內旅遊</h2>
         <ul>
@@ -35,7 +35,7 @@ const ReserveFun = (index) => {
             <h4>{{ item.title }}</h4>
             <img :src="item.imageUrl" alt="" />
             <a href="#" @click.prevent="ReserveFun(index)">查看活動</a>
-          </li> -->
+          </li> -->  <!-- li項目活動 變成EnjoyItem組件-->
           <EnjoyItem v-for="item in products.slice(0, 3)" :product="item" :key="item.id"/>
         </ul>
 
@@ -43,15 +43,17 @@ const ReserveFun = (index) => {
       <div class="div">
         <h2 class="item_title">美食饗宴</h2>
         <ul>
-          <li v-for="(item,index) in products.slice(3, 6)" :key="item.id">
+          <!-- <li v-for="(item,index) in products.slice(3, 6)" :key="item.id">
             <h4>{{ item.title }}</h4>
             <img :src="item.imageUrl" alt="" />
             <a href="#" @click.prevent="ReserveFun(index+3)">查看活動</a>
-          </li>
+          </li> -->
+          <EnjoyItem v-for="item in products.slice(3, 6)" :product="item" :key="item.id"/>
+
         </ul>
       </div>
 
-      <div class="result">
+      <div class="result">  <!-- 輸出訂購活動結果--->
         <!-- {{ store.reseveArr }} -->
         <h2>您已成功訂購</h2>
         <ul>

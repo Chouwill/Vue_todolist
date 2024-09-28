@@ -47,11 +47,11 @@ const BookDate = (index) => {
   // store.CustomerDate.value = BookDated.value;  // 存入Pinia
 };
 
-const SendDate = () => {
-  store.CustomerDate.value = props.product.title;
-  store.CustomerDate.value = BookDated.value; // 存入Pinia
-  console.log("現在存入日期", store.CustomerDate.value);
-};
+// const SendDate = () => {
+//   store.CustomerDate.value = props.product.title;
+//   store.CustomerDate.value = BookDated.value; // 存入Pinia
+//   console.log("現在存入日期", store.CustomerDate.value);
+// };
 
 const submit = (product) => {
   store.buyProduct(product, BookDated.value);
