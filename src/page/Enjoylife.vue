@@ -1,5 +1,5 @@
 <script setup>
-import axios from "axios";
+import EnjoyItem from "../components/EnjoyItem.vue";
 import Windows from "../components/Windows.vue";
 import { useReserveStore } from "../stores/Reserve.js";
 import { ref, onMounted, computed } from "vue";
@@ -31,12 +31,14 @@ const ReserveFun = (index) => {
       <div class="div">
         <h2 class="item_title">國內旅遊</h2>
         <ul>
-          <li v-for="(item, index) in products.slice(0, 3)" :key="item.id">
+          <!-- <li v-for="(item, index) in products.slice(0, 3)" :key="item.id">
             <h4>{{ item.title }}</h4>
             <img :src="item.imageUrl" alt="" />
             <a href="#" @click.prevent="ReserveFun(index)">查看活動</a>
-          </li>
+          </li> -->
+          <EnjoyItem v-for="item in products.slice(0, 3)" :product="item" :key="item.id"/>
         </ul>
+        
       </div>
       <div class="div">
         <h2 class="item_title">美食饗宴</h2>
