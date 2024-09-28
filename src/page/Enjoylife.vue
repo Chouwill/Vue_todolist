@@ -20,7 +20,7 @@ onMounted(async () => {
 const ReserveFun = (index) => {
   ReserveFuned.value = products.value[index]   //尋找index
   console.log(ReserveFuned.value);
-  
+
 };
 </script>
 
@@ -38,7 +38,7 @@ const ReserveFun = (index) => {
           </li> -->
           <EnjoyItem v-for="item in products.slice(0, 3)" :product="item" :key="item.id"/>
         </ul>
-        
+
       </div>
       <div class="div">
         <h2 class="item_title">美食饗宴</h2>
@@ -54,7 +54,14 @@ const ReserveFun = (index) => {
       <div class="result">
         <!-- {{ store.reseveArr }} -->
         <h2>您已成功訂購</h2>
-        <h2>{{ store.CustomerDate.value }}</h2>
+        <ul>
+          <li v-for="item in store.buyProductList" :key="item.id">
+            <h4>{{ item.title }}</h4>
+            <time>{{ item.date }}</time>
+            <p>{{ item.content }}</p>
+            <img :src="item.imageUrl" alt="" />
+          </li>
+        </ul>
       </div>
     </main>
   </div>

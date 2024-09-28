@@ -3,6 +3,7 @@ import { computed, ref } from "vue";
 import axios from "axios";
 
 export const useReserveStore = defineStore("reserve", () => {
+  // 全部活動
   const reseveArr = ref([]);
   // console.log(reseveArr)
 
@@ -25,5 +26,12 @@ export const useReserveStore = defineStore("reserve", () => {
     // console.log(reseveArr.value);
   };
 
-  return { reseveArr, reseveId, IdTitle, reseveItem, getDataList,CustomerDate };
+  // 已購買的活動
+  const buyProductList = ref([])
+
+  const buyProduct = (product, date) => {
+    buyProductList.value.push({ ...product, date });
+  };
+
+  return { reseveArr, reseveId, IdTitle, reseveItem, getDataList,CustomerDate, buyProductList, buyProduct };
 });

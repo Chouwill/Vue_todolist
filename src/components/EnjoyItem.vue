@@ -1,5 +1,8 @@
 <script setup>
 import { ref, computed, defineEmits } from "vue";
+import { ElMessageBox } from "element-plus";
+import dayjs from "dayjs";
+import { useReserveStore } from "../stores/Reserve.js";
 const props = defineProps({
   product: {
     type: Object,
@@ -31,7 +34,8 @@ const handleClose = (done) => {
 };
 
 // 日期陣列
-const dates = ref(["2024/09/09", "2024/09/10", "2024/09/11", "2024/09/12"]);
+const f = "YYYY/MM/DD";
+const dates = ref([dayjs().format(f), dayjs().add(1, 'day').format(f), dayjs().add(2, 'day').format(f), dayjs().add(3, 'day').format(f)]);
 const BookDated = ref(null);
 const store = useReserveStore();
 
@@ -48,19 +52,23 @@ const SendDate = () => {
   store.CustomerDate.value = BookDated.value; // 存入Pinia
   console.log("現在存入日期", store.CustomerDate.value);
 };
+
+const submit = (product) => {
+  store.buyProduct(product, BookDated.value);
+  dialogVisible.value = false;
+}
 </script>
 <template>
 
 <li>
   <h4>{{ props.product.title }}</h4>
   <img :src="props.product.imageUrl" alt="" />
-  <a href="#" @click.prevent="">查看活動</a>
+  <a href="#" @click.prevent="dialogVisible = true">查看活動</a>
   <el-dialog
     v-model="dialogVisible"
     :title="props.product.title || '無標題'"
-    :width="dialogWidth"
+    :width="500"
     height="auto"
-    :before-close="handleClose"
     :class="['custom-dialog']"
     :style="dialogStyle"
   >
@@ -81,16 +89,8 @@ const SendDate = () => {
       </div>
     </div>
     <div class="button-container">
-      <button @click="SendDate">送出</button>
+      <button @click="submit(props.product)">送出</button>
     </div>
-    <template #footer>
-      <div class="dialog-footer">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
-          Confirm
-        </el-button>
-      </div>
-    </template>
   </el-dialog>
 </li>
 
@@ -292,4 +292,3 @@ li {
     }
   }
 </style>
-
