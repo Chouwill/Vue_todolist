@@ -37,8 +37,8 @@ const ReserveFun = (index) => {
             <a href="#" @click.prevent="ReserveFun(index)">查看活動</a>
           </li> -->  <!-- li項目活動 變成EnjoyItem組件-->
           <EnjoyItem v-for="item in products.slice(0, 3)" :product="item" :key="item.id"/>
-        </ul>
-
+        </ul><!-- v-for (item)傳入組件 -->
+                
       </div>
       <div class="div">
         <h2 class="item_title">美食饗宴</h2>

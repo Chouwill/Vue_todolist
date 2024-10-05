@@ -148,23 +148,25 @@ footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30%;
+      // width: 30%;
       gap: 10px;
       // border: 5px solid red;
 
       @media (max-width: 768px) {
         position: fixed;
-        width: 100px;
+        // width: 100px;
         flex-direction: column;
         // background-color: orange;
         height: 300px;
         bottom: 120px;
-        right: 0;
+        right: 8px;
+        z-index: 100;
       }
       a {
         // background-color: #1e7fb8;
-        width: 70px;
-        height: 70px;
+        width: 40px;
+        height: 40px;
+
         @media (max-width: 768px) {
           display: flex;
           justify-content: center;
@@ -182,7 +184,7 @@ footer {
         }
         .community_link {
           font-size: 35px;
-          color: #000;
+          color: white;
           &:hover {
             color: #3b96cb;
           }
@@ -190,7 +192,7 @@ footer {
             top: 15px;
             bottom: 16px;
             right: 25px;
-            font-size: 30px;
+            font-size: 25px;
           }
 
           @media (max-width: 414px) {

@@ -212,7 +212,7 @@
       width: 40%;
       // height: 30vh;
       max-height: 900px;
-      // border: 2px solid tan;
+      border: 2px solid tan;
       // z-index: 2;
       @media (max-width: 768px) {
         display: block;
