@@ -209,7 +209,7 @@
         width: 100%;
         text-align: center;
         font-size: 35px;
-        line-height: 2.5;
+        line-height: 2;
       }
     }
     .main_introduce {

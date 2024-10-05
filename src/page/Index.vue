@@ -94,7 +94,7 @@
         <div class="main_text order-6">
           
             <h2>享受放鬆生活</h2>
-            <el-scrollbar height="400px"></el-scrollbar>
+            <el-scrollbar height="400px">
             <ol>
               <li>
                 <p>
@@ -116,7 +116,7 @@
                 </p>
               </li>
             </ol>
-          
+          </el-scrollbar>
         </div>
       </div>
       <!-- ---- -->
@@ -186,6 +186,9 @@
         bottom: 237px;
         right: 128px;
       }
+      @media (max-width: 1024px) {
+        display: none;
+      }
       @media (max-width: 768px) {
         display: none;
       }
@@ -212,7 +215,7 @@
       width: 40%;
       // height: 30vh;
       max-height: 900px;
-      border: 2px solid tan;
+      // border: 2px solid tan;
       // z-index: 2;
       @media (max-width: 768px) {
         display: block;
@@ -267,9 +270,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      // flex-direction: column;
-      // border: 5px solid palegreen;
+ 
       height: 500px;
       @media (max-width: 768px) {
         width: 90%;
@@ -289,11 +290,11 @@
       }
       .main_img {
         // border: 10px solid #000;
-        width: 500px;
+        width: 50%;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 陰影效果 */
         @media (max-width: 768px) {
-          width: 50%;
-          height: 450px;
+          // width: 50%;
+          // height: 450px;
           flex-direction: column;
           // border: 5px solid tomato;
         }
@@ -316,15 +317,15 @@
         }
       }
       .main_text {
+        width: 50%;
         display: flex;
         justify-content: safe center;
         align-items: center;
         flex-direction: column;
-        width: 500px;
-        height: 420px;
         overflow-y: auto;
         // border: 2px solid yellow;
         background-color: white;
+        padding: 24px;
         @media (max-width: 768px) {
           width: 50%;
           height: 450px;
@@ -344,14 +345,15 @@
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          gap: 15px;
+          padding-left: 16px;
+          // gap: 15px;
 
-          width: 400px;
-          height: 400px;
+          // width: 400px;
+          // height: 400px;
           // border: 1px solid red;
           @media (max-width: 768px) {
-            width: 300px;
-            height: 450px;
+            // width: 300px;
+            // height: 450px;
             // border: 2px solid rgb(0, 255, 64);
           }
           @media (max-width: 414px) {
@@ -359,7 +361,7 @@
           }
           li {
             p {
-              font-size: 19px;
+              font-size: 15px;
               overflow: hidden;
               @media (max-width: 768px) {
                 font-size: 15px;

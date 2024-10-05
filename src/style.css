@@ -1,8 +1,9 @@
 @import "qalendar/dist/style.css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
 
 * {
   text-decoration: none;
-  
+
   box-sizing: border-box;
   /* border: none !important; */
   border: none;
@@ -14,12 +15,10 @@ body {
   margin: 0;
   padding: 0;
 }
-html{
+html {
   /* background-color: #f5e4d0;
   background-color: #f3d19e;
   background-color: #f9f9f9; */
-  
-
 }
 .container {
   width: 100%;
@@ -30,17 +29,16 @@ html{
   flex-direction: column;
   /* border: 2px solid firebrick; */
   background-color: #a0d8f0;
-
 }
-a,button{
+a,
+button {
   cursor: pointer;
 }
-a{
+a {
   color: black;
-  
 }
 
-img{
+img {
   display: block;
   object-fit: contain;
 }
@@ -56,8 +54,8 @@ body {
 body {
   background: #eee;
   background-color: #a0d8f0;
-
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
   font-size: 14px;
   color: #000;
   margin: 0;

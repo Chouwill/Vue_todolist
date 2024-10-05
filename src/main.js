@@ -1,12 +1,11 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import "./style.css";
-// import axios from "axios";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import router from "./router";
 import App from "./App.vue";
+import "./style.css";
 
 // core version + navigation, pagination modules:
 import Swiper from "swiper";
@@ -66,7 +65,7 @@ library.add(
   faInstagram,
   faXTwitter,
   faUser,
-  faArrowRight,
+  faArrowRight
 );
 
 const pinia = createPinia();
