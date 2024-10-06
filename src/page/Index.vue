@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <main class="main-container">
     <div class="page_header">
       <div class="bg">
         <!-- <h1>Dream Plan</h1> -->
@@ -38,7 +38,7 @@
         </swiper>
       </div>
     </div>
-    <main>
+    <div class="main_team_box">
       <div class="main_team">
         <div class="main_img order-1">
           <img src="/src/image/start_paln-2.png" alt="" />
@@ -92,9 +92,8 @@
           <img src="/src/image/Travel_insurance_bro.png" alt="" />
         </div>
         <div class="main_text order-6">
-          
+          <el-scrollbar height="100%" width="100%">
             <h2>享受放鬆生活</h2>
-            <el-scrollbar height="400px">
             <ol>
               <li>
                 <p>
@@ -120,8 +119,8 @@
         </div>
       </div>
       <!-- ---- -->
-    </main>
-  </div>
+    </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
@@ -147,19 +146,17 @@
   height: 100%;
   object-fit: cover;
 }
-* {
-  // list-style: none;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-.container {
-  margin-top: 10vh;
+
+.main-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 10vh auto 0;
   background-color: #fff;
   background-color: #c7eeff;
   background-color: #a0d8f0;
 
   .page_header {
-    width: 80%;
+    width: 100%;
     display: flex;
     height: 450px;
     justify-content: center;
@@ -169,7 +166,7 @@
     position: relative;
 
     .bg {
-      width: 40%;
+      width: 50%;
       // border: 2px solid red;
       // background-image: url("/src/image/Personal\ goals-bro.svg");
       background-color: #4ba0d7;
@@ -201,8 +198,11 @@
       h2 {
         position: absolute;
         color: #2c3e99;
-        bottom: 150px;
-        right: 500px;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform: translateY(-50%);
         z-index: 10;
         text-align: center;
         font-size: 45px;
@@ -212,7 +212,7 @@
     }
     .Carousel_box {
       // background-color: olive;
-      width: 40%;
+      width: 50%;
       // height: 30vh;
       max-height: 900px;
       // border: 2px solid tan;
@@ -248,7 +248,7 @@
     }
   }
   main {
-    width: 70%;
+    // width: 70%;
     gap: 25px;
     display: flex;
     flex-direction: column;
@@ -265,6 +265,12 @@
       width: 100%;
       flex-direction: column;
       // background-color: rgb(51, 0, 255);
+    }
+  }
+
+  .main_team_box {
+      display: flex;
+      flex-direction: column;
     }
     .main_team {
       width: 100%;
@@ -388,7 +394,6 @@
         order: 3;
       }
     }
-  }
 }
 </style>
 

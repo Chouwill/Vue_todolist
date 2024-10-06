@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
+// import "element-plus/dist/index.css";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import router from "./router";
 import App from "./App.vue";
@@ -14,6 +14,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./style.css";
 
 // init Swiper:
 const swiper = new Swiper(".swiper", {
